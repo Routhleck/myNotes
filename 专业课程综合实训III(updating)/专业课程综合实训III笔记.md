@@ -26,4 +26,26 @@
 
 ![image-20220831170641058](D:\Typora_CACHE\image-20220831170641058.png)
 
-还好 
+# 成本管理
+
+计划成本+实际成本+
+成本监控<img src="D:\Typora_CACHE\image-20220907164431374.png" alt="image-20220907164431374" style="zoom:67%;" />
+
+# 范围管理
+
+![image-20220907164446641](D:\Typora_CACHE\image-20220907164446641.png)
+
+**需求跟踪矩阵**
+
+<img src="D:\Typora_CACHE\image-20220907164505006.png" alt="image-20220907164505006" style="zoom:50%;" />
+
+**范围基准**
+
+1. 范围说明书
+   主要作用：确定哪些需求包含在项目范围内，哪些排除在范围外。
+2. 工作分解结构
+   <img src="D:\Typora_CACHE\image-20220907165622296.png" alt="image-20220907165622296" style="zoom:67%;" />
+   <img src="D:\Typora_CACHE\image-20220907165631223.png" alt="image-20220907165631223" style="zoom:67%;" />
+3. WBS词典：用来**详细描述**每一个工作包
+   - 1个工作包对应1个词典文件
+   - 主要内容是完成工作包所需的活动、里程碑及质量要求等
