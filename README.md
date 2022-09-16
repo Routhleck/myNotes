@@ -19,3 +19,19 @@ JAVA
 软件系统设计与分析
 
 人工智能基础
+
+科技论文写作(updating)
+
+专业课程综合实训III(updating)
+
+软件项目管理与产品运维(updating)
+
+进化、生态与生物行为(updating)
+
+操作系统(updating)
+
+软件测试与质量保证(updating)
+
+机器学习(updating)
+
+c++程序设计(updating)
