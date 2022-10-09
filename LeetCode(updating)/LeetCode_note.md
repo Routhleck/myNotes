@@ -292,3 +292,47 @@ public:
 ```
 
 思路很简单就按着大小去走，撞到墙就换方向并更新墙的位置。
+
+# 链表
+
+## 移除链表元素
+
+[203. 移除链表元素 - 力扣（LeetCode）](https://leetcode.cn/problems/remove-linked-list-elements/submissions/)
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        // 去掉开头的val
+        ListNode* temp_head = head;
+        while (temp_head != NULL && temp_head->val == val) {
+            temp_head = temp_head->next;
+        }
+        head = temp_head;
+        // 去掉后序的val
+        while (temp_head != NULL && temp_head->next != NULL) {
+            if (temp_head->next->val == val) {
+                temp_head->next = temp_head->next->next;
+            }
+            else {
+                temp_head = temp_head->next;
+            }
+        }
+        return head;
+    }
+};
+```
+
+## 设计链表
+
+[707. 设计链表 - 力扣（LeetCode）](https://leetcode.cn/problems/design-linked-list/)
