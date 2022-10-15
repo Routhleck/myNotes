@@ -6,6 +6,8 @@
 
 <img src="D:\Typora_CACHE\image-20221015114916605.png" alt="image-20221015114916605" style="zoom: 33%;" />
 
+<img src="D:\Typora_CACHE\image-20221015115401575.png" alt="image-20221015115401575" style="zoom:23%;" />
+
 # 1. C++基本概念
 
 **高内聚低耦合**
