@@ -292,6 +292,21 @@ People::People(int age, int height)
 
 ### 拷贝构造函数
 
-
-
 ### 拷贝赋值函数
+
+# 6. 运算符重载与友元
+
+## 6.1 运算符重载
+
+通过运算符重载实现自定义类型的计算
+
+```c++
+returnType operatorOP(arg list); //OP为重载的运算符
+
+//运算符重载示例
+operator+(...)
+operator*(...)
+```
+
+运算符重载也可以显式调用
+
