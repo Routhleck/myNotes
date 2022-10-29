@@ -467,10 +467,81 @@ Print(StringBad()); //不发生拷贝
 区别在于 **重载赋值操作符需要释放原有内存，否则会出现内存泄漏**
 返回自身引用
 
-**为防止自赋值需要在最开始判断**
+**为防止自赋值需要在最开始判断（判断会进行分支预测，需要记录原指针或copy and swap策略）**
+
+```c++
+//stringbad.cc
+StringBad& StringBad::operator=(const StringBad& s) {
+	len_ = s.len_;
+	char* temp = str_; //记录原指针
+	str_ = new char[s.len_ + 1]; //重新申请内存
+	strcpy(str_, s.str_); //拷贝指针指向内容
+	delete[] temp; //释放原有内存
+	return *this; //返回自身引用
+}
+
+StringBad& StringBad::operator=(StringBad s) {
+	len_ = s.len_;
+    // copy-and-swap策略，传值调用拷贝构造函数
+    char* tmp = str_;
+	str_ = s.str_; //交换指针,资源释放及哦啊给析构处理
+    s.str_ = tmp;
+	return *this; //返回自身引用
+}
+
+StringBad& StringBad::operator=(StringBad s){
+    swap(*this, s);
+    return *this; //返回自身引用
+}
+void swap(StringBad& s1, StringBad& s2) { //友元函数
+    using std::swap;
+    swap(s1.len_, s2.len_); //不能直接写std::swap
+    swap(s1.str_, s2.str_); //不加限定的swap函数可进行最优匹配
+}
+```
+
+**c++连续赋值运算满足右结合律**，可以通过括号改变结合顺序
+
+**new和delete操作必须一致**, 如果new [], 析构时也必须delete[]
+
+> 针对简单类型 使用new分配后的不管是数组还是非数组形式内存空间用两种方式均可
+>
+> 针对类Class，两种方式体现出具体差异
+>
+> 关键在于调用析构函数上。此程序的类没有使用操作系统的系统资源（比如：`Socket、File、Thread`等），所以不会造成明显恶果。**如果你的类使用了操作系统资源，单纯把类的对象从内存中删除是不妥当的，因为没有调用对象的析构函数会导致系统资源不被释放**，如果是 Socket 则会造成 Socket 资源不被释放，最明显的就是端口号不被释放，系统最大的端口号是 65535 (216 _ 1，因为还有0)，如果端口号被占用了，你就不能上网了，呵呵。如果 File 资源不被释放，你就永远不能修改这个文件，甚至不能读这个文件(除非注销或重启系统)。如果线程不被释放，这它总在后台运行，浪费内存和 CPU 资源。这些资源的释放必须依靠这些类的析构函数。所以，在用这些类生成对象数组的时候，用 `delete[]` 来释放它们才是王道。
 
 ## 7.3 移动构造函数
 
+移动构造函数实现移动语义，直接将对象资源控制权进行转移
+注意：**移动后需保证来源对象可以正常析构**
 
+```c++
+// stringbad.cpp
+StringBad::StringBad(StringBad&& s):len_(s.len_), str_(s.str_) {
+	s.str_ = nullptr 
+}
+```
 
 ## 7.4 移动赋值函数
+
+```c++
+// stringbad.cpp
+StringBad& StringBad::operator=(StringBad&& s) {
+	if(this == &s) {return *this;} //处理自赋值
+	len_ = s.len_;
+	delete[] str_; //先释放原有内存
+	str_ = s.str_; //接管s资源
+	s.str_ = nullptr;
+	return *this; //返回自身引用
+};
+
+// copy-and-swap策略
+StringBad::operator=(StringBad s) { //生成值会调用相应左/右值版本
+    swap(*this, s);
+    return *this;
+};
+
+StringBad::StringBad(const StringBad& s) ...
+StringBad::StringBad(StringBad&& s) ...
+```
+
