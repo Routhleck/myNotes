@@ -292,10 +292,6 @@ People::People(int age, int height)
 
 **普通成员函数**可以通过this关键字获取当前对象的指针
 
-### 拷贝构造函数
-
-### 拷贝赋值函数
-
 # 6. 运算符重载与友元
 
 ## 6.1 运算符重载
@@ -308,6 +304,37 @@ returnType operatorOP(arg list); //OP为重载的运算符
 //运算符重载示例
 operator+(...)
 operator*(...)
+    
+// cargo.h
+class Cargo {
+public:
+  Cargo(int c, int  b, int m)
+  : car_(c), bike_(b), motor(m) {}
+  Cargo operator+(const Cargo& c) const;
+private:
+  int car_;
+  int bike_;
+  int motor_;
+};
+
+Cargo Cargo::operator+(const Cargo& c) const {
+  Cargo ret(0, 0, 0);
+  ret.bike_ = this->bike_ + c.bike_;
+  ret.motor = this->motor_ + c.motor_;
+  ret.car = this->car_ + c.car_;
+  return ret;
+}
+
+// main.cc
+
+Cargo c1(10, 2, 1);
+Cargo c2(1, 12, 9);
+
+// + 运算符重载
+Cargo c3 = c1 + c2;
+
+c1 = c2 + c3;
+c2 = c2 + c2 + c1;
 ```
 
 运算符重载也可以显式调用
@@ -322,6 +349,7 @@ operator*(...)
 
 - 成员函数重载
 - 非成员函数重载（友元函数）
+  **即使不是友元，对于全局变量、结构体等等仍可以使用**
 
 c++ 流运算符只支持成员函数重载
 
@@ -366,3 +394,83 @@ c++ 流运算符只支持成员函数重载
 内置类型 -> 自定义类型：构造函数
 自定义类型 -> 内置类型：重载运算符
 自定义类型 -> 自定义类型：构造函数/重载运算符
+
+### C++函数和一等公民
+
+- 函数指针
+- 仿函数
+- std::function
+
+```c++
+// std::function
+struct Functor{
+	int operator()(int i) {return i * i;}
+} functor;
+
+void estimate(std::function<int(int)> func);
+
+estimate(functor)
+```
+
+# 7. 类的拷贝控制
+
+## 7.1 拷贝构造函数
+
+当类具有不能拷贝、赋值或析构的成员时，类的合成拷贝函数是删除(=delete)的，删除函数意味着被声明但不可使用。
+
+**类包含指针时，需要自定义类**
+
+### 函数原型
+
+```c++
+//常见构造函数原型
+className(const className& obj);
+```
+
+**必须有&引用，否则递归拷贝**
+
+### 调用场景
+
+```c++
+//拷贝构造函数的调用场景
+StringBad s1;
+
+StringBad s2(s1);
+StringBad s3 = s1;
+StringBad s4 = 
+```
+
+2 当函数参数为自定义类型的值传递时
+
+```c++
+void Print(StringBad s);
+
+StringBad s1;
+Print(s1); //发生拷贝
+Print(StringBad()); //不发生拷贝
+```
+
+3 某些情况下编译器出现临时变量
+
+### 浅拷贝
+
+**浅拷贝会调用默认构造函数，共享数据**
+会出现指针悬挂的问题
+
+### 深拷贝
+
+深拷贝需要自己动态申请内存，并进行内存拷贝
+
+## 7.2 拷贝赋值函数
+
+与拷贝构造函数的方式类似，都需要重新申请内存
+区别在于 **重载赋值操作符需要释放原有内存，否则会出现内存泄漏**
+返回自身引用
+
+**为防止自赋值需要在最开始判断**
+
+## 7.3 移动构造函数
+
+
+
+## 7.4 移动赋值函数
