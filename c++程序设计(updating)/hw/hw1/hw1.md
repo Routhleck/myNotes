@@ -4,7 +4,7 @@
 
 2. CDE
 
-3. ABD
+3. AB
 
 4. AC
 
