@@ -545,3 +545,21 @@ StringBad::StringBad(const StringBad& s) ...
 StringBad::StringBad(StringBad&& s) ...
 ```
 
+# 8. 类的继承
+
+三种继承
+
+> public 公有继承
+> private 私有继承
+> protected 保护继承
+
+函数覆盖(overriding)和函数重载(overloading)
+函数覆盖：
+
+- 发生在派生过程中
+- 函数签名相同会隐藏基类的函数
+- 派生类的 **同名函数（非同签名）**也会覆盖
+
+函数重载：
+
+- 
