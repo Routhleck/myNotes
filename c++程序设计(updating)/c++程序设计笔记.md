@@ -547,11 +547,26 @@ StringBad::StringBad(StringBad&& s) ...
 
 # 8. 类的继承
 
+## 8.1 什么是继承
+
+继承是C++面向对象的重要特性，继承允许用户在原始类的基础上构建新类。通过继承，开发者能够实现**代码/功能复用，以及多态**
+
+```c++
+class 派生类名 : 访问限定符  基类名 {};
+
+```
+
 三种继承
 
 > public 公有继承
 > private 私有继承
 > protected 保护继承
+
+|          | public    | protected | private |
+| -------- | --------- | --------- | ------- |
+| 公有继承 | public    | protected | 不可见  |
+| 私有继承 | private   | private   | 不可见  |
+| 保护继承 | protected | protected | 不可见  |
 
 函数覆盖(overriding)和函数重载(overloading)
 函数覆盖：
@@ -562,4 +577,163 @@ StringBad::StringBad(StringBad&& s) ...
 
 函数重载：
 
-- 
+- 函数签名不同（函数名相同，参数不同）
+- 同一个类中的多个同名函数可以重载
+
+函数覆盖的优先级高于函数重载，所以基类里的所有同名函数都会被隐藏
+派生类中可以通过 **基类名::函数名** 的方式调用被覆盖的基类函数
+
+## 8.2 派生对象的创建和销毁
+
+派生类对象的内存结构：
+
+<img src="D:\Typora_CACHE\image-20221112104617289.png" alt="image-20221112104617289" style="zoom:50%;" />
+
+派生类的初始化流程：
+
+<img src="D:\Typora_CACHE\image-20221112104655508.png" alt="image-20221112104655508" style="zoom:50%;" />
+
+**在派生类构造函数的初始化列表中直接调用基类的构造函数**
+
+在派生类构造函数的初始化列表中，基类构造函数一定要**放在最前面**
+
+如果派生类构造函数列表里没有基类构造函数，则调用基类的默认构造函数（如果基类不存在默认构造函数，编译错误）
+
+- 派生对象的销毁过程与创建正好相反：先销毁派生类新添加的成员，再销毁基类的成员
+- 派生对象析构时先调用派生类的析构函数，再自动调用基类的析构函数，无需人工干预
+- 派生类的析构函数只需要释放派生类新增的资源，基类申请的资源由基类的析构函数自动释放
+
+## 8.3 派生类的使用
+
+派生类是基类的功能扩展，它和基类的联系不仅仅体现在代码复用层面，更重要的是体现在多态性方面
+
+- 派生类的地址能够赋值给指向基类的指针
+- 派生类能够初始化基类类型的引用
+
+```c++
+RatedPlayer player (100, “john”, “cart”, false);
+
+TableTennisPlayer* p = &player;	// 基类指针赋值
+TableTennisPlayer& r = player;	// 基类引用初始化
+
+p->Name();			// 基类Name函数
+r.Name();				// 基类Name函数
+r.Rating();			// 错误
+```
+
+我们把这种特性称为基类和派生类的**引用兼容性**
+
+- 引用兼容性是**单向的**，派生类型的指针或者引用不允许指向基类对象
+- 引用兼容性**只对公有继承有效**，私有继承和保护继承是无效的
+
+引用兼容性的使用场景：
+
+- **基类指针作为函数参数参数，统一函数接口**
+
+  ```c++
+  void SetTable(TableTennisPlayer& player, bool isTrue) {
+      player.ResetTable(isTrue);
+  }
+  
+  TableTennisPlayer player1(“Jack”, “Sparrow”, false);
+  RatedPlayer player2(100,“Mac”, “donna”, true);
+  
+  SetTable(player1, true);	// 基类引用参数传递
+  SetTable(player2, false);	// 基类引用参数传递
+  ```
+
+- **用派生类对象初始化基类对象**
+
+  ```c++
+  class TableTennisPlayer {
+  public:
+      TableTennisPlayer(const TableTennisPlayer& tp);
+  };
+  
+  RatedPlayer player1(212, “Jane”, “Eyre”, false);	// 派生类对象
+  TableTennisPlayer player2(player1);	// 用派生类对象初始化基类对象
+  ```
+
+## 8.4 公有继承
+
+适用范围：
+
+- 我们也可以将基类和派生类的关系描述为is-a-kind-of关系，因为派生类通常是会在基类的基础上添加新功能（属性）
+- 公有继承并不能表征**全部**is-a关系
+- 公有继承不适用于描述is-like-a关系
+- 公有继承不适用于描述is-implemented-as关系
+- 公有继承不适用于描述use-a关系
+
+# 9. 多态
+
+## 9.1 概念与使用场景
+
+### 9.1.1 概念
+
+**静态多态**
+编译时多态，包含函数重载、模板
+
+**动态多态**
+运行时多态，公有继承和虚函数
+
+多态：调用相同的函数，根据对象类型的不同产生不同的行为
+
+### 9.1.2 使用场景
+
+方法1：
+不同多态性，直接调用参数控制函数引用
+
+方法2：
+利用共有继承类的多态性
+
+<img src="D:\Typora_CACHE\image-20221112102800949.png" alt="image-20221112102800949" style="zoom:50%;" />
+
+<img src="D:\Typora_CACHE\image-20221112103003136.png" alt="image-20221112103003136" style="zoom:50%;" />
+
+公有继承实现多态性的三个条件：
+
+- 在派生类中重新定义需要实现多态性的成员函数
+- 将这些实现多态性的函数定义为虚函数(virtual)
+- 使用**基类**的**指针**或者**引用**调用这些虚函数
+
+<img src="D:\Typora_CACHE\image-20221112103702454.png" alt="image-20221112103702454" style="zoom:50%;" />
+
+## 9.2 虚函数与动态绑定
+
+Virtual关键字实现
+
+C++编译器通过 **虚函数表**来实现动态绑定
+
+### 9.2.1 动态绑定原理
+
+<img src="D:\Typora_CACHE\image-20221112105743971.png" alt="image-20221112105743971" style="zoom:25%;" />
+
+https://zhuanlan.zhihu.com/p/216258189
+
+### 9.2.2 override和final关键字
+
+override关键字显式声明该函数重写基类的虚函数，而非新定义的函数
+
+<img src="D:\Typora_CACHE\image-20221112113502475.png" alt="image-20221112113502475" style="zoom:50%;" />
+
+final关键字告知编译器...
+也可以声明该类型不能够被继承
+
+### 9.2.3 虚函数特性
+
+<img src="D:\Typora_CACHE\image-20221112113739304.png" alt="image-20221112113739304" style="zoom:50%;" />
+
+## 9.3 纯虚函数与虚基类
+
+C++允许基类中的虚函数只有声明而无需定义函数逻辑，纯虚函数的声明方式为在函数末尾添加=0
+
+包含纯虚函数的类为虚基类，虚基类只能作为抽象接口（类似interface）使用，无法实例化对象
+
+# 10. 代码复用
+
+## 10.1 组合与继承
+
+需要复用部分功能性代码时：
+
+- 继承：构建功能向导的基类，在此基础上构建攀升体系
+- 组合：将不同模块...
