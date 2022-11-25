@@ -1,11 +1,11 @@
-1. ABCD√
-2. A(?)
-3. BD√
-4. BC√
-5. BCD√
-6. AD√
-7. CD√
-8. ACD√
-9. BD√
-10. AC√
+1. ABCD
+2. A
+3. BD
+4. BC
+5. BCD
+6. AC
+7. CD
+8. ACD
+9. BD
+10. AC
 
