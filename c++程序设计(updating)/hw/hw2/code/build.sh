@@ -1,2 +1,2 @@
-sudo g++ test_share.cc -o test_share
-./test_share
+sudo g++ test.cc -o test
+./test
