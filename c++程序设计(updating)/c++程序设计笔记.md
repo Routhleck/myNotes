@@ -14,6 +14,10 @@
 
 **高内聚低耦合**
 
+## C++程序编译过程
+
+<img src="D:\Typora_CACHE\image-20221126024409245.png" alt="image-20221126024409245" style="zoom:50%;" />
+
 ## 对象：
 
 使用类生成的实例
@@ -753,8 +757,6 @@ C++允许基类中的虚函数只有声明而无需定义函数逻辑，纯虚�
 
 虚继承使用 **virtual关键字**
 
-
-
 # 11. IO
 
 ## 11.1 文件输入输出
@@ -780,6 +782,124 @@ int main() {
     cout <<“input the file content” << endl;
     getline(cin,line); //读取写入内容
     ofs << line; //写入文件
+}
+```
+
+
+
+# 12. 模板
+
+实现**数据类型和业务逻辑解耦合**的技术，允许我们针对“通用”类型进行开发
+
+## 12.1 模板函数
+
+```c++
+template <class T>
+template <typename T, class U>
+```
+
+既可以用class也可以用typename
+class主要的应用是定义类
+typename关键字除了定义模板参数外，主要作用是声明关键字后面的符号是一个类型名称，避免编译器混淆（此时不可使用class关键字）
+
+**自己主导开发推荐采用typename关键字**
+
+```c++
+template <typename T>
+void swap(T &v1, T &v2) {
+	T tmp = v1;
+	v1 = v2;
+	v2 = tmp;
+}
+```
+
+除定义类型参数外，还可在模板中定义非类型参数，此时通过类型名指定
+
+模板函数的调用过程和普通函数没有区别
+**注意：函数调用参数类型应该和模板类型保持一致**
+
+## 12.2 模板实例化
+
+模板实例化不存在类型转换，编译器会严格根据调用参数类型实例化模板，要做到调用参数类型与模板参数匹配
+无法 **隐式类型转换**
+
+编译器无法推断模板参数类型，允许用户指定类型。对于模板参数已经显示指定的实参，可以支持类型转换
+
+```
+template <typename T1, typename T2, typename T3>
+T1 sum(T2 left, T3 right) {
+	return static_cast<T1>(left + right);
+}
+
+int a = 1;
+double b = 2.0;
+long long c = sum<long long>(a,b);
+```
+
+### 控制实例化
+
+**根据调用函数的参数实例化，所以模板函数通常在.h头文件例定义而非cc源文件**
+
+将模板定义写入头文件虽然比较轻便，但也存在一个明显的劣势：在不同编译单元中同一个模板可能多次实例化，会极大地延长编译时间
+为了解决这个问题，我们可以通过技术将模板的声明和定义分离 **显式模板实例化**
+
+```c++
+// swap.h
+template <typename T>
+void swap(T &a, T&b); //模板声明
+
+// sawp.cc
+template <typename T> //模板定义
+void swap(T &a, T &b) {
+	T tmp = a;
+	a = b;
+	b = tmp;
+}
+template void swap<int>(int&, int&);			//显式实例化
+template void swap<float>(float&, float&);		//显式实例化
+template void swap<double>(double&, double&);	//显式实例化
+```
+
+## 12.3 模板类
+
+利用模板类定义对象时
+
+## 12.4 模板特化与偏特化
+
+### 模板特化
+
+模板特化函数的定义方式和普通模板函数类似,都需要template关键字, 但是 **特化模板函数无需模板参数**
+
+```c++
+template <typename T> // 通用类型模板
+bool IsEqual(T a, T b) {
+	return a == b;
+}
+
+template<> // 特化木板函数无需模板参数
+bool IsEqual(double a, double b) {
+	return abs(a-b) < 1e-6;
+}
+```
+
+函数重载优先级高于模板特化的优先级
+**编译器函数搜索优先级：函数重载->函数特化模板->函数通用模板**
+
+### 偏特化
+
+当模板类存在多个模板参数时,只特化其中部分模板参数
+
+<img src="D:\Typora_CACHE\image-20221126113003544.png" alt="image-20221126113003544" style="zoom:50%;" />
+
+## 12.5 模板默认参数
+
+- **模板参数**的默认值
+- **函数参数**的默认值
+
+```c++ '
+template <typename T = int>
+void Print(T i = 1.1) {
+	cout << i << endl;
 }
 ```
 
