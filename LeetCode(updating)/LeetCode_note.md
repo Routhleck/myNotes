@@ -336,3 +336,324 @@ public:
 ## 设计链表
 
 [707. 设计链表 - 力扣（LeetCode）](https://leetcode.cn/problems/design-linked-list/)
+
+```c++
+class MyLinkedList {
+public:
+    struct LinkedNode{
+        int val;
+        LinkedNode* next;
+        LinkedNode(int val):val(val), next(nullptr){};
+    };
+
+    MyLinkedList() {
+        _dummyHead = new LinkedNode(0);
+        _size = 0;
+    }
+    
+    int get(int index) {
+        if (index < 0 || index > (_size - 1)) {
+            return -1;
+        }
+        else {
+            LinkedNode* temp = _dummyHead->next;
+            while (index--) {
+                temp = temp->next;
+            }
+            return temp->val;
+        }
+
+    }
+    
+    void addAtHead(int val) {
+        if (_dummyHead->next == nullptr) {
+            _dummyHead->next = new LinkedNode(val);
+        }
+        else {
+            LinkedNode* temp = _dummyHead->next;
+            _dummyHead->next = new LinkedNode(val);
+            _dummyHead->next->next = temp;
+        }
+        _size++;
+    }
+    
+    void addAtTail(int val) {
+        LinkedNode* temp = _dummyHead;
+        while(temp->next != nullptr) {
+            temp = temp->next;
+        }
+        temp->next = new LinkedNode(val);
+        _size++;
+    }
+    
+    void addAtIndex(int index, int val) {
+        if (index > _size) {
+            return;
+        }
+        else if (index < 0) {
+            if (_dummyHead->next == nullptr) {
+            _dummyHead->next = new LinkedNode(val);
+            }
+            else {
+                LinkedNode* temp = _dummyHead->next;
+                _dummyHead->next = new LinkedNode(val);
+                _dummyHead->next->next = temp;
+            }
+            _size++;
+        }
+        else {
+            LinkedNode* temp = _dummyHead;
+            while(index--) {
+                temp = temp->next;
+            }
+            LinkedNode* temp_next = temp->next;
+            temp->next = new LinkedNode(val);
+            temp->next->next = temp_next;
+        }
+        _size++;
+    }
+    
+    void deleteAtIndex(int index) {
+        if (index >= 0 && index <= (_size - 1)) {
+            LinkedNode* temp = _dummyHead;
+            while(index--) {
+                temp = temp->next;
+            }
+            LinkedNode* delete_temp = temp->next;
+            temp->next = temp->next->next;
+            delete delete_temp;
+            _size--;
+        }
+    }
+
+private:
+    int _size;
+    LinkedNode* _dummyHead;
+};
+```
+
+## 翻转链表
+
+[206. 反转链表 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-linked-list/)
+
+使用pre和cur两个指针，以及需要一个temp指针来进行保存临时指针
+
+```c++
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
+        ListNode* temp = cur;
+        while(cur != nullptr) {
+            ListNode* temp = cur;
+            cur = cur->next;
+            temp->next = pre;
+            pre = temp; 
+        }
+        return pre;
+    }
+};
+```
+
+## 两两交换链表中的节点
+
+[24. 两两交换链表中的节点 - 力扣（Leetcode）](https://leetcode.cn/problems/swap-nodes-in-pairs/)
+
+```c++
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* pre = dummy;
+        ListNode* cur = head;
+        ListNode* post = new ListNode(0);
+        if (head == nullptr) {
+            return head;
+        }
+        else if (head->next == nullptr) {
+            return head;
+        }
+        else if (head->next->next == nullptr) {
+            post = nullptr;
+        }
+        else {
+            post = cur->next->next;
+        }
+        while (cur->next != nullptr) {
+            pre->next = cur->next;
+            pre->next->next = cur;
+            pre = cur;
+            cur->next = post;
+            cur = post;
+            if (cur ==nullptr) {
+                break;
+            }
+            else if (cur->next == nullptr){
+                break;
+            }
+            post = cur->next->next;
+        }
+    return dummy->next;
+    }
+};
+```
+
+## 删除链表的倒数第N个节点
+
+[19. 删除链表的倒数第 N 个结点 - 力扣（Leetcode）](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+
+```c++
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* dummyhead = new ListNode(0);
+        dummyhead->next = head;
+        ListNode* fast = dummyhead;
+        ListNode* slow = dummyhead;
+        for(int i = 0; i < n; i++) {
+            if (fast == nullptr) break;
+            fast = fast->next;
+        }
+        while (fast->next != nullptr) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        slow->next = slow->next->next;
+        return dummyhead->next;
+    }
+};
+```
+
+## 链表相交
+
+[面试题 02.07. Intersection of Two Linked Lists LCCI - 力扣（Leetcode）](https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/)
+
+```c++
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* curA = headA;
+        ListNode* curB = headB;
+        int lenA = 0, lenB = 0;
+        while (curA != NULL) { // 求链表A的长度
+            lenA++;
+            curA = curA->next;
+        }
+        while (curB != NULL) { // 求链表B的长度
+            lenB++;
+            curB = curB->next;
+        }
+        curA = headA;
+        curB = headB;
+        // 让curA为最长链表的头，lenA为其长度
+        if (lenB > lenA) {
+            swap (lenA, lenB);
+            swap (curA, curB);
+        }
+        // 求长度差
+        int gap = lenA - lenB;
+        // 让curA和curB在同一起点上（末尾位置对齐）
+        while (gap--) {
+            curA = curA->next;
+        }
+        // 遍历curA 和 curB，遇到相同则直接返回
+        while (curA != NULL) {
+            if (curA == curB) {
+                return curA;
+            }
+            curA = curA->next;
+            curB = curB->next;
+        }
+        return NULL;
+    }
+};
+```
+
+## 环形链表II
+
+[142. 环形链表 II - 力扣（Leetcode）](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
+使用快慢指针
+
+<img src="LeetCode_note.assets/image-20221226113554550.png" alt="image-20221226113554550" style="zoom:50%;" /> 环长=b+c；慢指针移动距离 = a + b; 快指针移动距离 = a + b + k(b+c)
+
+从快指针移动距离是慢指针的两倍`2(a + b) = a + b +k(b+c)`推导出`a - c = (k - 1)(b + c)`
+
+意味着slow从相遇点出发，head从头结点出发，走c步后，slow在入口，head到入口的距离也恰好是环长的倍数，继续走两者必然会在入口相遇。
+
+```c++
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) {
+                while (slow != head) {
+                    slow = slow->next;
+                    head = head->next;
+                }
+                return slow;
+            }
+        }
+        return NULL;
+
+    }
+};
+```
+
+# 哈希表
+
+## 有效的字幕异位词
+
+[242. 有效的字母异位词 - 力扣（Leetcode）](https://leetcode.cn/problems/valid-anagram/)
+
+int数组来记录每个英文字符出现的次数，使用`当前字符- 'a'`来表示当前字符应存在哪个位置
+
+```c++
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.size() != t.size()) {
+            return false;
+        }
+        int record[26] = {0};
+        for(int i = 0; i < s.size(); i++) {
+            record[s[i] - 'a']++;
+        }
+        
+        for(int i = 0; i < t.size(); i++) {
+            record[t[i] - 'a']--;
+        }
+        for(int i = 0; i < 26; i++) {
+            if (record[i] != 0) return false;
+        }
+        return true;
+    }
+};
+```
+
+## 两个数组的交集
+
+[349. 两个数组的交集 - 力扣（Leetcode）](https://leetcode.cn/problems/intersection-of-two-arrays/)
+
+```c++
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> result;
+        unordered_set<int> num_set(nums1.begin(), nums1.end());
+        for(int num : nums2) {
+            if (num_set.find(num) != num_set.end()) {
+                    result.insert(num);
+            }
+        }
+        return vector<int> (result.begin(), result.end());
+    }
+};
+```
+
