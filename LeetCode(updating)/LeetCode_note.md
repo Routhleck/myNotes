@@ -641,6 +641,8 @@ public:
 
 [349. 两个数组的交集 - 力扣（Leetcode）](https://leetcode.cn/problems/intersection-of-two-arrays/)
 
+使用unordered_set
+
 ```c++
 class Solution {
 public:
@@ -653,6 +655,97 @@ public:
             }
         }
         return vector<int> (result.begin(), result.end());
+    }
+};
+```
+
+## 快乐数
+
+[202. Happy Number - 力扣（Leetcode）](https://leetcode.cn/problems/happy-number/)
+
+```c++
+class Solution {
+public:
+    int getValue(int n) {
+        int sum = 0;
+        while(n) {
+            sum += (n % 10) * (n % 10);
+            n = n / 10;
+        }
+        return sum;
+    }
+
+    bool isHappy(int n) {
+        int sum = n;
+        unordered_set<int> result;
+        // 使用while进行求和
+        while(sum != 1) {
+            sum = getValue(sum);
+            if (result.find(sum) != result.end()) {
+                return false;
+            }
+            else {
+                result.insert(sum);
+            }
+        }
+        return true;
+    }
+};
+```
+
+## 两数之和
+
+[1. 两数之和 - 力扣（Leetcode）](https://leetcode.cn/problems/two-sum/)
+
+使用unordered_map来记录之前是否遍历过
+
+哈希表`iter`迭代器有两个成员`first`代表迭代器所指向元素的键，`second`表示迭代器所指向元素的值
+
+```c++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> map;
+        for(int i = 0;i < nums.size(); i++) {
+            auto iter = map.find(target - nums[i]);
+            if(iter != map.end()) {
+                return {iter->second, i};
+            }
+            map.insert(pair<int, int> (nums[i], i));
+        }
+        return {};
+    }
+};
+```
+
+## 四数相加
+
+[454. 四数相加 II - 力扣（Leetcode）](https://leetcode.cn/problems/4sum-ii/)
+
+分成两个组合，第一个用一个unordered_map来存储
+
+```c++
+class Solution {
+public:
+    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+        // 遍历nums1&nums2获得一个新的map
+        unordered_map<int, int> mapA;
+        int target = 0;
+        for(int a : nums1) {
+            for (int b : nums2) {
+                mapA[a+b]++;
+            }
+        }
+        int count = 0;
+        // 遍历nums3&nums4来查看是否存在合适的mapA里的值
+        for(int c : nums3) {
+            for(int d : nums4) {
+                if(mapA.find(target - c - d) != mapA.end()) {
+                    count += mapA[target - c - d];
+                }
+            }
+        }
+        return count;
     }
 };
 ```
