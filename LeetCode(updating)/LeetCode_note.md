@@ -750,3 +750,109 @@ public:
 };
 ```
 
+## 赎金信
+
+[383. 赎金信 - 力扣（Leetcode）](https://leetcode.cn/problems/ransom-note/)
+
+```c++
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        unordered_map<char, int> magaMap;
+        for (int i = 0; i < magazine.size(); i++) {
+            magaMap[magazine[i]]++;
+        }
+
+        for (int i = 0; i < ransomNote.size(); i++) {
+            if (magaMap.find(ransomNote[i]) != magaMap.end()) {
+                if (magaMap[ransomNote[i]] <= 0) return false;
+                else magaMap[ransomNote[i]]--;
+            }
+            else return false;
+        }
+        return true;
+    }
+};
+```
+
+## 三数之和
+
+[15. 三数之和 - 力扣（Leetcode）](https://leetcode.cn/problems/3sum/)
+
+使用双指针，去重要求较多
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        // 给nums排序
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> result;
+        if (nums.size() < 3) return result;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) return result;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            int left = i + 1;
+            int right = nums.size() - 1;
+
+            while (left < right) {
+                if (nums[i] + nums[left] + nums[right] == 0) {
+                    result.push_back(vector<int> {nums[i], nums[left], nums[right]});
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    right--;
+                    left++;
+
+                }
+                else if (nums[i] + nums[left] + nums[right] > 0) right--;
+                else left++;
+            }
+        }
+        return result;
+    }
+};
+```
+
+## 四数之和
+
+[18. 四数之和 - 力扣（Leetcode）](https://leetcode.cn/problems/4sum/)
+
+与三数之和差不多，都是双指针不过比三数之和多了一个for循环嵌套
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> result;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > target && nums[i] >= 0) break;
+
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums[i] + nums[j] > target && nums[i] + nums[j] >= 0) break;
+
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+
+                int left = j + 1;
+                int right = nums.size() - 1;
+                while (left < right) {
+                    if ((long)nums[i] + nums[j] + nums[left] + nums[right] == target) {
+                        result.push_back(vector<int> {nums[i], nums[j], nums[left], nums[right]});
+                        while (left < right && nums[right] == nums[right - 1]) right--;
+                        while (left < right && nums[left] == nums[left + 1]) left++;
+                        right--;
+                        left++;
+                    }
+                    else if ((long)nums[i] + nums[j] + nums[left] + nums[right] < target) left++;
+                    else right--;
+                }
+            }
+        }
+        return result;
+    }
+};
+```
+
