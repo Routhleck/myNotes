@@ -856,3 +856,82 @@ public:
 };
 ```
 
+# 字符串
+
+## 反转字符串
+
+[344. 反转字符串 - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-string/)
+
+较简单，可以使用双指针
+
+```c++
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        char temp;
+        for(int i = 0; i < s.size()/2; i++) {
+            char temp = s[i];
+            s[i] = s[s.size() - i - 1];
+            s[s.size() - i - 1] = temp;
+        }
+    }
+};
+```
+
+## 反转字符串II
+
+[541. 反转字符串 II - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-string-ii/)
+
+for循环将i每次+2*k个
+
+```c++
+class Solution {
+public:
+    string reverseStr(string s, int k) {
+        for (int i = 0; i < s.size(); i+=(2*k)) {
+            if (s.size() - i < k) reverse(s.begin() + i, s.end());
+            else reverse(s.begin() + i, s.begin() + i + k);
+        }
+        return s;
+    }
+};
+```
+
+## 替换空格
+
+[剑指 Offer 05. 替换空格 - 力扣（Leetcode）](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/)
+
+需要先扩充然后再使用双指针从后往前遍历替换
+
+```c++
+class Solution {
+public:
+    string replaceSpace(string s) {
+        int count = 0;
+        int oldSize = s.size();
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == ' ') count++;
+        }
+        int newSize = oldSize + count * 2;
+
+        // 扩充到newSize
+        s.resize(newSize);
+        int i = oldSize - 1, j = newSize - 1;
+        while(j > i) {
+            if (s[i] != ' ') {
+                s[j] = s[i];
+                j--;
+            }
+            else {
+                s[j] = '0';
+                s[j - 1] = '2';
+                s[j - 2] = '%';
+                j -= 3;
+            }
+            i--;
+        }
+        return s;
+    }
+};
+```
+
