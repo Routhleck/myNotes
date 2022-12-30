@@ -1092,3 +1092,41 @@ public:
 };
 ```
 
+# 重复的子字符串
+
+[459. 重复的子字符串 - 力扣（Leetcode）](https://leetcode.cn/problems/repeated-substring-pattern/)
+
+具体实现还应继续加深印象
+
+1. 首先调用 getNext 函数，该函数通过计算字符串的next数组来求出每个位置的前缀和后缀的最大相同长度。
+2. 再回到repeatedSubstringPattern函数，在该函数中，先判断next数组的最后一个值是否不为0，即是否有重复子串。
+3. 如果有重复子串，再通过判断字符串的长度是否能被字符串长度减去数组next最后一个值（即重复子串的长度）整除，来确定是否有完整的重复子串。
+
+```cpp
+class Solution {
+public:
+    void getNext (vector<int>& next, const string& s){
+        next[0] = 0;
+        int j = 0;
+        for(int i = 1;i < s.size(); i++){
+            while(j > 0 && s[i] != s[j]) {
+                j = next[j - 1];
+            }
+            if(s[i] == s[j]) {
+                j++;
+            }
+            next[i] = j;
+        }
+    }
+
+    bool repeatedSubstringPattern(string s) {
+        vector<int> next(s.size());
+        getNext(next, s);
+        if (next[next.size() - 1] == 0) return false;
+        else {
+            if (s.size() % (s.size() - next[next.size() - 1]) == 0) return true;
+            else return false;
+        }
+    }
+};
+```
