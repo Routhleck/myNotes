@@ -935,3 +935,160 @@ public:
 };
 ```
 
+## 翻转字符里的单词
+
+[151. Reverse Words in a String - 力扣（Leetcode）](https://leetcode.cn/problems/reverse-words-in-a-string/)
+
+先使用双指针去除多与空格，然后全部翻转再局部翻转
+
+```c++
+class Solution {
+public:
+    void removeSpaceExtra(string& s) {
+        int slow = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] != ' ') {
+                if (slow != 0) s[slow++] = ' ';
+                while (i < s.size() && s[i] != ' ') {
+                    s[slow++] = s[i++];
+                }
+            }
+        }
+        s.resize(slow);
+    }
+
+    void reverseAll(string& s) {
+        char temp;
+        for (int i = 0; i < s.size()/2; i++) {
+            temp = s[i];
+            s[i] = s[s.size() - i - 1];
+            s[s.size() - i - 1] = temp;
+        }
+        return;
+    }
+
+    void reverseTopo(string& s) {
+        int left = 0, right = 0;
+        char temp;
+        while(left < s.size()) {
+            if (s[right + 1] == ' ' || right == s.size() - 1) {
+                for (int i = left; i < left + (right - left + 1) / 2; i++) {
+                    temp = s[i];
+                    s[i] = s[right + left - i];
+                    s[right + left - i] = temp;
+                }
+                right += 2;
+                left = right;
+            }
+            else {
+                right++;
+            }
+        }
+    }
+
+    string reverseWords(string s) {
+        // 去除多余空格
+        removeSpaceExtra(s);
+        // 翻转整个字符串
+        reverseAll(s);
+        // 局部翻转
+        reverseTopo(s);
+        return s;
+    }
+};
+```
+
+## 左旋转字符串
+
+[剑指 Offer 58 - II. 左旋转字符串 - 力扣（Leetcode）](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
+
+先将前n个翻转，在把后n个翻转，然后翻转全部
+
+```c++
+class Solution {
+public:
+    string reverseLeftWords(string s, int n) {
+        char temp;
+        // 翻转前n个字符串
+        for (int i = 0; i < n / 2; i++) {
+            temp = s[i];
+            s[i] = s[n - i - 1];
+            s[n - i - 1] = temp;
+        }
+
+        for (int i = n; i < n + (s.size() - n) / 2; i++) {
+            temp = s[i];
+            s[i] = s[s.size() + n - i - 1];
+            s[s.size() + n - i - 1] = temp;
+        }
+
+        for (int i = 0; i < s.size() / 2; i++) {
+            temp = s[i];
+            s[i] = s[s.size() - i - 1];
+            s[s.size() - i - 1] = temp;
+        }
+        return s;
+    }
+};
+```
+
+## 实现strStr()
+
+[28. 找出字符串中第一个匹配项的下标 - 力扣（Leetcode）](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/)
+
+kmp算法，思路比较好想，但实现还有些需要注意
+
+```c++
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        // 生成needle的next数组
+        vector<int> next(needle.size());
+        int pre, post;
+        int count;
+        for (int i = 0; i < needle.size(); i++) {
+            // 找到最长相等前后缀
+            if (i == 0) {
+                next[i] = 0;
+            }
+            else {
+                int last = i - 1;
+                count = 0;
+                pre = last;
+                post = i;
+                while (pre >= 0) {
+                    if (needle[pre] == needle[post]) {
+                        count++;
+                        pre--;
+                        post--;
+                    }
+                    else {
+                        last--;
+                        pre = last;
+                        count = 0;
+                        post = i;
+                    }
+                }
+                next[i] = count;
+            }
+        }
+
+        // 开始匹配
+        int j = 0;
+        for (int i = 0; i < haystack.size(); i++) {
+            if (haystack[i] == needle[j]) {
+                j++;
+            }
+            else {
+                if (j > 0) {
+                    j = next[j - 1];
+                    if (i > 0) i--;
+                }
+            }
+            if (j > needle.size() - 1) return i - j + 1;
+        }
+        return -1;
+    }
+};
+```
+
