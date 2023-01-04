@@ -1130,3 +1130,284 @@ public:
     }
 };
 ```
+
+# 栈与队列
+
+## 栈实现队列
+
+[232. 用栈实现队列 - 力扣（Leetcode）](https://leetcode.cn/problems/implement-queue-using-stacks/)
+
+使用两个栈，一进一出
+
+<img src="https://code-thinking.cdn.bcebos.com/gifs/232.%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97%E7%89%88%E6%9C%AC2.gif" alt="232.用栈实现队列版本2" style="zoom:67%;" />
+
+```c++
+class MyQueue {
+public:
+    stack<int> stackIn;
+    stack<int> stackOut;
+    MyQueue() {
+    }
+    
+    void push(int x) {
+        stackIn.push(x);
+    }
+    
+    int pop() {
+        if (stackOut.size() == 0) {
+            int inSize = stackIn.size();
+            for (int i = 0; i < inSize; i++) {
+                stackOut.push(stackIn.top());
+                stackIn.pop();
+            }
+        }
+        int temp = stackOut.top();
+        stackOut.pop();
+        return temp;
+    }
+    
+    int peek() {
+        if (stackOut.size() == 0) {
+            int inSize = stackIn.size();
+            for (int i = 0; i < inSize; i++) {
+                stackOut.push(stackIn.top());
+                stackIn.pop();
+            }
+        }
+        return stackOut.top();
+    }
+    
+    bool empty() {
+        if (stackIn.size() + stackOut.size() == 0) return true;
+        else return false;
+    }
+};
+```
+
+## 用队列实现栈
+
+[225. 用队列实现栈 - 力扣（Leetcode）](https://leetcode.cn/problems/implement-stack-using-queues/)
+
+一个主队列，一个临时队列。
+
+也可以进行优化成一个队列，将临时队列放在主队列的尾就好。
+
+<img src="https://code-thinking.cdn.bcebos.com/gifs/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88.gif" alt="225.用队列实现栈" style="zoom: 67%;" />
+
+```c++
+class MyStack {
+public:
+    queue<int> mainQueue;
+    queue<int> tempQueue;
+    MyStack() {
+
+    }
+    
+    void push(int x) {
+        mainQueue.push(x);
+    }
+    
+    int pop() {
+        int temp = mainQueue.size();
+        int result = 0;
+        for (int i = 0; i < temp; i++) {
+            if (i == temp - 1) {
+                result = mainQueue.front();
+                mainQueue.pop();
+            }
+            else {
+                tempQueue.push(mainQueue.front());
+                mainQueue.pop();
+            }
+        }
+        
+        for (int i = 0; i < temp - 1; i++) {
+            mainQueue.push(tempQueue.front());
+            tempQueue.pop();
+        }
+        return result;
+    }
+    
+    int top() {
+        int temp = mainQueue.size();
+        int result = 0;
+        for (int i = 0; i < temp; i++) {
+            if (i == temp - 1) result = mainQueue.front();
+            tempQueue.push(mainQueue.front());
+            mainQueue.pop();
+        }
+        for (int i = 0; i < temp; i++) {
+            mainQueue.push(tempQueue.front());
+            tempQueue.pop();
+        }
+        return result;
+    }
+    
+    bool empty() {
+        if (mainQueue.size() == 0) return true;
+        else return false;
+    }
+};
+```
+
+## 有效的括号
+
+[20. 有效的括号 - 力扣（Leetcode）](https://leetcode.cn/problems/valid-parentheses/)
+
+使用堆栈简单求解
+
+```c++
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(' || s[i] == '['|| s[i] == '{') st.push(s[i]);
+            else if (s[i] == ')') {
+                if (!st.empty() && st.top() == '(') st.pop();
+                else return false;
+            }
+            else if (s[i] == ']') {
+                if (!st.empty() && st.top() == '[') st.pop();
+                else return false;
+            }
+            else if (s[i] == '}') {
+                if (!st.empty() && st.top() == '{') st.pop();
+                else return false;
+            }
+        }
+        if (st.empty()) return true;
+        else return false;
+    }
+};
+```
+
+## 删除字符串中的所有相邻重复项
+
+[1047. 删除字符串中的所有相邻重复项 - 力扣（Leetcode）](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/)
+
+与有效的括号类似，较简单
+
+```c++
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char> st;
+        for (int i = 0; i < s.size(); i++) {
+            if (!st.empty() && st.top() == s[i]) st.pop();
+            else st.push(s[i]);
+        }
+        stack<char> temp;
+        int st_size = st.size();
+        for (int i = 0; i < st_size; i++) {
+            temp.push(st.top());
+            st.pop();
+        }
+        int temp_size = temp.size();
+        for (int i = 0; i < temp_size; i++) {
+            s[i] = temp.top();
+            temp.pop();
+        }
+        s.resize(temp_size);
+        return s;
+    }
+};
+```
+
+## 逆波兰表达式求值
+
+[150. 逆波兰表达式求值 - 力扣（Leetcode）](https://leetcode.cn/problems/evaluate-reverse-polish-notation/)
+
+数字入栈， 运算符号则将栈顶两个元素进行计算
+
+```c++
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        stack<int> st;
+        int left, right = 0;
+        for (int i = 0; i < tokens.size(); i++) {
+            if (tokens[i] == "+") {
+                right = st.top();
+                st.pop();
+                left = st.top();
+                st.pop();
+                st.push(left + right);
+            }
+            else if (tokens[i] == "-") {
+                right = st.top();
+                st.pop();
+                left = st.top();
+                st.pop();
+                st.push(left - right);
+            }
+            else if (tokens[i] == "*") {
+                right = st.top();
+                st.pop();
+                left = st.top();
+                st.pop();
+                st.push(left * right);
+            }
+            else if (tokens[i] == "/") {
+                right = st.top();
+                st.pop();
+                left = st.top();
+                st.pop();
+                st.push(left / right);
+            }
+            else st.push(stoi(tokens[i]));
+        }
+        return st.top();
+    }
+};
+```
+
+## 滑动窗口最大值
+
+[239. 滑动窗口最大值 - 力扣（Leetcode）](https://leetcode.cn/problems/sliding-window-maximum/)
+
+单调队列，难度较高
+
+<img src="https://code-thinking.cdn.bcebos.com/gifs/239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC-2.gif" alt="239.滑动窗口最大值-2" style="zoom:80%;" />
+
+```c++
+class Solution {
+private:
+    class MyQueue {
+    public:
+        deque<int> que;
+
+        void pop(int value) {
+            if (!que.empty() && que.front() == value)
+                que.pop_front();
+        }
+
+        void push(int value) {
+            while (!que.empty() && que.back() < value) {
+                que.pop_back();
+            }
+            que.push_back(value);
+        }
+
+        int front() {
+            return que.front();
+        }
+    };
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        MyQueue myQueue;
+        vector<int> result;
+        for (int i = 0; i < k; i++) {
+            myQueue.push(nums[i]);
+        }
+        result.push_back(myQueue.front());
+        for (int i = k; i < nums.size(); i++) {
+            myQueue.pop(nums[i-k]);
+            myQueue.push(nums[i]);
+            result.push_back(myQueue.front());
+        }
+        return result;
+    }
+};
+```
+
