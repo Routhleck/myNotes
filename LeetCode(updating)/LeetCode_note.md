@@ -1092,7 +1092,7 @@ public:
 };
 ```
 
-# 重复的子字符串
+## 重复的子字符串
 
 [459. 重复的子字符串 - 力扣（Leetcode）](https://leetcode.cn/problems/repeated-substring-pattern/)
 
@@ -1411,3 +1411,145 @@ public:
 };
 ```
 
+## 前K个高频元素
+
+[347. Top K Frequent Elements - 力扣（Leetcode）](https://leetcode.cn/problems/top-k-frequent-elements/)
+
+可使用unordered_map然后使用vector容器来进行sort
+
+```c++
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> nums_time;
+        for (int i = 0; i < nums.size(); i++) {
+            nums_time[nums[i]]++;
+        }
+
+        // 将map按从大到小排序
+        vector<pair<int, int>> vMap;
+        for (auto it = nums_time.begin(); it != nums_time.end(); it++) {
+            vMap.push_back(make_pair(it->first, it->second));
+        }
+        sort(vMap.begin(), vMap.end(),
+            [](const pair<int, int> &x, const pair<int, int> &y) -> int {
+            return x.second > y.second;
+        });
+
+        vector<int> result;
+        for (int i = 0; i < k; i++) {
+            result.push_back(vMap[i].first);
+        }
+        return result;
+    }
+};
+```
+
+# 二叉树
+
+## 二叉树的定义
+
+```cpp
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+```
+
+## 二叉树的递归遍历
+
+1. 确定递归函数的参数和返回值
+
+   ```c++
+   void traversal(TreeNode* cur, vector<int>& vec)
+   ```
+
+2. 确定终止条件
+
+   ```c++
+   if (cur == NULL) return;
+   ```
+
+3. 确定单层递归的逻辑
+
+   ```cpp
+   vec.push_back(cur->val);    // 中
+   traversal(cur->left, vec);  // 左
+   traversal(cur->right, vec); // 右
+   ```
+
+### 前序遍历
+
+[144. 二叉树的前序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& vec) {
+        if (cur == NULL) return;
+        vec.push_back(cur->val);    // 中
+        traversal(cur->left, vec);  // 左
+        traversal(cur->right, vec); // 右
+    }
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> result;
+        traversal(root, result);
+        return result;
+}
+```
+
+### 中序遍历
+
+[94. 二叉树的中序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& vec) {
+    if (cur == NULL) return;
+    traversal(cur->left, vec);  // 左
+    vec.push_back(cur->val);    // 中
+    traversal(cur->right, vec); // 右
+}
+```
+
+### 后序遍历
+
+[145. 二叉树的后序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
+
+```cpp
+void traversal(TreeNode* cur, vector<int>& vec) {
+    if (cur == NULL) return;
+    traversal(cur->left, vec);  // 左
+    traversal(cur->right, vec); // 右
+    vec.push_back(cur->val);    // 中
+}
+```
+
+## 二叉树层序遍历
+
+![102二叉树的层序遍历](https://code-thinking.cdn.bcebos.com/gifs/102%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.gif)
+
+```cpp
+vector<vector<int>> levelOrder(TreeNode* root) {
+    queue<TreeNode*> que;
+    if (root != NULL) que.push(root);
+    vector<vector<int>> result;
+    while (!que.empty()) {
+        int size = que.size();
+        vector<int> vec;
+        // 这里一定要使用固定大小size，不要使用que.size()，因为que.size是不断变化的
+        for (int i = 0; i < size; i++) {
+            TreeNode* node = que.front();
+            que.pop();
+            vec.push_back(node->val);
+            if (node->left) que.push(node->left);
+            if (node->right) que.push(node->right);
+        }
+        result.push_back(vec);
+    }
+    return result;
+}
+```
+
+[107. 二叉树的层序遍历 II - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)
+
+[199. 二叉树的右视图 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-right-side-view/)
