@@ -1553,3 +1553,10 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 [107. 二叉树的层序遍历 II - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)
 
 [199. 二叉树的右视图 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-right-side-view/)
+
+[637. 二叉树的层平均值 - 力扣（Leetcode）](https://leetcode.cn/problems/average-of-levels-in-binary-tree/)
+
+[429. N 叉树的层序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/n-ary-tree-level-order-traversal/)
+
+[515. 在每个树行中找最大值 - 力扣（Leetcode）](https://leetcode.cn/problems/find-largest-value-in-each-tree-row/)
+
