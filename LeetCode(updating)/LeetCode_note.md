@@ -1560,3 +1560,201 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 
 [515. 在每个树行中找最大值 - 力扣（Leetcode）](https://leetcode.cn/problems/find-largest-value-in-each-tree-row/)
 
+## 对称二叉树
+
+[101. 对称二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/symmetric-tree/)
+
+递归方法，主要看递归的截止条件，判断为空的情况
+
+- 左节点为空，右节点不为空，不对称，return false
+- 左不为空，右为空，不对称 return false
+- 左右都为空，对称，返回true
+
+```cpp
+class Solution {
+public:
+    bool compare(TreeNode* left, TreeNode* right) {
+        // 排除空节点
+        if (left == NULL && right != NULL) return false;
+        else if (left != NULL && right == NULL) return false;
+        else if (left == NULL && right == NULL) return true;
+        else if (left->val != right->val) return false;
+
+        bool outside = compare(left->left, right->right);
+        bool inside = compare(left->right, right->left);
+        return (outside && inside);
+    }
+    bool isSymmetric(TreeNode* root) {
+        if (root == NULL) return true;
+        return compare(root->left, root->right);
+    }
+};
+```
+
+还可以用队列实现迭代的方法
+
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if (root == NULL) return true;
+        queue<TreeNode*> que;
+        que.push(root->left);   // 将左子树头结点加入队列
+        que.push(root->right);  // 将右子树头结点加入队列
+        
+        while (!que.empty()) {  // 接下来就要判断这两个树是否相互翻转
+            TreeNode* leftNode = que.front(); que.pop();
+            TreeNode* rightNode = que.front(); que.pop();
+            if (!leftNode && !rightNode) {  // 左节点为空、右节点为空，此时说明是对称的
+                continue;
+            }
+
+            // 左右一个节点不为空，或者都不为空但数值不相同，返回false
+            if ((!leftNode || !rightNode || (leftNode->val != rightNode->val))) {
+                return false;
+            }
+            que.push(leftNode->left);   // 加入左节点左孩子
+            que.push(rightNode->right); // 加入右节点右孩子
+            que.push(leftNode->right);  // 加入左节点右孩子
+            que.push(rightNode->left);  // 加入右节点左孩子
+        }
+        return true;
+    }
+};
+```
+
+## 完全二叉树的节点个数
+
+[222. 完全二叉树的节点个数 - 力扣（Leetcode）](https://leetcode.cn/problems/count-complete-tree-nodes/)‘
+
+普通递归可以使用
+
+```c++
+class Solution {
+public:
+    void traversal(TreeNode* cur, int& count) {
+        if (cur == NULL) return;
+        traversal(cur->left, count);
+        traversal(cur->right,count);
+        count++;
+        return;
+    }
+    int countNodes(TreeNode* root) {
+        int count = 0;
+        traversal(root, count);
+        return count;
+    }
+};
+```
+
+也可以利用完全二叉树的特性，找到左右深度不一样的位置
+
+```cpp
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        if (root == nullptr) return 0;
+        TreeNode* left = root->left;
+        TreeNode* right = root->right;
+        int leftDepth = 0, rightDepth = 0; // 这里初始为0是有目的的，为了下面求指数方便
+        while (left) {  // 求左子树深度
+            left = left->left;
+            leftDepth++;
+        }
+        while (right) { // 求右子树深度
+            right = right->right;
+            rightDepth++;
+        }
+        if (leftDepth == rightDepth) {
+            return (2 << leftDepth) - 1; // 注意(2<<1) 相当于2^2，所以leftDepth初始为0
+        }
+        return countNodes(root->left) + countNodes(root->right) + 1;
+    }
+};
+```
+
+## 平衡二叉树
+
+[110. 平衡二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/balanced-binary-tree/description/)
+
+平衡二叉树：每个节点的左右子树的高度差都不大于1
+
+```cpp
+class Solution {
+public:
+    int getHeight(TreeNode* cur) {
+        int count = 0;
+        queue<TreeNode*> que;
+        if (cur != NULL) que.push(cur);
+        while(!que.empty()) {
+            int size = que.size();
+            count++;
+            for (int i = 0; i < size; i++) {
+                TreeNode* temp = que.front();
+                que.pop();
+                if (temp->left) que.push(temp->left);
+                if (temp->right) que.push(temp->right);
+            }
+        }
+        return count;
+    }
+    bool isBalanced(TreeNode* root) {
+        // 后序遍历所有左右节点
+        if (root == NULL) return true;
+        int max = -1;
+        queue<TreeNode*> que;
+        que.push(root);
+        while(!que.empty()) {
+            int size = que.size();
+            for (int i = 0; i <size; i++) {
+                TreeNode* node = que.front();
+                if (abs(getHeight(node->left) - getHeight(node->right)) > max) max = abs(getHeight(node->left) - getHeight(node->right));
+                que.pop();
+                if (node->left) que.push(node->left);
+                if (node->right) que.push(node->right);
+            }
+        }
+        if (max > 1) return false;
+        else return true;
+    }
+};
+```
+
+## 二叉树的所有路径
+
+[257. 二叉树的所有路径 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-paths/)
+
+回溯放在递归中
+
+```cpp
+class Solution {
+public:
+    void traversal(TreeNode* cur, vector<int>& path, vector<string>& spath) {
+        path.push_back(cur->val);
+        if (!cur->left && !cur->right) {
+            string string_path;
+            for (int i = 0; i < path.size() - 1; i++) {
+                string_path += to_string(path[i]);
+                string_path += "->";
+            }
+            string_path += to_string(path[path.size() - 1]);
+            spath.push_back(string_path);
+            return;
+        }
+        if (cur->left) {
+            traversal(cur->left, path, spath);
+            path.pop_back();
+        }
+        if (cur->right) {
+            traversal(cur->right, path, spath);
+            path.pop_back();
+        }
+    }
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<int> path;
+        vector<string> spath;
+        traversal(root, path, spath);
+        return spath;
+    }
+};
+```
