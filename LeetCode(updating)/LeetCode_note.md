@@ -1758,3 +1758,140 @@ public:
     }
 };
 ```
+
+## 左叶子之和
+
+[404. Sum of Left Leaves - 力扣（Leetcode）](https://leetcode.cn/problems/sum-of-left-leaves/)
+
+遍历每个节点，查看其左节点是否为叶子结点
+
+```cpp
+class Solution {
+public:
+    int sumOfLeftLeaves(TreeNode* root) {
+        int amount = 0;
+        queue<TreeNode*> que;
+        if (root != NULL) que.push(root);
+        while(!que.empty()) {
+            int size = que.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode* node = que.front();
+                que.pop();
+                if (node->left != NULL && node->left->left == NULL && node->left->right == NULL)
+                    amount += node->left->val;
+
+                if (node->left) {
+                    que.push(node->left);
+                }
+                if (node->right) {
+                    que.push(node->right);
+                }
+            }
+        }
+        return amount;
+    }
+};
+```
+
+## 找数左下角的值
+
+[513. 找树左下角的值 - 力扣（Leetcode）](https://leetcode.cn/problems/find-bottom-left-tree-value/)
+
+层次遍历找到最后一行的第一个值
+
+```cpp
+class Solution {
+public:
+    int findBottomLeftValue(TreeNode* root) {
+        int amount = 0;
+        queue<TreeNode*> que;
+        if (root != NULL) que.push(root);
+        while(!que.empty()) {
+            int size = que.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode* node = que.front();
+                que.pop();
+                if (i == 0) amount = node->val;
+
+                if (node->left) {
+                    que.push(node->left);
+                }
+                if (node->right) {
+                    que.push(node->right);
+                }
+            }
+        }
+        return amount;
+    }
+};
+```
+
+## 路径总和
+
+[112. 路径总和 - 力扣（Leetcode）](https://leetcode.cn/problems/path-sum/)
+
+递归回溯做，若能成功在叶子节点处把targetNum变为0，则返回`true`
+
+```cpp
+class Solution {
+public:
+    bool traversal(TreeNode* cur, int count) {
+        if (!cur->left && !cur->right && count == 0) return true;
+        if (!cur->left && !cur->right) return false;
+
+        if (cur->left) {
+            count -= cur->left->val;
+            if (traversal(cur->left, count)) return true;
+            count += cur->left->val;
+        }
+
+        if (cur->right) {
+            count -= cur->right->val;
+            if (traversal(cur->right, count)) return true;
+            count += cur->right->val;
+        }
+        return false;
+    }
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (root == NULL) return false;
+        return traversal(root, targetSum - root->val);
+    }
+};
+```
+
+[113. 路径总和 II - 力扣（Leetcode）](https://leetcode.cn/problems/path-sum-ii/)
+
+只是需要带上走过的路径和输出的路径vector
+
+```cpp
+class Solution {
+public:
+    void traversal(TreeNode* cur, int count,vector<int>& path, vector<vector<int>>& result) {
+        path.push_back(cur->val);
+        if (!cur->left && !cur->right && count == 0) result.push_back(path);
+        if (!cur->left && !cur->right) return;
+
+        if (cur->left) {
+            count -= cur->left->val;
+            traversal(cur->left, count, path, result);
+            count += cur->left->val;
+            path.pop_back();
+        }
+
+        if (cur->right) {
+            count -= cur->right->val;
+            traversal(cur->right, count, path, result);
+            count += cur->right->val;
+            path.pop_back();
+        }
+        return;
+    }
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>> result;
+        vector<int> path;
+        if (root == NULL) return result;
+        traversal(root, targetSum - root->val, path, result);
+        return result;
+    }
+};
+```
