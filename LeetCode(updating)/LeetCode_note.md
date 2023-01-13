@@ -1895,3 +1895,134 @@ public:
     }
 };
 ```
+
+## 中序与后序遍历构造二叉树
+
+[106. 从中序与后序遍历序列构造二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+
+```cpp
+class Solution {
+public:
+    TreeNode* traversal(vector<int>& inorder, vector<int>& postorder) {
+        if (inorder.size() == 0) return NULL;
+
+        // 后序遍历数组最后一个元素，就是当前的中间节点
+        int rootValue = postorder[postorder.size() - 1];
+        TreeNode* root = new TreeNode(rootValue);
+
+        if (postorder.size() == 1) return root;
+        // 找到后序的最后一个节点值, 定位中序, 找到中间节点
+        int rootIndex;
+        for (rootIndex = 0; rootIndex < inorder.size(); rootIndex++) {
+            if (inorder[rootIndex] == rootValue) break;
+        }
+
+        // 切割中序
+        // 注意为左闭右开, 去掉中间的点
+        vector<int> leftInorder(inorder.begin(), inorder.begin() + rootIndex);
+        vector<int> rightInorder(inorder.begin() + rootIndex + 1,inorder.end());
+
+        postorder.resize(postorder.size() - 1);
+        // 切割后序, 左中序数组大小作为切割点
+        vector<int> leftPostorder(postorder.begin(), postorder.begin() + leftInorder.size());
+        vector<int> rightPostorder(postorder.begin() + leftInorder.size(), postorder.end());
+
+        root->left = traversal(leftInorder, leftPostorder);
+        root->right = traversal(rightInorder, rightPostorder);
+        
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        if (inorder.size() == 0 || postorder.size() == 0) return NULL;
+        return traversal(inorder,postorder);
+    }
+};
+```
+
+[105. 从前序与中序遍历序列构造二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+同理后序
+
+## 最大二叉树
+
+[654. 最大二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/maximum-binary-tree/)
+
+构造方法和以上的方法类似，注意递归终止条件
+
+```cpp
+class Solution {
+public:
+    TreeNode* traversal(vector<int>& nums) {
+        if (nums.size() == 0) return NULL;
+        
+        int max = 0,index = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > max) {
+                index = i;
+                max = nums[i];
+            }
+        }
+        vector<int> left(nums.begin(), nums.begin() + index);
+        vector<int> right(nums.begin() + index + 1, nums.end());
+        TreeNode* root = new TreeNode(max);
+
+        if (nums.size() == 1) return root;
+
+        root->left = traversal(left);
+        root->right = traversal(right);
+        return root;
+        
+    }
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        if (nums.size() == 0) return NULL;
+        return traversal(nums);
+    }
+};
+```
+
+## 合并二叉树
+
+[617. 合并二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/merge-two-binary-trees/)
+
+使用迭代的方法，如果两个节点都有那么可以合并；root1有，root2没有则不用管；roo1没有，root2有则将把root2的直接赋到root1上。
+
+```cpp
+class Solution {
+public:
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        if (root1 == NULL) return root2;
+        if (root2 == NULL) return root1;
+        queue<TreeNode*> que;
+        if (root1) que.push(root1);
+        if (root2) que.push(root2);
+        while (!que.empty()) {
+            TreeNode* node1 = que.front();
+            que.pop();
+            TreeNode* node2 = que.front();
+            que.pop();
+
+            node1->val += node2->val;
+
+            if (node1->left != NULL && node2->left != NULL) {
+                que.push(node1->left);
+                que.push(node2->left);
+            }
+
+            if (node1->right != NULL && node2->right != NULL) {
+                que.push(node1->right);
+                que.push(node2->right);
+            }
+
+            if (node1->left == NULL && node2->left != NULL) {
+                node1->left = node2->left;
+            }
+
+            if (node1->right == NULL && node2->right != NULL) {
+                node1->right = node2->right;
+            }
+        }
+        return root1;
+    }
+};
+```
+
