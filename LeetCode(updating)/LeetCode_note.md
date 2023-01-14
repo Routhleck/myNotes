@@ -2026,3 +2026,132 @@ public:
 };
 ```
 
+## 二叉搜索树中的搜索
+
+[700. 二叉搜索树中的搜索 - 力扣（Leetcode）](https://leetcode.cn/problems/search-in-a-binary-search-tree/)
+
+```cpp
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        while (true) {
+            if (root == NULL) return NULL;
+            if (root->val == val) return root;
+            if (root->val > val) root = root->left;
+            else root = root->right;
+        }
+    }
+};
+```
+
+## 验证二叉搜索树
+
+[98. 验证二叉搜索树 - 力扣（Leetcode）](https://leetcode.cn/problems/validate-binary-search-tree/)
+
+此处还有些许疑问？
+
+```cpp
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        stack<TreeNode*> st;
+        TreeNode* cur = root;
+        TreeNode* pre = NULL;
+        while (cur != NULL || !st.empty()) {
+            if (cur != NULL) {
+                st.push(cur);
+                cur = cur->left;
+            }
+            else {
+                cur = st.top();
+                st.pop();
+                if (pre != NULL && cur->val <= pre->val) return false;
+                pre = cur;
+
+                cur = cur->right;
+            }
+        }
+        return true;
+    }
+};
+```
+
+## 二叉搜索树的最小绝对差
+
+[530. 二叉搜索树的最小绝对差 - 力扣（Leetcode）](https://leetcode.cn/problems/minimum-absolute-difference-in-bst/)
+
+转换为中序遍历就是有序数组
+
+```cpp
+class Solution {
+public:
+    // 中序遍历输出一个列表
+    void traversal(TreeNode* cur, vector<int>& nums) {
+        if (cur == NULL) return;
+        traversal(cur->left, nums);
+        nums.push_back(cur->val);
+        traversal(cur->right, nums);
+    }
+    int getMinimumDifference(TreeNode* root) {
+        vector<int> nums;
+        traversal(root, nums);
+        int min = 99999;
+        for (int i = 0; i < nums.size() - 1; i++) {
+            if (nums[i+1] - nums[i] < min) min = nums[i+1] - nums[i];
+        }
+        return min;
+    }
+};
+```
+
+## 二叉搜索树的众数
+
+[501. 二叉搜索树中的众数 - 力扣（Leetcode）](https://leetcode.cn/problems/find-mode-in-binary-search-tree/)
+
+需要记录最大频率和统计频率，因为是二叉搜索树相当于对一个数组进行统计
+
+```cpp
+class Solution {
+public:
+    int maxCount = 0; // 最大频率
+    int count = 0; // 统计频率
+    TreeNode* pre = NULL;
+    vector<int> result;
+    void searchBST(TreeNode* cur) {
+        if (cur == NULL) return ;
+
+        searchBST(cur->left);       // 左
+                                    // 中
+        if (pre == NULL) { // 第一个节点
+            count = 1;
+        } else if (pre->val == cur->val) { // 与前一个节点数值相同
+            count++;
+        } else { // 与前一个节点数值不同
+            count = 1;
+        }
+        pre = cur; // 更新上一个节点
+
+        if (count == maxCount) { // 如果和最大值相同，放进result中
+            result.push_back(cur->val);
+        }
+
+        if (count > maxCount) { // 如果计数大于最大值频率
+            maxCount = count;   // 更新最大频率
+            result.clear();     // 很关键的一步，不要忘记清空result，之前result里的元素都失效了
+            result.push_back(cur->val);
+        }
+
+        searchBST(cur->right);      // 右
+        return ;
+    }
+    vector<int> findMode(TreeNode* root) {
+        count = 0;
+        maxCount = 0;
+        TreeNode* pre = NULL; // 记录前一个节点
+        result.clear();
+
+        searchBST(root);
+        return result;
+    }
+};
+```
