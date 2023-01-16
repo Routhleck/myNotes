@@ -2155,3 +2155,87 @@ public:
     }
 };
 ```
+
+## 二叉树的最近公共祖先
+
+[236. 二叉树的最近公共祖先 - 力扣（Leetcode）](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+![236.二叉树的最近公共祖先2](https://img-blog.csdnimg.cn/202102041512582.png)
+
+使用回溯的方法将来把p,q两值网上层回溯
+
+```cpp
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root == p || root == q || root == NULL) return root;
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        if (left != NULL && right != NULL) return root;
+
+        if (left == NULL && right != NULL) return right;
+        else if (left != NULL && right == NULL) return left;
+        else return NULL;
+    }
+};
+```
+
+## 二叉搜索树的最近公共祖先
+
+[235. 二叉搜索树的最近公共祖先 - 力扣（Leetcode）](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+
+比两值都大往左走，比两值都小往右走，在两值之间则为最近公共祖先
+
+```cpp
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        while(root) {
+            if (root->val > p->val && root->val > q->val) {
+                root = root->left;
+            } else if (root->val < p->val && root->val < q->val) {
+                root = root->right;
+            } else return root;
+        }
+        return NULL;
+    }
+};
+```
+
+## 二叉搜索树中的插入操作
+
+[701. 二叉搜索树中的插入操作 - 力扣（Leetcode）](https://leetcode.cn/problems/insert-into-a-binary-search-tree/)
+
+直接遍历找到空来插
+
+```cpp
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (root == NULL) {
+            TreeNode* node = new TreeNode(val);
+            return node;
+        }
+        TreeNode* head = root;
+        while (true) {
+            if (root->val > val) {
+                if (root->left == NULL) {
+                    TreeNode* node = new TreeNode(val);
+                    root->left = node;
+                    break;
+                }
+                else root = root->left;
+            }
+            else {
+                if (root->right == NULL) {
+                    TreeNode* node = new TreeNode(val);
+                    root->right = node;
+                    break;
+                }
+                else root = root->right;
+            }
+        }
+        return head;
+    }
+};
+```
