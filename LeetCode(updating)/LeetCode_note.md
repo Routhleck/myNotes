@@ -2239,3 +2239,150 @@ public:
     }
 };
 ```
+
+## 删除二叉搜索树中的结点
+
+[450. 删除二叉搜索树中的节点 - 力扣（LeetCode）](https://leetcode.cn/problems/delete-node-in-a-bst/)
+
+- 第一种情况：没找到删除的节点，遍历到空节点直接返回了
+- 找到删除的节点
+  - 第二种情况：左右孩子都为空（叶子节点），直接删除节点， 返回NULL为根节点
+  - 第三种情况：删除节点的左孩子为空，右孩子不为空，删除节点，右孩子补位，返回右孩子为根节点
+  - 第四种情况：删除节点的右孩子为空，左孩子不为空，删除节点，左孩子补位，返回左孩子为根节点
+  - 第五种情况：左右孩子节点都不为空，则将删除节点的左子树头结点（左孩子）放到删除节点的右子树的最左面节点的左孩子上，返回删除节点右孩子为新的根节点。
+
+```cpp
+class Solution {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        // 若root为空
+        if (root == nullptr) return root;
+        // 找到root
+        if (root->val == key) {
+            // 1. 左右孩子都为空
+            if (root->left == nullptr && root->right == nullptr) {
+                delete root;
+                return nullptr;
+            }
+            // 2. 左孩子为空, 右孩子不为空
+            if (root->left == nullptr && root->right != nullptr) {
+                TreeNode* temp = root->right;
+                delete root;
+                return temp;
+            }
+            // 3. 右孩子为空, 左孩子不为空
+            if (root->left != nullptr && root->right == nullptr) {
+                TreeNode* temp = root->left;
+                delete root;
+                return temp;
+            }
+            // 4. 左右孩子都不为空, 将左子树接到右子树的最左节点的左孩子上, 将右子树作为新的节点
+            if (root->left != nullptr && root->right != nullptr) {
+                TreeNode* temp_left = root->left;
+                TreeNode* temp = root;
+                root = root->right;
+                TreeNode* temp_right = root;
+                while (temp_right->left != nullptr) {
+                    temp_right = temp_right->left;
+                }
+                temp_right->left = temp_left;
+                delete temp;
+                return root;
+            }
+        }
+        if (root->val > key) root->left = deleteNode(root->left, key);
+        if (root->val < key) root->right = deleteNode(root->right, key);
+        return root;
+    }
+};
+```
+
+## 修剪二叉搜索树
+
+[669. 修剪二叉搜索树 - 力扣（Leetcode）](https://leetcode.cn/problems/trim-a-binary-search-tree/)
+
+
+
+```cpp
+class Solution {
+public:
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if (!root) return nullptr;
+
+        // 将头结点移动到合适的范围
+        while (root != nullptr && (root->val < low || root->val > high)) {
+            if (root->val < low) root = root->right;
+            else root = root->left;
+        }
+
+        TreeNode* cur = root;
+        // 处理左孩子小于low的情况
+        while (cur != nullptr) {
+            while (cur->left && cur->left->val < low) {
+                cur->left = cur->left->right;
+            }
+            cur = cur->left;
+        }
+
+        cur = root;
+        //处理右孩子大于high的情况
+        while (cur != nullptr) {
+            while (cur->right && cur->right->val > high) {
+                cur->right = cur->right->left;
+            }
+            cur = cur->right;
+        }
+        return root;
+    }
+};
+```
+
+## 将有序数组转换为二叉搜索树
+
+[108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/)
+
+从有序数组中间开始递归构造树
+
+```cpp
+class Solution {
+public:
+    TreeNode* traversal(vector<int>& nums, int left, int right) {
+        if (left > right) return nullptr;
+        int mid = left + (right - left) / 2;
+        TreeNode* root = new TreeNode(nums[mid]);
+        root->left = traversal(nums, left, mid - 1);
+        root->right = traversal(nums, mid + 1, right);
+        return root;
+    }
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        return traversal(nums, 0, nums.size() - 1);
+    }
+};
+```
+
+## 把二叉搜索树转化为累加树
+
+[538. 把二叉搜索树转换为累加树 - 力扣（Leetcode）](https://leetcode.cn/problems/convert-bst-to-greater-tree/)
+
+右中左反向遍历
+
+```cpp
+class Solution {
+private:
+    int pre = 0;
+    void traversal(TreeNode* cur) {
+        if (cur == nullptr) return;
+        traversal(cur->right);
+        cur->val += pre;
+        pre = cur->val;
+        traversal(cur->left);
+        return;
+    }
+public:
+    TreeNode* convertBST(TreeNode* root) {
+        // 反向遍历右中左
+        traversal(root);
+        return root;
+    }
+};
+```
