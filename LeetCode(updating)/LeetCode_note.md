@@ -2386,3 +2386,121 @@ public:
     }
 };
 ```
+
+# 回溯算法
+
+## 组合问题
+
+[77. 组合 - 力扣（Leetcode）](https://leetcode.cn/problems/combinations/)
+
+fior循环横向遍历，递归纵向遍历
+
+```cpp
+class Solution {
+private:
+    vector<vector<int>> result;
+    vector<int> path;
+    void backtracking(int n, int k, int startIndex) {
+        if (path.size() == k) {
+            result.push_back(path);
+            return;
+        }
+        for (int i = startIndex; i <= n; i++) {
+            path.push_back(i);
+            backtracking(n, k, i + 1);
+            path.pop_back();
+        }
+    }
+public:
+    vector<vector<int>> combine(int n, int k) {
+        backtracking(n, k, 1);
+        return result;
+    }
+};
+```
+
+剪枝有些疑问
+
+<img src="https://img-blog.csdnimg.cn/20210130194335207.png" alt="77.组合4" style="zoom:50%;" />
+
+## 组合总和III
+
+[216. 组合总和 III - 力扣（Leetcode）](https://leetcode.cn/problems/combination-sum-iii/)
+
+较上一题简单修改
+
+```cpp
+class Solution {
+private:
+    vector<vector<int>> result;
+    vector<int> path;
+    void backtracking (int k, int n, int startIndex) {
+        if (path.size() == k) {
+            int count = 0;
+            for (int k = 0; k < path.size(); k++) {
+                count += path[k];
+            }
+            if (count == n) result.push_back(path);
+            return;
+        }
+        for (int i = startIndex; i <= 9; i++) {
+            path.push_back(i);
+            backtracking(k, n, i + 1);
+            path.pop_back();
+        }
+    }
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        backtracking(k, n, 1);
+        return result;
+    }
+};
+```
+
+## 电话号码的字母组合
+
+[17. 电话号码的字母组合 - 力扣（Leetcode）](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/)
+
+仍然套用回溯模板，注意字符的数字转化成int应要减'0'(48)
+
+```cpp
+class Solution {
+private:
+    const string letterMap[10] = {
+        "", // 0
+        "", // 1
+        "abc", // 2
+        "def", // 3
+        "ghi", // 4
+        "jkl", // 5
+        "mno", // 6
+        "pqrs", // 7
+        "tuv", // 8
+        "wxyz", // 9
+    };
+    vector<string> result;
+    string path;
+    void backtracking(string digits, int index) {
+        if (path.size() == digits.size()) {
+            result.push_back(path);
+            return;
+        }
+        for (int i = 0; i < letterMap[digits[index] - 48].size(); i++) {
+            path = path + letterMap[digits[index] - 48][i];
+            backtracking(digits, ++index);
+            index--;
+            path.resize(path.size() - 1);
+        }
+    }
+public:
+    vector<string> letterCombinations(string digits) {
+        result.clear();
+        path.clear();
+        if (digits.size() == 0) {
+            return result;
+        }
+        backtracking(digits, 0);
+        return result;
+    }
+};
+```
