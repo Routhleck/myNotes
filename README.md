@@ -25,6 +25,8 @@
 
 [人工智能基础](https://github.com/Routhleck/myNotes/tree/main/人工智能基础)
 
+[概率论与数理统计](https://github.com/Routhleck/myNotes/tree/main/概率论与数理统计)
+
 ## 大三
 
 [科技论文写作](https://github.com/Routhleck/myNotes/tree/main/科技论文写作)
