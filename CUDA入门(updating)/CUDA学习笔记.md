@@ -266,3 +266,14 @@ print("Torch time:  {:.3f}us".format(np.mean(torch_time)))
 - [ ] quantize_op.cc
 - [ ] transformer_op_gpu.cu
 - [ ] transformer_op.cc
+
+### gpu_types.h
+
+```c++
+typedef struct __align__(2) ehalf {
+    __device__ __forceinline__ ehalf() {}
+    __device__ __forceinline__ ehalf(ushort v) : x(v) {}
+    ushort x;
+} ehalf;
+```
+
