@@ -227,46 +227,49 @@ print("Torch time:  {:.3f}us".format(np.mean(torch_time)))
 
 ## Task List
 
-- [x] batch_norm_op_gpu.cu GPU加速的批归一化（batch normalization）操作的实现
-- [x] batch_norm_op.cc 为GPU加速的批归一化进一步封装
-- [ ] blocksparse_hgemm_cn_64_op_gpu.cu
-- [ ] blocksparse_hgemm_cn_128_op_gpu.cu
-- [x] blocksparse_hgemm_nc_op_gpu.cu 非连续压缩矩阵的half-precision 矩阵乘法实现 
-- [x] blocksparse_kernels.cc 加载CUDA kernel?
-- [ ] blocksparse_l2_norm_op_gpu.cu 
-- [ ] blocksparse_l2_norm_op.cc
-- [x] blocksparse_matmul_gated_op_gpu.cu 使用GPU的矩阵乘法的实现，且使用了gate
-- [x] blocksparse_matmul_op_gpu.cu 使用GPU的矩阵乘法的实现
-- [x] blocksparse_matmul_op.cc 为GPU的矩阵乘法的封装
-- [x] blocksparse_matmul.h 通过blocksparse技术实现矩阵乘法的的header
-- [ ] bst_hgemm_op_gpu.cu
-- [ ] bst_op.cc
-- [ ] bst_sgemm_op_gpu.cu
-- [ ] bst_softmax_op_gpu.cu
-- [ ] cwise_linear_op_gpu.cu
-- [ ] cwise_linear_op.cc
-- [ ] edge_bias_op_gpu.cu
-- [ ] edge_bias_op.cc
-- [ ] embedding_op_gpu.cu
-- [ ] embedding_op.cc
-- [x] ew_op_gpu.h 逐元素操作以及各种基础操作
-- [x] ew_op.cc 逐元素操作以及各种基础操作的cpu实现
-- [x] gpu_hmma.h 包含了 GPU 矩阵乘法加速器（HMMA）操作的头文件
-- [x] gpu_types.cc gpu_types.h的具体实现
-- [x] gpu_types.h 内存对齐、benchmark等
-- [ ] layer_norm_cn_op_gpu.cu
-- [ ] layer_norm_op.cc
-- [ ] lstm_op_gpu.cu
-- [ ] lstm_op.cc
-- [ ] matmul_op_gpu.cu
-- [ ] matmul_op.cc
-- [ ] nccl_op.cc
-- [ ] optimize_op_gpu.cu
-- [ ] optimize_op.cc
-- [ ] quantize_op_gpu.cu
-- [ ] quantize_op.cc
-- [ ] transformer_op_gpu.cu
-- [ ] transformer_op.cc
+- [ ] batch_norm_op_gpu.cu GPU加速的批归一化（batch normalization）操作的实现
+- [ ] batch_norm_op.cc 为GPU加速的批归一化进一步封装
+- [ ] blocksparse_conv_op.cc 卷积算子封装
+- [ ] blocksparse_hgemm_cn_64_op_gpu.cu “cn”可能代表的是“column-wise norm”的缩写，表示对输入矩阵的每一列进行范数计算？64为将矩阵分成64x64的小块来进行blocksparse操作
+- [ ] blocksparse_hgemm_cn_128_op_gpu.cu 同理将矩阵分成128x128的小块来进行blocksparse操作
+- [ ] blocksparse_hgemm_nc_op_gpu.cu 非连续压缩矩阵的half-precision 矩阵乘法实现 
+- [ ] blocksparse_kernels.cc 加载CUDA kernel?
+- [ ] blocksparse_l2_norm_op_gpu.cu GPU上并行计算输入向量的L2范数
+- [ ] blocksparse_l2_norm_op.cc 并行计算输入向量的L2范数的封装
+- [ ] blocksparse_matmul_gated_op_gpu.cu 使用GPU的矩阵乘法的实现，且使用了gate
+- [ ] blocksparse_matmul_op_gpu.cu 使用GPU的矩阵乘法的实现
+- [ ] blocksparse_matmul_op.cc 矩阵乘法的封装
+- [ ] blocksparse_matmul.h 通过blocksparse技术实现矩阵乘法的的header
+- [ ] bst_hgemm_op_gpu.cu GPU半精度浮点数的矩阵乘法
+- [ ] bst_op.cc 处理稀疏张量的算子的封装
+- [ ] bst_sgemm_op_gpu.cu GPU单精度浮点数的矩阵乘法
+- [ ] bst_softmax_op_gpu.cu GPU在稀疏数据上计算softmax
+- [ ] cwise_linear_op_gpu.cu GPU稀疏矩阵乘法的元素级线性操作
+- [ ] cwise_linear_op.cc 稀疏矩阵乘法的元素级线性操作封装
+- [ ] edge_bias_op_gpu.cu GPU对输入稀疏张量进行偏置加法的操作
+- [ ] edge_bias_op.cc 对输入稀疏张量进行偏置加法封装
+- [ ] embedding_op_gpu.cu GPU实现了稀疏嵌入操作
+- [ ] embedding_op.cc 稀疏嵌入封装
+- [ ] ew_op_gpu.h 逐元素操作的header
+- [ ] ew_op.cc 逐元素操作以及各种基础操作的封装
+- [ ] ew_op_gpu.cu GPU逐元素操作以及各种基础操作
+- [ ] gpu_hmma.h 包含了 GPU 矩阵乘法加速器（HMMA）操作的头文件
+- [ ] gpu_types.cc gpu_types.h的具体实现
+- [ ] gpu_types.h 内存对齐、benchmark等
+- [ ] layer_norm_cn_op_gpu.cu 用于在GPU上计算矩阵的Layer Normalization
+- [ ] layer_norm_nc_op_gpu.cu 跟上面的就是`nc`和`cn`的差别，不懂？
+- [ ] layer_norm_op.cc 为Layer Normalization进行封装
+- [ ] lstm_op_gpu.cu GPU使用blocksparse来进行lstm的训练与推理
+- [ ] lstm_op.cc blocksparse实现lstm的封装
+- [ ] matmul_op_gpu.cu GPU实现矩阵乘法
+- [ ] matmul_op.cc 矩阵乘法的封装
+- [ ] nccl_op.cc 使用 NCCL（NVIDIA Collective Communications Library）进行通信的一些函数和操作
+- [ ] optimize_op_gpu.cu GPU稀疏矩阵优化操作(优化器？)
+- [ ] optimize_op.cc 稀疏矩阵优化操作封装
+- [ ] quantize_op_gpu.cu GPU稀疏矩阵量化操作
+- [ ] quantize_op.cc 稀疏矩阵量化操作封装
+- [ ] transformer_op_gpu.cu GPU实现 Transformer 模型
+- [ ] transformer_op.cc 实现 Transformer 模型封装
 
 ## gpu_types.h & gpu_types.cc
 
