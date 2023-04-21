@@ -1,0 +1,24 @@
+
+swiper{
+    width: 100%;
+    height: calc(100vw*442/810);
+}
+image{
+    width: 100%;
+    height: 75%;
+}
+
+.list {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-content: flex-start;
+    flex-flow: row wrap;
+}
+
+.listItem {
+    box-sizing: border-box;
+    background-color: white;
+    flex: 0 0 25%;
+    height: 100px;
+}

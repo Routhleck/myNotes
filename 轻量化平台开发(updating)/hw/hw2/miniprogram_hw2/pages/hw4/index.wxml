@@ -1,0 +1,109 @@
+<swiper current="{{current}}" bindchange="swiperChange" indicator-dots="true" indicator-color="#999" indicator-active-color="green">
+	<swiper-item class="list">
+	<view class="listItem">
+		<image src="/images/1.png" />
+      	<view>美食</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>生鲜果蔬</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/4.png" />
+      <view>美团专送</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+	<view class="listItem">
+		<image src="/images/1.png" />
+      	<view>美食</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/4.png" />
+      <view>美团专送</view>
+	</view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>生鲜果蔬</view>
+    </view>
+	</swiper-item>
+
+	<swiper-item class="list">
+		<view class="listItem">
+		<image src="/images/1.png" />
+	<view>美食</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>生鲜果蔬</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/4.png" />
+      <view>美团专送</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+	<view class="listItem">
+		<image src="/images/1.png" />
+      	<view>美食</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/4.png" />
+      <view>美团专送</view>
+	</view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>生鲜果蔬</view>
+    </view>
+	</swiper-item>
+	<swiper-item class="list">
+		<view class="listItem">
+		<image src="/images/1.png" />
+      	<view>美食</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>生鲜果蔬</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/4.png" />
+      <view>美团专送</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+	<view class="listItem">
+		<image src="/images/1.png" />
+      	<view>美食</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/4.png" />
+      <view>美团专送</view>
+	</view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>生鲜果蔬</view>
+    </view>
+	</swiper-item>
+</swiper>
+<view>当前 swiper 索引：{{current}}</view>
+<swiper current="{{current}}" indicator-dots="{{true}}" indicator-color="#999" indicator-active-color="#333" bindchange="swiperChange" >
+  
+</swiper>
