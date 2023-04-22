@@ -1,26 +1,92 @@
-<view class="main">
-    <view wx:if="{{hasList}}">
-        <view class="cart-box">
-            <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
-                <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
-                <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>
-                <navigator url="../details/details?id={{item.id}}"><image class="cart-thumb" src="{{item.image}}"></image></navigator>
-                <text class="cart-pro-name">{{item.title}}</text>
-                <text class="cart-pro-price">￥{{item.price}}</text>
-                <view class="cart-count-box">
-                    <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}">-</text>
-                    <text class="cart-count-num">{{item.num}}</text>
-                    <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
-                </view>
-                <text class="cart-del" bindtap="deleteList" data-index="{{index}}">×</text>
+<view class="cart">
+    <view class="shop">
+        <checkbox value="" class="shop_checkbox"/>
+        <image class="shop_img" src="/images/12.jpg"></image>
+        <view class="shop_name">Apple苹果专卖店</view>
+    </view>
+    <view class="item">
+        <checkbox value="" class="item_checkbox"/>
+        <image class="item_img" src="/images/7.jpg"></image>
+        <view class="item_detail">
+            <view class="item_name_container">
+                <text class="item_name">苹果iphone14 pro</text>
+            </view>
+            <view class="item_price_and_num">
+                <text class="item_price">¥6599</text>
+                <text class="item_num">×3</text>
             </view>
         </view>
-
-        <view class="cart-footer">
-            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll"/>
-            <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll"/>
-            <text>全选</text>
-            <text class="cart-toatl-price">￥{{totalPrice}}</text>
+    </view>
+    <view class="shop">
+        <checkbox value="" class="shop_checkbox"/>
+        <image class="shop_img" src="/images/13.jpg"></image>
+        <view class="shop_name">OMEN暗影精灵</view>
+    </view>
+    <view class="item">
+        <checkbox value="" class="item_checkbox"/>
+        <image class="item_img" src="/images/8.jpg"></image>
+        <view class="item_detail">
+            <view class="item_name_container">
+                <text class="item_name">暗影精灵第6代笔记本</text>
+            </view>
+            <view class="item_price_and_num">
+                <text class="item_price">¥5999</text>
+                <text class="item_num">×2</text>
+            </view>
+        </view>
+    </view>
+    <view class="shop">
+        <checkbox value="" class="shop_checkbox"/>
+        <image class="shop_img" src="/images/14.jpg"></image>
+        <view class="shop_name">GIANT捷安特专卖店</view>
+    </view>
+    <view class="item">
+        <checkbox value="" class="item_checkbox"/>
+        <image class="item_img" src="/images/9.jpg"></image>
+        <view class="item_detail">
+            <view class="item_name_container">
+                <text class="item_name">Giant捷安特PROPEL ADV SL 0</text>
+            </view>
+            <view class="item_price_and_num">
+                <text class="item_price">¥69899</text>
+                <text class="item_num">×1</text>
+            </view>
+        </view>
+    </view>
+    <view class="shop">
+        <checkbox value="" class="shop_checkbox"/>
+        <image class="shop_img" src="/images/15.jpg"></image>
+        <view class="shop_name">京东官方旗舰店</view>
+    </view>
+    <view class="item">
+        <checkbox value="" class="item_checkbox"/>
+        <image class="item_img" src="/images/10.jpg"></image>
+        <view class="item_detail">
+            <view class="item_name_container">
+                <text class="item_name">京东京造机械键盘 JZ990</text>
+            </view>
+            <view class="item_price_and_num">
+                <text class="item_price">¥599</text>
+                <text class="item_num">×4</text>
+            </view>
+        </view>
+    </view>
+    <view class="shop">
+        <checkbox value="" class="shop_checkbox"/>
+        <image class="shop_img" src="/images/16.jpg"></image>
+        <view class="shop_name">保健卫生品</view>
+    </view>
+    <view class="item">
+        <checkbox value="" class="item_checkbox"/>
+        <image class="item_img" src="/images/11.jpg"></image>
+        <view class="item_detail">
+            <view class="item_name_container">
+                <text class="item_name">医用N95口罩 一盒装</text>
+            </view>
+            <view class="item_price_and_num">
+                <text class="item_price">¥59</text>
+                <text class="item_num">×10</text>
+            </view>
         </view>
     </view>
 </view>

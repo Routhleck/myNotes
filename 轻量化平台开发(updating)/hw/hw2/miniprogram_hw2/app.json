@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/hw5/index",
-    "pages/hw4/index"
+    "pages/hw4/index",
+    "pages/hw5/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

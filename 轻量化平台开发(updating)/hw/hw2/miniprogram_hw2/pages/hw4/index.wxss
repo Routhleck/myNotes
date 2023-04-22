@@ -19,6 +19,6 @@ image{
 .listItem {
     box-sizing: border-box;
     background-color: white;
-    flex: 0 0 25%;
+    flex: 0 0 20%;
     height: 100px;
 }

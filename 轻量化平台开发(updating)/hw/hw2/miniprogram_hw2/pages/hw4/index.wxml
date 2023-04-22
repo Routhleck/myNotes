@@ -10,66 +10,83 @@
     </view>
     <view class="listItem">
       <image src="/images/3.png" />
-      <view>生鲜果蔬</view>
+      <view>美团买菜</view>
     </view>
     <view class="listItem">
       <image src="/images/4.png" />
       <view>美团专送</view>
 	</view>
 	<view class="listItem">
-      <image src="/images/2.png" />
-      <view>超市便利</view>
+      <image src="/images/17.png" />
+      <view>打车</view>
     </view>
 	<view class="listItem">
-		<image src="/images/1.png" />
-      	<view>美食</view>
+		<image src="/images/18.png" />
+      	<view>免费领鸡蛋</view>
 	</view>
 	<view class="listItem">
-      <image src="/images/4.png" />
-      <view>美团专送</view>
+      <image src="/images/19.png" />
+      <view>景点</view>
 	</view>
-    <view class="listItem">
-      <image src="/images/3.png" />
-      <view>生鲜果蔬</view>
-    </view>
+  <view class="listItem">
+    <image src="/images/20.png" />
+    <view>美发</view>
+  </view>
+  <view class="listItem">
+      <image src="/images/21.png" />
+      <view>骑行</view>
+  </view>
+  <view class="listItem">
+    <image src="/images/22.png" />
+    <view>足疗</view>
+  </view>
 	</swiper-item>
 
 	<swiper-item class="list">
 		<view class="listItem">
 		<image src="/images/1.png" />
-	<view>美食</view>
-	</view>
-	<view class="listItem">
-      <image src="/images/2.png" />
-      <view>超市便利</view>
-    </view>
-    <view class="listItem">
-      <image src="/images/3.png" />
-      <view>生鲜果蔬</view>
-    </view>
-    <view class="listItem">
-      <image src="/images/4.png" />
-      <view>美团专送</view>
-	</view>
-	<view class="listItem">
-      <image src="/images/2.png" />
-      <view>超市便利</view>
-    </view>
-	<view class="listItem">
-		<image src="/images/1.png" />
       	<view>美食</view>
 	</view>
 	<view class="listItem">
+      <image src="/images/2.png" />
+      <view>超市便利</view>
+    </view>
+    <view class="listItem">
+      <image src="/images/3.png" />
+      <view>美团买菜</view>
+    </view>
+    <view class="listItem">
       <image src="/images/4.png" />
       <view>美团专送</view>
 	</view>
-    <view class="listItem">
-      <image src="/images/3.png" />
-      <view>生鲜果蔬</view>
+	<view class="listItem">
+      <image src="/images/17.png" />
+      <view>打车</view>
     </view>
+	<view class="listItem">
+		<image src="/images/18.png" />
+      	<view>免费领鸡蛋</view>
+	</view>
+	<view class="listItem">
+      <image src="/images/19.png" />
+      <view>景点</view>
+	</view>
+  <view class="listItem">
+    <image src="/images/20.png" />
+    <view>美发</view>
+  </view>
+  <view class="listItem">
+      <image src="/images/21.png" />
+      <view>骑行</view>
+  </view>
+  <view class="listItem">
+    <image src="/images/22.png" />
+    <view>足疗</view>
+  </view>
 	</swiper-item>
+
 	<swiper-item class="list">
-		<view class="listItem">
+	<view class="listItem">
 		<image src="/images/1.png" />
       	<view>美食</view>
 	</view>
@@ -79,28 +96,36 @@
     </view>
     <view class="listItem">
       <image src="/images/3.png" />
-      <view>生鲜果蔬</view>
+      <view>美团买菜</view>
     </view>
     <view class="listItem">
       <image src="/images/4.png" />
       <view>美团专送</view>
 	</view>
 	<view class="listItem">
-      <image src="/images/2.png" />
-      <view>超市便利</view>
+      <image src="/images/17.png" />
+      <view>打车</view>
     </view>
 	<view class="listItem">
-		<image src="/images/1.png" />
-      	<view>美食</view>
+		<image src="/images/18.png" />
+      	<view>免费领鸡蛋</view>
 	</view>
 	<view class="listItem">
-      <image src="/images/4.png" />
-      <view>美团专送</view>
+      <image src="/images/19.png" />
+      <view>景点</view>
 	</view>
-    <view class="listItem">
-      <image src="/images/3.png" />
-      <view>生鲜果蔬</view>
-    </view>
+  <view class="listItem">
+    <image src="/images/20.png" />
+    <view>美发</view>
+  </view>
+  <view class="listItem">
+      <image src="/images/21.png" />
+      <view>骑行</view>
+  </view>
+  <view class="listItem">
+    <image src="/images/22.png" />
+    <view>足疗</view>
+  </view>
 	</swiper-item>
 </swiper>
 <view>当前 swiper 索引：{{current}}</view>
