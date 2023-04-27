@@ -1,0 +1,4 @@
+/* pages/test/test.wxss */
+button {
+  margin: 10px;
+}

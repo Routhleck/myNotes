@@ -1,0 +1,57 @@
+page {
+  background-color: #f6f6f6;
+  font-family: "微软雅黑";
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.list {
+  font-size: 36rpx;
+}
+
+.list > view {
+  background-color: #fff;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+  display: flex;
+}
+
+.list .head {
+  width: 210rpx;
+}
+
+.list .body {
+  flex: 1;
+}
+
+.add {
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  padding: 15rpx 15rpx 30rpx 40rpx;
+  border-top: 1rpx solid #e0e0e0;
+}
+
+.add > image {
+  width: 50rpx;
+  margin-top: 15rpx;
+  margin-right: 20rpx;
+}
+
+.add > .left {
+  float: left;
+}
+
+.add > .right {
+  width: 25rpx;
+  float: right;
+  margin-right: 60rpx;
+  padding-top: 15rpx;
+  color: #e0e0e0;
+}
+
+.add > .text {
+  float: left;
+  margin-top: 20rpx;
+}

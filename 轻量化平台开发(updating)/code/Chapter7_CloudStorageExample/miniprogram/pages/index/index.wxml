@@ -1,0 +1,36 @@
+<view class="container">
+  <form bindsubmit="submit">
+    <view>
+      <image class="proImg" src="{{fileId}}"></image>
+      <view style="display: flex;">
+        <button wx:if="{{fileId === null || fileId === undefined || fileId === ''}}" class="fileBtn" bindtap="uploadFile">上传头像</button>
+        <button wx:if="{{fileId !== null && fileId !== undefined && fileId !== ''}}" class="fileBtn" bindtap="uploadFile">修改头像</button>
+      </view>
+    </view>
+    <view>
+      <text>姓名：</text>
+      <input name="name" value="{{name}}" />
+    </view>
+    <view>
+      <text>性别：</text>
+      <radio-group name="gender">
+        <label wx:for="{{gender}}" wx:key="value">
+          <radio value="{{item.value}}" checked="{{item.checked}}" /> {{item.name}}
+        </label>
+      </radio-group>
+    </view>
+    <view>
+      <text>专业技能：</text>
+      <checkbox-group name="skills">
+        <label wx:for="{{skills}}" wx:key="value">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" /> {{item.name}}
+        </label>
+      </checkbox-group>
+    </view>
+    <view>
+      <text>您的意见：</text>
+      <textarea name="opinion" value="{{opinion}}" />
+    </view>
+    <button form-type="submit">提交</button>
+  </form>
+</view>

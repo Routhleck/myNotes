@@ -1,0 +1,32 @@
+<!--pages/address/address.wxml-->
+<view class="list">
+  <view>
+    <view class="head">收货人姓名</view>
+    <view class="body">{{ addressInfo.userName }}</view>
+  </view>
+  <view>
+    <view class="head">邮编</view>
+    <view class="body">{{ addressInfo.postalCode }}</view>
+  </view>
+  <view>
+    <view class="head">地区</view>
+    <view class="body">{{ addressInfo.provinceName }} {{ addressInfo.cityName }} {{ addressInfo.countyName }}</view>
+  </view>
+  <view>
+    <view class="head">收货地址</view>
+    <view class="body">{{ addressInfo.detailInfo }}</view>
+  </view>
+  <view>
+    <view class="head">国家码</view>
+    <view class="body">{{ addressInfo.nationalCode }}</view>
+  </view>
+  <view>
+    <view class="head">手机号码</view>
+    <view class="body">{{ addressInfo.telNumber }}</view>
+  </view>
+</view>
+<view class="add" bindtap="chooseAddress">
+  <image class="left" src="/images/6.png" mode="widthFix" />
+  <view class="text">获取收货地址</view>
+  <image class="right" src="/images/right.png" mode="widthFix" />
+</view>

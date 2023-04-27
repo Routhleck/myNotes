@@ -1,0 +1,22 @@
+<!--pages/detail/detail.wxml-->
+<view class="info">
+  <!-- 头像 -->
+  <view>
+    <view class="fl">头像</view>
+    <view class="rl">
+      <image src="{{imgUrl}}" mode="aspectFill" bindtap="changeAvatar"></image>
+      <image class="arrow" src="/images/arrow.png"></image>
+    </view>
+  </view>
+  <!-- 昵称 -->
+  <view>
+    <view class="fl">昵称</view>
+    <view class="rl">{{username}}<view class="arrow"></view></view>
+  </view>
+  <!-- 性别 -->
+  <view>
+    <view class="fl">性别</view>
+    <view class="rl">{{gender}}<view class="arrow"></view></view>
+  </view>
+  <button bindtap="jump" type="primary">修改资料</button>
+</view>

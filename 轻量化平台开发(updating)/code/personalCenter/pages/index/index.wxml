@@ -1,0 +1,11 @@
+<view class="nav">
+  <text class="welcome">欢迎来到我的个人页</text>
+  <image src="/images/avatar.jpg" mode="aspectFill" bindtap="changeImage"></image>
+</view>
+<view class="content">
+  <view class="weui-article__h2">Header</view>
+  <view>星座：天秤座</view>
+  <view>兴趣：看书、旅游</view>
+  <view>QQ：243233****</view>
+  <view>电话：152****1605</view>
+</view>

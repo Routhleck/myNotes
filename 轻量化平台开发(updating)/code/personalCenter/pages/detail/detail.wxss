@@ -1,0 +1,44 @@
+/* pages/detail/detail.wxss */
+
+page {
+  background-color: #f4f4f4;
+  font-size: 32rpx;
+}
+
+.info > view {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #efefef;
+  height: 80rpx;
+}
+
+.info > view:last-child {
+  border: none;
+}
+
+.fl {
+  flex: 1;
+}
+
+.rl {
+  flex: 1;
+  text-align: right;
+}
+
+.info image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 20rpx;
+}
+
+.info .arrow {
+  width: 30rpx;
+  height: 32rpx;
+  float: right;
+  margin: 26rpx 0 0 15rpx;
+}

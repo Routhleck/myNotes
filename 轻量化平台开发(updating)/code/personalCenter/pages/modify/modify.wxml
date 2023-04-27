@@ -1,0 +1,19 @@
+<!--pages/modify/modify.wxml-->
+<form bindsubmit="formSubmit" report-submit="true">
+  <view class="section">
+    <view class="section-title">姓名：</view>
+    <view>
+      <input type="text" name="username" value="{{username}}" placeholder="请输入姓名" />
+    </view>
+  </view>
+  <view class="section">
+    <view class="section-title">性别：</view>
+    <view>
+      <radio-group name="gender">
+        <label><radio value="男" checked="{{gender==='男' ? 'checked' : ''}}" />男</label>
+        <label><radio value="女" checked="{{gender==='女' ? 'checked' : ''}}" />女</label>
+      </radio-group>
+    </view>
+  </view>
+  <button formType="submit" type="primary">保存</button>
+</form>

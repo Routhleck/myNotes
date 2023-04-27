@@ -1,0 +1,37 @@
+.container {
+  margin: 50rpx;
+}
+
+view {
+  margin-bottom: 30rpx;
+}
+
+input {
+  width: 600rpx;
+  margin-top: 10rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+label {
+  display: block;
+  margin: 8rpx;
+}
+
+textarea {
+  width: 600rpx;
+  height: 100rpx;
+  margin-top: 10rpx;
+  border: 2rpx solid #eee;
+}
+
+.proImg {
+  display: block;
+  width: 150rpx;
+  height: 150rpx;
+  margin: auto;
+}
+
+.fileBtn {
+  background: lightblue;
+  margin: 10px;
+}

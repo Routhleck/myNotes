@@ -1,0 +1,32 @@
+/* pages/index/index.wxss */
+@import '../../style/weui.wxss';
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcome {
+  font-size: 50rpx;
+  color: #f7982a;
+  margin: 40rpx 0;
+}
+
+.nav > image {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+}
+
+.content {
+  font-size: 32rpx;
+  width: 400rpx;
+  margin: 50rpx auto;
+}
+
+.content > view {
+  text-align: left;
+  padding: 10rpx 0;
+  color: #f7982a;
+}

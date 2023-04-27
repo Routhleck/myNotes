@@ -1,0 +1,54 @@
+/* pages/order/order.wxss */
+
+.container {
+  padding: 20rpx;
+}
+
+.container > .title {
+  text-align: center;
+}
+
+button {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 30rpx auto;
+}
+
+.section {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 80rpx;
+  overflow: hidden;
+}
+
+.section > .title {
+  width: 20%;
+  float: left;
+  font-size: 28rpx;
+  text-align: right;
+  line-height: 42rpx;
+}
+
+.section > .input {
+  border: 1px solid gainsboro;
+  width: 70%;
+  padding: 5rpx 10rpx;
+  float: right;
+  font-size: 32rpx;
+}
+
+.orderlist {
+  height: 300px;
+}
+
+.orderlist view {
+  border-bottom: 1px solid #efefef;
+  font-size: 32rpx;
+  padding: 10rpx 0;
+}
+
+.orderlist text {
+  color: red;
+  font-size: 28rpx;
+}
