@@ -9,8 +9,8 @@ const app = express()
 app.use(bodyParser.json())
 
 const wx = {
-    appid: 'wx389ded4575d54b8c',
-    secret: 'f3222b2c2dbfc4102f726f8b3d65dc9c'
+    appid: '',
+    secret: ''
 }
 
 var db = {
