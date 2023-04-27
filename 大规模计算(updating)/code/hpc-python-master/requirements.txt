@@ -1,0 +1,7 @@
+numpy
+mpi4py 
+matplotlib==2.2.4
+cython
+cffi
+numexpr
+ipython==7.16.3
