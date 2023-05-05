@@ -1,0 +1,2 @@
+<!-- canvas组件 -->
+<canvas canvas-id="myCanvas" class="mycanvas"></canvas>

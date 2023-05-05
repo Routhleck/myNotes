@@ -1,0 +1,19 @@
+<view class="btn-rows">
+  <!-- 播放文章play()函数 -->
+  <button class="btn" bindtap="play" size="mini">播放文章</button>
+  <!-- 暂停pause()函数 -->
+  <button class="btn" bindtap="pause" size="mini">暂停</button>
+</view>
+<view class="song">
+  此刻谁在茫茫人海之中 在这浩瀚的宇宙 蓝色的城市 只是生命的旅程 瞬间的停留 欢乐和悲伤 我已不会再回头 只是自在向远方 也来不及感伤 如此难舍的美丽 萦绕我脑海 难以挥去的不安 曾在我心里 欢乐和悲伤
+</view>
+<view class="btn-rows">
+  <!-- 录音record()函数 -->
+  <button class="btn" bindtap="record" size="mini">录音</button>
+  <!-- 停止stop()函数 -->
+  <button class="btn" bindtap="stop" size="mini">停止</button>
+  <!-- 回放playback()函数 -->
+  <button class="btn" bindtap="playback" size="mini">回放</button>
+  <!-- 上传upload()函数 -->
+  <button class="btn" bindtap="upload" size="mini">上传</button>
+</view>

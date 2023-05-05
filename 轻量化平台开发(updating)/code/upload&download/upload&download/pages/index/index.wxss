@@ -1,0 +1,21 @@
+page {
+  width: 100%;
+  padding: 0rpx 20rpx 10rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.btn-rows {
+  display: flex;
+  flex-direction: row;
+}
+
+.song {
+  font-size: 32rpx;
+  margin: 10rpx;
+}
+
+.btn {
+  flex: 1;
+  margin: 5rpx;
+  background: #dadada;
+}
