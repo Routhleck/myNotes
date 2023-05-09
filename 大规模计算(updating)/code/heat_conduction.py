@@ -1,11 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 # Set maximum iteration
 maxIter = 500
 
 # Set Dimension and delta
-lenX = lenY = 20 #we set it rectangular
+lenX = lenY = 400 #we set it rectangular
 delta = 1
 
 # Boundary condition
@@ -38,7 +39,7 @@ T[:, :1] = Tleft
 
 # Iteration (We assume that the iteration is convergence in maxIter = 500)
 print("Please wait for a moment")
-for iteration in range(0, maxIter):
+for iteration in tqdm(range(0, maxIter)):
     for i in range(1, lenX-1, delta):
         for j in range(1, lenY-1, delta):
             T[i, j] = 0.25 * (T[i+1][j] + T[i-1][j] + T[i][j+1] + T[i][j-1])
