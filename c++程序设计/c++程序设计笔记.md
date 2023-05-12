@@ -4,15 +4,15 @@
 
 # 课程结构
 
-<img src="D:\Typora_CACHE\image-20220903101707898.png" alt="image-20220903101707898" style="zoom: 18%;" />
+![image-20230512133242818](c++程序设计笔记.assets/image-20230512133242818.png)
 
-<img src="D:\Typora_CACHE\image-20220903101758734.png" alt="image-20220903101758734" style="zoom: 18%;" />
+![image-20230512133253354](c++程序设计笔记.assets/image-20230512133253354.png)
 
-<img src="D:\Typora_CACHE\image-20221022115512345.png" alt="image-20221022115512345" style="zoom:50%;" />
+![image-20230512133301850](c++程序设计笔记.assets/image-20230512133301850.png)
 
-<img src="D:\Typora_CACHE\image-20221022115535685.png" alt="image-20221022115535685" style="zoom:50%;" />
+![image-20230512133307810](c++程序设计笔记.assets/image-20230512133307810.png)
 
-<img src="D:\Typora_CACHE\image-20221022115845142.png" alt="image-20221022115845142" style="zoom:50%;" />
+![image-20230512133311823](c++程序设计笔记.assets/image-20230512133311823.png)
 
 # 1. C++基本概念
 
@@ -20,7 +20,7 @@
 
 ## C++程序编译过程
 
-<img src="D:\Typora_CACHE\image-20221126024409245.png" alt="image-20221126024409245" style="zoom:50%;" />
+![image-20230512133315296](c++程序设计笔记.assets/image-20230512133315296.png)
 
 ## 对象：
 
@@ -49,9 +49,9 @@
 
 ## 如何评价
 
-<img src="D:\Typora_CACHE\image-20220903113519118.png" alt="image-20220903113519118" style="zoom:67%;" />
+![image-20230512133319514](c++程序设计笔记.assets/image-20230512133319514.png)
 
-<img src="D:\Typora_CACHE\image-20220903115839135.png" alt="image-20220903115839135" style="zoom:80%;" />
+![image-20230512133322369](c++程序设计笔记.assets/image-20230512133322369.png)
 
 # 2. 初识C++程序
 
@@ -112,9 +112,9 @@ C++函数和C中函数主要区别体现在两点：默认参数和函数重载
 1. 相当于换行符’\n’
 2. flush输出缓存，保证打印输出数据
 
-<img src="D:\Typora_CACHE\image-20220924103148969.png" alt="image-20220924103148969" style="zoom:50%;" />
+![image-20230512133327545](c++程序设计笔记.assets/image-20230512133327545.png)
 
-<img src="D:\Typora_CACHE\image-20220924103209276.png" alt="image-20220924103209276" style="zoom:50%;" />
+![image-20230512133333340](c++程序设计笔记.assets/image-20230512133333340.png)
 
 C++中简单类型如int/float/double等在定义时一定要手动初始化
 
@@ -595,11 +595,11 @@ class 派生类名 : 访问限定符  基类名 {};
 
 派生类对象的内存结构：
 
-<img src="D:\Typora_CACHE\image-20221112104617289.png" alt="image-20221112104617289" style="zoom:50%;" />
+![image-20230512133352663](c++程序设计笔记.assets/image-20230512133352663.png)
 
 派生类的初始化流程：
 
-<img src="D:\Typora_CACHE\image-20221112104655508.png" alt="image-20221112104655508" style="zoom:50%;" />
+![image-20230512133355226](c++程序设计笔记.assets/image-20230512133355226.png)
 
 **在派生类构造函数的初始化列表中直接调用基类的构造函数**
 
@@ -694,9 +694,9 @@ r.Rating();			// 错误
 方法2：
 利用共有继承类的多态性
 
-<img src="D:\Typora_CACHE\image-20221112102800949.png" alt="image-20221112102800949" style="zoom:50%;" />
+<img src="c++程序设计笔记.assets/image-20230512133403665.png" alt="image-20230512133403665" style="zoom:50%;" />
 
-<img src="D:\Typora_CACHE\image-20221112103003136.png" alt="image-20221112103003136" style="zoom:50%;" />
+<img src="c++程序设计笔记.assets/image-20230512133408236.png" alt="image-20230512133408236" style="zoom:50%;" />
 
 公有继承实现多态性的三个条件：
 
@@ -704,7 +704,7 @@ r.Rating();			// 错误
 - 将这些实现多态性的函数定义为虚函数(virtual)
 - 使用**基类**的**指针**或者**引用**调用这些虚函数
 
-<img src="D:\Typora_CACHE\image-20221112103702454.png" alt="image-20221112103702454" style="zoom:50%;" />
+<img src="c++程序设计笔记.assets/image-20230512133413070.png" alt="image-20230512133413070" style="zoom:50%;" />
 
 ## 9.2 虚函数与动态绑定
 
@@ -714,7 +714,7 @@ C++编译器通过 **虚函数表**来实现动态绑定
 
 ### 9.2.1 动态绑定原理
 
-<img src="D:\Typora_CACHE\image-20221112105743971.png" alt="image-20221112105743971" style="zoom:25%;" />
+<img src="c++程序设计笔记.assets/image-20230512133418376.png" alt="image-20230512133418376" style="zoom:25%;" />
 
 https://zhuanlan.zhihu.com/p/216258189
 
@@ -722,14 +722,14 @@ https://zhuanlan.zhihu.com/p/216258189
 
 override关键字显式声明该函数重写基类的虚函数，而非新定义的函数
 
-<img src="D:\Typora_CACHE\image-20221112113502475.png" alt="image-20221112113502475" style="zoom:50%;" />
+![image-20230512133423416](c++程序设计笔记.assets/image-20230512133423416.png)
 
 final关键字告知编译器...
 也可以声明该类型不能够被继承
 
 ### 9.2.3 虚函数特性
 
-<img src="D:\Typora_CACHE\image-20221112113739304.png" alt="image-20221112113739304" style="zoom:50%;" />
+![image-20230512133426719](c++程序设计笔记.assets/image-20230512133426719.png)
 
 ## 9.3 纯虚函数与虚基类
 
@@ -893,7 +893,7 @@ bool IsEqual(double a, double b) {
 
 当模板类存在多个模板参数时,只特化其中部分模板参数
 
-<img src="D:\Typora_CACHE\image-20221126113003544.png" alt="image-20221126113003544" style="zoom:50%;" />
+<img src="c++程序设计笔记.assets/image-20230512133431872.png" alt="image-20230512133431872" style="zoom:50%;" />
 
 ## 12.5 模板默认参数
 

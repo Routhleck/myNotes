@@ -1,0 +1,643 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>API设计与实现</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#introduction">Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#课程教材">课程教材</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n7"><a class="md-toc-inner" href="#绪论">绪论</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" href="#api研究方法">API研究方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n9"><a class="md-toc-inner" href="#api位置">API位置</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#api作用">API作用</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" href="#行业发展需要">行业发展需要</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n41"><a class="md-toc-inner" href="#api面临的挑战">API面临的挑战</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n49"><a class="md-toc-inner" href="#api设计概论">API设计概论</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n50"><a class="md-toc-inner" href="#api是什么">API是什么</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n58"><a class="md-toc-inner" href="#为什么需要api">为什么需要API</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n91"><a class="md-toc-inner" href="#api分类">API分类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n98"><a class="md-toc-inner" href="#api服务模式">API服务模式</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n99"><a class="md-toc-inner" href="#esb">ESB</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n101"><a class="md-toc-inner" href="#微服务">微服务</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n103"><a class="md-toc-inner" href="#api经济">API经济</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n105"><a class="md-toc-inner" href="#api设计规范">API设计规范</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n106"><a class="md-toc-inner" href="#api设计评估">API设计评估</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n116"><a class="md-toc-inner" href="#通用设计原则">通用设计原则</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n178"><a class="md-toc-inner" href="#api设计原则">API设计原则</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n188"><a class="md-toc-inner" href="#命名规则">命名规则</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n189"><a class="md-toc-inner" href="#好的命名特点">好的命名特点</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n221"><a class="md-toc-inner" href="#四种命名方法">四种命名方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n236"><a class="md-toc-inner" href="#其他考虑因素">其他考虑因素</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n252"><a class="md-toc-inner" href="#数据类型和默认值">数据类型和默认值</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n262"><a class="md-toc-inner" href="#布尔类型">布尔类型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n270"><a class="md-toc-inner" href="#数值类型">数值类型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n282"><a class="md-toc-inner" href="#字符类型">字符类型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n292"><a class="md-toc-inner" href="#枚举类型">枚举类型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n296"><a class="md-toc-inner" href="#列表类型-1">列表类型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n306"><a class="md-toc-inner" href="#map类型">Map类型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n312"><a class="md-toc-inner" href="#资源范围和层级">资源范围和层级</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n313"><a class="md-toc-inner" href="#资源布局">资源布局</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n359"><a class="md-toc-inner" href="#api设计模式">API设计模式</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n360"><a class="md-toc-inner" href="#标准方法-1">标准方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n383"><a class="md-toc-inner" href="#幂等性和副作用">幂等性和副作用</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n461"><a class="md-toc-inner" href="#trade-off-1">Trade-off</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n471"><a class="md-toc-inner" href="#定制方式自定义方法">定制方式(自定义方法)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n484"><a class="md-toc-inner" href="#方法命名">方法命名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n492"><a class="md-toc-inner" href="#副作用">副作用</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n500"><a class="md-toc-inner" href="#方法放在哪里">方法放在哪里</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n502"><a class="md-toc-inner" href="#stateless场景">Stateless场景</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n510"><a class="md-toc-inner" href="#trade-off-2">Trade-off</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n518"><a class="md-toc-inner" href="#部分更新与检索">部分更新与检索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n538"><a class="md-toc-inner" href="#如何传输">如何传输</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n552"><a class="md-toc-inner" href="#map或嵌套类型">Map或嵌套类型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n570"><a class="md-toc-inner" href="#列表类型-2">列表类型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n574"><a class="md-toc-inner" href="#默认值">默认值</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n592"><a class="md-toc-inner" href="#隐式field-maks">隐式field maks</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n603"><a class="md-toc-inner" href="#更新动态数据结构">更新动态数据结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n618"><a class="md-toc-inner" href="#无效字段">无效字段</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n629"><a class="md-toc-inner" href="#trade-off-3">Trade-off</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n640"><a class="md-toc-inner" href="#批操作">批操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n663"><a class="md-toc-inner" href="#原子性">原子性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n678"><a class="md-toc-inner" href="#结果顺序">结果顺序</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n684"><a class="md-toc-inner" href="#常用字段">常用字段</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n689"><a class="md-toc-inner" href="#跨父资源操作">跨父资源操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n691"><a class="md-toc-inner" href="#batchget操作">BatchGet操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n705"><a class="md-toc-inner" href="#batchdelete操作">BatchDelete操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n715"><a class="md-toc-inner" href="#batchcreate操作">BatchCreate操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n725"><a class="md-toc-inner" href="#batchupdate操作">BatchUpdate操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n733"><a class="md-toc-inner" href="#trade-offs-1">Trade-offs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n744"><a class="md-toc-inner" href="#分页">分页</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n758"><a class="md-toc-inner" href="#page-size">page size</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n764"><a class="md-toc-inner" href="#page-tokens">page tokens</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n777"><a class="md-toc-inner" href="#total-count">total count</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n785"><a class="md-toc-inner" href="#单一大资源分页">单一大资源分页 </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n787"><a class="md-toc-inner" href="#长耗时操作">长耗时操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n815"><a class="md-toc-inner" href="#lrolarge-receive-offload资源">LRO(Large Receive Offload)资源</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n846"><a class="md-toc-inner" href="#lro-资源的层级">LRO 资源的层级 </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n848"><a class="md-toc-inner" href="#lro-解析">LRO 解析</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n854"><a class="md-toc-inner" href="#错误处理">错误处理</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n872"><a class="md-toc-inner" href="#进度监控">进度监控</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n875"><a class="md-toc-inner" href="#取消操作">取消操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n887"><a class="md-toc-inner" href="#暂停和恢复操作">暂停和恢复操作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n890"><a class="md-toc-inner" href="#持久化">持久化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n899"><a class="md-toc-inner" href="#trade-offs-2">Trade-offs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n910"><a class="md-toc-inner" href="#可重复运行作业">可重复运行作业</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n918"><a class="md-toc-inner" href="#基本属性">基本属性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n926"><a class="md-toc-inner" href="#标准方法-2">标准方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n929"><a class="md-toc-inner" href="#自定义方法run">自定义方法run</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n931"><a class="md-toc-inner" href="#execution执行资源">Execution执行资源</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n934"><a class="md-toc-inner" href="#trade-offs-3">Trade-offs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n951"><a class="md-toc-inner" href="#导入导出">导入导出</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n953"><a class="md-toc-inner" href="#自定义方法">自定义方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n955"><a class="md-toc-inner" href="#存储系统交互">存储系统交互</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n958"><a class="md-toc-inner" href="#资源与二进制的转化">资源与二进制的转化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n961"><a class="md-toc-inner" href="#一致性">一致性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n979"><a class="md-toc-inner" href="#主键与冲突">主键与冲突</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n983"><a class="md-toc-inner" href="#处理关联资源">处理关联资源</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n986"><a class="md-toc-inner" href="#失败和重试">失败和重试</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n998"><a class="md-toc-inner" href="#trade-offs-4">Trade-offs</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1001"><a class="md-toc-inner" href="#api安全">API安全</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1002"><a class="md-toc-inner" href="#api安全概述">API安全概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1004"><a class="md-toc-inner" href="#安全设计原则">安全设计原则</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1006"><a class="md-toc-inner" href="#api安全技术">API安全技术</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1008"><a class="md-toc-inner" href="#api安全治理">API安全治理</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1009"><a class="md-toc-inner" href="#api技术实现">API技术实现</a></span></p></div><h1 id='introduction'><span>Introduction</span></h1><p><span>陈长兵</span></p><p><span>50% 平时分</span>
+<span>50% 大作业</span></p><h2 id='课程教材'><span>课程教材</span></h2><p><img src="API设计与实现.assets/image-20230304172113208.png" alt="image-20230304172113208" style="zoom:50%;" /></p><h1 id='绪论'><span>绪论</span></h1><h2 id='api研究方法'><span>API研究方法</span></h2><h3 id='api位置'><span>API位置</span></h3><ul><li><span>调用软件库的方法</span></li><li><span>与操作系统交互</span></li><li><span>与数据库交互</span></li><li><span>使用第三方提供的服务</span></li><li><span>通过网络调用服务</span></li><li><span>...</span></li></ul><h3 id='api作用'><span>API作用</span></h3><ul><li><span>提供软件之前交互的方法</span></li><li><span>开放能力，提供服务的一种方式</span></li><li><span>支持模块化</span></li><li><span>隐藏细节</span></li></ul><h3 id='行业发展需要'><span>行业发展需要</span></h3><ul><li><span>企业协作</span></li><li><span>大规模集成</span></li><li><span>开放式创新</span></li></ul><h3 id='api面临的挑战'><span>API面临的挑战</span></h3><ul><li><span>现代软件开发模式，迭代&amp;敏捷</span></li><li><span>灵活性 &amp; 开放性</span></li><li><span>刚性 &amp; 脆弱性</span></li></ul><h1 id='api设计概论'><span>API设计概论</span></h1><h2 id='api是什么'><span>API是什么</span></h2><ul><li><span>应用程序编程接口，不同计算机程序之间的通信交互方式</span></li><li><span>软件接口的一种，向软件的其他模块提供服务</span></li><li><span>两种形态，API规格说明书和API实现</span></li></ul><h2 id='为什么需要api'><span>为什么需要API</span></h2><p><strong><span>隔离</span></strong></p><blockquote><ul><li><span>屏蔽底层细节</span></li><li><span>维持一致连贯性</span></li><li><span>安全保障</span></li></ul></blockquote><p><strong><span>简化</span></strong></p><blockquote><ul><li><span>避免重复造轮子</span></li></ul></blockquote><p><strong><span>抽象</span></strong></p><blockquote><ul><li><span>建立契约，等价性</span></li><li><span>突出行为，掩盖特征</span></li><li><span>高内聚低耦合</span></li></ul></blockquote><p><strong><span>共享</span></strong></p><blockquote><ul><li><span>服务标准化、产品化</span></li><li><span>建立合作关系</span></li><li><span>价值链延伸</span></li></ul></blockquote><h2 id='api分类'><span>API分类</span></h2><p><span>基于服务对象</span></p><blockquote><p><span>公有型API</span>
+<span>私有型API</span>
+<span>混合型API</span></p></blockquote><p><span>基于技术类型</span></p><blockquote><p><span>gRPC API</span>
+<span>SOAP API</span>
+<span>RESTful API</span>
+<span>GraphQL API</span></p></blockquote><h2 id='api服务模式'><span>API服务模式</span></h2><h3 id='esb'><span>ESB</span></h3><p><strong><span>企业服务总线Enterprise Service Bus</span></strong><span>是连接个应用系统之间的中央枢纽</span>
+<span>基于SOA(面向资源的体系架构)的设计思路，主流</span></p><h3 id='微服务'><span>微服务</span></h3><p><span>MicroServices，由一组完全独立的应用服务构成，独自独立部署和松耦合交互，共同完成特定的业务需求</span></p><h2 id='api经济'><span>API经济</span></h2><p><span>企业与企业之间通过API建立合作关系  1</span></p><h1 id='api设计规范'><span>API设计规范</span></h1><h2 id='api设计评估'><span>API设计评估</span></h2><ul><li><span>Operational 可行，可用</span></li><li><span>Expressive 富有表象，表达能力强</span></li><li><span>Simple 简单，简洁</span></li><li><span>Predictable 可预测性</span></li></ul><h2 id='通用设计原则'><span>通用设计原则</span></h2><ul><li><p><span>简单原则</span></p><ul><li><span>声明直观清晰</span></li><li><span>功能可见性</span></li><li><span>简单易用程度</span></li><li><span>单一职责</span></li></ul></li><li><p><span>抽象原则</span></p><ul><li><span>按业务特征抽象实体</span></li><li><span>最小信息，接口粒度</span></li><li><span>恰当的抽象与具体</span></li><li><span>更好的适用性、拓展性</span></li></ul></li><li><p><span>兼容扩展原则</span></p><ul><li><span>开闭原则</span></li><li><span>保证API的后向兼容</span></li><li><span>拓展参数便利</span></li></ul></li><li><p><span>统一原则</span></p><ul><li><span>统一的命名规范</span></li><li><span>统一的入/出参规范</span></li><li><span>统一的错误码规范</span></li><li><span>统一的版本规范 </span></li></ul></li><li><p><span>正交原则</span></p><ul><li><span>覆盖全业务流程</span></li><li><span>MECE原则，相互独立&amp;完全穷尽</span></li><li><span>高内聚低耦合</span></li></ul></li><li><p><span>安全原则</span></p><ul><li><span>认证授权，访问控制</span></li><li><span>API自身保护</span></li><li><span>传输数据保护</span></li></ul></li></ul><h2 id='api设计原则'><span>API设计原则</span></h2><p><span>API构成</span></p><blockquote><ul><li><span>操作</span></li><li><span>参数</span></li><li><span>组织结构</span></li></ul></blockquote><h3 id='命名规则'><span>命名规则</span></h3><h4 id='好的命名特点'><span>好的命名特点</span></h4><ul><li><span>Expressive</span></li><li><span>Simple</span></li><li><span>Predictable</span></li></ul><p><span>命名的机制</span></p><blockquote><ul><li><p><span>一致性</span></p><ul><li><span>美式英语&amp;英式英语</span></li></ul></li><li><p><span>语法</span></p><ul><li><span>命令式动词</span></li><li><span>介词</span></li><li><span>复数</span></li></ul></li><li><p><span>词法</span></p><ul><li><span>大小写</span></li><li><span>关键词</span></li></ul></li></ul></blockquote><h4 id='四种命名方法'><span>四种命名方法</span></h4><ul><li><p><span>帕斯卡命名法</span>
+<span>首字母大写，单词无连接</span></p></li><li><p><span>驼峰命名法</span></p><ul><li><span>小驼峰法，除第一单词外首字母</span></li><li><span>大驼峰法，帕斯卡</span></li></ul></li><li><p><span>下划线命名法</span></p></li><li><p><span>匈牙利命名法</span>
+<code>构成=属性+类型+对象描述</code></p></li></ul><h4 id='其他考虑因素'><span>其他考虑因素</span></h4><ul><li><p><span>上下文Context</span></p><ul><li><span>上下文携带信息，影响名字的含义</span></li><li><span>限定含义，或赋予特有含义</span></li></ul></li><li><p><span>数据类型和单位</span></p><ul><li><span>数据没有单位会引起混乱</span></li><li><span>引入丰富的数据类型</span></li></ul></li></ul><h3 id='数据类型和默认值'><span>数据类型和默认值</span></h3><ul><li><span>数据类型是每个编程语言的重要组成部分</span></li><li><span>动态类型，Dynamic Typing</span></li><li><span>序列化 &amp; 反序列化， 信息丢失</span></li><li><span>缺失与空值</span></li></ul><h4 id='布尔类型'><span>布尔类型</span></h4><ul><li><span>一定应用场景</span></li><li><span>二值表达力有限，可能有更好的方案</span></li><li><span>避免double negative（双重否定）</span></li></ul><h4 id='数值类型'><span>数值类型</span></h4><ul><li><span>存在算数计算诉求场景</span></li><li><span>不适用于纯数值类标识符</span></li><li><span>边界</span></li><li><span>默认值</span></li><li><span>序列化</span></li></ul><h4 id='字符类型'><span>字符类型</span></h4><ul><li><span>最通用的数据类型</span></li><li><span>编码，byte &amp; char &amp; Character</span></li><li><span>边界</span></li><li><span>序列化</span>
+<span>标准等级与兼容等价，组合和独立字符两个维度</span></li></ul><h4 id='枚举类型'><span>枚举类型</span></h4><p><span>Name(字符) + Value(数值)</span></p><p><span>优势：校验，压缩</span>
+<span>不足：依赖码表，变更同步</span></p><p><strong><span>API场景传输时，优先字符类型</span></strong></p><h4 id='列表类型-1'><span>列表类型</span></h4><ul><li><span>基本类型的集合，也可以是其他列表或Map类型</span></li><li><span>原子性</span></li><li><span>边界</span></li><li><span>默认值</span></li></ul><h4 id='map类型'><span>Map类型</span></h4><ul><li><span>边界</span></li><li><span>默认值</span></li></ul><h3 id='资源范围和层级'><span>资源范围和层级</span></h3><h4 id='资源布局'><span>资源布局</span></h4><p><span>是一种实体关系模型，实体与实体之间的关系</span></p><ul><li><p><span>关系的种类</span></p><ul><li><span>引用关系</span></li><li><span>Many-to-One关系</span></li><li><span>自引用关系</span></li><li><span>层级关系</span></li></ul></li><li><p><span>ER图</span></p></li></ul><p><strong><span>如何选择正确的关系</span></strong></p><blockquote><ul><li><p><span>是否需要建立一个关系</span></p><ul><li><span>建立关系是有代价的，性能变差，维护复杂</span></li><li><span>关系也是有价值的，比如社交网络</span></li><li><span>新增关系 一定与 某个重要的业务需求挂钩</span></li></ul></li><li><p><span>使用引用reference还是内嵌in-line</span></p><ul><li><span>引用方式：通过指针找到真实对象</span></li><li><span>内嵌方式：存储对象的全部数据</span></li><li><span>差异：交互次数，传输数据大小</span></li><li><span>考虑因素；具体场景具体看，需求意图，底层存储方式</span></li></ul></li><li><p><span>层级</span></p><ul><li><span>层级关系or引用关系</span></li><li><span>层级关系特点：操作的级联性</span></li></ul></li></ul></blockquote><h1 id='api设计模式'><span>API设计模式</span></h1><h2 id='标准方法-1'><span>标准方法</span></h2><p><span>标准方法，直观明义</span></p><p><span>仍有大量细节隐藏和丢失</span></p><figure><table><thead><tr><th><span>API 标准方法</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>GET</span></td><td><span>获取资源或数据</span></td></tr><tr><td><span>POST</span></td><td><span>创建新资源或提交数据</span></td></tr><tr><td><span>PUT</span></td><td><span>更新或替换资源</span></td></tr><tr><td><span>PATCH</span></td><td><span>更新资源的部分内容</span></td></tr><tr><td><span>DELETE</span></td><td><span>删除资源</span></td></tr></tbody></table></figure><p><span>一般而言都要实现，除非有明确的的合理的不能实现的理由</span></p><h3 id='幂等性和副作用'><span>幂等性和副作用</span></h3><ul><li><p><span>幂等性 idempotence</span></p><ul><li><span>多次(同一个)操作，结果是一致的</span></li><li><span>分布式场景，重复请求，应用超时或失败重试，网络抖动</span></li><li><span>数据丢失，数据损坏，数据不一致</span></li></ul></li><li><p><span>副作用 side-effect</span></p><ul><li><span>非预期的影响，没有额外的行为</span></li><li><span>新建邮件，涉及邮件发送逻辑</span></li></ul></li></ul><hr /><ul><li><p><span>GET</span></p><ul><li><span>幂等性</span></li><li><span>没有副作用</span></li></ul></li><li><p><span>List</span></p><ul><li><span>根据查询条件返回符合条件的资源列表</span></li><li><span>资源列表，可能是资源集合的一个子集，也可能属于某个其他资源</span></li><li><span>访问控制</span></li><li><span>结果数量</span></li><li><span>排序</span></li><li><span>过滤</span></li></ul></li><li><p><span>Create</span></p><ul><li><span>建议使用POST方法</span></li><li><span>标识符</span></li><li><span>一致性</span></li></ul></li><li><p><span>Update</span></p><ul><li><span>建议使用PATCH方法，部分更新</span></li><li><span>更新资源的信息</span></li><li><span>特殊的更新：变更资源的状态</span></li></ul></li><li><p><span>Delete</span></p><ul><li><span>建议使用DELETE方法</span></li><li><span>幂等性</span></li></ul></li><li><p><span>Replace</span></p><ul><li><span>建议使用PUT方法</span></li><li><span>强Schema场景，整体替换，没有中间状态</span></li><li><span>能否用于创建新资源？</span></li><li><span>能否指定标识符？</span></li></ul></li></ul><h3 id='trade-off-1'><span>Trade-off</span></h3><ul><li><span>放弃一些灵活性</span></li><li><span>完全自定义的RPC风格API</span></li><li><span>规范，一致，成本</span></li><li><span>不绝对，二八原则，标准方法解决80%的问题</span></li></ul><h2 id='定制方式自定义方法'><span>定制方式(自定义方法)</span></h2><p><span>因为标准方法不是万能的</span></p><p><strong><span>概述</span></strong></p><blockquote><ul><li><span>不满足标准方法上的严格约束</span></li><li><span>没有约束，完全自由发挥</span></li><li><span>杂乱发展，将难以维护</span></li><li><span>在整个API设计中，仍需保持某一种一致性的约束</span></li></ul></blockquote><h3 id='方法命名'><span>方法命名</span></h3><ul><li><span>与标准方法相同命名习惯</span></li><li><span>构成格式：动词 + 名词</span></li><li><span>其他约束也要遵循：介词，复数等</span></li></ul><h3 id='副作用'><span>副作用</span></h3><ul><li><span>与标准方法最大的差异</span></li><li><span>标准方法的强约束：没有副作用，不涉及额外的操作</span></li><li><span>如发送邮件、触发底层操作、更新多个资源</span></li></ul><h3 id='方法放在哪里'><span>方法放在哪里</span></h3><p><span>资源还是集合？</span></p><h3 id='stateless场景'><span>Stateless场景</span></h3><ul><li><span>即时处理请求后返回结果，不涉及其他数据的获取或存储</span></li><li><span>FaaS函数即服务，业务逻辑</span></li><li><span>完全无状态，上下文？</span></li></ul><h3 id='trade-off-2'><span>Trade-off</span></h3><ul><li><span>与REST设计原则会有冲突</span></li><li><span>在简洁的资源体系下，扩展非标准交互的能力</span></li><li><span>经常被误用或过度使用</span></li></ul><h2 id='部分更新与检索'><span>部分更新与检索</span></h2><ul><li><p><span>部分检索</span></p><ul><li><span>边缘设备处理能力</span></li><li><span>网络带宽</span></li></ul></li><li><p><span>部分更新</span></p><ul><li><span>数据一致性</span></li><li><span>数据丢失</span></li><li><span>细粒度的使用场景</span></li></ul></li></ul><hr /><p><span>一种简洁的实现方式，使用字段掩码field mask</span></p><h3 id='如何传输'><span>如何传输</span></h3><p><span>对服务端的server有不同方法</span></p><ul><li><p><span>HTTP协议构成</span></p><ul><li><span>请求串，请求体，Header</span></li><li><span>GET没有请求体</span></li><li><span>PATCH请求体应该只包含资源部分</span></li></ul></li><li><p><span>不同HttpServer服务端，对请求串中数组的处理方式存在差异</span></p></li></ul><h3 id='map或嵌套类型'><span>Map或嵌套类型</span></h3><ul><li><p><span>请求的参数不是平铺的，多层数据结构</span></p></li><li><p><span>fieldmask数据格式约定</span></p><blockquote><ul><li><span>使用逗点连接不同的部分</span></li><li><span>使用星号标识某个嵌套信息中的所有字段</span></li><li><span>Map Key是字符类型</span></li><li><span>Map Key中特殊字符使用反引号字符转义</span></li><li><span>Map Key中反引号字符使用两个反引号转义</span></li></ul></blockquote></li></ul><h3 id='列表类型-2'><span>列表类型</span></h3><ul><li><span>可以与Map类型类似</span></li></ul><h3 id='默认值'><span>默认值</span></h3><ul><li><p><span>部分检索</span></p><ul><li><span>与标准Get方法默认一致，需要列出所有字段</span></li><li><span>接口升级，增加字段，客户端需要更新</span></li><li><span>引入星号，代表所有字段</span></li></ul></li><li><p><span>部分更新</span></p><ul><li><span>默认所有字段</span></li><li><span>基于输入数据，自动推断</span></li></ul></li></ul><h3 id='隐式field-maks'><span>隐式field maks</span></h3><ul><li><p><span>标准update方法使用PATCH</span></p></li><li><p><span>根据请求数据推断field mask</span></p><ul><li><span>提供了哪些字段，就更新哪些字段</span></li><li><span>某个字段值为null，如何处理</span></li></ul></li></ul><h3 id='更新动态数据结构'><span>更新动态数据结构</span></h3><ul><li><p><span>三种情况：有值、null值、key缺失</span></p></li><li><p><span>删除某个key</span></p><ul><li><span>标准replace方法</span></li><li><span>PATCH方法，在field mask指定字段，在请求体不存在</span></li><li><code>fieldMask=settings.test&amp;fieldMask=title</code></li><li><code>{&quot;title&quot;:&quot;new title&quot;}</code></li></ul></li></ul><h3 id='无效字段'><span>无效字段</span></h3><ul><li><p><span>静态数据结构，检索或更新不存在的字段</span></p></li><li><p><span>防御性编码策略</span></p><ul><li><span>抛出异常，返回错误</span></li></ul></li><li><p><span>一致按undefined处理</span></p></li></ul><h3 id='trade-off-3'><span>Trade-off</span></h3><ul><li><p><span>应用场景约束</span></p><ul><li><span>最小化非必要数据的从传输</span></li><li><span>精细化数据修改</span></li></ul></li><li><p><span>为保持一致性，所有接口通用支持</span></p></li></ul><h2 id='批操作'><span>批操作</span></h2><ul><li><p><span>是否需要完全成熟的通用事务设计模型</span></p><ul><li><span>支持必要原子操作  </span></li></ul></li><li><p><span>在标准方法前期加上Batch</span></p><ul><li><span>BatchDeleteMessages</span></li><li><span>方法类似，但实现会有差异</span></li></ul></li><li><p><span>HTTP方法 类似自定义方法，优先使用POST 或类似标准方法</span></p></li><li><p><span>要考虑如何保持原子性</span></p><ul><li><span>批量查询，如果一个字段被删除了，是否整个都失败</span></li><li><span>能否在多个父资源的进行操作？</span></li></ul></li></ul><h3 id='原子性'><span>原子性</span></h3><ul><li><p><span>定义：表示一组操作是原子性的，他们之间不可分割。整体操作只能全部成功或全部失败，没有中间状态。</span></p></li><li><p><span>设计考量：通常，原子性是批处理的核心诉求（优先）。但也要考虑复杂度和实现成本,此时可允许部分失败。</span></p></li><li><p><span>设计目标：批处理模式下的操作都要保持原子性。</span></p></li><li><p><span>操作位置</span></p><ul><li><span>父资源   </span><code>/chatRooms/*:batchUpdateMessage</code></li><li><span>资源集合  </span><code>/chatRooms/*/messages:batchUpdate</code></li></ul></li></ul><h3 id='结果顺序'><span>结果顺序</span></h3><ul><li><span>结果的顺序，与请求的顺序一致</span></li><li><span>如果返回数据未保持顺序，要分析结果与请求的对应关系 </span></li></ul><h3 id='常用字段'><span>常用字段</span></h3><p><span>两种策略</span></p><blockquote><p><span>请求对象数组，通用性好，如针对不同父对象的操作</span>
+<span>主键字段数组，更简洁，如获取或删除一组资源</span></p></blockquote><p><span>两种策略混用，要注意，可能APIServer拒绝执行</span></p><h3 id='跨父资源操作'><span>跨父资源操作</span></h3><p><span>使用对象数组，比共用更优</span>
+<span>每个请求对象，单独指定父资源</span></p><h3 id='batchget操作'><span>BatchGet操作</span></h3><ul><li><p><span>除了顶层资源，一般都有一个parent指示字段</span></p></li><li><p><span>跨父资源，可使用通配符，比如连接字段</span></p></li><li><p><span>跨父资源有时不合理</span></p><blockquote><p><span>分布式系统中，不同父资源可能存储在不同位置</span>
+<span>只要一个失败，则都会失败。可能需要更宽松的保证</span></p></blockquote></li><li><p><span>部分检索 统一的fieldmask</span></p></li><li><p><span>批操作一般不实现分页，而是限制返回数量</span></p></li></ul><h3 id='batchdelete操作'><span>BatchDelete操作</span></h3><ul><li><span>使用主键字段数组，使用POST方法</span></li><li><span>除了顶层资源，一般都有一个parent指示字段</span></li><li><span>跨父资源，使用通配符，同时要充分考虑合理性和可行性</span></li><li><span>原子性，删除所有给定的所有资源，或整体失败</span></li></ul><h3 id='batchcreate操作'><span>BatchCreate操作</span></h3><ul><li><span>请求使用对象数组 </span></li><li><span>除了顶层资源，一般都有一个parent指示字段 </span></li><li><span>预先是没有主键字段的，这个是API Server端创建的 </span></li><li><span>请求与结果的顺序一致性</span></li></ul><h3 id='batchupdate操作'><span>BatchUpdate操作</span></h3><ul><li><span>与BatchCreate基本相似</span></li><li><span>差异，部分更新 部分更新字段需要，每个资源可以不同 fieldmash针对单个的资源</span></li><li><span>使用POST方法 与标准Update方法的PATCH不同</span></li></ul><h3 id='trade-offs-1'><span>Trade-offs</span></h3><ul><li><p><span>首先把原子性放在首位，即使实现不方便</span></p></li><li><p><span>一致性</span></p><ul><li><span>简单性优于一致性</span></li><li><span>请求有时是主键字段，有些是对象</span></li></ul></li></ul><h2 id='分页'><span>分页</span></h2><ul><li><span>资源的大小和数量，量级非常大。通过单次请求和响应获取数据，可能会非常慢或不可行</span></li><li><span>如果将数据切割成可管理的分区，消费者可轻易获取单个分区</span></li></ul><hr /><ul><li><span>每次</span><strong><span>返回一页中的记录</span></strong><span>，同时</span><strong><span>返回下一次消费的指针位置</span></strong></li><li><span>引入</span><strong><span>光标</span></strong><span>的思想</span></li><li><span>我需要一页（获取新的信息或咨询） &amp; 我需要第*页（随机访问 有先验知识）</span></li></ul><h3 id='page-size'><span>page size</span></h3><ul><li><span>默认值 视资源大小而定 一般十条</span></li><li><span>上界和下界</span>
+<span>负数，和超过一定数值，可以直接拒绝</span></li></ul><h3 id='page-tokens'><span>page tokens</span></h3><ul><li><p><span>如何表示终止 返回一页数据不满 或 返回空页</span></p></li><li><p><span>一致性</span></p><ul><li><span>新增删除数据 下一页返回结果与当前页相同</span></li><li><span>依赖使用的存储系统</span></li><li><span>避免使用绝对偏移量 使用相对偏移量</span></li></ul></li></ul><h3 id='total-count'><span>total count</span></h3><ul><li><span>友好的用户体验</span></li><li><span>总数非常大时 操作困难</span></li><li><span>不提供准确值 只提供预估值 耗时更短</span></li></ul><h3 id='单一大资源分页'><span>单一大资源分页 </span></h3><p><span>page token，Max bytes</span></p><h2 id='长耗时操作'><span>长耗时操作</span></h2><ul><li><span>复杂操作，处理大数据量。占用服务器资源与网络资源。系统需要一直等待。</span></li><li><span>用于即时操作的设计方法在此时不一定能适用</span></li><li><span>需要能够支持异步的交互</span></li></ul><hr /><ul><li><p><span>类似Future或Promise机制</span></p><ul><li><span>启动任务，不阻塞，立即返回一个Promise对象</span></li><li><span>在Promise对象上等待，或注册回调函数</span></li></ul></li><li><p><span>与这种机制还有一些差异</span></p><ul><li><span>资源需要</span><strong><span>持久化</span></strong></li><li><span>需要一些</span><strong><span>元数据</span></strong><span> 如进度开始或完成的时间 当前执行的动作</span></li><li><span>需要一种</span><strong><span>发现和管理LROs</span></strong><span>的方法</span></li></ul></li></ul><blockquote><p><span>两个部分：定义Operation资源 &amp; 发现和管理LROs的API接口</span></p></blockquote><h3 id='lrolarge-receive-offload资源'><span>LRO(Large Receive Offload)资源</span></h3><ul><li><p><span>作为一种资源，能够交互</span></p></li><li><p><strong><span>最终返回结果</span></strong></p><ul><li><span>最终返回结果</span></li><li><span>要考虑有错误发生或者未成功完成</span></li><li><span>标识成功完成，没有其他结果信息</span></li><li><span>所有结果字段是可选的，是正常的结果类型（泛型），或者操作错误类型</span></li></ul></li><li><p><strong><span>状态标识</span></strong></p><ul><li><span>done标识字段，是否已结束</span></li><li><span>pending（堵塞），resolved（恢复），rejected（拒绝）</span></li></ul></li><li><p><strong><span>元数据信息</span></strong></p><ul><li><span>在结束前，提供一些任务的动态信息</span></li><li><span>进度信息，预估剩余时间</span></li></ul></li><li><p><em><span>最终返回结果，和元数据信息，有时都是非必须的</span></em></p></li></ul><h3 id='lro-资源的层级'><span>LRO 资源的层级 </span></h3><p><span>集中式顶层资源集合</span></p><h3 id='lro-解析'><span>LRO 解析</span></h3><ul><li><span>Polling，轮训，</span><code>GetOperation</code>
+<span>客户端，检查频次，停止检查</span>
+<span>不能立即知道结果</span></li><li><span>Waiting，等待，</span><code>WaitOperation</code>
+<span>一直维持链接，一旦结束，立即知道结果</span>
+<span>服务端的轮训，链接丢失，可以再使用轮训方式</span></li></ul><h3 id='错误处理'><span>错误处理</span></h3><ul><li><p><span>Http请求，错误处理使用 </span><strong><span>http错误码</span></strong></p></li><li><p><span>LRO不能使用</span></p><ul><li><span>返回的http错误码，不能区分是操作的结果，还是</span><code>GetOperation</code><span>的处理结果</span></li><li><strong><span>http错误码仅用来表示资源操作的处理结果</span></strong></li></ul></li><li><p><span>LRO的处理结果，放在最终返回结果字段</span><code>OperationError</code></p><ul><li><span>错误码&amp;错误信息</span></li><li><span>除错误类型，额外信息，最好结构化，机器可识别的方式</span></li></ul></li></ul><h3 id='进度监控'><span>进度监控</span></h3><p><code>MetaData</code><span>来表达</span>
+<span>	</span><span>任务开始时间，任务进度</span>
+<span>	</span><span>预估剩余时间，已处理字节数量</span></p><p><span>应用</span>
+<span>每轮轮巡时，获取进度</span></p><h3 id='取消操作'><span>取消操作</span></h3><p><span>错误数据创建需要取消</span></p><p><span>自定义方法，</span><code>CancelOperation</code></p><ul><li><span>需要等待完成，阻塞</span></li><li><span>中间结果要清理，回到初始状态</span></li><li><span>有些无法清理的，反馈，元数据信息</span></li><li><span>不是所有操作都可取消</span></li></ul><h3 id='暂停和恢复操作'><span>暂停和恢复操作</span></h3><p><span>只有合理和可行的场景可暂停和恢复</span></p><p><span>自定义方法，</span><code>PauseOperation, ResumeOperation</code>
+<span>元数据新增一个布尔字段, </span><code>paused</code></p><h3 id='持久化'><span>持久化</span></h3><p><span>持久化策略</span></p><ul><li><span>其他常规资源保持一致</span></li><li><span>滚动窗口，比如30天有效期，有效期外，会被删除</span></li><li><span>其他策略，操作对应的资源删除了，二级有效期，归档，删除归档</span></li></ul><h3 id='trade-offs-2'><span>Trade-offs</span></h3><p><span>最简单的办法就是等待</span></p><ul><li><span>可能不能很好适应分布式系统</span></li><li><span>一个微服务初始化任务，另一个监控进度</span></li><li><span>监控进度，意味着一直阻塞等待</span></li><li><span>如果链接短了，就可能会丧失恢复的能力</span></li></ul><h2 id='可重复运行作业'><span>可重复运行作业</span></h2><p><span>场景</span></p><blockquote><p><span>虽然有异步调用的API，但仍需客户端触发执行</span>
+<span>异步执行，但每次调用需要提供所有相关配置</span>
+<span>按需执行模型，混合两种权限：执行方法的能力，和配置参数的能力</span>
+<span>按某种循环计划的方式自动执行</span></p></blockquote><p><strong><span>job概念</span></strong></p><blockquote><p><span>特殊的资源类型</span>
+<span>配置过程</span>
+<span>执行过程</span></p><p><span>一次配置多次执行，划分两个方法更便于控制权限，在调度系统中，只调用执行接口即可，不需要关注大量繁琐的配置</span></p></blockquote><h3 id='基本属性'><span>基本属性</span></h3><ul><li><span>标识符</span></li><li><span>所属资源</span></li><li><span>配置信息</span></li></ul><h3 id='标准方法-2'><span>标准方法</span></h3><p><code>Create, Get, Delete, List</code></p><p><span>同步并立即返回</span>
+<span>并非所有方法都要支持，比如Job是不可变更的，可忽略update方法</span></p><h3 id='自定义方法run'><span>自定义方法run</span></h3><p><span>入参只有</span><code>Job Id</code><span>，返回LRO对象</span></p><h3 id='execution执行资源'><span>Execution执行资源</span></h3><p><span>属于特定的Job类型下</span></p><p><span>Job &amp; Execution &amp; Operation</span></p><h3 id='trade-offs-3'><span>Trade-offs</span></h3><p><span>多种解决方案</span></p><ul><li><p><span>针对权限问题，可以设计高级的权限系统</span></p><ul><li><span>API方法 + 方法参数都进行检查控制</span></li><li><span>缺点，实现逻辑复杂</span></li></ul></li><li><p><span>执行计划，可以只保持Operation资源</span></p><ul><li><span>作为输出的引用</span></li><li><span>缺点，过滤Operation资源获取Job关注的信息</span></li></ul></li></ul><h2 id='导入导出'><span>导入导出</span></h2><p><span>有一些序列化数据需要导入</span></p><h3 id='自定义方法'><span>自定义方法</span></h3><p><code>import &amp; export</code><span>, 返回类型是LRO</span></p><h3 id='存储系统交互'><span>存储系统交互</span></h3><p><span>单个schema，保存所有配置</span>
+<span>使用接口，针对不同存储系统特定实现</span></p><p><strong><span>针对import和export不共用，</span><code>DataSource &amp; DataDestination</code></strong></p><h3 id='资源与二进制的转化'><span>资源与二进制的转化</span></h3><p><span>序列与反序列化</span></p><p><strong><span>配置</span><code>InputConfig, OutputConfig</code></strong></p><h3 id='一致性'><span>一致性</span></h3><p><span>导出数据时，首先要保障导出所有或满足条件的所有数据</span></p><p><span>导出时，资源变更怎么办</span></p><blockquote><ul><li><span>依赖底层存储系统的快照和事务能力，读取特定时间点的所有数据(数据量大，不容易支持)</span></li><li><span>接受现实，尽最大的可能是精确的数据</span></li><li><span>导出期间，禁止变更</span></li></ul></blockquote><p><span>导出数据，与备份数据，差异</span></p><blockquote><ul><li><span>备份是一种快照</span></li><li><span>导出是通过数据检索的方式，转义到外部存储设备</span></li></ul></blockquote><h3 id='主键与冲突'><span>主键与冲突</span></h3><blockquote><p><span>导入数据主键已经存在</span>
+<span>导出后再次导入，但不同的父资源</span>
+<span>有些API不允许用户指定标识符</span></p></blockquote><p><span>导入&amp;导出不能直接用于备份和恢复</span>
+<strong><span>需要更严苛的数据检查，备份时需要一致性快照，导入时是完整的替换</span></strong></p><h3 id='处理关联资源'><span>处理关联资源</span></h3><p><span>针对父资源，不一定包含所有子资源</span></p><p><strong><span>与备份和恢复，需要再次划清界限</span></strong></p><h3 id='失败和重试'><span>失败和重试</span></h3><p><span>两种问题原因:</span>
+<span>API服务的问题</span>
+<span>存储系统的问题</span></p><p><strong><span>导出失败</span></strong></p><blockquote><p><span>每次导出独立，重试安全</span>
+<span>每次导出的执行可能不同</span>
+<span>存储系统的话如磁盘空间不足</span></p></blockquote><p><strong><span>导入失败</span></strong></p><blockquote><p><span>不能像导出一样，无法简单的直接重试</span>
+<span>因为数据校验，而不是网络问题，再次重试还是有问题</span>
+<span>即使是偶发性问题，也不能直接重试，前一次导入可能创建新资源，数据重复</span></p></blockquote><p><strong><span>导入失败处置策略</span></strong></p><blockquote><p><span>在一个事务执行导入操作(不是所有存储系统都支持)</span>
+<span>同一事务导入大批量数据也不可行</span></p><p><span>另一办法是支持请求去重</span>
+<span>不一定是资源标识符，可以是每条记录的导入请求id</span>
+<span>导出时，可配置是否序列化到输出数据中</span></p></blockquote><h3 id='trade-offs-4'><span>Trade-offs</span></h3><p><strong><span>这个模式定位非常窄和具体</span></strong>
+<span>只是作为API和外部存储系统的中间桥梁，替代了编写应用程序实现数据转移</span></p><p><strong><span>这导致有两个缺点</span></strong>
+<span>只能用于转移一种资源类型，否则就不是简单的纯粹的一种数据转移，而是包含业务逻辑</span>
+<span>容易与数据备份和恢复功能混淆，没有一致性保障</span></p><h1 id='api安全'><span>API安全</span></h1><h2 id='api安全概述'><span>API安全概述</span></h2><p>&nbsp;</p><h2 id='安全设计原则'><span>安全设计原则</span></h2><p>&nbsp;</p><h2 id='api安全技术'><span>API安全技术</span></h2><p>&nbsp;</p><h2 id='api安全治理'><span>API安全治理</span></h2><h1 id='api技术实现'><span>API技术实现</span></h1></div></div>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>轻量化平台开发笔记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#introduction">Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n6"><a class="md-toc-inner" href="#第一个小程序">第一个小程序</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n7"><a class="md-toc-inner" href="#开发工具">开发工具</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n9"><a class="md-toc-inner" href="#主界面">主界面</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n11"><a class="md-toc-inner" href="#菜单栏"><strong>菜单栏</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" href="#工具栏"><strong>工具栏</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n57"><a class="md-toc-inner" href="#模拟器"><strong>模拟器</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n60"><a class="md-toc-inner" href="#目录树"><strong>目录树</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n63"><a class="md-toc-inner" href="#编辑区"><strong>编辑区</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n66"><a class="md-toc-inner" href="#调试器"><strong>调试器</strong>:</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n90"><a class="md-toc-inner" href="#小程序文件类型">小程序文件类型</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n159"><a class="md-toc-inner" href="#开发基础">开发基础</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n160"><a class="md-toc-inner" href="#页面组件">页面组件</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n192"><a class="md-toc-inner" href="#页面样式">页面样式</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n193"><a class="md-toc-inner" href="#选择器">选择器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n224"><a class="md-toc-inner" href="#px和rpx">px和rpx</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n227"><a class="md-toc-inner" href="#配置文件">配置文件</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n304"><a class="md-toc-inner" href="#页面逻辑">页面逻辑</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n305"><a class="md-toc-inner" href="#生命周期">生命周期</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n362"><a class="md-toc-inner" href="#冒泡">冒泡</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n388"><a class="md-toc-inner" href="#布局">布局</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n389"><a class="md-toc-inner" href="#基本知识">基本知识</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n390"><a class="md-toc-inner" href="#盒子模型">盒子模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n405"><a class="md-toc-inner" href="#块级元素">块级元素</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n408"><a class="md-toc-inner" href="#行内元素">行内元素</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n410"><a class="md-toc-inner" href="#行内块元素">行内块元素</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n413"><a class="md-toc-inner" href="#浮动和定位">浮动和定位</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n415"><a class="md-toc-inner" href="#浮动float">浮动(FLOAT)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n422"><a class="md-toc-inner" href="#定位">定位</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n436"><a class="md-toc-inner" href="#flex布局">Flex布局</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n437"><a class="md-toc-inner" href="#基本概念">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n439"><a class="md-toc-inner" href="#容器属性">容器属性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n502"><a class="md-toc-inner" href="#项目属性">项目属性</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n546"><a class="md-toc-inner" href="#组件">组件</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n547"><a class="md-toc-inner" href="#组件定义和属性">组件定义和属性</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n554"><a class="md-toc-inner" href="#视图容器">视图容器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n559"><a class="md-toc-inner" href="#view">view/</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n563"><a class="md-toc-inner" href="#scroll-view">scroll-view</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n567"><a class="md-toc-inner" href="#swpier">swpier</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n571"><a class="md-toc-inner" href="#基础组件">基础组件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n572"><a class="md-toc-inner" href="#icon">ICON</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n576"><a class="md-toc-inner" href="#text">TEXT</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n578"><a class="md-toc-inner" href="#process">PROCESS</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n582"><a class="md-toc-inner" href="#表单组件">表单组件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n583"><a class="md-toc-inner" href="#radio">RADIO</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n587"><a class="md-toc-inner" href="#checkbox">CHECKBOX</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n591"><a class="md-toc-inner" href="#switch">SWITCH</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n595"><a class="md-toc-inner" href="#label">LABEL</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n602"><a class="md-toc-inner" href="#slider">SLIDER</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n606"><a class="md-toc-inner" href="#picker">PICKER</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n611"><a class="md-toc-inner" href="#time-picker">TIME PICKER</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n615"><a class="md-toc-inner" href="#data-picker">DATA PICKER</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n619"><a class="md-toc-inner" href="#picker-view">PICKER-VIEW</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n623"><a class="md-toc-inner" href="#input">INPUT</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n627"><a class="md-toc-inner" href="#textarea">TEXTAREA</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n631"><a class="md-toc-inner" href="#button">BUTTON</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n635"><a class="md-toc-inner" href="#form">FORM</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n639"><a class="md-toc-inner" href="#导航组件">导航组件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n640"><a class="md-toc-inner" href="#navigator">NAVIGATOR</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n644"><a class="md-toc-inner" href="#媒体组件">媒体组件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n645"><a class="md-toc-inner" href="#image">IMAGE</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n649"><a class="md-toc-inner" href="#audio">AUDIO</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n653"><a class="md-toc-inner" href="#video">VIDEO</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n657"><a class="md-toc-inner" href="#地图组件">地图组件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n658"><a class="md-toc-inner" href="#map">MAP</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n662"><a class="md-toc-inner" href="#画布组件">画布组件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n663"><a class="md-toc-inner" href="#canvas">CANVAS</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n667"><a class="md-toc-inner" href="#服务器数据交互">服务器数据交互</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n668"><a class="md-toc-inner" href="#wxrequest">wx.request</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n671"><a class="md-toc-inner" href="#表单数据绑定">表单数据绑定</a></span></p></div><h1 id='introduction'><span>Introduction</span></h1><p><span>鲍亚运</span></p><p><span>小程序</span></p><p><span>平时作业 50%</span>
+<span>大作业 50% (每组4-5人, 最后两节课展示)</span></p><h1 id='第一个小程序'><span>第一个小程序</span></h1><h2 id='开发工具'><span>开发工具</span></h2><p><a href='https://developers.weixin.qq.com/miniprogram/dev/devtools/stable.html'><span>微信开发者工具（稳定版 Stable Build）下载地址与更新日志 | 微信开放文档 (qq.com)</span></a></p><h2 id='主界面'><span>主界面</span></h2><p><strong><span>小程序开发工具主界面</span></strong><span>包括菜单栏、工具栏、模拟器、目录树、编辑区、调试器六大部分。</span></p><h3 id='菜单栏'><strong><span>菜单栏</span></strong><span>:</span></h3><blockquote><p><span>可以访问微信开发者工具的大部分功能：</span></p><ul><li><span>项目：用于新建项目或打开一个现有的项目。</span></li><li><span>文件：用于新建文件、保存文件或关闭文件。</span></li><li><span>编辑：用于编辑代码，对代码进行格式化。</span></li><li><span>工具：用于访问一些辅助工具。</span></li><li><span>界面：用于控制界面中各部分的显示和隐藏。</span></li><li><span>设置：用于对外观、快捷键、编辑器等进行设置。</span></li><li><span>微信开发者工具：可以进行切换账号、更换开发模式、调试等操作</span></li></ul></blockquote><h3 id='工具栏'><strong><span>工具栏</span></strong><span>:</span></h3><blockquote><p><span>提供了一些常用功能的快捷按钮：</span></p><ul><li><span>个人中心：位于工具栏最左侧第1个按钮，显示当前登录用户头像。</span></li><li><span>模拟器、编辑器和调试器：用于控制相应工具的显示和隐藏。</span></li><li><span>云开发：开发者可以使用云开发来开发小程序、小游戏。云开发能力从基础库2.2.3开始支持。</span></li><li><span>模式切换下拉菜单：用于在小程序模式搜索动态页和插件模式之间切换。</span></li><li><span>编译下拉菜单：用于切换编译模式，默认为普通编译。</span></li><li><span>编译：编写小程序的代码后，需要编译才能运行。</span></li><li><span>预览：单击预览按钮会生成一个二维码，使用手机中的微信扫描二维码。</span></li><li><span>真机调试：通过网络连接对手机上运行的小程序进行调试。</span></li><li><span>切后台：用于模拟小程序在手机中切后台的效果。</span></li><li><span>清缓存：用于清除数据缓存、文件缓存等。</span></li><li><span>上传：用于将代码上传到小程序管理后台。</span></li><li><span>版本管理：用于通过Git对小程序进行版本管理。</span></li></ul></blockquote><h3 id='模拟器'><strong><span>模拟器</span></strong><span>:</span></h3><blockquote><p><span>模拟器用于模拟手机环境，查看不同型号手机的运行效果</span></p></blockquote><h3 id='目录树'><strong><span>目录树</span></strong><span>:</span></h3><blockquote><p><span>可以查看文件目录结构</span></p></blockquote><h3 id='编辑区'><strong><span>编辑区</span></strong><span>:</span></h3><blockquote><p><span>可以编辑文件代码</span></p></blockquote><h3 id='调试器'><strong><span>调试器</span></strong><span>:</span></h3><blockquote><p><span>调试器类似于Google Chrome浏览器中的开发者工具：</span></p><ul><li><span>Console：控制台面板，用于输出调试信息，也可以直接编写代码执行。</span></li><li><span>Sources：源代码面板，可以查看或编辑源代码，并支持代码调试。</span></li><li><span>Network：网络面板，记录网络请求信息，根据它可进行网络性能优化。</span></li><li><span>Security：安全面板，用于调试页面的安全和认证等信息，如HTTpS。</span></li><li><span>AppData：App数据面板，可以查看或编辑当前小程序运行时的数据。</span></li><li><span>Audits：审计面板，用于对小程序进行体验评分。</span></li><li><span>Sensor：传感器面板，用于模拟地理位置、重力感应。 </span></li><li><span>Storage：存储面板，用于查看和管理本地数据缓存。</span></li><li><span>Trace：跟踪面板，用于真机调试时跟踪调试信息。</span></li><li><span>Wxml：Wxml面板，用于查看和调试WXML和WXSS。</span></li></ul></blockquote><h2 id='小程序文件类型'><span>小程序文件类型</span></h2><p><span>文件类型主要有: </span>
+<span> </span><strong><span>*</span><span>.json</span></strong><span>：配置文件 </span></p><blockquote><p><span>主要用于配置小程序的全局配置和页面配置等，如小程序的窗口背景色、页面路径等。</span></p></blockquote><p><span> </span><strong><span>*</span><span>.wxml</span></strong><span>: 模板文件 </span></p><blockquote><p><span>用于描述小程序的界面结构，包括布局、组件、数据绑定等。</span></p></blockquote><p><strong><span>*</span><span>.wxss</span></strong><span>：样式文件 </span></p><blockquote><p><span>用于描述小程序的样式，包括字体、颜色、布局等。</span></p></blockquote><p><strong><span>*</span><span>.ts/</span><span>*</span><span>.js</span></strong><span>：逻辑文件 </span></p><blockquote><p><span>用于处理小程序的业务逻辑、事件处理等，包括数据处理、网络请求等。</span></p></blockquote><p><img src="轻量化平台开发笔记.assets/image-20230309202016911.png" alt="image-20230309202016911" style="zoom: 80%;" /></p><figure><table><thead><tr><th><strong><span>路径</span></strong></th><th><strong><span>说明</span></strong></th></tr></thead><tbody><tr><td><span>project.config.json</span></td><td><span>项目配置文件</span></td></tr><tr><td><span>app.js</span></td><td><span>应用程序的逻辑文件</span></td></tr><tr><td><span>app.json</span></td><td><span>应用程序的配置文件</span></td></tr><tr><td><span>app.wxss</span></td><td><span>应用程序公共样式文件</span></td></tr><tr><td><span>pages/</span></td><td><span>存放页面文件目录</span></td></tr><tr><td><span>pages/index/</span></td><td><span>存放index页面的目录</span></td></tr><tr><td><span>pages/index/index.ts</span></td><td><span>Index页面的逻辑文件</span></td></tr><tr><td><span>pages/index/index.json</span></td><td><span>Index页面的配置文件</span></td></tr><tr><td><span>pages/index/index.wxml</span></td><td><span>Index页面的结构文件</span></td></tr><tr><td><span>pages/index/index.wxss</span></td><td><span>Index页面的样式文件</span></td></tr><tr><td><span>pages/logs/</span></td><td><span>存放logs页面的目录</span></td></tr><tr><td><span>pages/logs/logs.ts</span></td><td><span>logs页面的逻辑文件</span></td></tr><tr><td><span>pages/logs/logs.json</span></td><td><span>logs页面的配置文件</span></td></tr><tr><td><span>pages/logs/logs.wxml</span></td><td><span>logs页面的结构文件</span></td></tr><tr><td><span>pages/logs/logs.wxss</span></td><td><span>logs页面的样式文件</span></td></tr><tr><td><span>utils/</span></td><td><span>存放公共脚本文件的目录</span></td></tr><tr><td><span>utils/utils.js</span></td><td><span>公共脚本文件，保存一些工具代码</span></td></tr></tbody></table></figure><h1 id='开发基础'><span>开发基础</span></h1><h2 id='页面组件'><span>页面组件</span></h2><figure><table><thead><tr><th><strong><span>标签</span></strong></th><th><strong><span>功能</span></strong></th><th><strong><span>标签</span></strong></th><th><strong><span>功能</span></strong></th></tr></thead><tbody><tr><td><view></td><td><span>视图容器</span></td><td><icon></td><td><span>图标文件</span></td></tr><tr><td><text></td><td><span>文本域</span></td><td><checkbox></td><td><span>复选框</span></td></tr><tr><td><button></td><td><span>按钮</span></td><td><radio></td><td><span>单选框</span></td></tr><tr><td><image></td><td><span>图片</span></td><td><input></td><td><span>输入框</span></td></tr><tr><td><form></td><td><span>表单</span></td><td><progress></td><td><span>进度条</span></td></tr></tbody></table></figure><h2 id='页面样式'><span>页面样式</span></h2><h3 id='选择器'><span>选择器</span></h3><figure><table><thead><tr><th><strong><span>选择器</span></strong></th><th><strong><span>示例</span></strong></th><th><strong><span>说明</span></strong></th></tr></thead><tbody><tr><td><span>.class</span></td><td><span>.container</span></td><td><span>选择所有class=&quot;container&quot;的组件</span></td></tr><tr><td><span>#id</span></td><td><span>#id</span></td><td><span>选择id=&quot;#id&quot;的组件</span></td></tr><tr><td><span>element</span></td><td><span>view</span></td><td><span>选择所有view组件</span></td></tr><tr><td><span>element,  element</span></td><td><span>view,  text</span></td><td><span>选择所有view组件和所有text组件</span></td></tr><tr><td><span>::after</span></td><td><span>view::after</span></td><td><span>在view组件内的后面插入内容</span></td></tr><tr><td><span>::before</span></td><td><span>view::before</span></td><td><span>在view组件内的前面插入内容</span></td></tr></tbody></table></figure><p><img src="轻量化平台开发笔记.assets/image-20230309204322553.png" alt="image-20230309204322553" style="zoom:50%;" /></p><h3 id='px和rpx'><span>px和rpx</span></h3><p><span>px-物理像素：指屏幕上实际有多少个像素。</span></p><p><span>rpx-逻辑像素：是指CSS中使用的像素单位。</span></p><h2 id='配置文件'><span>配置文件</span></h2><p><strong><span>页面级配置文件 - index.json</span></strong></p><figure><table><thead><tr><th><strong><span>属性</span></strong></th><th><strong><span>说明</span></strong></th></tr></thead><tbody><tr><td><span>navigationBarBackgroundColor</span></td><td><span>导航栏背景颜色，默认为“#000000”</span></td></tr><tr><td><span>navigationBarTextStyle</span></td><td><span>导航栏标题颜色，仅支持black、white（默认）</span></td></tr><tr><td><span>navigationBarTitleText</span></td><td><span>导航栏的标题文字内容</span></td></tr><tr><td><span>backgroundColor</span></td><td><span>窗口的背景色，默认为“#ffffff”</span></td></tr><tr><td><span>backgroundTextStyle</span></td><td><span>下拉loading的样式，仅支持dark（默认）、light</span></td></tr><tr><td><span>enablePullDownRefresh</span></td><td><span>是否全局开启下拉刷新，默认为false</span></td></tr><tr><td><span>onReachBottomDistance</span></td><td><span>页面上拉触底事件触发时距页面底部距离（单位为px），默认为50</span></td></tr><tr><td><span>disableScroll</span></td><td><span>默认为false。设为true时，页面整体不能上下滚动</span></td></tr></tbody></table></figure><p><strong><span>应用级配置文件 – app.json</span></strong></p><figure><table><thead><tr><th><strong><span>属性</span></strong></th><th><strong><span>说明</span></strong></th></tr></thead><tbody><tr><td><span>pages</span></td><td><span>页面路径列表</span></td></tr><tr><td><span>window</span></td><td><span>全局的默认窗口表现，可以一次设置多个页面级配置</span></td></tr><tr><td><span>tabBar</span></td><td><span>底部 tab 栏的表现</span></td></tr><tr><td><span>networkTimeout</span></td><td><span>网络超时时间</span></td></tr><tr><td><span>debug</span></td><td><span>是否开启调试模式，默认为false</span></td></tr><tr><td><span>requiredBackgroundModes</span></td><td><span>需要在后台使用的能力，如“音乐播放”</span></td></tr><tr><td><span>plugins</span></td><td><span>使用到的插件</span></td></tr></tbody></table></figure><figure><table><thead><tr><th><strong><span>属性</span></strong></th><th><strong><span>类型</span></strong></th><th><strong><span>说明</span></strong></th></tr></thead><tbody><tr><td><span>request</span></td><td><span>Number</span></td><td><span>wx.request()的超时时间（毫秒），默认为60000</span></td></tr><tr><td><span>connectSocket</span></td><td><span>Number</span></td><td><span>wx.connectSocket()的超时时间（毫秒），默认为60000</span></td></tr><tr><td><span>uploadFile</span></td><td><span>Number</span></td><td><span>wx.uploadFile()的超时时间（毫秒），默认为60000</span></td></tr><tr><td><span>downloadFile</span></td><td><span>Number</span></td><td><span>wx.downloadFile()的超时时间（毫秒），默认为60000</span></td></tr></tbody></table></figure><h2 id='页面逻辑'><span>页面逻辑</span></h2><h3 id='生命周期'><span>生命周期</span></h3><p><span>微信小程序的生命周期分为两个部分：应用生命周期和页面生命周期。</span></p><ol start='' ><li><span>应用生命周期：</span></li></ol><ul><li><span>onLaunch(options)：小程序初始化时触发，只执行一次，可以在此获取小程序启动时的参数。</span></li><li><span>onShow(options)：小程序启动或从后台进入前台时触发。</span></li><li><span>onHide()：小程序从前台进入后台时触发。</span></li><li><span>onError(error)：小程序发生脚本错误或 API 调用失败时触发。</span></li></ul><ol start='' ><li><span>页面生命周期：</span></li></ol><ul><li><span>onLoad(options)：页面加载时触发，可以在此获取页面参数。</span></li><li><span>onShow()：页面显示时触发。</span></li><li><span>onReady()：页面初次渲染完成时触发。</span></li><li><span>onHide()：页面从前台进入后台时触发。</span></li><li><span>onUnload()：页面卸载时触发。</span></li></ul><p><span>除了上述生命周期函数，还有一些特殊的生命周期函数，例如：</span></p><ul><li><span>onPullDownRefresh()：页面下拉刷新时触发。</span></li><li><span>onReachBottom()：页面上拉触底时触发。</span></li><li><span>onPageScroll(Object)：页面滚动时触发。</span></li></ul><p><strong><span>状态模式-单向数据流。</span></strong>
+<span>状态模式定义一个对象，改对象可以通过管理其状态的变化，从而实现应用程序做出相应的变化。</span></p><p><img src="轻量化平台开发笔记.assets/image-20230316201623494.png" alt="image-20230316201623494" style="zoom:50%;" /></p><figure><table><thead><tr><th><strong><span>属性</span></strong></th><th><strong><span>说明</span></strong></th></tr></thead><tbody><tr><td><span>type</span></td><td><span>事件类型</span></td></tr><tr><td><span>timeStamp</span></td><td><span>事件生成时间戳</span></td></tr><tr><td><span>target</span></td><td><span>触发事件的组件的一些属性值集合</span></td></tr><tr><td><span>currentTarget</span></td><td><span>当前组件的一些属性集合</span></td></tr><tr><td><span>detail</span></td><td><span>额外的信息</span></td></tr></tbody></table></figure><h2 id='冒泡'><span>冒泡</span></h2><p><span>冒泡事件是指当一个组件上的事件被触发后，事件会向父节点传递，而非冒泡事件不会向父节点传递。</span></p><p><span>生命周期回调函数的区别分析如下：</span>
+<span>点击outer =&gt; outer – outer</span>
+<span>点击inner =&gt; inner - outer</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="html"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51562px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span> <span class="cm-attribute">bindtap</span>=<span class="cm-string">"viewtap"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"outer"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  outer</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span> <span class="cm-attribute">id</span>=<span class="cm-string">"inner"</span><span class="cm-tag cm-bracket">&gt;</span>inner<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">viewtap: function(e) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  console.log(e.target.id + '-' + e.currentTarget.id)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><figure><table><thead><tr><th><strong><span>属性</span></strong></th><th><strong><span>类型</span></strong></th></tr></thead><tbody><tr><td><span>touchstart</span></td><td><span>手指触摸动作开始</span></td></tr><tr><td><span>touchmove</span></td><td><span>手指触摸后移动</span></td></tr><tr><td><span>touchcancel</span></td><td><span>手指触摸动作被打断，如来电提醒，弹窗</span></td></tr><tr><td><span>touchend</span></td><td><span>手指触摸动作结束</span></td></tr><tr><td><span>tap</span></td><td><span>手指触摸后马上离开</span></td></tr><tr><td><span>longpress</span></td><td><span>手指触摸后，超过350ms再离开。如果指定了事件回调函数并触发了这个事件，tap事件将不被触发</span></td></tr></tbody></table></figure><h1 id='布局'><span>布局</span></h1><h2 id='基本知识'><span>基本知识</span></h2><h3 id='盒子模型'><span>盒子模型</span></h3><p><span>盒子模型是CSS布局的基础；</span>
+<span>CSS将页面汇总所有的元素的都设置为一个个矩形的盒子。元素设置为矩形的盒子后，对页面的布局就变成了将不同的盒子摆放到不同的位置；</span></p><ul><li><span>Content：内容区域</span></li><li><span>Padding：内边距</span></li><li><span>Border：边框</span></li><li><span>Margin：外边距</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323191056297.png" alt="image-20230323191056297" style="zoom: 33%;" /></p><p><strong><span>微信小程序wxss完全遵守W3C盒子模型规范</span></strong></p><blockquote><p><span>W3C width = </span><code>content width</code>
+<span>IE width = </span><code>content width + padding + border</code></p></blockquote><h3 id='块级元素'><span>块级元素</span></h3><p><code>display:block</code>
+<span>默认占一行，一般一行一个块级元素，添加新的会自动换行</span>
+<span>一般作为容器出现，用于组织结构</span>
+<span>宽度默认</span><code>width+marginLeft+marginRight+paddingLeft+paddingRight</code><span>刚好等于父级元素内容区宽度除非设定一个新宽度，这里需要注意，当设置块级元素宽度为100%时，如果当前块级元素存在padding、margin会导致块级元素溢出父元素。</span>
+<span>盒子模型高度默认由内容决定。</span>
+<span>盒子模型中高度、宽度及外边距和内边距都可控制。</span>
+<span>可以容纳行内元素和其他块级元素。</span>
+<code>&lt;view/&gt;</code><span>是一个块级元素</span></p><p><img src="轻量化平台开发笔记.assets/image-20230323191851263.png" alt="image-20230323191851263" style="zoom:50%;" /></p><h3 id='行内元素'><span>行内元素</span></h3><p><code>display:inline</code>
+<span>和其他非块级元素都在一行上。</span>
+<span>盒子模型中高度、宽度、上下margin、上下padding设置均无效，只能设置左右margin和左右padding。</span>
+<span>宽度就是文字或图片的宽度，不可改变。</span>
+<span>行内元素宽度、高度都不能直接设</span>
+<span>行内元素只能容纳文本或其他行内元素，在行内元素中放置块级元素会引起不必要的混乱。</span>
+<code>&lt;text/&gt;</code><span>是一个行内元素</span></p><h3 id='行内块元素'><span>行内块元素</span></h3><p><code>display:inline-block</code>
+<span>行内块元素是块级元素和行内元素的混合物</span>
+<span>行内块元素可以设置宽、高、内边距和外边距，可以简单认为行内块元素是把块级元素以行的形式展现，保留了块级元素对宽、高、内边距、外边距的设置，它就像一张图一样放在一个文本行中。</span></p><p><img src="轻量化平台开发笔记.assets/image-20230323192418101.png" alt="image-20230323192418101" style="zoom:50%;" /></p><h2 id='浮动和定位'><span>浮动和定位</span></h2><p><span>定位的基本思想很简单，它允许你定义元素框</span><strong><span>相对于其正常位置应该出现在哪，或者相对于父元素、另一个元素甚至浏览器窗口本身的位置</span></strong><span>。</span></p><h3 id='浮动float'><span>浮动(FLOAT)</span></h3><p><code>float: left/right</code>
+<span>通过设置float属性，浮动的框可以向左或者向右移动，直到其外边缘碰到包含框或另一个浮动框的边框为止;</span>
+<span>floar不完全是定位，它不是正常流布局（不在文档的普通流中）。文档的普通流中的会表现的浮动框不存在一样，其他内容会环绕过去。</span></p><p><img src="轻量化平台开发笔记.assets/image-20230323193502611.png" alt="image-20230323193502611" style="zoom: 50%;" /></p><p><span>下图中父级元素的边框并没有包裹浮动框，这是浮动的一个特性，父级元素不计算浮动元素高度。</span></p><p><img src="轻量化平台开发笔记.assets/image-20230323193521912.png" alt="image-20230323193521912" style="zoom:50%;" /></p><p><code>float: left/right =&gt; clear</code>
+<span>但在某些情况下我们仍然希望在使用浮动的同时，父级元素的高度能包裹浮动元素，可以设置属性clear（清除）。确保当前元素的左边、右边或左右两边同时不能出现浮动的元素。</span></p><p><img src="轻量化平台开发笔记.assets/image-20230323193557141.png" alt="image-20230323193557141" style="zoom:50%;" /></p><h3 id='定位'><span>定位</span></h3><p><code>Position: static/relative/absolute/fixed/sticky</code></p><ul><li><code>static</code><span>： static是position的默认值。块级元素生成一个矩形框，作为文档流的一部分，行内元素则会创建一个或多个行框，置于其父元素中。</span></li><li><code>relative</code><span>：元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。</span></li><li><code>absolute</code><span>：元素框从文档流中完全删除，并相对于其包含块定位，包含块可能是文档中的另一个元素或者是初始包含块。对于absolute来说，包含块是离当前元素最近的position为absolute或relative的父元素，如果父元素中没有任何absolute或relative布局的元素，那么包含块就是根元素。使用position布局后，元素原先在正常文档流中所占用的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，不论原来它在正常流中生成何种类型的框。</span></li><li><code>fixed</code><span>：元素框的表现类似于将position设置为absolute，不过其包含块是视窗本身。</span></li><li><code>sticky</code><span>：可以被认为是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。#one { position: sticky; top: 10px; } 在 viewport 视口滚动到元素 top 距离小于 10px之前，元素为相对定位。之后，元素将固定在与顶部距离 10px 的位置，直到 viewport 视口回滚到阈值以下。</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323194058193.png" alt="image-20230323194058193" style="zoom:50%;" /></p><h2 id='flex布局'><span>Flex布局</span></h2><h3 id='基本概念'><span>基本概念</span></h3><p><code>display:flex /inline-flex</code>
+<span>浮动和定位是传统布局解决方案，在一些情况中非常不方便</span>
+<span>Flex布局主要由容器和项目构成，采用Flex布局的元素，称为Flex容器（flex container），它的直接子元素为容器成员，称为Flex项目（flex item）</span></p><h3 id='容器属性'><span>容器属性</span></h3><p><code>flex-direction</code><span>用于指定水项目排列的方向：</span></p><ul><li><span>row：主轴为水平方向，起点在左端，默认值。</span></li><li><span>row-reverse：主轴为水平方向，起点在右端。</span></li><li><span>column：主轴为垂直方向，起点在上沿</span></li><li><span>column-reverse：主轴为垂直方向，起点在下沿。</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323202239466.png" alt="image-20230323202239466" style="zoom:50%;" /></p><p><code>flex-warp</code><span>用来指定如果一列排不下，该如何换行，默认情况下，项目都排在一条线上：</span></p><ul><li><span>nowrap：不换行，默认值。</span></li><li><span>wrap：换行，第一行在上方。</span></li><li><span>wrap-reverse：换行，第一行在下方。</span></li></ul><p><span>当设置换行时，还需要设置</span><code>align-item</code><span>属性配合实现自动换行，并且</span><code>align-item</code><span>的值不能为“</span><code>stretch</code><span>”</span></p><p><img src="轻量化平台开发笔记.assets/image-20230323202246083.png" alt="image-20230323202246083" style="zoom:50%;" /></p><p><code>align-items</code><span>指定项目在垂直方向上如何对齐：</span></p><ul><li><span>flex-start：垂直方向top对齐。</span></li><li><span>flex-end：垂直方向bottom对齐。</span></li><li><span>center：垂直方向middle对齐。</span></li><li><span>baseline：项目根据它们第一行文字的基线对齐。</span></li><li><span>stretch：如果项目未设置高度或设置为auto，项目将在交叉轴方向拉伸填充整个容器，默认值。</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323202345543.png" alt="image-20230323202345543" style="zoom:50%;" /></p><p><code>align-content</code><span>用来定义项目多根轴线（出现换行后）在交叉轴上的对齐方式，如果项目只有一根轴线，该属性不起作用：</span></p><ul><li><span>flex-start：与垂直方向的起点对齐。</span></li><li><span>flex-end：与垂直方向的终点对齐。</span></li><li><span>center：与垂直方向的中点对齐。</span></li><li><span>space-between：与垂直方向两端对齐，轴线之间的间隔平均分布。</span></li><li><span>space-around：每根轴线两侧的间隔都相等，轴线之间的间隔比轴线与边框间隔大一倍。</span></li><li><span>stretch：轴线占满整个交叉轴，每个项目会被拉伸直至填满交叉轴，默认值</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323202737722.png" alt="image-20230323202737722" style="zoom:50%;" /></p><p><code>justify-content</code><span>属性定义了项目在水平轴上的对齐方式：</span></p><ul><li><span>flex-start：左对齐，默认值。</span></li><li><span>flex-end：右对齐。</span></li><li><span>center：居中。</span></li><li><span>space-between：两端对齐，项目之间的间隔都相等。</span></li><li><span>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323204951369.png" alt="image-20230323204951369" style="zoom: 33%;" /></p><h3 id='项目属性'><span>项目属性</span></h3><p><code>order: &lt;integer&gt;</code><span>项目的排列顺序，数值越小，排列越靠前，默认为0</span></p><p><code>flex-grow: &lt;number&gt;</code><span>项目的放大比例，默认为0，即如果存在剩余空间，也不放大：</span></p><ul><li><span>如果所有项目的flex-grow值都为1，则它们将等分剩余空间（如果有的话）。</span></li><li><span>如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍，整体按比例填充剩余空间。</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323203512087.png" alt="image-20230323203512087" style="zoom:50%;" /></p><p><code>flex-shrink: &lt;number&gt;</code><span>项目的缩小比例</span></p><ul><li><span>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比缩小。</span></li><li><span>如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小，负值对该属性无效</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323203552381.png" alt="image-20230323203552381" style="zoom: 33%;" /></p><blockquote><p><span>如一个容器宽200px，里面有4个项目，它们的宽度都为60px，那么整体宽度就是</span>
+<span>4×60=240px，比容器多了40px：如果这4个项目的flex-shrink值分别为1、2、1、3，那么它们的宽度分别按比例减少</span></p><ul><li><span>40px × 1 / (1+2+1+4) = 5px</span></li><li><span>40px × 2 / (1+2+1+4) = 10px</span></li><li><span>40px × 1 /(1+2+1+4) = 5px</span></li><li><span>40px × 4 / (1+2+1+4) = 20px</span></li></ul><p><span>缩小后它们的宽度分别为：55px、50px、55px、40px。</span></p></blockquote><p><code>flex-basis: &lt;length&gt; | auto</code><span>用来定义伸缩项目的基准值，剩余的空间将按比例进行缩放。</span>
+<span>它的默认值为auto，即项目的本来大小。可以设为跟width或height属性一样的固定值，如320px，这样项目将占据固定空间。</span></p><p><code>align-self</code><span>设置单独的伸缩项目在垂直方向上的对齐方式，该属性会复写默认的对齐方式：</span></p><ul><li><span>auto：表示继承容器align-items属性，如果没有父元素，则等同于stretch，默认值；</span></li><li><span>flex-start：垂直方向top对齐，</span></li><li><span>flex-end：垂直方向bottom对齐。</span></li><li><span>center：垂直方向middle对齐。</span></li><li><span>baseline：项目根据它们第一行文字的基线对齐。</span></li><li><span>stretch：如果项目未设置高度或设置为auto，项目将在交叉轴方向拉伸填充整个容器，默认值</span></li></ul><p><img src="轻量化平台开发笔记.assets/image-20230323203814873.png" alt="image-20230323203814873" style="zoom:50%;" /></p><h1 id='组件'><span>组件</span></h1><h2 id='组件定义和属性'><span>组件定义和属性</span></h2><p><span>在框架基础上官方提供了一系列基础组件，开发者可通过这些基础组件进行任意组合快速开发。</span></p><p><span>组件可以通过</span><strong><span>属性</span></strong><span>进行配置， 属性只能用在开始标签或单个自闭合标签上，不能用于结束标签。一个组件可以对应多个属性，属性具有名称和值两部分，</span><strong><span>组件的属性名称都是小写，以连字符“-”连接</span></strong><span>。</span></p><p><span>组件的共同属性组件的共同属性指每个组件都有的属性，在每个组件中它们代表的意义和作用都一样，</span></p><blockquote><p><span>id：组件的唯一表示，保持整个页面唯一。</span>
+<span>class：组件里的样式类，在对应的WXSS中定义的样式类。</span>
+<span>style：组件的内联样式，可以动态设置的内联样式。使用方式同HTML标签style属性。</span>
+<span>hidden：组件是否显示，所有组件默认显示。</span>
+<span>data-</span><span>*</span><span>：自定义属性，组件上触发事件时，会发送给事件处理函数。事件处理函数可以通过datascl获取。</span>
+<span>bind</span><span>*</span><span>/catch：组件的事件，绑定逻辑层相关事件处理函数。bind为冒泡事件，catch为非冒泡事件。</span></p><p><span>除上述属性以外几乎所有组件都有自定义属性，可以对该组件的功能或样式进行修饰。</span></p></blockquote><h2 id='视图容器'><span>视图容器</span></h2><p><span>没有任何语义和功能，仅作为容器元素存在</span></p><p><strong><span>&lt;</span><span>view/</span><span>&gt;</span><span>,</span><span>&lt;</span><span>scroll-view</span><span>&gt;</span><span>, </span><span>&lt;</span><span>swiper/</span><span>&gt;</span></strong></p><blockquote><p><span>在HTML中大部分标签内部能嵌套任何标签，如</span><code>&lt;div/&gt;</code><span>、</span><code>&lt;span/&gt;</code><span>、</span><code>&lt;section/&gt;</code><span>、</span><code>&lt;p/&gt;</code><span>等，但是在小程序中，大部分组件都有它自己特殊的功能和意义，内部也只能嵌套指定的组件，而</span><strong><span>容器组件内部能嵌套任何标签，容器组件是构建布局的基础组件</span></strong><span>。</span></p></blockquote><h3 id='view'><span>view/</span></h3><p><code>&lt;view/&gt;</code><span>是一个块级容器组件，没有特殊功能，主要用于布局展示</span></p><blockquote><p><span>hover：是否启动点击态，默认值为false。</span>
+<span>hover-class：指定按下去的样式。当hover-class=&quot;none&quot;时，没有点击态效果，默认值为none。</span>
+<span>hover-start-time：按住后多久出现点击态，单位毫秒，默认值为50。</span>
+<span>hover-stay-time：手指松开后点击态保留时间，单位毫秒，默认值为400。</span></p></blockquote><h3 id='scroll-view'><span>scroll-view</span></h3><p><code>&lt;scroll-view/&gt;</code><span>在</span><code>&lt;view/&gt;</code><span>基础上增加了滚动相关属性，通过设置这些属性，我们能响应滚动相关事件。目前，有些组件不能在</span><code>&lt;scroll-view/&gt;</code><span>中使用：</span><code>&lt;textarea/&gt;</code><span>、</span><code>&lt;video/&gt;</code><span>、</span><code>&lt;map/&gt;</code><span>、</span><code>&lt;convas/&gt;</code><span>。</span></p><blockquote><p><span>scroll-x：允许横向滚动，默认为false。</span>
+<span>scroll-y：允许纵向滚动，默认为false。</span>
+<span>upper-threshold：距顶部/左边多远时（单位px），触发scrolltoupper事件，默认值为50。</span>
+<span>lower-threshold：距底部/右边多远时（单位px），触发scrolltolower事件，默认值为50。</span>
+<span>scroll-top：设置竖向滚动条位置。</span>
+<span>scroll-left：设置横向滚动条位置。</span>
+<span>scroll-into-view：值应为某子元素id，滚动到该元素时，元素顶部对齐滚动区域顶部。</span>
+<span>bindscrolltoupper：滚动到顶部/左边，会触发scrolltoupper事件。</span>
+<span>bindscrolltolower：滚动到底部/右边，会触发scrolltolower事件。</span>
+<span>bindscroll：滚动时触发，event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY}。</span></p></blockquote><h3 id='swpier'><span>swpier</span></h3><p><code>&lt;swiper/&gt;</code><span> ，利用它我们可以实现轮播图、滑动页面、图片预览等效果。滑块视图组件由</span><span>&lt;</span><span>swiper/</span><span>&gt;</span><span>和</span><code>&lt;swiper-item/&gt;</code><span>两个标签组成，一个</span><code>&lt;swiper/&gt;</code><span>中只能放置一个或多个</span><code>&lt;swiper-item/&gt;</code><span>，</span><strong><span>放置其他节点会被删除</span></strong><span>，</span><code>&lt;swiper-item/&gt;</code><span>内部能放置任何组件，默认宽高自动设置为100%。</span></p><blockquote><p><swiper-item/><span>组件作为容器没有任何特殊属性， </span>
+<swiper/><span>组件属性如下：</span>
+<span>indicator-dots：是否显示面板指示点，默认为false。</span>
+<span>autoplay：是否自动切换，默认为false。</span>
+<span>current：当前所在页面的index，默认为0。</span>
+<span>interval：自动切换时间间隔，默认为5000。</span>
+<span>duration：滑动动画时长，默认为1000。</span>
+<span>circular：是否采用衔接滑动，默认值为false。</span>
+<span>bindchange:current改变时会触发change事件，event.detail = {current: current}。</span></p></blockquote><h2 id='基础组件'><span>基础组件</span></h2><h3 id='icon'><span>ICON</span></h3><p><code>&lt;icon/&gt;</code><span>是页面中非常常用的组件，它通常用于表示状态，起到引导作用。</span>
+<span>在</span><code>&lt;icon/&gt;</code><span>中，官方为大家提供了一套符合微信设计规范的样式类型</span></p><blockquote><p><span>type:icon的类型。有效值包括：success、success_no_circle、info、warn、waiting、cancel、download、search、clear。</span>
+<span>size:icon的大小，单位px。默认值为23px。</span>
+<span>color:icon的颜色，同CSS的color。</span></p></blockquote><h3 id='text'><span>TEXT</span></h3><p><code>&lt;text/&gt;</code><span>组件主要用于文本内容的展示，只有</span><code>&lt;text/&gt;</code><span>节点内部的内容能被长按选中，文本中的内容支持转义字符“\”，常用的转义字符可以参考网络资料。可以嵌套</span><code>&lt;text/&gt;</code><span>.</span></p><h3 id='process'><span>PROCESS</span></h3><p><code>&lt;progress/&gt;</code><span>用于显示进度状态，比如资源加载、用户资料完成度、媒体资源播放进度等。</span></p><blockquote><p><span>percent：当前进度占所有进度的百分比，取值区间为0到100。</span>
+<span>show-info：是否在进度条右侧显示百分比，默认为false。</span>
+<span>stroke-width：进度条线的宽度，单位px，默认值为6。</span>
+<span>color：进度条颜色，默认值为#09BB07。</span>
+<span>active：渲染时是否开启进度条从左到右的动画，默认值为false。开启后每次修改percent触发进度条重新渲染，都会从左到右显示动画。</span></p></blockquote><h2 id='表单组件'><span>表单组件</span></h2><h3 id='radio'><span>RADIO</span></h3><p><span>小程序中单选框是由</span><code>&lt;radio-group/&gt;</code><span>和</span><code>&lt;radio/&gt;</code><span>两个组件组合而成。</span>
+<span>在同一组单选项中的</span><code>&lt;radio/&gt;</code><span>是互斥的，当一个按钮被选中，之前选中的按钮就变为非选中。</span>
+<span>小程序中</span><code>&lt;radio/&gt;</code><span>不能单独使用，同一组</span><code>&lt;radio/&gt;</code><span>需要包含在一个</span><code>&lt;radio-group/&gt;</code><span>中，这样才能形成一组单项选择按钮，</span><code>&lt;radio/&gt;</code><span>的选中态不能直接获取，需要通过</span><code>&lt;radio-group/&gt;</code><span>的change事件进行获取。</span>
+<code>&lt;radio/&gt;</code><span>是</span><code>&lt;radio-group/&gt;</code><span>中的一个单选按钮，具有以下属性：</span></p><blockquote><p><span>value： </span><span>&lt;</span><span>radio/</span><span>&gt;</span><span>标识。当该</span><span>&lt;</span><span>radio/</span><span>&gt;</span><span>选中时，</span><span>&lt;</span><span>radio-group/</span><span>&gt;</span><span>的change事件会携带</span><span>&lt;</span><span>radio/</span><span>&gt;</span><span>的value。</span>
+<span>checked：当前</span><span>&lt;</span><span>radio/</span><span>&gt;</span><span>是否选中，一个</span><span>&lt;</span><span>radio-group/</span><span>&gt;</span><span>中只能有一个</span><span>&lt;</span><span>radio/</span><span>&gt;</span><span>的checked为true，如果设置多个，将默认选中最后一个为true的单选项，默认为false。</span>
+<span>disabled：是否禁用，禁用后不能点击，默认为false。</span>
+<span>color： radio的颜色，同CSS的color。</span></p></blockquote><h3 id='checkbox'><span>CHECKBOX</span></h3><p><span>小程序中的复选是由</span><code>&lt;checkbox-group/&gt;</code><span>和</span><code>&lt;checkbox/&gt;</code><span>两个组件组合而成。一个包含多个</span><code>&lt;checkbox/&gt;</code><span>的</span><code>&lt;checkbox-group/&gt;</code><span>表示一组多选项，一组多选项允许在待选项中选中一项以上的选项。</span>
+<code>&lt;checkbox-group/&gt;</code><span>用于包裹</span><code>&lt;checkbox/&gt;</code><span>，仅有一个属性bindchange：绑定</span><code>&lt;checkbox-group/&gt;</code><span>change事件，</span><code>&lt;checkbox-group/&gt;</code><span>中的选中项发生变化时触发change事件。</span>
+<code>&lt;checkbox/&gt;</code><span>是</span><code>&lt;checkbox-group/&gt;</code><span>中的一个多选项目，它的属性有：</span></p><blockquote><p><span>value:</span><code>&lt;checkbox/&gt;</code><span>标识，选中时触发</span><code>&lt;checkbox-group/&gt;</code><span>的change事件，并携带</span><code>&lt;checkbox/&gt;</code><span>的value。</span>
+<span>checked：当前</span><code>&lt;checkbox/&gt;</code><span>是否选中，可用来设置默认值，一个</span><code>&lt;checkbox-group/&gt;</code><span>允许一个或多个</span><code>&lt;checkbox/&gt;</code><span>的checked为true，默认为false。</span>
+<span>disabled：是否禁用，禁用后不能点击，默认为false。</span></p></blockquote><h3 id='switch'><span>SWITCH</span></h3><p><span>switch组件</span><code>&lt;switch/&gt;</code><span>是一个可以在两种状态切换的开关选择器:</span></p><blockquote><p><span>checked：是否选中，默认为false。</span>
+<span>type:</span><switch/><span>的UI样式，有效值为switch、checkbox，默认为switch。</span>
+<span>bindchange:checked改变时触发change事件</span></p></blockquote><h3 id='label'><span>LABEL</span></h3><p><code>&lt;radio/&gt;</code><span>和</span><code>&lt;checkbox/&gt;</code><span>案例中，点击文案时不能选中对应的单选框或复选框，这时我们可以利用</span><code>&lt;label/&gt;</code><span>改进表单组件的可用性，通过绑定for属性让用户点击</span><code>&lt;label/&gt;</code><span>时触发对应的控件；</span>
+<span>小程序中</span><label/><span>的触发规则有两种：</span></p><ul><li><span>将控件放在标签内。当用户点击时触发</span><code>&lt;label/&gt;</code><span>中第一个控件。</span></li><li><span>设置</span><code>&lt;label/&gt;</code><span>的for属性。当用户点击时触发for属性对应的控件。for属性优先级高于内部控件。</span></li></ul><h3 id='slider'><span>SLIDER</span></h3><p><code>&lt;slider/&gt;</code><span>组件滑动选择器是一种在移动端常用的交互组件，滑动选择器一般有水平和垂直两种，小程序中只提供了水平的形式，滑动到最左边是最小值，滑动到右边是最大值。</span></p><blockquote><p><span>min：最小值，默认值为0。</span>
+<span>max：最大值，默认值为100。</span>
+<span>step：步长，取值必须大于0，并且可被（max-min）整除，默认值为1。</span>
+<span>disabled：是否禁用，默认值为false。</span>
+<span>value：当前取值，默认值为0。value值应该在max和min的区间范围内，设置后滑块会滚动到对应位置。</span>
+<span>color：背景条的颜色，默认值为#e9e9e9。</span>
+<span>selected-color：已选择的颜色，默认值为#laad19。</span>
+<span>show-value：是否在右侧显示当前value。</span>
+<span>bindchange：完成一次拖动后触发的事件，event.detail = { value: value }。</span></p></blockquote><h3 id='picker'><span>PICKER</span></h3><p><code>&lt;picker/&gt;</code><span>可以在</span><strong><span>屏幕底部</span></strong><span>弹出一个窗口，供用户在所提供的选择项中选择一个。</span><code>&lt;picker/&gt;</code><span>本身不会向用户呈现任何特殊效果，像</span><code>&lt;checkbox-group/&gt;</code><span>一样用于包裹其他组件，点击</span><code>&lt;picker/&gt;</code><span>包裹内的元素时会从底部弹出相应选项。</span>
+<code>&lt;picker/&gt;</code><span>分为3种类型：普通选择器、时间选择器和日期选择器，默认是普通选择器，这三种选择器在细节上略有不同，我们可以通过设置</span><code>&lt;picker/&gt;</code><span>组件mode属性值切换不同选择器。</span></p><blockquote><p><span>普通选择器普通选择器是默认的滚动选择器，我们只需要绑定数组类型的数据就能直接使用，对应的mode属性值为selector：</span></p><p><span>range：底部弹出选项的数组，默认值为一个空数组[]。只有当</span><picker/><span>的mode为selector时，range属性才有效。</span>
+<span>rang-key：当range是一个Object Array时，通过rang-key来指定Object中key的值作为选择器显示内容。</span>
+<span>value:mode为selector时，value值是数字，表示选择了range中的第几个，从0开始。</span>
+<span>bindchange:value改变时触发change事件，event.detail={value:value}。</span>
+<span>disabled：是否禁用，默认值为false。</span></p></blockquote><h3 id='time-picker'><span>TIME PICKER</span></h3><p><span>时间选择器在普通选择器基础上，</span><code>&lt;picker/&gt;</code><span>提供了时间选择器，对应的mode属性值为time：</span></p><blockquote><p><span>value：表示选中的时间，字符串格式为“hh:mm”，默认为空。</span>
+<span>start：表示有效时间范围的开始，字符串格式为“hh:mm”，默认值为空。</span>
+<span>end：表示有效时间范围的结束，字符串格式事为“hh:mm”，默认值为空。</span>
+<span>bindchange:value改变时触发change事件，event.detail={value:value}。</span>
+<span>disabled：是否禁用，默认值为false。</span></p></blockquote><h3 id='data-picker'><span>DATA PICKER</span></h3><p><span>期选择器对应的mode属性为date，属性如下：</span></p><blockquote><p><span>value：表示选中的日期，字符串格式为“yyyy-MM-dd”，默认值为0。</span>
+<span>start：表示有效日期范围的开始，字符串格式为“yyyy-MM-dd”。</span>
+<span>end：表示有效日期范围的结束，字符串格式为“yyyy-MM-dd”。</span>
+<span>fields：表示选择器的粒度，有效值为year、month、day，默认值为day。</span>
+<span>bindchange:value改变时触发change事件，event.detail={value:value}。</span>
+<span>disabled：是否禁用，默认值为false。</span></p></blockquote><h3 id='picker-view'><span>PICKER-VIEW</span></h3><p><code>&lt;picker/&gt;</code><span>一共提供了3类选择器，这3类选中器在模式、交互上都比较固定，而在业务场景中我们可能会涉及多种形态选择器，针对这种情况，小程序提供了</span><code>&lt;picker-view/&gt;</code><span>用于实现自定义滚动选择器;</span>
+<span>一个完整的</span><code>&lt;picker-view/&gt;</code><span>包含两个标签：</span><code>&lt;picker-view/&gt;</code><span>和</span><code>&lt;picker-view-column/&gt;</code><span>, </span><code>&lt;picker-view-column/&gt;</code><span>用于创建列，列中孩子节点高度会自动设置为</span><code>&lt;picker-view/&gt;</code><span>的选中框高度，</span><code>&lt;picker-view/&gt;</code><span>中仅可放置</span><code>&lt;picker-view-column/&gt;</code><span>，放置其他节点不会显示。</span></p><blockquote><p><code>&lt;picker-view/&gt;</code><span>属性如下：</span>
+<span>value：数组类型，数组中的数字依次表示</span><code>&lt;picker-view/&gt;</code><span>内的</span><code>&lt;picker-view-colume/&gt;</code><span>选择的第几项（下标从0开始），数字大于</span><code>&lt;picker-view-column/&gt;</code><span>可选项长度时，选择最后一项。</span>
+<span>indicator-style：设置选择器中间选中框的样式。</span>
+<span>bingchange：当滚动选择，value改变时触发change事件，event.detail = {value:value}; value为数组，表示picker-view内的picker-view-column当前选择的是第几项（下标从0开始）。</span></p></blockquote><h3 id='input'><span>INPUT</span></h3><p><code>&lt;input/&gt;</code><span>是单行输入框，用于收集用户信息。根据不同的type属性值，输入字段拥有很多形式，与HTML不同的是小程序中的</span><code>&lt;input/&gt;</code><span>类型没有按钮类型，都是与输入相关的类型：</span></p><blockquote><p><span>value：输入框的初始内容。</span>
+<span>type:input的类型，有效值为：text、number、idcard、digit、time、date。</span>
+<span>password：是否显示密码类型，默认为false。</span>
+<span>placeholder：输入框为空时的占位符。</span>
+<span>placeholder-style：指定placeholder的样式。</span>
+<span>placeholder-class：指定placeholder的样式类，默认值为input-placeholder。</span>
+<span>disabled：是否禁用，默认为false。</span>
+<span>maxlength：最大输入长度，设置为0的时候不限制最大长度，默认值为140。</span>
+<span>cursor-spacing：指定光标与键盘的距离，单位px。取input距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离。</span>
+<span>auto-focus：自动聚焦，拉起键盘（开发工具暂不支持）。页面中只能有一个</span><input/><span>或</span><textarea/><span>设置auto-focus属性。</span>
+<span>focus：获取焦点（开发工具暂不支持），默认为false。</span>
+<span>bindinput：当键盘输入时，触发input事件，event.detail = {value: value}，处理函数可以直接return一个字符串，将替换输入框的内容。</span>
+<span>bindfocus：输入框聚焦时触发，event.detail={value:value}。</span>
+<span>bindblur：输入框失去焦点时触发，event.detail={value:value}。</span>
+<span>bindconfirm：点击完成按钮时触发，event.detail={value: value}。</span></p></blockquote><h3 id='textarea'><span>TEXTAREA</span></h3><p><code>&lt;textarea/&gt;</code><span>是多行输入框，与HTML中多行输入框不一样的是，小程序中</span><code>&lt;textarea/&gt;</code><span>是一个自闭合标签，它的值需要赋值给value属性，而不是被标签包裹。</span></p><blockquote><p><span>value：输入框的初始内容。</span>
+<span>placeholder：输入框为空时的占位符。</span>
+<span>placeholder-style：指定placeholder的样式。</span>
+<span>placeholder-class：指定placeholder的样式类，默认值为textarea-placeholder。</span>
+<span>disabled：是否禁用，默认为false。</span>
+<span>maxlength：最大输入长度，设置为0的时候不限制最大长度，默认值为140。</span>
+<span>auto-focus：自动聚焦，拉起键盘（开发工具暂不支持）。页面中只能有一个</span><input/><span>或</span><textarea/><span>设置auto-focus属性。</span>
+<span>focus：获取焦点（开发工具暂不支持），默认为false。</span>
+<span>auto-height：是否自动增高，设置auto-height时，style.height不生效，初始状态默认为一行高度。</span>
+<span>fixed：如果textarea是在一个position:fixed的区域，需要显示指定属性fixed为true，默认值为false。</span>
+<span>cursor-spacing：指定光标与键盘的距离，单位px。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离。默认值为0.</span>
+<span>bindinput：当键盘输入时，触发input事件，event.detail = {value: value}, bindinput处理函数的返回值并不会反映到textarea上。</span>
+<span>bindinput：除了date/time类型外的输入框，当键盘输入时，触发input事件，event.detail={value:value, cursor：光标位置}，处理函数可以直接return一个字符串，替换输入框的内容。□bindfocus：输入框聚焦时触发，event.detail={value:value}。□bindblur：输入框失去焦点时触发，event.detail={value:value}。</span>
+<span>bindlinechange：输入框行数变化时调用，首次渲染时也会触发，event.detail = {height:0, heightRpx:0, lineCount:0 };</span>
+<span>bindconfirm：点击完成时，触发confirm事件，event.detail={value: value}。</span></p></blockquote><h3 id='button'><span>BUTTON</span></h3><p><code>&lt;button/&gt;</code><span>组件按钮除了在应用中提供交互功能，按钮的颜色也承载了应用的引导作用，通常在一个程序中一个按钮至少有3种状态：默认点击（default）、建议点击（primary）、谨慎点击（warn）。</span></p><blockquote><p><span>当</span><code>&lt;button/&gt;</code><span>被</span><code>&lt;form/&gt;</code><span>包裹时，可以通过设置form-type属性触发表单对应的事件:</span>
+<span>size：表示按钮的大小，有效值为default、mini，默认值为default。</span>
+<span>type：按钮的样式类型，有效值为primary、default、warn，默认值为default。</span>
+<span>plain：按钮是否镂空，背景色透明，默认值为false。</span>
+<span>disabled：是否禁用，默认值是false。</span>
+<span>loading：名称前是否带loading图标，默认值为false。通常在表单提交过程中或者按钮点击后等待反馈时，就需要打开loading让户有感知。</span>
+<span>form-type：用于</span><code>&lt;form/&gt;</code><span>组件，有效值为submit、reset，点击一个位于</span><code>&lt;form/&gt;</code><span>中且设置了form-type的</span><code>&lt;button/&gt;</code><span>时，会触发</span><code>&lt;form/&gt;</code><span>的submit事件或reset事件。</span>
+<span>hover-class：指定按钮按下去的样式类。当hover-class=&quot;none&quot;时，没有点击态效果，默认值为button-hover。button-hover的默认样式为{ background-color: rgba(0, 0, 0, 0.1); opacity: 0.7 }，如果想进行系统级修改可以直接覆盖这个样式。</span>
+<span>hover-start-time：按住后多久出现点击态，单位毫秒，默认值50。</span>
+<span>hover-stay-time：手指松开后点击态保留时间，单位毫秒，默认值400。button大部分属性都和样式有关，一些属性外的特殊样式大家也可以通过设置wxss来实现。</span></p></blockquote><h3 id='form'><span>FORM</span></h3><form>是本章最后一个也是本章最关键的一个组件，它用于嵌套本章其他组件，使之形成表单。</form><blockquote><p><span>当触发</span><code>&lt;form/&gt;</code><span>submit方法时，</span><code>&lt;form/&gt;</code><span>能将组件内用户输入的</span><code>&lt;switch/&gt;</code><span>、</span><code>&lt;input/&gt;</code><span>、</span><code>&lt;checkbox/&gt;</code><span>、</span><code>&lt;slider/&gt;</code><span>、</span><code>&lt;radio/&gt;</code><span>、</span><code>&lt;picker/&gt;</code><span>数据按组件name属性进行组装，作为参数传递给submit方法。通过这种方式，我们可以利用</span><code>&lt;form/&gt;</code><span>很方便地获取表单数据同后台进行交互。</span>
+<span>report-submit：是否返回formId, formId用于发送模板消息，默认值为false。</span>
+<span>bindsubmit：携带form中的数据触发的submit事件，与</span><code>&lt;button/&gt;</code><span>的form-type属性配合使用，event.detail={value: {&#39;name&#39;: &#39;value&#39;}, formId : ‘’}。</span>
+<span>bindreset：表单重置时触发reset事件，与</span><code>&lt;button/&gt;</code><span>的form-type属性配合使用。</span></p></blockquote><h2 id='导航组件'><span>导航组件</span></h2><h3 id='navigator'><span>NAVIGATOR</span></h3><p><code>&lt;navigator/&gt;</code><span>是小程序中的页面链接，其作用和HTML中超链接标签一样，主要控制页面的跳转。</span></p><blockquote><p><span>url：应用内跳转链接。链接地址为需要跳转页面的相对地址。</span>
+<span>redirect：跳转行为是否为重定向，如果为true，则跳转时会关闭当前页面。默认值为false。</span>
+<span>open-type：可选值‘navigate&#39;、&#39;redirect&#39;、&#39;switchTab&#39;，对应于wx.navigateTo、wx.redirect-To、wx.switchTab的功能，默认值为navigate。</span>
+<span>hover-class：点击时的样式类，当hover-class=&quot;none&quot;时，没有点击效果。默认值为navigator-hover。navigator-hover默认为{background-color:rgba(0, 0, 0, 0.1); opacity: 0.7; }</span></p></blockquote><h2 id='媒体组件'><span>媒体组件</span></h2><h3 id='image'><span>IMAGE</span></h3><p><span>image一个应用中图片是必不可少的。小程序中的</span><code>&lt;image/&gt;</code><span>除了可以显示图片外，还提供了图片的裁剪、缩放模式属性，这大大丰富了</span><code>&lt;image/&gt;</code><span>的显示能力。</span><code>&lt;image/&gt;</code><span>默认宽度为300px，默认高度为225px：</span></p><blockquote><p><span>src：图片资源地址。可以是网络地址，也可以是本地图片的相对地址。</span>
+<span>mode：图片的裁剪、缩放模式。默认值为“scaleToFill”。</span>
+<span>binderror：当错误发生时，发布到App Service的事件名，事件对象event.detail={errMsg : &#39;something wrong’ }。</span>
+<span>bindload：当图片载入完毕时，发布到App Service的事件名，事件对象event. detail={height:’图片高度px&#39;, width:’图片宽度px’}。</span>
+<strong><span>mode属性有一共有13种裁剪模式，其中4种是缩放模式，9种是裁剪模式。</span></strong>
+<strong><span>缩放模式：</span></strong>
+<span>scaleToFill：不保持纵横比缩放图片，使图片的宽高完全拉伸至填满image元素。</span>
+<span>aspectFit：保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。</span>
+<span>aspectFill：保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。</span>
+<span>widthFix：宽度不变，高度自动变化，保持原图宽高不变，这时图片原有高度样式会失效。</span>
+<strong><span>裁剪模式：</span></strong>
+<span>top：不缩放图片，只显示图片的顶部区域。</span>
+<span>bottom：不缩放图片，只显示图片的底部区域。</span>
+<span>center：不缩放图片，只显示图片的中间区域。</span>
+<span>left：不缩放图片，只显示图片的左边区域。</span>
+<span>right：不缩放图片，只显示图片的右边区域。</span>
+<span>top left：不缩放图片，只显示图片的左上边区域。</span>
+<span>top right：不缩放图片，只显示图片的右上边区域。</span>
+<span>bottom left：不缩放图片，只显示图片的左下边区域。</span>
+<span>bottom right：不缩放图片，只显示图片的右下边区域。</span></p></blockquote><h3 id='audio'><span>AUDIO</span></h3><p><span>小程序运行在页面中直接嵌入的音频组件，官方系统为其提供了一套默认的组件样式，我们也可以通过修改属性或调用API封装自己的音频UI组件，</span><code>&lt;audio/&gt;</code><span>属性如下：</span></p><blockquote><p><span>src：要播放音频的资源地址。可以是网络音频地址或本地音频文件相对路径。</span>
+<span>loop：是否循环播放，默认值为false。</span>
+<span>controls：是否显示默认控件，默认值为true。</span>
+<span>poster：默认控件上的音频封面的图片资源地址，如果controls属性值为false则poster无效。</span>
+<span>name：默认控件上的音频名字，如果controls属性值为false则name无效。默认值为“未知音频”。</span>
+<span>author：默认控件上的作者名字，如果controls属性值为false则author无效。默认值为“未知作者”。</span>
+<span>binderror：当发生错误时触发error事件，detail = {errMsg: MediaError.code}。MediaError.code有以下类型：</span>
+<span>	</span><span>MEDIA_ERR_ABORTED：获取资源被用户禁止。</span>
+<span>	</span><span>MEDIA_ERR_NETWORD：网络错误。</span>
+<span>	</span><span>MEDIA_ERR_DECODE：解码错误。</span>
+<span>	</span><span>MEDIA_ERR_SRC_NOT_SUPPOERTED：不合适资源。</span>
+<span>bindplay：当开始/继续播放时触发play事件。</span>
+<span>bindpause：当暂停播放时触发pause事件。</span>
+<span>bindtimeupdate：当播放进度改变时触发timeupdate事件，detail = {currentTime, duration}。</span>
+<span>bindended：当播放到末尾时触发ended事件。</span></p></blockquote><h3 id='video'><span>VIDEO</span></h3><p><span>小程序中允许我们简单嵌入视频，和audio组件相比，它能提供的属性少了很多，只能设置视频源，监听加载错误。</span><code>&lt;video/&gt;</code><span>默认宽度为300px，高度为225px：</span></p><blockquote><p><span>src：要播放视频的资源地址。</span>
+<span>controls：是否显示默认播放控件（播放/暂停按钮、播放进度、时间），默认为true。</span>
+<span>danmu-list：弹幕列表。</span>
+<span>danmu-btn：是否显示弹幕按钮，只在初始化时有效，不能动态变更，默认为false。</span>
+<span>enable-danmu：是否展示弹幕，只在初始化时有效，不能动态变更，默认为false。</span>
+<span>autoplay：是否自动播放，默认为false。</span>
+<span>bindplay：当开始/继续播放时触发play事件。</span>
+<span>bindpuase：当暂停播放时触发pause事件。</span>
+<span>bindended：当播放到末尾时触发ended事件。</span>
+<span>bindtimeupdate：播放进度变化时触发，event.detail = {currentTime: ’当前播放时间’}。触发频率应该在250ms一次。</span>
+<span>objectFit：当视频大小与video容器大小不一致时，视频的表现形式。contain：包含，fill：填充，cover：覆盖，默认值为contain。</span></p></blockquote><h2 id='地图组件'><span>地图组件</span></h2><h3 id='map'><span>MAP</span></h3><p><span>移动应用中地图是必不可。由于需要适配三端，在小程序中我们不能使用</span><map/><span>组件以外的地图插，通过地图我们可以很直观地表现出地理信息：</span></p><blockquote><p><span>latitude：中心纬度。</span>
+<span>longitude：中心经度。</span>
+<span>scale：缩放级别，默认为16。</span>
+<span>markers：标记点，用于在地图上显示标记的位置，不能自定义图标和样式，每个标记点属性如下：</span>
+<span>	</span><span>●id：标记点id, marker点击事件回调会返回此id。</span>
+<span>	</span><span>●latitude：纬度，浮点数，范围-90～90，必填项。</span>
+<span>	</span><span>●longitude：经度，浮点数，范围-180～180，必填项。</span>
+<span>	</span><span>●title：标注点名。</span>
+<span>	</span><span>●iconPath：显示的图标，项目目录下的图片路径，支持相对路径写法，必填项。</span>
+<span>	</span><span>●rotate：旋转角度，顺时针旋转的角度，范围0～360，默认为0.</span>
+<span>	</span><span>●alpha：标注的透明度，默认1，无透明。</span>
+<span>	</span><span>●width：标注图标宽度，默认为图片实际宽度。</span>
+<span>	</span><span>●height：标注图标高度，默认为图片实际高度。</span>
+<span>polyline：路线，指定一系列坐标点，从数组第一项连线至最后一项，数组元素属性如下：</span>
+<span>	</span><span>●points：经纬度数组，如：[{latitude:0, longitude:0}]，必填项。</span>
+<span>	</span><span>●color：线的颜色，8位十六进制表示，后两位表示alpha值，如：#000000AA。</span>
+<span>	</span><span>●width：线的宽度。</span>
+<span>	</span><span>●dottedLine：是否为虚线，默认为false。</span>
+<span>circles：圆，数组类型，在地图上显示圆，数组元素属性如下：</span>
+<span>	</span><span>●latitude：纬度，浮点数，范围-90～90，必填项。</span>
+<span>	</span><span>●longitude：经度，浮点数，范围-180～180必填项。</span>
+<span>	</span><span>●color：描边的颜色，8位十六进制表示，后两位表示alpha值，如：#000000AA。</span>
+<span>	</span><span>●fillColor：填充颜色，8位十六进制表示，后两位表示alpha值，如：#000000AA。</span>
+<span>	</span><span>●radius：半径，必填项。</span>
+<span>	</span><span>●strokeWidth：描边的宽度。</span>
+<span>controls：控件。</span>
+<span>	</span><span>●id：控件id，在控件点击事件回调会返回此id。</span>
+<span>	</span><span>●position：控件在地图的位置，控件相对地图位置，必填项，position元素属性如下：○left：距离地图的左边界多远，默认为0。○top：距离地图的上边界多远，默认为0。○width：控件宽度，默认为图片宽度。○height：控件高度，默认为图片高度。</span>
+<span>	</span><span>●iconPath：显示的图标，相对应用根目录路径的图片，必填项。</span>
+<span>	</span><span>●clickable：是否可点击，默认不可点击。</span>
+<span>include-points：缩放视野以包含所有给定的坐标点。</span>
+<span>show-location：显示带有方向的当前定位点。</span>
+<span>bindmarkertap：点击标记点时触发。</span>
+<span>bindcontroltap：点击控件时触发。</span>
+<span>bindregionchange：视野发生变化时触发。</span>
+<span>bindtap：点击地图时触发。</span></p></blockquote><h2 id='画布组件'><span>画布组件</span></h2><h3 id='canvas'><span>CANVAS</span></h3><p><code>&lt;canvas/&gt;</code><span>主要用于绘制图形，相当于在页面放置了一块“画布”，可以在其中进行图形绘制。</span><canvas/><span>组件是一块无色透明区域，本身并没有绘制能力，它仅仅是图形容器，需要调用相关API来完成实际的绘图任务。</span><canvas/><span>组件默认宽度300px，高度225px，同一页面中的canvas-id不能重复。</span></p><blockquote><p><span>canvas-id:canvas组件的唯一标识符。</span>
+<span>disable-scroll：当在canvas中移动时，禁止屏幕滚动以及下拉刷新，默认为false。</span>
+<span>bindtouchstart：手指触摸动作开始。</span>
+<span>bindtouchmove：手指触摸后移动。</span>
+<span>bindtouchend：手指触摸动作结束。</span>
+<span>bindtouchcancel：手指触摸动作被打断，如来电提醒、弹窗。</span>
+<span>bindlongtaop：手指长按500ms之后触发，触发了长按事件后进行移动不会触发屏幕的滚动。</span>
+<span>binderror：当发生错误时触发error事件，detail={errMsg: &#39;something wrong’}。</span></p></blockquote><h1 id='服务器数据交互'><span>服务器数据交互</span></h1><h2 id='wxrequest'><span>wx.request</span></h2><p><span>利用wx.request()向本地HTTP服务器发送POST请求：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="js"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="js"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51562px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">submit</span>: <span class="cm-keyword">function</span>(<span class="cm-def">e</span>) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">wx</span>.<span class="cm-property">request</span>({</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-property">method</span>: <span class="cm-string">'post'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-property">url</span>: <span class="cm-string">'http://127.0.0.1:3000/'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-property">data</span>: <span class="cm-variable-2">e</span>.<span class="cm-property">detail</span>.<span class="cm-property">value</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-property">success</span>: <span class="cm-keyword">function</span> (<span class="cm-def">res</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">res</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  })</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">},</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><h2 id='表单数据绑定'><span>表单数据绑定</span></h2><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="html" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="html"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51562px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span> <span class="cm-attribute">class</span>=<span class="cm-string">"container"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">form</span> <span class="cm-attribute">bindsubmit</span>=<span class="cm-string">"submit"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span>姓名：<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">name</span>=<span class="cm-string">"name"</span> <span class="cm-attribute">value</span>=<span class="cm-string">"{{name}}"</span> <span class="cm-tag cm-bracket">/&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span>性别：<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">radio-group</span> <span class="cm-attribute">name</span>=<span class="cm-string">"gender"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">wx:for</span>=<span class="cm-string">"{{gender}}"</span> <span class="cm-attribute">wx:key</span>=<span class="cm-string">"value"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">radio</span> <span class="cm-attribute">value</span>=<span class="cm-string">"{{item.value}}"</span> <span class="cm-attribute">checked</span>=<span class="cm-string">"{{item.checked}}"</span> <span class="cm-tag cm-bracket">/&gt;</span> {{item.name}}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">radio-group</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span>专业技能：<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">checkbox-group</span> <span class="cm-attribute">name</span>=<span class="cm-string">"skills"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">wx:for</span>=<span class="cm-string">"{{skills}}"</span> <span class="cm-attribute">wx:key</span>=<span class="cm-string">"value"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">checkbox</span> <span class="cm-attribute">value</span>=<span class="cm-string">"{{item.value}}"</span> <span class="cm-attribute">checked</span>=<span class="cm-string">"{{item.checked}}"</span> <span class="cm-tag cm-bracket">/&gt;</span> {{item.name}}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">checkbox-group</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span>您的意见：<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">text</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">textarea</span> <span class="cm-attribute">name</span>=<span class="cm-string">"opinion"</span> <span class="cm-attribute">value</span>=<span class="cm-string">"{{opinion}}"</span> <span class="cm-tag cm-bracket">/&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">form-type</span>=<span class="cm-string">"submit"</span><span class="cm-tag cm-bracket">&gt;</span>提交<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">view</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 714px;"></div><div class="CodeMirror-gutters" style="display: none; height: 714px;"></div></div></div></pre><p>&nbsp;</p></div></div>
+</body>
+</html>
