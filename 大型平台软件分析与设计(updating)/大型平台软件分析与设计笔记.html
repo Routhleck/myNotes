@@ -1,0 +1,633 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>大型平台软件分析与设计笔记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#introduction">Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n9"><a class="md-toc-inner" href="#大型平台概述">大型平台概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n23"><a class="md-toc-inner" href="#平台架构">平台架构</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n26"><a class="md-toc-inner" href="#基本概念介绍">基本概念介绍</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n27"><a class="md-toc-inner" href="#分布式架构-1">分布式架构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" href="#微服务架构">微服务架构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner" href="#微服务基于分布式做了什么">微服务基于分布式做了什么</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n67"><a class="md-toc-inner" href="#大型平台的质量">大型平台的质量</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n154"><a class="md-toc-inner" href="#分布式架构-2">分布式架构</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n155"><a class="md-toc-inner" href="#分布式系统概述">分布式系统概述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n157"><a class="md-toc-inner" href="#分布式系统特点">分布式系统特点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n169"><a class="md-toc-inner" href="#分布式面临的经典问题">分布式面临的经典问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n181"><a class="md-toc-inner" href="#tidb核心特性">TiDB核心特性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n187"><a class="md-toc-inner" href="#kafka">Kafka</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n189"><a class="md-toc-inner" href="#副本">副本</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n191"><a class="md-toc-inner" href="#分区">分区</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n193"><a class="md-toc-inner" href="#cap经典理论">CAP经典理论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n203"><a class="md-toc-inner" href="#一致性">一致性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n207"><a class="md-toc-inner" href="#可用性">可用性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n209"><a class="md-toc-inner" href="#分区容错性">分区容错性</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n212"><a class="md-toc-inner" href="#高并发">高并发</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n213"><a class="md-toc-inner" href="#读">读</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n236"><a class="md-toc-inner" href="#写">写</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n253"><a class="md-toc-inner" href="#读写设计原理">读写设计原理</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n290"><a class="md-toc-inner" href="#高可用">高可用</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n291"><a class="md-toc-inner" href="#高可用的基本框架思维">高可用的基本框架思维</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n292"><a class="md-toc-inner" href="#故障检测">故障检测</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n305"><a class="md-toc-inner" href="#解决脑裂">解决脑裂</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n314"><a class="md-toc-inner" href="#视业务场景做到数据一致性">视业务场景做到数据一致性</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n323"><a class="md-toc-inner" href="#对客户端尽量透明">对客户端尽量透明</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n325"><a class="md-toc-inner" href="#要避免高可用依赖的连环问题">要避免高可用依赖的连环问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n327"><a class="md-toc-inner" href="#一致性算法">一致性算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n332"><a class="md-toc-inner" href="#运维层面问题">运维层面问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n338"><a class="md-toc-inner" href="#多活部署">多活部署</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n349"><a class="md-toc-inner" href="#set化">SET化</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n353"><a class="md-toc-inner" href="#分布式事务">分布式事务</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n354"><a class="md-toc-inner" href="#经典解决方案">经典解决方案</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n355"><a class="md-toc-inner" href="#2pc理论两阶段提交）">2pc理论（两阶段提交）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n359"><a class="md-toc-inner" href="#3pc理论三阶段提交）">3pc理论（三阶段提交）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n362"><a class="md-toc-inner" href="#tcc实现方式">TCC实现方式</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n365"><a class="md-toc-inner" href="#企业常见实现方案">企业常见实现方案：</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n366"><a class="md-toc-inner" href="#代码耦合">代码耦合</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n369"><a class="md-toc-inner" href="#利用消息">利用消息</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n372"><a class="md-toc-inner" href="#事务消息rocketmq">事务消息RocketMQ</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n375"><a class="md-toc-inner" href="#事务消息-基于kafka自研">事务消息 基于kafka自研</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n377"><a class="md-toc-inner" href="#事务状态表事务补偿">事务状态表+事务补偿</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n379"><a class="md-toc-inner" href="#同步多写异步对账">同步多写+异步对账</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n381"><a class="md-toc-inner" href="#最终一致性方案">最终一致性方案</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n383"><a class="md-toc-inner" href="#开源解决方案">开源解决方案</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n384"><a class="md-toc-inner" href="#seata">Seata</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n401"><a class="md-toc-inner" href="#分布式存储">分布式存储</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n413"><a class="md-toc-inner" href="#ceph">ceph</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n424"><a class="md-toc-inner" href="#redis">redis</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n435"><a class="md-toc-inner" href="#mysql">mysql</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n438"><a class="md-toc-inner" href="#拆表方式">拆表方式</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n440"><a class="md-toc-inner" href="#不停机拆分">不停机拆分</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n442"><a class="md-toc-inner" href="#sharding-jdbc">sharding-jdbc</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n458"><a class="md-toc-inner" href="#业务架构与微服务架构">业务架构与微服务架构</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n459"><a class="md-toc-inner" href="#微服务概述">微服务概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n462"><a class="md-toc-inner" href="#微服务的拆分原则">微服务的拆分原则</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n463"><a class="md-toc-inner" href="#togaf方法论">TOGAF方法论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n466"><a class="md-toc-inner" href="#拆分原则">拆分原则</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n520"><a class="md-toc-inner" href="#技术侧重点">技术侧重点</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n559"><a class="md-toc-inner" href="#微服务的注册与发现">微服务的注册与发现</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n561"><a class="md-toc-inner" href="#业务架构的应用与实践理解">业务架构的应用与实践理解</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n563"><a class="md-toc-inner" href="#案例分析">案例分析</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n565"><a class="md-toc-inner" href="#云原生">云原生</a></span></p></div><h1 id='introduction'><span>Introduction</span></h1><p><span>平时 50% (出勤率 + 响应率 + 答辩贡献权值 + 组内积极性) 小组成绩*个人系数</span>
+<span>测验 50% (5道大题 架构分析+架构设计)</span></p><p><span>TL：记录成员关键指标，绩效排序；准备答辩材料分工、协作；提高团队响应率、出勤率。</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230312163052434.png" referrerpolicy="no-referrer" alt="image-20230312163052434"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230312163230287.png" referrerpolicy="no-referrer" alt="image-20230312163230287"><img src="大型平台软件分析与设计笔记.assets/image-20230312163852149.png" referrerpolicy="no-referrer" alt="image-20230312163852149"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230312164139141.png" referrerpolicy="no-referrer" alt="image-20230312164139141"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230312164410294.png" referrerpolicy="no-referrer" alt="image-20230312164410294"></p><h1 id='大型平台概述'><span>大型平台概述</span></h1><ul><li><span>高并发，高可用</span></li><li><span>数据量大</span></li><li><span>用户分布广泛，基数大，网络情况复杂</span></li><li><span>随用户需求持续跌打</span></li><li><span>有时间和技术的沉淀，渐进式发展</span></li><li><span>安全环境恶劣</span></li></ul><h2 id='平台架构'><span>平台架构</span></h2><p><span>平台架构是针对平台设计及演进过程中所有关键问题的解决方案总和。</span></p><p><span>架构就是一切从实际出发，解决已发生，或者大概率即将会遇到的问题。</span></p><h2 id='基本概念介绍'><span>基本概念介绍</span></h2><h3 id='分布式架构-1'><span>分布式架构</span></h3><p><span>相对于单体架构或者集中式架构而言，将相同或不同的功能模块运行在</span><strong><span>不同的机器</span></strong><span>上，互相之间</span><strong><span>通过网络通信</span></strong>
+<strong><span>高性价比</span></strong><span>相对于单体架构难以解决的问题</span></p><h3 id='微服务架构'><span>微服务架构</span></h3><p><span>将单一应用程序划分为一组小的服务，服务之间相互协调配合，采用轻量级的通讯协议沟通。每个服务都围绕着具体的业务进行构建，并且能够被独立的部署到生产环境</span></p><p><span>对于传统服务的区别</span></p><blockquote><p><span>优点:</span></p><ol start='' ><li><span>研发成本低</span></li><li><span>本地性能好</span></li><li><span>没有分布式的管理和调用小号</span></li></ol><p><span>缺点:</span></p><ol start='' ><li><span>多版本并行效率低</span></li><li><span>随业务发展越发庞大，迁一处动全身</span></li><li><span>上手成本高，坑多</span></li><li><span>稳定性差，代码模块莫名受牵连</span></li><li><span>瓶颈低</span></li></ol></blockquote><h3 id='微服务基于分布式做了什么'><span>微服务基于分布式做了什么</span></h3><ol start='' ><li><span>网络层协议标准化</span></li><li><span>数据层协议标准化</span></li><li><span>网络开发框架标准化</span></li><li><span>统一服务注册与发现机制</span></li><li><span>全链路分布式追踪</span></li><li><span>统一限流、熔断、降级、服务监控体系等等</span></li></ol><h2 id='大型平台的质量'><span>大型平台的质量</span></h2><ul><li><p><span>性能</span></p><ul><li><p><span>衡量指标：响应时间、并发数、吞吐量</span></p></li><li><p><span>响应时间：从请求发出到收到响应的时间</span></p></li><li><p><span>并发数：平台用户数-&gt;平台在线用户数-&gt;网络并发用户数</span></p></li><li><p><span>吞吐量: TPS(每秒事务数)，HPS(每秒HTTP请求数)， QPS(每秒查询数)，访问数/天，业务数/小时</span></p></li><li><p><span>性能优化策略</span></p><blockquote><ul><li><p><span>web前端性能优化</span></p><ul><li><span>浏览器访问优化</span></li><li><span>CDN</span></li><li><span>反向代理</span></li></ul></li><li><p><span>应用服务器性能优化</span></p><ul><li><span>负载均衡</span></li><li><span>分布式</span></li><li><span>集群</span></li><li><span>缓存</span></li><li><span>异步</span></li></ul></li><li><p><span>存储性能优化</span></p><ul><li><span>主从分离</span></li><li><span>分布式存储</span></li></ul></li></ul></blockquote></li></ul></li><li><p><span>可用性</span></p><ul><li><p><span>衡量指标：一台或多台服务器宕机，系统仍然可用。目标就是达到7*24可用，常用几个9来衡量，四个9指全年99.99%时间可用</span></p></li><li><p><span>可用性优化策略</span></p><blockquote><ul><li></li></ul></blockquote></li></ul></li><li><p><span>伸缩性</span></p><ul><li><p><span>衡量标准：是否可以用多台服务器构建集群，能否向集群中增减服务器，增减服务器之后是否能保证像原来一样可用。让服务“无状态”</span></p></li><li><p><span>伸缩性优化策略</span></p><blockquote><p><span>总的来说，有状态服务和无状态服务各有优缺点，选择哪种类型的服务应该根据具体应用场景和需求来确定。例如，需要维护用户登录状态的应用程序可能需要有状态服务，而具有大量请求并需要高度扩展性的应用程序可能更适合使用无状态服务。</span></p></blockquote></li></ul></li><li><p><span>拓展性</span></p><ul><li><p><span>衡量标准：增加新的业务流程时，或基于已有业务流程扩展时，是否可以实现对现有业务透明无影响</span></p></li><li><p><span>拓展性优化策略</span></p><blockquote><ul><li><span>抽象可复用的基础服务，做好封装</span></li><li><span>松耦合设计</span></li><li><span>基于业务和技术的发展预见性设计</span></li></ul></blockquote></li></ul></li><li><p><span>安全性</span></p><ul><li><span>衡量标准：对攻击与窃密手段，是否有应对策略</span></li></ul></li></ul><p><span>好的架构要看具体需求、成本</span></p><h1 id='分布式架构-2'><span>分布式架构</span></h1><h2 id='分布式系统概述'><span>分布式系统概述</span></h2><p><span>相对于单体架构或者集中式架构而言，将相同或不同的功能模块运行在</span><strong><span>不同的机器</span></strong><span>上，互相之间</span><strong><span>通过网络通信</span></strong></p><h3 id='分布式系统特点'><span>分布式系统特点</span></h3><ul><li><span>分布性</span></li><li><span>对等性</span></li><li><span>并发性</span></li><li><span>全局时钟</span></li><li><span>故障总是发生</span></li></ul><h3 id='分布式面临的经典问题'><span>分布式面临的经典问题</span></h3><ul><li><span>高并发的分片策略、异步化任务调度等</span></li><li><span>分布式场景下，数据一致性</span></li><li><span>数据分区或多副本场景下数据一致性问题</span></li><li><span>多结点的不稳定、容灾等问题</span></li><li><span>高并发时的数据预期问题</span></li></ul><h3 id='tidb核心特性'><span>TiDB核心特性</span></h3><ul><li><span>水平拓展</span>
+<span>计算能力和存储能力</span></li><li><span>高可用</span>
+<span>TiDB/TiKv/PD三个组件都能容忍部分实例失效</span></li></ul><h3 id='kafka'><span>Kafka</span></h3><p><span>消息系统，使用推拉模型将生产者和消费者分离</span></p><h4 id='副本'><span>副本</span></h4><p><span>副本保证高可用，不会等全部副本，部分副本可用</span></p><h4 id='分区'><span>分区</span></h4><p><span>分区保证消费高并发</span></p><h2 id='cap经典理论'><span>CAP经典理论</span></h2><p><span>一个分布式系统不可能同时满足</span></p><ul><li><span>一致性(Consistency)</span></li><li><span>可用性(Availability)</span></li><li><span>分区容错性(Partition tolerance)</span></li></ul><p><span>这三个基本需求</span></p><h3 id='一致性'><span>一致性</span></h3><p><span>数据的多个副本间能否保持一致的特性</span></p><blockquote><p><span>针对某一数据项的修改成功后，可使所有用户或业务场景立刻读取或感知到最新的值，则该系统可以认为具有强一致性</span></p></blockquote><h3 id='可用性'><span>可用性</span></h3><p><span>系统提供的服务必须一直处于可用的状态，对于用户的所有请求都能够在&quot;有限的时间&quot;内&quot;返回结果&quot;</span></p><h3 id='分区容错性'><span>分区容错性</span></h3><p><span>系统遇到网络分区故障的时候，需要能够保证对外提供满足一致性和可用性的服务，除非整个网络环境都发生了故障</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326163242532.png" alt="image-20230326163242532" style="zoom:67%;" /></p><h2 id='高并发'><span>高并发</span></h2><h3 id='读'><span>读</span></h3><p><strong><span>读写分离</span></strong></p><ul><li><p><span>动静分离与CND加速</span></p></li><li><p><span>加缓存</span></p><ul><li><span>缓存雪崩</span></li><li><span>缓存击穿</span></li><li><span>大量的热Key过期</span></li></ul></li><li><p><span>异步化</span></p></li><li><p><span>转批量(预读)</span></p></li><li><p><strong><span>重写轻读</span></strong></p></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230326164848125.png" alt="image-20230326164848125" style="zoom: 50%;" /></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326165109852.png" alt="image-20230326165109852" style="zoom: 67%;" /></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326165258943.png" alt="image-20230326165258943" style="zoom:67%;" /></p><h3 id='写'><span>写</span></h3><ul><li><span>数据分片</span>
+<span>DB的分库分表，JDK的currentHashMap、kafka的分区</span></li><li><span>任务分片</span>
+<span>多线程、桂明思路(map\reduce)</span></li><li><span>异步化(LSM树 log structed tree)</span>
+<strong><span>LSM树</span></strong><span>存储的有序的，又能高效写，有日志，然后用内存来排序，最后异步写进磁盘</span>
+<img src="大型平台软件分析与设计笔记.assets/image-20230326165947689.png" alt="image-20230326165947689" style="zoom:50%;" /></li><li><span>转批量</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230326170257375.png" alt="image-20230326170257375" style="zoom:67%;" /></p><p><strong><span>消息队列缓冲，削峰</span></strong></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326170749780.png" alt="image-20230326170749780" style="zoom:67%;" /></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326172117099.png" alt="image-20230326172117099" style="zoom:67%;" /></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326172221058.png" alt="image-20230326172221058" style="zoom:67%;" /></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230326172530914.png" alt="image-20230326172530914" style="zoom:67%;" /></p><p><strong><span>及时止损</span></strong>
+<span>资质双写双读策略——采用DFS存储备份，同步备份，实时补救的，巡检+监控</span></p><h3 id='读写设计原理'><span>读写设计原理</span></h3><p><strong><span>常用基本概念：吞吐量、响应时间、并发数</span></strong>
+<span>吞吐量：单位时间内可处理的请求数量，QPS、TPS</span>
+<span>响应时间：处理每个请求所需时间。TP95、TP99</span>
+<span>并发数：服务器能同时处理的请求个数。</span></p><p><code>吞吐量 × 响应时间 = 并发数(单CPU)</code></p><p><strong><span>并行系统复杂的多</span></strong><img src="大型平台软件分析与设计笔记.assets/image-20230326173129651.png" alt="image-20230326173129651" style="zoom:67%;" /></p><p><code>机器数 = 总请求预估/单机能承载的最大请求</code>
+<span>总请求按照场景去平均值和峰值</span></p><blockquote><p><strong><span>如何去估计QPS</span></strong></p><ul><li><p><span>利用IO和CPU耗时比例估算</span></p><p><span>200ms = 30ms (cpu) + 120ms (IO) + 50ms (内存)</span>
+<span>充分利用cpu的方法：开多线程、异步IO</span></p></li><li><p><span>压力测试</span>
+<span>准备好环境</span>
+<span>核心读写接口压力测试</span>
+<span>全链路压力测试与单机压力</span></p></li></ul></blockquote><p><strong><span>限流</span></strong><span>：通过限制单位时间内请求次数的方式来实现保护服务应用的一种策略</span></p><blockquote><p><strong><span>单机限流</span></strong><span>：</span></p><ul><li><span>有界的任务队列</span></li><li><span>令牌桶算法</span></li><li><span>漏桶算法</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230326174006235.png" alt="image-20230326174006235" style="zoom: 67%;" /></p><p><strong><span>中央限流</span></strong><span>：用来控制总流量</span></p></blockquote><p><strong><span>熔断与降级</span></strong>
+<span>熔断一般是服务调用者对自我体系的保护机制</span></p><blockquote><ul><li><span>基于请求失败率为基准做熔断策略</span></li><li><span>基于请求耗时为基准做熔断策略</span></li></ul></blockquote><p><span>降级往往是服务调用者为了保证自身核心服务和数据的稳定，对非核心功能和流程采取的&quot;忽略&quot;行为</span></p><blockquote><p><span>降级不单单是接口请求级别的降级，也可以是功能主动降级和服务主动降级</span></p><p><span>比如在大促前夜，为了降低DB读写压力，会主动关闭评论相关功能，以保证下单交易的顺利进行</span></p></blockquote><p><strong><span>请求重试</span></strong></p><h2 id='高可用'><span>高可用</span></h2><h3 id='高可用的基本框架思维'><span>高可用的基本框架思维</span></h3><h4 id='故障检测'><span>故障检测</span></h4><p><span>常见方式: 心跳检测</span></p><p><span>探测失败可能是</span></p><blockquote><ul><li><span>A 进程宕机了</span></li><li><span>B 进程所在的机器宕机了</span></li><li><span>C 进程卡住了，无法响应心跳</span></li><li><span>D 进程存活，网络和其他原因</span></li></ul></blockquote><h4 id='解决脑裂'><span>解决脑裂</span></h4><p><span>发生C和D时，部分服务切到新的master，但旧的master还存活，数据错乱</span></p><p><span>解决方法:</span></p><blockquote><ul><li><span>隔离，对旧的master隔离直接杀死</span></li><li><span>每次新的master上位，开启新纪元，旧master感知自己是旧的，主动下线</span></li></ul></blockquote><h4 id='视业务场景做到数据一致性'><span>视业务场景做到数据一致性</span></h4><p><span>场景如下</span></p><ul><li><span>弱一致性</span></li><li><span>最终一致性</span></li><li><span>强一致性</span></li></ul><h4 id='对客户端尽量透明'><span>对客户端尽量透明</span></h4><p><span>解决点对点问题：VIP, DNS, 维护IP列表, 使用名字列表, 增加服务代理等等</span></p><h4 id='要避免高可用依赖的连环问题'><span>要避免高可用依赖的连环问题</span></h4><p><span>主从服务，主宕机时，从注册主的ip</span></p><h3 id='一致性算法'><span>一致性算法</span></h3><p><span>解决数据一致性，没有老大，选出老大</span></p><blockquote><p><span>Paxos</span>
+<span>Raft</span>
+<img src="https://pic2.zhimg.com/80/v2-7f64a2df8f8817932ed047d35878bca9_1440w.webp" alt="img" style="zoom:50%;" /><span>出现多候选人重新投票</span>
+<img src="大型平台软件分析与设计笔记.assets/image-20230402165231394.png" alt="image-20230402165231394" style="zoom: 33%;" /></p><p><span>Zab</span></p></blockquote><h3 id='运维层面问题'><span>运维层面问题</span></h3><ul><li><span>冷备，平常不用，使用时要立刻激活</span></li><li><span>热备，日常要承担</span></li></ul><h3 id='多活部署'><span>多活部署</span></h3><p><span>同城的延迟可忽略</span>
+<span>异地延迟很大</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230402172324682.png" alt="image-20230402172324682" style="zoom:50%;" /></p><p><strong><span>同城容灾</span></strong>
+<strong><span>异地容灾</span></strong><span>通常冷备，紧急启动时需慎重</span></p><ul><li><span>单机房，2台比3台平均成本更高（剩余的实例能够承担100%的流量）</span></li><li><span>同城多机房</span>
+<img src="大型平台软件分析与设计笔记.assets/image-20230402173907191.png" alt="image-20230402173907191" style="zoom: 33%;" /></li><li><span>两地三中心，同城双中心+异地备灾</span></li></ul><h3 id='set化'><span>SET化</span></h3><p><span>数据分片，一个服务器的集合</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230402180138728.png" alt="image-20230402180138728" style="zoom: 67%;" /></p><p>&nbsp;</p><h2 id='分布式事务'><span>分布式事务</span></h2><h3 id='经典解决方案'><span>经典解决方案</span></h3><h4 id='2pc理论两阶段提交）'><span>2pc理论（两阶段提交）</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409163307376.png" referrerpolicy="no-referrer" alt="image-20230409163307376"></p><p><span>最简单的例子</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409163420941.png" referrerpolicy="no-referrer" alt="image-20230409163420941"></p><h4 id='3pc理论三阶段提交）'><span>3pc理论（三阶段提交）</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409163502330.png" referrerpolicy="no-referrer" alt="image-20230409163502330"></p><p>&nbsp;</p><h4 id='tcc实现方式'><span>TCC实现方式</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409163635261.png" referrerpolicy="no-referrer" alt="image-20230409163635261"></p><p><span>系统并发量高不适用，并发量不高对数据一致性要求高，适合</span></p><h3 id='企业常见实现方案'><span>企业常见实现方案：</span></h3><h4 id='代码耦合'><span>代码耦合</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409164246402.png" referrerpolicy="no-referrer" alt="image-20230409164246402"></p><p><span>发消息失败需要人工介入</span></p><h4 id='利用消息'><span>利用消息</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409164209457.png" referrerpolicy="no-referrer" alt="image-20230409164209457"></p><p><span>发消息失败重试即可</span></p><h4 id='事务消息rocketmq'><span>事务消息RocketMQ</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409164510441.png" referrerpolicy="no-referrer" alt="image-20230409164510441"></p><p><span>在企业中的应用较多</span></p><h4 id='事务消息-基于kafka自研'><span>事务消息 基于kafka自研</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409164900023.png" referrerpolicy="no-referrer" alt="image-20230409164900023"></p><h4 id='事务状态表事务补偿'><span>事务状态表+事务补偿</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409165027296.png" referrerpolicy="no-referrer" alt="image-20230409165027296"></p><h4 id='同步多写异步对账'><span>同步多写+异步对账</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409165202960.png" referrerpolicy="no-referrer" alt="image-20230409165202960"></p><h4 id='最终一致性方案'><span>最终一致性方案</span></h4><p><span>重试+回滚+报警+人工干预</span></p><h3 id='开源解决方案'><span>开源解决方案</span></h3><h4 id='seata'><span>Seata</span></h4><blockquote><p><span>Seata的设计目标是对业务无侵入，因此从业务无侵入的2Pc方案着手，在传统2PC的基础上演进。它把一个分布式事务理解成个包含了若干分支事务的全局事务。全局事务的职责是协调其下</span>
+<span>管辖的分支事务达成一致，要么一起成功提交，要么一起失败回滚。此外，通常分支事务本身就是一个关系数据库的本地事务。</span></p></blockquote><ul><li><span>角色组成</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230409170014628.png" referrerpolicy="no-referrer" alt="image-20230409170014628"></p><ul><li><span>执行流程</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230409170117380.png" referrerpolicy="no-referrer" alt="image-20230409170117380"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409170452896.png" referrerpolicy="no-referrer" alt="image-20230409170452896"></p><p><span>事务隔离级别：Read Uncommited，读未提交，即一个事务可以读取另一个未提交事务的数据；并发操作会导致脏读</span></p><p><span>因为DB回滚的概率不大，先提交以提高效率</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409170946831.png" referrerpolicy="no-referrer" alt="image-20230409170946831"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409172216644.png" referrerpolicy="no-referrer" alt="image-20230409172216644"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409172343663.png" referrerpolicy="no-referrer" alt="image-20230409172343663"></p><h2 id='分布式存储'><span>分布式存储</span></h2><blockquote><p><span>持久化存储作为计算机系统最重要的外设之一，几十年来不断进化，最主要目标如下：</span></p><ul><li><span>单位体积的存储密度</span></li><li><span>存储容量</span></li><li><span>读写速度</span></li><li><span>存储成本</span></li></ul></blockquote><h3 id='ceph'><span>ceph</span></h3><blockquote><p><span>Ceph 是一个开源的分布式存储系统，它提供了对象存储、块存储和文件存储等多种存储方式。Ceph 的设计目标是提供高可用性、高性能、可扩展性和易管理性的分布式存储方案，它采用了多个创新的技术来实现这些目标。</span></p></blockquote><ul><li><span>特性</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230409173417712.png" referrerpolicy="no-referrer" alt="image-20230409173417712"></p><ul><li><span>数据写入流程</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230409173857675.png" referrerpolicy="no-referrer" alt="image-20230409173857675"></p><h3 id='redis'><span>redis</span></h3><ul><li><span>发展史</span></li></ul><p><img src="大型平台软件分析与设计笔记.assets/image-20230409174221226.png" referrerpolicy="no-referrer" alt="image-20230409174221226"></p><p>&nbsp;</p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409174428598.png" referrerpolicy="no-referrer" alt="image-20230409174428598"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409174533455.png" referrerpolicy="no-referrer" alt="image-20230409174533455"></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409174722790.png" referrerpolicy="no-referrer" alt="image-20230409174722790"></p><p>&nbsp;</p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409175223356.png" referrerpolicy="no-referrer" alt="image-20230409175223356"></p><h3 id='mysql'><span>mysql</span></h3><blockquote><p><span>常规mysql的分布式实现：sharding</span>
+<span>一般的机器(4核16G)，单库的MySQL并发(QPS+TPS)超过了2k,系统基本就完蛋了。最好是并发量控制在1k左右。</span>
+<span>1、高并发情况下，会造成IO读写频繁，自然就会造成读写缓慢，甚至是宕机。一般单库不</span>
+<span>要超过2k并发.NB的机器除外。</span>
+<span>2、数据量大的问题。主要由于底层索引实现导致，MySQL的索引实现为B+TREE,数据量</span>
+<span>增加，会导致索引树十分庞大，造成查询缓慢。</span>
+<span>分库分表的目的，是将一个表拆成N个表，就是让每个表的数据量控制在一定范围内，保证</span>
+<span>SQL的性能。一个表数据建议不要超过500W。从而解决高并发，和数据量大的问题。</span></p></blockquote><h4 id='拆表方式'><span>拆表方式</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409180750821.png" referrerpolicy="no-referrer" alt="image-20230409180750821"></p><h4 id='不停机拆分'><span>不停机拆分</span></h4><p><img src="大型平台软件分析与设计笔记.assets/image-20230409180607038.png" referrerpolicy="no-referrer" alt="image-20230409180607038"></p><h4 id='sharding-jdbc'><span>sharding-jdbc</span></h4><p><span>Sharding的第一个组件：</span>
+<span>jar包</span></p><p><img src="大型平台软件分析与设计笔记.assets/image-20230409180713316.png" referrerpolicy="no-referrer" alt="image-20230409180713316"></p><ul><li><span>SQL解析</span></li><li><span>执行器优化</span></li><li><span>SQL路由</span></li><li><span>SQL改写</span></li><li><span>SQL执行</span></li><li><span>结果归并</span></li></ul><h1 id='业务架构与微服务架构'><span>业务架构与微服务架构</span></h1><h2 id='微服务概述'><span>微服务概述</span></h2><p><span>将大型系统或复杂应用分割成多个服务的架构，</span><strong><span>松耦合</span></strong>
+<span>每一个小服务都独立裕兴，采用轻量级的API通讯，必须围绕业务能力来实现。通过全自动的方式来独立部署</span></p><p><span>引入微服务体系，难</span></p><h2 id='微服务的拆分原则'><span>微服务的拆分原则</span></h2><h3 id='togaf方法论'><span>TOGAF方法论</span></h3><p><strong><span>架构框架</span></strong><span>，提供很多方法和工具帮助接收、生产、使用和维护企业级架构。</span>
+<span>基于迭代的流程模式，有最佳实践以及可重用的架构资产</span></p><p><span>ADM架构开发方法主要分为 </span><strong><span>目标、远景、原则</span></strong></p><h3 id='拆分原则'><span>拆分原则</span></h3><figure><table><thead><tr><th><span>编号</span></th><th><span>主要原则</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>R1</span></td><td><span>基于业务分析，拆分</span></td><td><span>基于TOGAF等</span></td></tr><tr><td><span>R2</span></td><td><span>或者DDD领域驱动设计中的子域设计</span></td><td><span>基于领域驱动设计</span></td></tr><tr><td><span>R3</span></td><td><span>根据动作和用例拆分</span></td><td><span>比如支付</span></td></tr><tr><td><span>R4</span></td><td><span>根据名词或者资源拆</span></td><td><span>比如账号</span></td></tr><tr><td><span>R5</span></td><td><span>架构稳定</span></td><td><span>拆分的结构稳定，不会经常修改</span></td></tr><tr><td><span>R6</span></td><td><span>服务是可测试的</span></td><td><span>集成测试要可定义，测试可回溯</span></td></tr><tr><td><span>R7</span></td><td><span>单一原则</span></td><td><span>一个服务做一个业务，自己治理自己的数据库</span></td></tr><tr><td><span>R8</span></td><td><span>开闭原则</span></td><td><span>面向对象理论，对拓展开放，对修改关闭</span></td></tr><tr><td><span>R9</span></td><td><span>高内聚</span></td><td><span>强一致，强依赖关系的放在一起，减少分布式事务</span></td></tr><tr><td><span>R10</span></td><td><span>松耦合</span></td><td><span>服务间互相独立</span></td></tr><tr><td><span>R11</span></td><td><span>足够小的团队可维护，最大两个pizza team</span></td><td><span>pizza team</span></td></tr><tr><td><span>R12</span></td><td><span>团队自治，自己的服务的开发和发布要跟别的团队尽可能小的协调</span></td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='技术侧重点'><span>技术侧重点</span></h3><figure><table><thead><tr><th><span>编号</span></th><th><span>技术侧重点</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>T1</span></td><td><span>潜在风险</span></td><td><span>服务的风险性</span></td></tr><tr><td><span>T2</span></td><td><span>资源性能</span><br><span>- 计算性能</span><br><span>- 硬盘性能</span><br><span>- 内存容量</span><br><span>- 网络带宽</span></td><td><span>机器的性能决定了方案的部分选择</span></td></tr><tr><td><span>T3</span></td><td><span>安全</span></td><td><span>安全要求是否很高，安全的策略</span></td></tr><tr><td><span>T4</span></td><td><span>高并发</span><br><span>- 瞬时并发</span><br><span>- 持续并发</span></td><td><span>并发的种类，持续的时间</span></td></tr><tr><td><span>T5</span></td><td><span>数据库</span><br><span>- 数据量大小</span><br><span>- 读操作</span><br><span>- 写操作</span><br><span>- 数据类型</span></td><td><span>数据的类型，读写的多少，数据量的大小</span></td></tr><tr><td><span>T6</span></td><td><span>价格</span></td><td><span>预算，人力成本</span></td></tr><tr><td><span>T7</span></td><td><span>时间</span></td><td><span>项目的紧急程度，时间的长短</span></td></tr><tr><td><span>T8</span></td><td><span>人</span></td><td><span>人员结构，成员素质，技术积累</span></td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='微服务的注册与发现'><span>微服务的注册与发现</span></h2><p>&nbsp;</p><h2 id='业务架构的应用与实践理解'><span>业务架构的应用与实践理解</span></h2><p>&nbsp;</p><h2 id='案例分析'><span>案例分析</span></h2><p>&nbsp;</p><h1 id='云原生'><span>云原生</span></h1><p>&nbsp;</p></div></div>
+</body>
+</html>

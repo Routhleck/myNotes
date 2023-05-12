@@ -1,0 +1,808 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>机器学习笔记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#课程目标">课程目标</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n11"><a class="md-toc-inner" href="#主要内容">主要内容</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n33"><a class="md-toc-inner" href="#参考文献">参考文献</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n35"><a class="md-toc-inner" href="#考核方式">考核方式</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n43"><a class="md-toc-inner" href="#1-绪论">1. 绪论</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n44"><a class="md-toc-inner" href="#11-机器学习概述">1.1 机器学习概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner" href="#12-机器学习的类型">1.2 机器学习的类型</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n49"><a class="md-toc-inner" href="#13-机器学习的基本术语">1.3 机器学习的基本术语</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n50"><a class="md-toc-inner" href="#基本用语">基本用语</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n80"><a class="md-toc-inner" href="#任务">任务</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n93"><a class="md-toc-inner" href="#泛化能力">泛化能力</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n95"><a class="md-toc-inner" href="#假设空间">假设空间</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n97"><a class="md-toc-inner" href="#版本空间">版本空间</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n99"><a class="md-toc-inner" href="#归纳偏好">归纳偏好</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n101"><a class="md-toc-inner" href="#no-free-lunch">No Free Lunch</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n106"><a class="md-toc-inner" href="#统计学习三要素">统计学习三要素</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n107"><a class="md-toc-inner" href="#模型">模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n109"><a class="md-toc-inner" href="#策略">策略</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n116"><a class="md-toc-inner" href="#算法">算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n118"><a class="md-toc-inner" href="#14-机器学习的开发流程">1.4 机器学习的开发流程</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n142"><a class="md-toc-inner" href="#15-模型的评估与选择">1.5 模型的评估与选择</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n177"><a class="md-toc-inner" href="#评估方法---留出法">评估方法 - 留出法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n187"><a class="md-toc-inner" href="#评估方法---交叉验证法">评估方法 - 交叉验证法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n198"><a class="md-toc-inner" href="#评估方法---自助法">评估方法 - 自助法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n207"><a class="md-toc-inner" href="#性能度量">性能度量</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n208"><a class="md-toc-inner" href="#回归任务---均方误差">回归任务 - 均方误差</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n210"><a class="md-toc-inner" href="#分类任务---错误率精度">分类任务 - 错误率、精度</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n216"><a class="md-toc-inner" href="#分类任务---查准率查全率">分类任务 - 查准率、查全率</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n220"><a class="md-toc-inner" href="#分类任务---f1-fβ">分类任务 - F1 、Fβ</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n228"><a class="md-toc-inner" href="#分类任务---tprfprroc曲线">分类任务 - TPR、FPR、ROC曲线</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n236"><a class="md-toc-inner" href="#代价敏感错误率">代价敏感错误率</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n241"><a class="md-toc-inner" href="#代价曲线">代价曲线</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n244"><a class="md-toc-inner" href="#偏差与方差">偏差与方差</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n262"><a class="md-toc-inner" href="#2-线性模型">2. 线性模型</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n263"><a class="md-toc-inner" href="#21-线性回归">2.1 线性回归</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n264"><a class="md-toc-inner" href="#211-线性回归概述">2.1.1 线性回归概述</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n265"><a class="md-toc-inner" href="#概念">概念</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n268"><a class="md-toc-inner" href="#优点-1">优点</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n281"><a class="md-toc-inner" href="#推导">推导</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n285"><a class="md-toc-inner" href="#算法流程-1">算法流程</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n292"><a class="md-toc-inner" href="#广义线性模型">广义线性模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n294"><a class="md-toc-inner" href="#212-梯度下降">2.1.2 梯度下降</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n316"><a class="md-toc-inner" href="#213-正则化">2.1.3 正则化</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n317"><a class="md-toc-inner" href="#归一化">归一化</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n323"><a class="md-toc-inner" href="#过拟合的处理">过拟合的处理</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n328"><a class="md-toc-inner" href="#欠拟合的处理">欠拟合的处理</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n332"><a class="md-toc-inner" href="#正则化">正则化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n335"><a class="md-toc-inner" href="#214-回归的评价指标">2.1.4 回归的评价指标</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n336"><a class="md-toc-inner" href="#均方误差mse">均方误差MSE</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n341"><a class="md-toc-inner" href="#均方根误差rmse">均方根误差RMSE</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n345"><a class="md-toc-inner" href="#平均绝对误差mae">平均绝对误差MAE</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n349"><a class="md-toc-inner" href="#r方rsquare">R方RSquare</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n351"><a class="md-toc-inner" href="#22-逻辑回归">2.2 逻辑回归</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n352"><a class="md-toc-inner" href="#221-分类问题">2.2.1 分类问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n358"><a class="md-toc-inner" href="#222-逻辑回归概述">2.2.2 逻辑回归概述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n378"><a class="md-toc-inner" href="#223-逻辑回归求解">2.2.3 逻辑回归求解</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n392"><a class="md-toc-inner" href="#23-线性判别分析">2.3 线性判别分析</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n426"><a class="md-toc-inner" href="#24-多分类学习">2.4 多分类学习</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n427"><a class="md-toc-inner" href="#241-一对一">2.4.1 一对一</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n452"><a class="md-toc-inner" href="#242-一对其余">2.4.2 一对其余</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n478"><a class="md-toc-inner" href="#243-多对多">2.4.3 多对多</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n482"><a class="md-toc-inner" href="#25-类别不平衡问题">2.5 类别不平衡问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n483"><a class="md-toc-inner" href="#251-类别不平衡概述">2.5.1 类别不平衡概述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n485"><a class="md-toc-inner" href="#252-类别不平衡导致分类困难的原因">2.5.2 类别不平衡导致分类困难的原因</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n497"><a class="md-toc-inner" href="#253-类别不平衡的解决方法">2.5.3 类别不平衡的解决方法</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n509"><a class="md-toc-inner" href="#3-感知机与神经网络">3. 感知机与神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n510"><a class="md-toc-inner" href="#31-神经网络发展史">3.1 神经网络发展史</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n512"><a class="md-toc-inner" href="#32-神经元模型">3.2 神经元模型</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n528"><a class="md-toc-inner" href="#33-感知机">3.3 感知机</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n534"><a class="md-toc-inner" href="#损失函数">损失函数</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n540"><a class="md-toc-inner" href="#学习算法">学习算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n552"><a class="md-toc-inner" href="#对偶形式-1">对偶形式</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n559"><a class="md-toc-inner" href="#多层前馈神经网络">多层前馈神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n561"><a class="md-toc-inner" href="#34-误差逆传播算法">3.4 误差逆传播算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n567"><a class="md-toc-inner" href="#35-其他常见神经网络">3.5 其他常见神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n597"><a class="md-toc-inner" href="#36-深度学习">3.6 深度学习</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n599"><a class="md-toc-inner" href="#4-支持向量机">4. 支持向量机</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n600"><a class="md-toc-inner" href="#41-支持向量机的相关概念">4.1 支持向量机的相关概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n603"><a class="md-toc-inner" href="#分类">分类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n611"><a class="md-toc-inner" href="#优点-2">优点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n619"><a class="md-toc-inner" href="#缺点">缺点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n627"><a class="md-toc-inner" href="#核函数与核技巧">核函数与核技巧</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n629"><a class="md-toc-inner" href="#42-线性可分支持向量机与硬间隔最大化">4.2 线性可分支持向量机与硬间隔最大化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n630"><a class="md-toc-inner" href="#线性可分支持向量机定义">线性可分支持向量机定义</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n632"><a class="md-toc-inner" href="#函数间隔">函数间隔</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n635"><a class="md-toc-inner" href="#几何间隔">几何间隔</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n640"><a class="md-toc-inner" href="#正常求解">正常求解</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n643"><a class="md-toc-inner" href="#对偶形式-2">对偶形式</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n645"><a class="md-toc-inner" href="#步骤一">步骤一</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n648"><a class="md-toc-inner" href="#步骤二">步骤二</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n659"><a class="md-toc-inner" href="#步骤三">步骤三</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n671"><a class="md-toc-inner" href="#步骤四">步骤四</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n675"><a class="md-toc-inner" href="#步骤五">步骤五</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n679"><a class="md-toc-inner" href="#eg">e.g.</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n683"><a class="md-toc-inner" href="#43-线性支持向量机与软间隔最大化可会）">4.3 线性支持向量机与软间隔最大化（可会） </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n686"><a class="md-toc-inner" href="#合页损失函数">合页损失函数</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n690"><a class="md-toc-inner" href="#44-非线性支持向量机与核函数可会）">4.4 非线性支持向量机与核函数（可会）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n694"><a class="md-toc-inner" href="#45-序列最小最优化算法不讲）">4.5 序列最小最优化算法（不讲）</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n695"><a class="md-toc-inner" href="#5-贝叶斯分类">5. 贝叶斯分类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n696"><a class="md-toc-inner" href="#51-概率知识回顾">5.1 概率知识回顾</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n697"><a class="md-toc-inner" href="#52-贝叶斯决策论">5.2 贝叶斯决策论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n698"><a class="md-toc-inner" href="#521-推导">5.2.1 推导</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n703"><a class="md-toc-inner" href="#522-判别式模型">5.2.2 判别式模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n705"><a class="md-toc-inner" href="#523-生成式模型">5.2.3 生成式模型</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n708"><a class="md-toc-inner" href="#53-极大似然估计">5.3 极大似然估计</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n710"><a class="md-toc-inner" href="#54-朴素贝叶斯分类器">5.4 朴素贝叶斯分类器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n713"><a class="md-toc-inner" href="#541-算法">5.4.1 算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n717"><a class="md-toc-inner" href="#55-em算法">5.5 EM算法</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n727"><a class="md-toc-inner" href="#6-决策树">6. 决策树</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n728"><a class="md-toc-inner" href="#61-决策树原理">6.1 决策树原理</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n732"><a class="md-toc-inner" href="#62-cls算法">6.2 CLS算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n753"><a class="md-toc-inner" href="#63-id3算法">6.3 ID3算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n756"><a class="md-toc-inner" href="#条件熵"><strong>条件熵</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n758"><a class="md-toc-inner" href="#信息增益"><strong>信息增益</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n760"><a class="md-toc-inner" href="#信息增益的算法"><strong>信息增益的算法</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n762"><a class="md-toc-inner" href="#id3算法传统信息增益）">ID3算法（传统信息增益）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n766"><a class="md-toc-inner" href="#64-c45算法信息增益率">6.4 C4.5算法(信息增益率)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n769"><a class="md-toc-inner" href="#c45的生成算法">C4.5的生成算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n771"><a class="md-toc-inner" href="#c45的剪枝">C4.5的剪枝</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n773"><a class="md-toc-inner" href="#预剪枝">预剪枝</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n785"><a class="md-toc-inner" href="#后剪枝">后剪枝</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n788"><a class="md-toc-inner" href="#65-cart算法">6.5 CART算法</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n793"><a class="md-toc-inner" href="#7-集成学习">7. 集成学习</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n794"><a class="md-toc-inner" href="#71-个体与集成">7.1 个体与集成</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n796"><a class="md-toc-inner" href="#简单分析">简单分析</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n799"><a class="md-toc-inner" href="#72-集成学习方法概述">7.2 集成学习方法概述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n806"><a class="md-toc-inner" href="#baggingbootstarp-aggregating自举汇聚算法）">Bagging（Bootstarp aggregating，自举汇聚算法）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n811"><a class="md-toc-inner" href="#随机森林random-forestrf）">随机森林（Random Forest，RF）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n823"><a class="md-toc-inner" href="#boosting">Boosting</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n826"><a class="md-toc-inner" href="#stacking">Stacking</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n830"><a class="md-toc-inner" href="#73-adaboost和gbdt算法-重要）">7.3 AdaBoost和GBDT算法 （重要）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n831"><a class="md-toc-inner" href="#adaboostadaptive-boosting自适应增强）">AdaBoost（Adaptive Boosting，自适应增强）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n834"><a class="md-toc-inner" href="#adaboost推导">AdaBoost推导</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n841"><a class="md-toc-inner" href="#前向分步算法">前向分步算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n844"><a class="md-toc-inner" href="#提升树boosting-tree）">提升树（Boosting Tree）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n857"><a class="md-toc-inner" href="#gbdtgradient-boosting-decision-tree">GBDT（Gradient Boosting Decision Tree)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n862"><a class="md-toc-inner" href="#74-xgboost不会考）">7.4 XGBoost（不会考）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n864"><a class="md-toc-inner" href="#75-lightgbm不会考）">7.5 LightGBM（不会考）</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n866"><a class="md-toc-inner" href="#8-聚类">8. 聚类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n867"><a class="md-toc-inner" href="#81-无极监督学习概述">8.1 无极监督学习概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n877"><a class="md-toc-inner" href="#82-聚类任务概述">8.2 聚类任务概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n879"><a class="md-toc-inner" href="#83-聚类的基本概念">8.3 聚类的基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n880"><a class="md-toc-inner" href="#相似度或距离">相似度或距离</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n882"><a class="md-toc-inner" href="#闵可夫斯基距离">闵可夫斯基距离</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n885"><a class="md-toc-inner" href="#马哈拉诺比斯距离">马哈拉诺比斯距离</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n889"><a class="md-toc-inner" href="#相关系数">相关系数</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n892"><a class="md-toc-inner" href="#夹角余弦">夹角余弦</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n895"><a class="md-toc-inner" href="#相似度">相似度</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n897"><a class="md-toc-inner" href="#类和簇">类和簇</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n906"><a class="md-toc-inner" href="#类的均值类的中心）">类的均值（类的中心）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n908"><a class="md-toc-inner" href="#类的直径">类的直径</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n910"><a class="md-toc-inner" href="#类的样本散布矩阵与样本协方差矩阵">类的样本散布矩阵与样本协方差矩阵</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n912"><a class="md-toc-inner" href="#类与类之间的距离">类与类之间的距离</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n913"><a class="md-toc-inner" href="#最短距离或单连接">最短距离或单连接</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n915"><a class="md-toc-inner" href="#最长距离或完全连接">最长距离或完全连接</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n917"><a class="md-toc-inner" href="#中心距离">中心距离</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n919"><a class="md-toc-inner" href="#平均距离">平均距离</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n921"><a class="md-toc-inner" href="#84-原型聚类">8.4 原型聚类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n922"><a class="md-toc-inner" href="#k-均值算法k-means）">K-均值算法（K-means）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n925"><a class="md-toc-inner" href="#算法流程-2">算法流程</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n936"><a class="md-toc-inner" href="#学习向量量化">学习向量量化</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n940"><a class="md-toc-inner" href="#85-密度聚类">8.5 密度聚类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n942"><a class="md-toc-inner" href="#86-层次聚类">8.6 层次聚类</a></span></p></div><p><span>陆帅冰</span>
+<a href='mailto:lushuaibing@bjut.edu.cn' target='_blank' class='url'>lushuaibing@bjut.edu.cn</a></p><h1 id='课程目标'><span>课程目标</span></h1><ul><li><span>掌握</span><strong><span>机器学习基础理论和专业核心知识</span></strong><span>，熟悉机器学习的发展现状和趋势，并能够将机器学习知识应用于分析和解决复杂软件工程问题。</span></li><li><span>掌握</span><strong><span>机器学习算法的优缺点与适用场景</span></strong><span>，能够对复杂软件工程问题进行识别、分析、归类和表达，进而完成文献研究、技术选型和方案比较。</span></li><li><span>能够</span><strong><span>运用机器学习算法针对实际问题进行实验研究</span></strong><span>，对实验结果进行分析、解释和评价，进而获得实验结论。（4次实验）</span></li></ul><h1 id='主要内容'><span>主要内容</span></h1><ul><li><span>基本概念</span></li><li><span>线性模型</span></li><li><span>感知机</span></li><li><span>支持向量机</span></li><li><span>贝叶斯分类</span></li><li><span>决策树</span></li><li><span>集成学习</span></li><li><span>聚类</span></li><li><span>降维</span></li><li><span>半监督学习</span></li></ul><h1 id='参考文献'><span>参考文献</span></h1><p><img src="D:\Typora_CACHE\image-20220903142056586.png" alt="image-20220903142056586" style="zoom:67%;" /></p><h1 id='考核方式'><span>考核方式</span></h1><ul><li><span>作业 20% （7/8次）</span></li><li><span>实验 30% （4次）</span></li><li><span>考试（未确定） 50%</span></li></ul><h1 id='1-绪论'><span>1. 绪论</span></h1><h2 id='11-机器学习概述'><span>1.1 机器学习概述</span></h2><h2 id='12-机器学习的类型'><span>1.2 机器学习的类型</span></h2><ul><li><img src="D:\Typora_CACHE\image-20220903154200115.png" alt="image-20220903154200115" style="zoom: 33%;" /></li></ul><h2 id='13-机器学习的基本术语'><span>1.3 机器学习的基本术语</span></h2><h3 id='基本用语'><span>基本用语</span></h3><ul><li><strong><span>数据集</span></strong><span>: 数据的集合，分为训练集、测试集。</span></li><li><strong><span>示例/样本</span></strong><span>: 数据集中，每条记录都是关于一个事件或者一个对象（这里是一个西瓜）的描述，因此这里的每条记录都被称为“示例或样本”。</span></li><li><strong><span>特征/属性</span></strong><span>: 反应对象或者事件在某方面的表现或性质。</span></li><li><strong><span>标记</span></strong><span>: 关于示例的结果的信息。比如:(色泽=青绿;根蒂=蜷缩;敲声=沉闷)，好瓜在这里，&quot;好瓜&quot;就是这个示例的标记。</span></li><li><strong><span>标记空间\输出空间</span></strong><span>: 所有标记的集合。</span></li><li><strong><span>样例</span></strong><span>: 一个示例拥有了标记，就称它为“样例”。</span></li><li><strong><span>学习/训练</span></strong><span>: 从数据里学得模型的过程（通过执行某个学习算法来完成)。</span></li><li><strong><span>训练数据</span></strong><span>: 训练过程中使用的数据集合。</span></li><li><strong><span>训练样本/训练示例</span></strong><span>: 训练过程当中的每个样本。</span></li><li><strong><span>训练集</span></strong><span>: 训练样本组成的集合。</span></li><li><strong><span>测试</span></strong><span>: 用模型进行预测的过程。</span></li><li><strong><span>测试数据</span></strong><span>: 测试过程中使用的数据集合。</span></li><li><strong><span>测试样本/预测示例</span></strong><span>: 被预测的样本。</span></li><li><strong><span>测试集</span></strong><span>: 测试样本组成的集合。</span></li></ul><h2 id='任务'><span>任务</span></h2><ul><li><p><span>分类：离散值</span></p><ul><li><span>二分类</span></li><li><span>多分类</span></li></ul></li><li><p><span>回归：连续值，即结果是一个连续数字的值，而非一个类别。</span></p></li><li><p><span>聚类：无标记信息</span></p></li></ul><h3 id='泛化能力'><span>泛化能力</span></h3><p><span>机器学习的目标是使得学到的模型能很好的适用于“新样本”,而不仅仅是训练集合，我们称模型适用于新样本的能力为泛化(generalization)能力。</span></p><h3 id='假设空间'><span>假设空间</span></h3><p><img src="D:\Typora_CACHE\image-20220903161321724.png" alt="image-20220903161321724" style="zoom:67%;" /></p><h3 id='版本空间'><span>版本空间</span></h3><p><img src="D:\Typora_CACHE\image-20220903161628533.png" alt="image-20220903161628533" style="zoom:67%;" /></p><h3 id='归纳偏好'><span>归纳偏好</span></h3><p><strong><span>归纳偏好：</span></strong><span>机器学习算法在学习过程中对某种类型假设的偏好</span></p><h3 id='no-free-lunch'><span>No Free Lunch</span></h3><p><span>一个算法ε</span><em><span>a如果在某些问题上比另一个算法ε</span></em><span>b好，必然存在另一些问题，ε</span><em><span>b比ε</span></em><span>a好,也即没有免费的午餐定理。</span></p><p><img src="D:\Typora_CACHE\image-20220903163140356.png" alt="image-20220903163140356" style="zoom:80%;" /></p><p><span>考虑二分类问题，目标函数可以为任何函数x↦{0,1},函数空间为〖{0,1}〗^(|x|)，对所有可能f按均匀分布对误差求和,有：</span></p><p><img src="D:\Typora_CACHE\image-20220903163527969.png" alt="image-20220903163527969" style="zoom: 50%;" /></p><h3 id='统计学习三要素'><span>统计学习三要素</span></h3><h4 id='模型'><span>模型</span></h4><p><span>最终得到的用于预测的规律或经验。例如：</span><em><span>y</span></em><span>=</span><em><span>x</span></em><span>+1。</span></p><h4 id='策略'><span>策略</span></h4><p><span>选择模型时使用的准则，即通过什么准则从候选模型集合中选出最终的模型。</span></p><ul><li><span>损失函数：度量模型</span><strong><span>一次</span></strong><span>预测的好坏</span></li><li><span>风险函数：度量</span><strong><span>平均意义下</span></strong><span>模型预测的好坏</span></li></ul><h4 id='算法'><span>算法</span></h4><p><span>求解最优模型的算法，主要关注如何更快更好的选出最优模型。算法针对策略。</span></p><h2 id='14-机器学习的开发流程'><span>1.4 机器学习的开发流程</span></h2><ol start='' ><li><span>数据搜集</span></li><li><span>数据清洗</span></li><li><span>特征工程</span></li><li><span>数据建模</span></li></ol><p><strong><span>实现统计机器学习方法的步骤如下：</span></strong></p><ol start='' ><li><span>得到一个有限的训练数据集合；</span></li><li><span>确定包含所有可能的模型的假设空间，即学习模型的集合；</span></li><li><span>确定模型选择的准则，即学习的策略；</span></li><li><span>实现求解最优模型的算法，即学习的算法；</span></li><li><span>通过学习方法选择最优模型；</span></li><li><span>利用学习的最优模型对新数据进行预测或分析。</span></li></ol><h2 id='15-模型的评估与选择'><span>1.5 模型的评估与选择</span></h2><ul><li><p><strong><span>错误率:</span></strong><span> 分类错误的样本数占样本总数的比例。</span></p><ul><li><span>例如: m个样本中有a个样本分类错误，则错误率为:E=a/m</span></li></ul></li><li><p><strong><span>精度：</span></strong><span>分类正确的样本数占样本总数的比例。</span></p><ul><li><span>即:精度=1-错误率=1-E</span></li></ul></li><li><p><strong><span>误差：</span></strong><span>样本真实输出与预测输出之间的差异</span></p><ul><li><span>训练(经验)误差：训练集上</span></li><li><span>测试误差：测试集</span></li><li><span>泛化误差：除训练集外所有样本</span></li></ul></li><li><p><strong><span>过拟合：</span></strong><span>学习器把训练样本学习的“太好”，将训练样本本身的特点当做所有样本的一般性质，导致泛化性能下降</span></p><ul><li><span>优化目标加正则项</span></li><li><span>early stop</span></li></ul></li><li><p><strong><span>欠拟合：</span></strong><span>对训练样本的一般性质尚未学好</span></p><ul><li><span>决策树：拓展分支</span></li><li><span>神经网络：增加训练轮数</span></li></ul></li></ul><h3 id='评估方法---留出法'><span>评估方法 - 留出法</span></h3><ul><li><span>直接将数据集划分为两个互斥集合</span></li><li><span>训练/测试集划分要尽可能保持数据分布的一致性</span></li><li><span>一般若干次随机划分、重复实验取平均值</span></li><li><span>训练/测试样本比例通常为2:1~4:1</span></li></ul><h3 id='评估方法---交叉验证法'><span>评估方法 - 交叉验证法</span></h3><p><span>将数据集分层采样划分为k个大小相似的互斥子集，每次用k-1个子集的并集作为训练集，余下的子集作为测试集，最终返回k个测试结果的均值，k最常用的取值是10。</span></p><p><img src="D:\Typora_CACHE\image-20220918080427488.png" alt="image-20220918080427488" style="zoom:67%;" /></p><p><span>假设数据集D包含m个样本，若令k=m ，则得到留一法：</span></p><ul><li><span>不受随机样本划分方式的影响</span></li><li><span>结果往往比较准确</span></li><li><span>当数据集比较大时，计算开销难以忍受</span></li></ul><h3 id='评估方法---自助法'><span>评估方法 - 自助法</span></h3><p><span>“自助法”以自助采样法为基础，给定包含m个样本的数据集D ，对它进行采样，然后再将该样本放回初始数据集D中,使得该样本下次采样时仍有可能被采到；这个过程重复执行m次后，我们就得到了包含m个样本的数据集D&#39;</span></p><ul><li><span>从初始数据集中产生多个不同的训练集，对集成学习有很大的好处</span></li><li><span>自助法在数据集较小、难以有效划分训练/测试集时很有用</span></li><li><span>由于改变了数据集分布可能引入估计偏差，在数据量足够时，留出法和交叉验证法更常用</span></li></ul><h3 id='性能度量'><span>性能度量</span></h3><h4 id='回归任务---均方误差'><span>回归任务 - 均方误差</span></h4><p><img src="D:\Typora_CACHE\image-20220918081234295.png" alt="image-20220918081234295" style="zoom:50%;" /></p><h4 id='分类任务---错误率精度'><span>分类任务 - 错误率、精度</span></h4><ul><li><span>错误率：分错样本占样本总数的比例</span>
+<img src="D:\Typora_CACHE\image-20220918081701292.png" alt="image-20220918081701292" style="zoom:33%;" /></li><li><span>精度：分对样本占样本总数的比例</span>
+<img src="D:\Typora_CACHE\image-20220918081710879.png" alt="image-20220918081710879" style="zoom:33%;" /></li></ul><h4 id='分类任务---查准率查全率'><span>分类任务 - 查准率、查全率</span></h4><p><img src="D:\Typora_CACHE\image-20220918082009178.png" alt="image-20220918082009178" style="zoom:67%;" /></p><p><span>根据学习器的预测结果按正例可能性大小对样例进行排序，并逐个把样本作为正例进行预测，则可以得到查准率-查全率曲线，简称“P-R曲线”</span></p><p><img src="D:\Typora_CACHE\image-20220918083257525.png" alt="image-20220918083257525" style="zoom:50%;" /></p><h4 id='分类任务---f1-fβ'><span>分类任务 - F1 、Fβ</span></h4><p><span>比P-R曲线平衡点更用常用的是</span><strong><span>F1</span></strong><span>度量：</span></p><p><img src="D:\Typora_CACHE\image-20220918083543440.png" alt="image-20220918083543440" style="zoom: 50%;" /></p><p><span>比F_1更一般的形式 </span><strong><span>Fβ</span></strong><span>,</span></p><p><img src="D:\Typora_CACHE\image-20220918083612969.png" alt="image-20220918083612969" style="zoom:50%;" /></p><p><span> β=1：标准F_1 : 偏重查全率</span></p><p><span> β&gt;1：偏重查全率R(逃犯信息检索)</span></p><p><span> β&lt;1：偏重查准率P(商品推荐系统）</span></p><h4 id='分类任务---tprfprroc曲线'><span>分类任务 - TPR、FPR、ROC曲线</span></h4><p><span>类似P-R曲线，根据学习器的预测结果对样例排序，并逐个作为正例进行预测，以“假正例率”为横轴，“真正例率”为纵轴可得到ROC（Receiver Operating Characteristic）曲线，全称“受试者工作特征”.</span></p><p><img src="D:\Typora_CACHE\image-20220918084324927.png" alt="image-20220918084324927" style="zoom: 33%;" /></p><p><img src="D:\Typora_CACHE\image-20220918084955369.png" alt="image-20220918084955369" style="zoom:50%;" /></p><p><span>若某个学习器的ROC曲线被另一个学习器的曲线“包住”，则后者性能优于前者；否则如果曲线交叉，可以根据ROC曲线下面积大小进行比较，也即AUC值.</span></p><p><img src="D:\Typora_CACHE\image-20220918090659985.png" alt="image-20220918090659985" style="zoom:50%;" /></p><div>
+    <font color="red" size="3">很多个梯形求面积</font>
+</div><h4 id='代价敏感错误率'><span>代价敏感错误率</span></h4><div>
+    <font color="red" size="3">非均等代价情况下使用</font>
+</div><p><span>现实任务中不同类型的错误所造成的后果很可能不同，为了权衡不同类型错误所造成的不同损失，可为错误赋予“非均等代价”。</span></p><p><img src="D:\Typora_CACHE\image-20220918091003782.png" alt="image-20220918091003782" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220918091034358.png" alt="image-20220918091034358" style="zoom:33%;" /></p><h4 id='代价曲线'><span>代价曲线</span></h4><p><span>代价曲线图的绘制：ROC曲线上每个点对应了代价曲线上的一条线段，设ROC曲线上点的坐标为(FPR,TPR),则可相应计算出FNR,然后在代价平面上绘制一条从(0,FPR)到(1,FNR)的线段，线段下的面积即表示了该条件下的期望总体代价；如此将ROC曲线上的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为所有条件下学习器的期望总体代价。</span></p><p><img src="D:\Typora_CACHE\image-20220918091512318.png" alt="image-20220918091512318" style="zoom: 50%;" /></p><h4 id='偏差与方差'><span>偏差与方差</span></h4><p><span>通过实验可以估计学习算法的泛化性能，而“偏差-方差分解”可以用来帮助解释泛化性能。</span></p><p><img src="D:\Typora_CACHE\image-20220918091603272.png" alt="image-20220918091603272" style="zoom:67%;" /></p><p><span>期望输出与真实标记的差别称为偏差，即〖bias〗^2 (x)=(f ̅〖(x)-y)〗^2为便与讨论，假定噪声期望为0，也即E_D [y_D-y]=0, 对泛化误差分解</span></p><p><img src="D:\Typora_CACHE\image-20220918091857621.png" alt="image-20220918091857621" style="zoom:25%;" /></p><p><img src="D:\Typora_CACHE\image-20220918092128407.png" alt="image-20220918092128407" style="zoom:33%;" /></p><p><strong><span>偏差</span></strong><span>度量了学习算法期望预测与真实结果的偏离程度；即刻画了学习算法本身的拟合能力；</span></p><p><strong><span>方差</span></strong><span>度量了同样大小训练集的变动所导致的学习性能的变化；即刻画了数据扰动所造成的影响；</span></p><p><strong><span>噪声</span></strong><span>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界；即刻画了学习问题本身的难度。</span></p><p><img src="D:\Typora_CACHE\image-20220918092615472.png" alt="image-20220918092615472" style="zoom:33%;" /></p><ul><li><span>在训练不足时，学习器拟合能力不强，训练数据的扰动不足以使学习器的拟合能力产生显著变化，此时偏差主导泛化错误率；</span></li><li><span>随着训练程度加深，学习器拟合能力逐渐增强，方差逐渐主导泛化错误率；</span></li><li><span>训练充足后，学习器的拟合能力非常强，训练数据的轻微扰动都会导致学习器的显著变化，若训练数据自身非全局特性被学到则会发生过拟合。</span></li></ul><p><img src="D:\Typora_CACHE\image-20220918093036187.png" alt="image-20220918093036187" style="zoom:67%;" /></p><h1 id='2-线性模型'><span>2. 线性模型</span></h1><h2 id='21-线性回归'><span>2.1 线性回归</span></h2><h3 id='211-线性回归概述'><span>2.1.1 线性回归概述</span></h3><h4 id='概念'><span>概念</span></h4><p><span>是一种通过属性的线性组合来进行预测的</span><strong><span>线性模型</span></strong><span>，其目的是找到一条直线或者一个平面或者更高维的超平面，</span><strong><span>使得预测值与真实值之间的误差最小化</span></strong><span>。</span></p><p><img src="D:\Typora_CACHE\image-20220918093809819.png" alt="image-20220918093809819" style="zoom: 33%;" /></p><h4 id='优点-1'><span>优点</span></h4><ul><li><p><span>形式简单、易于建模</span></p></li><li><p><span>可解释性</span></p></li><li><p><span>非线性模型的基础</span></p><ul><li><span>引入层级结构或高维映射</span></li></ul></li></ul><p><img src="D:\Typora_CACHE\image-20220918094126727.png" alt="image-20220918094126727" style="zoom:25%;" /></p><p><img src="D:\Typora_CACHE\image-20220918094604630.png" alt="image-20220918094604630" style="zoom:25%;" /><img src="D:\Typora_CACHE\image-20220918094615603.png" alt="image-20220918094615603" style="zoom:25%;" /></p><h4 id='推导'><span>推导</span></h4><p><strong><span>推导</span></strong></p><p><img src="D:\Typora_CACHE\image-20220918100823072.png" alt="image-20220918100823072" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220918100935553.png" alt="image-20220918100935553" style="zoom:33%;" /></p><h4 id='算法流程-1'><span>算法流程</span></h4><p><strong><span>最小二乘法推导</span></strong></p><p><img src="D:\Typora_CACHE\image-20220918101842592.png" alt="image-20220918101842592" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220918101909818.png" alt="image-20220918101909818" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220918102242806.png" alt="image-20220918102242806" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220918102259896.png" alt="image-20220918102259896" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220918102628385.png" alt="image-20220918102628385" style="zoom:33%;" /></p><h4 id='广义线性模型'><span>广义线性模型</span></h4><p><img src="D:\Typora_CACHE\image-20220918103108918.png" alt="image-20220918103108918" style="zoom: 33%;" /></p><h3 id='212-梯度下降'><span>2.1.2 梯度下降</span></h3><ul><li><p><strong><span>批量梯度下降</span></strong><span>（Batch Gradient Descent,BGD）</span>
+<span>梯度下降的每一步中，都用到了</span><strong><span>所有</span></strong><span>的训练样本</span>
+<img src="D:\Typora_CACHE\image-20220918104330639.png" alt="image-20220918104330639" style="zoom:33%;" /></p><p><strong><span>优点:</span></strong></p><p><span>由全体训练集确定的方向能够更好的代表样本总体，从而更准确的朝向极值所在的方向，收敛到全局最小值。</span></p><p><strong><span>缺点:</span></strong></p><p><span>当样本数m很大时，每次迭代一步都需要对所有样本进行计算，训练过程会很慢。</span></p></li><li><p><strong><span>随机梯度下降</span></strong><span>（Stochastic Gradient Descent,SGD）</span>
+<span>梯度下降的每一步中，用到一个样本，在每一次计算之后便更新参数 ，而不需要首先将所有的训练集求和</span>
+<img src="D:\Typora_CACHE\image-20220918104425554.png" alt="image-20220918104425554" style="zoom: 25%;" />
+<img src="D:\Typora_CACHE\image-20220918104450103.png" alt="image-20220918104450103" style="zoom:25%;" /></p><p><strong><span>优点</span></strong><span>：</span></p><p><span>即使是大规模数据集，随机梯度下降法也会很快收敛。</span></p><p><strong><span>缺点</span></strong><span>：</span></p><ul><li><span>不稳定，因为每一次的方向是不确定的，甚至有可能向反方向前进，准确度下降。</span></li><li><span>可能收敛到局部最优。</span></li></ul></li><li><p><strong><span>小批量梯度下降</span></strong><span>（Mini-Batch Gradient Descent,MBGD）</span>
+<span>梯度下降的每一步中，用到了一定批量的训练样本</span>
+<img src="D:\Typora_CACHE\image-20220918104537518.png" alt="image-20220918104537518" style="zoom:25%;" /></p></li></ul><p><strong><span>梯度下降</span></strong><span>：需要选择学习率α，需要多次迭代，当特征数量n大时也能较好适用，适用于各种类型的模型。 </span></p><p><strong><span>最小二乘法</span></strong><span>：不需要选择学习率α，一次计算得出，需要计算(X^T X)^(-1)，如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为O(n^3)，通常来说当n小于10000 时还是可以接受的，只适用于线性模型，不适合逻辑回归模型等其他模型。</span></p><h3 id='213-正则化'><span>2.1.3 正则化</span></h3><h4 id='归一化'><span>归一化</span></h4><p><img src="D:\Typora_CACHE\image-20220924141758406.png" alt="image-20220924141758406" style="zoom:50%;" /></p><p><strong><span>需要做数据归一化/标准化</span></strong></p><p><span>线性模型，如基于距离度量的模型包括KNN(K近邻)、K-means聚类、感知机和SVM。另外，线性回归类的几个模型一般情况下也是需要做数据归一化/标准化处理的。</span></p><p><strong><span>不需要做数据归一化/标准化</span></strong></p><p><span>决策树、基于决策树的Boosting和Bagging等集成学习模型对于特征取值大小并不敏感，如随机森林、XGBoost、LightGBM等树模型，以及朴素贝叶斯，以上这些模型一般不需要做数据归一化/标准化处理。</span></p><h4 id='过拟合的处理'><span>过拟合的处理</span></h4><p><strong><span>1.获得更多的训练数据</span></strong>
+<span>使用更多的训练数据是解决过拟合问题最有效的手段，因为更多的</span>
+<span>样本能够让模型学习到更多更有效的特征，减小噪声的影响。</span></p><p><span>2.降维</span>
+<span>即丢弃一些不能帮助我们正确预测的特征。可以是手工选择保留哪些特征，或者使用一些模型选择的算法来帮忙（例如PCA）。</span></p><p><strong><span>3.正则化</span></strong>
+<span>正则化(regularization)的技术，保留所有的特征，但是减少参数的大小（magnitude），它可以改善或者减少过拟合问题。</span></p><p><span>4.集成学习方法</span>
+<span>集成学习是把多个模型集成在一起，来降低单一模型的过拟合风险。</span></p><h4 id='欠拟合的处理'><span>欠拟合的处理</span></h4><p><strong><span>1.添加新特征</span></strong>
+<span>当特征不足或者现有特征与样本标签的相关性不强时，模型容易出现欠拟合。通过挖掘组合特征等新的特征，往往能够取得更好的效果。</span></p><p><span>2.增加模型复杂度</span>
+<span>简单模型的学习能力较差，通过增加模型的复杂度可以使模型拥有更强的拟合能力。例如，在线性模型中添加高次项，在神经网络模型中增加网络层数或神经元个数等。</span></p><p><span>3.减小正则化系数</span>
+<span>正则化是用来防止过拟合的，但当模型出现欠拟合现象时，则需要有针对性地减小正则化系数。</span></p><h4 id='正则化'><span>正则化</span></h4><p><img src="D:\Typora_CACHE\image-20220924142519043.png" alt="image-20220924142519043" style="zoom:50%;" /></p><p>&nbsp;</p><h3 id='214-回归的评价指标'><span>2.1.4 回归的评价指标</span></h3><h4 id='均方误差mse'><span>均方误差MSE</span></h4><p><img src="D:\Typora_CACHE\image-20220924143248989.png" alt="image-20220924143248989" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924143325357.png" alt="image-20220924143325357" style="zoom:33%;" /></p><p><span>MSE越小越好，说明该模型描述实验数据具有更好的精度。</span></p><p><span>缺点：MSE里面带着平方，会改变量纲；</span></p><h4 id='均方根误差rmse'><span>均方根误差RMSE</span></h4><p><img src="D:\Typora_CACHE\image-20220924143459160.png" alt="image-20220924143459160" style="zoom:33%;" /></p><p><strong><span>优点：</span></strong><span>RMSE的存在是开完根号之后，误差的结果就和数据是一个单位级别的，可以更好的描述数据。</span></p><p><strong><span>缺点：</span></strong><span>RMSE/MSE对一组测量中对特大/特小误差反映特别敏感，这种局限性常常发生在短时间内变化比较大的数据上，如风电预测、访问量预测等。</span></p><h4 id='平均绝对误差mae'><span>平均绝对误差MAE</span></h4><p><img src="D:\Typora_CACHE\image-20220924143637329.png" alt="image-20220924143637329" style="zoom:33%;" /></p><p><strong><span>预测值和真实值之差的绝对值求平均。</span></strong></p><p><strong><span>MAE越小越好</span></strong><span>，但是不常用，</span><strong><span>因为它不能求导。</span></strong></p><h4 id='r方rsquare'><span>R方RSquare</span></h4><p><img src="D:\Typora_CACHE\image-20220924143820616.png" alt="image-20220924143820616" style="zoom:33%;" /></p><h2 id='22-逻辑回归'><span>2.2 逻辑回归</span></h2><h3 id='221-分类问题'><span>2.2.1 分类问题</span></h3><ul><li><span>二分类</span></li><li><span>多类分类</span></li></ul><h3 id='222-逻辑回归概述'><span>2.2.2 逻辑回归概述</span></h3><p><span>逻辑回归的应用场景：</span></p><ul><li><span>广告点击率</span></li><li><span>是否为垃圾邮件</span></li><li><span>是否患病</span></li><li><span>金融诈骗</span></li><li><span>虚假账号</span></li></ul><p><img src="D:\Typora_CACHE\image-20220924144825926.png" alt="image-20220924144825926" style="zoom:33%;" /></p><ul><li><span>单位阶跃函数缺点</span>
+<strong><span>不连续</span></strong></li><li><span>替代函数：对数几率函数（是一种Sigmoid函数）</span>
+<strong><span>单调可微、任意阶可导</span></strong></li></ul><p><img src="D:\Typora_CACHE\image-20220924145256373.png" alt="image-20220924145256373" style="zoom:33%;" /></p><h3 id='223-逻辑回归求解'><span>2.2.3 逻辑回归求解</span></h3><p><img src="D:\Typora_CACHE\image-20220924151142113.png" alt="image-20220924151142113" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924151501959.png" alt="image-20220924151501959" style="zoom:33%;" /></p><p><strong><span>损失函数</span></strong></p><p><img src="D:\Typora_CACHE\image-20220924151537379.png" alt="image-20220924151537379" style="zoom:33%;" /></p><p><span>为了衡量算法在全部训练样本上的表现如何，我们需要定义一个算法的代价函数，算法的代价函数是对m个样本的损失函数求和然后除以m: </span></p><p><strong><span>代价函数</span></strong></p><p><img src="D:\Typora_CACHE\image-20220924151615446.png" alt="image-20220924151615446" style="zoom:33%;" /></p><p><strong><span>代价函数求解过程</span></strong></p><p><img src="D:\Typora_CACHE\image-20220924151731742.png" alt="image-20220924151731742" style="zoom:50%;" /></p><p><strong><span>梯度下降求解过程</span></strong></p><p><img src="D:\Typora_CACHE\image-20220924152023795.png" alt="image-20220924152023795" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924153114543.png" referrerpolicy="no-referrer" alt="image-20220924153114543"></p><p>&nbsp;</p><h2 id='23-线性判别分析'><span>2.3 线性判别分析</span></h2><p><span>LDA的核心思想</span></p><ul><li><span>欲使同类样例的投影点尽可能接近，可以让同类样例投影点的协方差尽可能小</span></li><li><span>欲使异类样例的投影点尽可能远离，可以让不同类中心之间的距离尽可能大</span><img src="D:\Typora_CACHE\image-20220924153558687.png" alt="image-20220924153558687" style="zoom:33%;" /></li></ul><p><img src="D:\Typora_CACHE\image-20220924153832096.png" alt="image-20220924153832096" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924154103072.png" alt="image-20220924154103072" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924164038785.png" alt="image-20220924164038785" style="zoom:33%;" /></p><p>&nbsp;</p><p><img src="D:\Typora_CACHE\image-20220924164048375.png" alt="image-20220924164048375" style="zoom:33%;" /></p><p>&nbsp;</p><p><img src="D:\Typora_CACHE\image-20220924164430322.png" alt="image-20220924164430322" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924164526979.png" alt="image-20220924164526979" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924164536245.png" alt="image-20220924164536245" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924164549676.png" alt="image-20220924164549676" style="zoom:33%;" /></p><p><span>LDA算法既可以用来降维，也可以用来分类，但是目前来说，主要还是用于降维。在我们进行图像识别相关的数据分析时，LDA是一个有力的工具。</span></p><p><strong><span>LDA算法的主要优点:</span></strong></p><ul><li><span>在降维过程中可以使用类别的先验知识经验。</span></li><li><span>LDA在样本分类信息依赖均值而不是方差的时候，比PCA之类的算法较优</span></li></ul><p><strong><span>LDA算法的主要缺点:</span></strong></p><ul><li><span>LDA不适合对非高斯分布样本进行降维。</span></li><li><span>LDA降维最多降到类别数k-1的维数，如果我们降维的维度大于k-1，则不能使用LDA。当然目前有一些LDA的进化版算法可以绕过这个问题。</span></li><li><span>LDA在样本分类信息依赖方差而不是均值的时候，降维效果不好。</span></li><li><span>LDA可能过度拟合数据。</span></li></ul><h2 id='24-多分类学习'><span>2.4 多分类学习</span></h2><h3 id='241-一对一'><span>2.4.1 一对一</span></h3><p><strong><span>拆分阶段</span></strong></p><ul><li><p><strong><span>N个类别两两配对</span></strong></p><ul><li><span>N(N-1)/2 个二类任务</span></li></ul></li><li><p><strong><span>各个二类任务学习分类器</span></strong></p><ul><li><span>N(N-1)/2 个二类分类器</span></li></ul></li></ul><p><strong><span>测试阶段</span></strong></p><ul><li><p><strong><span>新样本提交给所有分类器预测</span></strong></p><ul><li><span>N(N-1)/2 个分类结果</span></li></ul></li><li><p><strong><span>投票产生最终分类结果</span></strong></p><ul><li><span>被预测最多的类别为最终类别</span></li></ul></li></ul><h3 id='242-一对其余'><span>2.4.2 一对其余</span></h3><p><strong><span>任务拆分</span></strong></p><ul><li><p><strong><span>某一类作为正例，其他反例</span></strong></p><ul><li><span>N 个二类任务</span></li></ul></li><li><p><strong><span>各个二类任务学习分类器</span></strong></p><ul><li><span>N 个二类分类器</span></li></ul></li></ul><p><strong><span>测试阶段</span></strong></p><ul><li><p><strong><span>新样本提交给所有分类器预测</span></strong></p><ul><li><span>N 个分类结果</span></li></ul></li><li><p><strong><span>比较各分类器预测置信度</span></strong></p><ul><li><span>置信度最大的类别作为最终类别</span></li></ul></li></ul><p><img src="D:\Typora_CACHE\image-20220924165931424.png" alt="image-20220924165931424" style="zoom:50%;" /></p><h3 id='243-多对多'><span>2.4.3 多对多</span></h3><p><img src="D:\Typora_CACHE\image-20220924165947637.png" alt="image-20220924165947637" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220924165959591.png" alt="image-20220924165959591" style="zoom:33%;" /></p><p>&nbsp;</p><h2 id='25-类别不平衡问题'><span>2.5 类别不平衡问题</span></h2><h3 id='251-类别不平衡概述'><span>2.5.1 类别不平衡概述</span></h3><p><span>类别不平衡(class-imbalance)就是指分类任务中不同类别的训练样例数目差别很大的情况。</span></p><h3 id='252-类别不平衡导致分类困难的原因'><span>2.5.2 类别不平衡导致分类困难的原因</span></h3><ul><li><span>正负样本特征区别较大，边界较宽;</span></li><li><span>少数类分布的稀疏性（sparsity)以及稀疏性导致的拆分多个子概念(sub-concepts，可理解为子clusters)并且每个子概念仅含有较少的样本数量﹔</span></li><li><span>离群点过多(即过多的少数类样本出现在多数类样本密集的区域);</span></li><li><span>类别之间的分布严重重叠（即不同类别的样本相对密集地出现在特征空间的同一区域);</span></li><li><span>数据中本身存在的噪声，尤其是少数类的噪声。</span></li></ul><h3 id='253-类别不平衡的解决方法'><span>2.5.3 类别不平衡的解决方法</span></h3><p><span>用y=w^T x+b对新样本a进行分类时，事实上是在用预测出的y值与一个阈值进行比较。</span></p><p><span>例如：</span></p><ul><li><span>通常在g &gt;0.5时判别为正例，否则为反例</span></li><li><span>阈值设置为 0.5 则表示分类器认为真实正、反例可能性相同。</span></li><li><span>y实际上表达了正例的可能性</span></li><li><span>几率y/(1-y)则反映了正例可能性与反例可能性之比值</span></li></ul><h1 id='3-感知机与神经网络'><span>3. 感知机与神经网络</span></h1><h2 id='31-神经网络发展史'><span>3.1 神经网络发展史</span></h2><p><span>43年 McCulloch和Pitts提出第一个神经元数学模型——MP模型</span>
+<span>86年，Rumelhart BP算法</span></p><h2 id='32-神经元模型'><span>3.2 神经元模型</span></h2><p><strong><span>输入：</span></strong><span>来自其他n个神经元传递过来的输入信号</span></p><p><strong><span>处理：</span></strong><span>输入信号通过带权重的连接进行传递, 神经元接受到总输入值将与神经元的阈值进行比较</span></p><p><strong><span>输出：</span></strong><span>通过</span><strong><span>激活函数</span></strong><span>的处理以得到输出</span></p><p><span>激活函数：</span></p><ul><li><span>阶跃</span></li><li><span>sigmoid</span></li><li><span>Tanh</span></li><li><span>Relu</span></li><li><span>leaky Relu</span></li></ul><h2 id='33-感知机'><span>3.3 感知机</span></h2><p><span>感知机是二类分类的线性模型，其输入是实例的特征向量，输出为实例的类别。</span></p><p><span>f(x)=sign(w∙x+b)</span></p><p><span>其中w和b为感知机模型参数，w∈R^n叫做权值（weight）或权值向量（weight vector）,b∈R叫做偏置（bias），w∙x表示w和x的内积。sign是符号函数。即</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n532" cid="n532" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="22.248ex" height="5.428ex" role="img" focusable="false" viewBox="0 -1449.5 9833.5 2399" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.148ex;"><defs><path id="MJX-1-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-1-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path id="MJX-1-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-S3-7B" d="M618 -943L612 -949H582L568 -943Q472 -903 411 -841T332 -703Q327 -682 327 -653T325 -350Q324 -28 323 -18Q317 24 301 61T264 124T221 171T179 205T147 225T132 234Q130 238 130 250Q130 255 130 258T131 264T132 267T134 269T139 272T144 275Q207 308 256 367Q310 436 323 519Q324 529 325 851Q326 1124 326 1154T332 1205Q369 1358 566 1443L582 1450H612L618 1444V1429Q618 1413 616 1411L608 1406Q599 1402 585 1393T552 1372T515 1343T479 1305T449 1257T429 1200Q425 1180 425 1152T423 851Q422 579 422 549T416 498Q407 459 388 424T346 364T297 318T250 284T214 264T197 254L188 251L205 242Q290 200 345 138T416 3Q421 -18 421 -48T423 -349Q423 -397 423 -472Q424 -677 428 -694Q429 -697 429 -699Q434 -722 443 -743T465 -782T491 -816T519 -845T548 -868T574 -886T595 -899T610 -908L616 -910Q618 -912 618 -928V-943Z"></path><path id="MJX-1-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-2265" d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-1-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-1-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-N-3C" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D460" xlink:href="#MJX-1-TEX-I-1D460"></use></g><g data-mml-node="mi" transform="translate(469,0)"><use data-c="1D456" xlink:href="#MJX-1-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(814,0)"><use data-c="1D454" xlink:href="#MJX-1-TEX-I-1D454"></use></g><g data-mml-node="mi" transform="translate(1291,0)"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1891,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2280,0)"><use data-c="1D465" xlink:href="#MJX-1-TEX-I-1D465"></use></g><g data-mml-node="mo" transform="translate(2852,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(3518.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mrow" transform="translate(4574.6,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7B" xlink:href="#MJX-1-TEX-S3-7B"></use></g><g data-mml-node="mtable" transform="translate(750,0)"><g data-mml-node="mtr" transform="translate(0,600)"><g data-mml-node="mtd"><g data-mml-node="mo"><use data-c="2B" xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(778,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mi" transform="translate(1278,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="825.5px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mi" transform="translate(2103.4,0)"><use data-c="1D465" xlink:href="#MJX-1-TEX-I-1D465"></use></g><g data-mml-node="mo" transform="translate(2953.2,0)"><use data-c="2265" xlink:href="#MJX-1-TEX-N-2265"></use></g><g data-mml-node="mn" transform="translate(4008.9,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-600)"><g data-mml-node="mtd"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(778,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mi" transform="translate(1278,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="825.5px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mi" transform="translate(2103.4,0)"><use data-c="1D462" xlink:href="#MJX-1-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(2953.2,0)"><use data-c="3C" xlink:href="#MJX-1-TEX-N-3C"></use></g><g data-mml-node="mn" transform="translate(4008.9,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use></g></g></g></g><g data-mml-node="mo" transform="translate(5258.9,0) translate(0 250)"></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mi>s</mi><mi>i</mi><mi>g</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnalign="left left" columnspacing="1em" rowspacing=".2em"><mtr><mtd><mo>+</mo><mn>1</mn><mi>，</mi><mi>x</mi><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd><mo>−</mo><mn>1</mn><mi>，</mi><mi>u</mi><mo>&lt;</mo><mn>0</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p><strong><span>数据集线性可分</span></strong></p><h3 id='损失函数'><span>损失函数</span></h3><ul><li><span>自然选择：误分类点的综述</span></li><li><span>误分类点到超平面S的总距离</span>
+<img src="D:\Typora_CACHE\image-20221008152030603.png" alt="image-20221008152030603" style="zoom:50%;" />
+<img src="D:\Typora_CACHE\image-20221008152351774.png" alt="image-20221008152351774" style="zoom:50%;" /></li></ul><h3 id='学习算法'><span>学习算法</span></h3><p><strong><span>随机梯度下降法</span></strong></p><p><img src="D:\Typora_CACHE\image-20221008152526791.png" alt="image-20221008152526791" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20221008152924250.png" alt="image-20221008152924250" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20221008152944175.png" alt="image-20221008152944175" style="zoom: 50%;" /></p><p><span>eg.</span></p><ol start='' ><li><span>w, b初值为0</span></li><li><span>带入一个数据，看y(w * x1 + b)是否 ≤ 0，若未能正确分类，更新w, b</span></li></ol><p><strong><span>取数据的顺序对超平面的划分是不一样的</span></strong></p><h3 id='对偶形式-1'><span>对偶形式</span></h3><p><span>也是随机梯度下降，w和b可以表示为</span><img src="D:\Typora_CACHE\image-20221008155327393.png" alt="image-20221008155327393" style="zoom:67%;" /><span> </span>
+<span>α = ni*lr</span></p><p><img src="D:\Typora_CACHE\image-20221008155407193.png" alt="image-20221008155407193" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221008161810142.png" alt="image-20221008161810142" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221008161819669.png" alt="image-20221008161819669" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221008161833166.png" alt="image-20221008161833166" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221008161843711.png" alt="image-20221008161843711" style="zoom:50%;" /></p><h3 id='多层前馈神经网络'><span>多层前馈神经网络</span></h3><p><span>包含隐层</span></p><h2 id='34-误差逆传播算法'><span>3.4 误差逆传播算法</span></h2><p><img src="D:\Typora_CACHE\image-20221008164038264.png" referrerpolicy="no-referrer" alt="image-20221008164038264"></p><p><img src="D:\Typora_CACHE\image-20221008164503570.png" referrerpolicy="no-referrer" alt="image-20221008164503570"></p><p><img src="D:\Typora_CACHE\image-20221008165747706.png" referrerpolicy="no-referrer" alt="image-20221008165747706"></p><p><img src="D:\Typora_CACHE\image-20221015142729323.png" referrerpolicy="no-referrer" alt="image-20221015142729323"></p><p><strong><span>累计BP算法</span></strong><span> 最小化整个训练集上的累积误差</span><img src="D:\Typora_CACHE\image-20221015144141476.png" alt="image-20221015144141476" style="zoom:50%;" /><span> 读取整个训练集一遍才对参数进行更新，参数更新频率较低</span></p><h2 id='35-其他常见神经网络'><span>3.5 其他常见神经网络</span></h2><p><strong><span>RBF网络</span></strong></p><ul><li><span>单隐层</span></li><li><span>径向基函数作为隐层神经元激活函数</span></li><li><span>具有足够多隐层神经元RBF神经网络能以任意精度逼近任意连续函数。</span></li></ul><p><strong><span>ART网络</span></strong></p><ul><li><span>竞争学习，常用无监督学习策略</span></li></ul><p><strong><span>SOM网络</span></strong></p><ul><li><span>竞争型无监督神经网络</span></li><li><span>将高维数据映射到低维空间</span></li></ul><p><strong><span>级联相关网络</span></strong></p><p><span>级联相关网络不仅利用训练样本优化连接权值, 阈值参数, 将网络的结构也当做学习的目标之一, 希望在训练过程中找到适合数据的网络结构。</span></p><ul><li><span>会优化隐层节点数目</span></li></ul><p><strong><span>Elman网络</span></strong></p><ul><li><span>有回路</span></li></ul><p><strong><span>Boltzmann机</span></strong></p><p><span>神经网络中有一类模型为网络定义一个“能量”,能量最小化时网络达到理想状态, 而网络的训练就是在最小化这个能量函数。</span></p><h2 id='36-深度学习'><span>3.6 深度学习</span></h2><p><span>CNN...</span></p><h1 id='4-支持向量机'><span>4. 支持向量机</span></h1><h2 id='41-支持向量机的相关概念'><span>4.1 支持向量机的相关概念</span></h2><p><span>支持向量机的基本模型是定义在特征空间上的</span><strong><span>间隔最大的线性分类器</span></strong><span>，间隔最大使它有别于感知机；支持向量机还包括</span><strong><span>核技巧</span></strong><span>，这使它成为实质上的</span><strong><span>非线性分类器</span></strong><span>。</span></p><p><strong><span>硬间隔</span></strong><span> 不允许有错误</span>
+<strong><span>软间隔</span></strong><span> 允许误分</span></p><h3 id='分类'><span>分类</span></h3><ul><li><span>线性可分支持向量机</span></li><li><span>线性支持向量机（软间隔）</span></li><li><span>非线性支持向量机</span></li></ul><h3 id='优点-2'><span>优点</span></h3><ul><li><span>有严格的数学理论支持，可解释性强，不依靠统计方法，从而简化了通常的分类和回归问题;能找出对任务至关重要的关键样本（支持向量);</span></li><li><span>采用映射到高维的解决方法之后，可以处理非线性分类/回归任务;</span></li><li><span>最终决策函数只由少数的支持向量所确定，计算的复杂性取决于支持向量的数目，而不是样本空间的维数，这在某种意义上避免了“维数灾难”。</span></li></ul><h3 id='缺点'><span>缺点</span></h3><ul><li><span>训练时间长。当采用SMO算法时，由于每次都需要挑选一对参数，因此时间复杂度为O(n^2)其中n为训练样本的数量;</span></li><li><span>当采用核技巧时，如果需要存储核矩阵，则空间复杂度为O(n^2);</span></li><li><span>模型预测时，预测时间与支持向量的个数成正比。当支持向量的数量较大时，预测计算复杂度较高。因此支持向量机只适合小批量样本的任务，无法适应百万甚至上亿样本的任务。</span></li></ul><h3 id='核函数与核技巧'><span>核函数与核技巧</span></h3><p><span>当输入空间为欧氏空间或离散集合、特征空间为希尔伯特空间时，核函数（kernel function）表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。</span></p><h2 id='42-线性可分支持向量机与硬间隔最大化'><span>4.2 线性可分支持向量机与硬间隔最大化</span></h2><h3 id='线性可分支持向量机定义'><span>线性可分支持向量机定义</span></h3><p><img src="D:\Typora_CACHE\image-20221015153202579.png" alt="image-20221015153202579" style="zoom:30%;" /></p><h3 id='函数间隔'><span>函数间隔</span></h3><p><img src="D:\Typora_CACHE\image-20221015153735146.png" alt="image-20221015153735146" style="zoom:50%;" /></p><p><span>函数间隔可以表示分类预测的正确性及确信度。</span></p><h3 id='几何间隔'><span>几何间隔</span></h3><p><img src="D:\Typora_CACHE\image-20221015154834603.png" alt="image-20221015154834603" style="zoom: 43%;" /></p><p><img src="D:\Typora_CACHE\image-20221015155041040.png" alt="image-20221015155041040" style="zoom:35%;" /></p><p><span>函数间隔与集合间隔按比例缩放</span></p><p><strong><span>支持向量机学习的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面</span></strong></p><h3 id='正常求解'><span>正常求解</span></h3><p><img src="D:\Typora_CACHE\image-20221015163619231.png" referrerpolicy="no-referrer" alt="image-20221015163619231"></p><p><a href='https://zhuanlan.zhihu.com/p/77750026'><span>【机器学习】支持向量机 SVM（非常详细） - 知乎 (zhihu.com)</span></a></p><h3 id='对偶形式-2'><span>对偶形式</span></h3><p><span>已知SVM优化主问题是</span>
+<img src="D:\Typora_CACHE\image-20221022143735819.png" alt="image-20221022143735819" style="zoom: 50%;" /></p><h4 id='步骤一'><span>步骤一</span></h4><p><span>构造拉格朗日函数</span></p><p><img src="D:\Typora_CACHE\image-20221022143810751.png" alt="image-20221022143810751" style="zoom:50%;" /></p><h4 id='步骤二'><span>步骤二</span></h4><p><span>利用强对偶性转化</span></p><p><img src="D:\Typora_CACHE\image-20221022143925661.png" alt="image-20221022143925661" style="zoom:50%;" /></p><p><span>现对参数w和b求偏导数</span></p><p><img src="D:\Typora_CACHE\image-20221022143944281.png" alt="image-20221022143944281" style="zoom:50%;" /></p><p><span>得到：</span></p><p><img src="D:\Typora_CACHE\image-20221022143957282.png" alt="image-20221022143957282" style="zoom:50%;" /></p><p><span>将结果代回函数中可得：</span></p><p><img src="D:\Typora_CACHE\image-20221022144037929.png" alt="image-20221022144037929" style="zoom:50%;" /></p><p><span>也就是说：</span></p><p><img src="D:\Typora_CACHE\image-20221022144054675.png" alt="image-20221022144054675" style="zoom:50%;" /></p><h4 id='步骤三'><span>步骤三</span></h4><p><span>由步骤二得</span></p><p><img src="D:\Typora_CACHE\image-20221022144118112.png" alt="image-20221022144118112" style="zoom:50%;" /></p><p><span>为二次规划问题，常用SMO(Sequential Minimal Optimization)算法求解</span>
+<span>SMO每次只优化一个参数，其他参数先固定住，仅求当前这个优化参数的极值。但此时优化目标有约束条件：</span><img src="D:\Typora_CACHE\image-20221022144357059.png" alt="image-20221022144357059" style="zoom:50%;" /><span>，没法一次只变动一个参数。所以一次选择两个参数。具体步骤为:</span></p><ol start='' ><li><span>选择两个需要更新的参数 λi 和 λj ，固定其他参数。</span>
+<span>这样约束就变成了：</span>
+<img src="D:\Typora_CACHE\image-20221022144521134.png" alt="image-20221022144521134" style="zoom: 50%;" />
+<span>其中</span><img src="D:\Typora_CACHE\image-20221022144615373.png" alt="image-20221022144615373" style="zoom: 50%;" /><span>，由此可以得出</span><img src="D:\Typora_CACHE\image-20221022144632012.png" alt="image-20221022144632012" style="zoom:50%;" /><span> ，也就是说我们可以用 λi 的表达式代替 λj 。这样就相当于把目标问题转化成了仅有一个约束条件的最优化问题，仅有的约束是 λi≥0 。</span></li><li><span>对于仅有一个约束条件的最优化问题，可以在λi上对优化目标求偏导，令导数为0，从而求出变量值λ_ inew，然后根据λ_ inew求出λ_ jnew。</span></li><li><span>多次迭代直至收敛</span></li></ol><p><span>通过SMO求得最优解λ*</span></p><h4 id='步骤四'><span>步骤四</span></h4><p><span>求偏导时得到：</span>
+<img src="D:\Typora_CACHE\image-20221022144847954.png" alt="image-20221022144847954" style="zoom:50%;" /></p><p><span>由上式求得w。</span>
+<span>我们知道所有 λi&gt;0 对应的点都是支持向量，我们可以随便找个支持向量，然后带入： y_s(wx_s+b)=1 ，求出 b 即可，两边同乘y_s，得y_s^2（wx_s + b）= y_s。</span>
+<span>因为y_s^2 = 1，所以b = y_s 0 wx_s</span></p><p><span>为了鲁棒性，可以求得支持向量的均值</span><img src="D:\Typora_CACHE\image-20221022145210573.png" alt="image-20221022145210573" style="zoom:50%;" /></p><h4 id='步骤五'><span>步骤五</span></h4><p><span>构造出最大分割超平面w^T x + b = 0</span></p><p><span>分类决策函数: f(x) = sign (w^T x + b)</span></p><p><img src="D:\Typora_CACHE\image-20221022145311383.png" alt="image-20221022145311383" style="zoom:50%;" /></p><h3 id='eg'><span>e.g.</span></h3><p><img src="D:\Typora_CACHE\image-20221022145834534.png" alt="image-20221022145834534" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221022145851746.png" alt="image-20221022145851746" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221022145907937.png" alt="image-20221022145907937" style="zoom:50%;" /></p><h2 id='43-线性支持向量机与软间隔最大化可会）'><span>4.3 线性支持向量机与软间隔最大化（可会） </span></h2><p><img src="D:\Typora_CACHE\image-20221022153103628.png" referrerpolicy="no-referrer" alt="image-20221022153103628"></p><p><img src="D:\Typora_CACHE\image-20221022162148967.png" referrerpolicy="no-referrer" alt="image-20221022162148967"></p><h3 id='合页损失函数'><span>合页损失函数</span></h3><p><img src="D:\Typora_CACHE\image-20221022162843204.png" alt="image-20221022162843204" style="zoom:50%;" /></p><p>&nbsp;</p><p><img src="D:\Typora_CACHE\image-20221022163240117.png" alt="image-20221022163240117" style="zoom:50%;" /></p><h2 id='44-非线性支持向量机与核函数可会）'><span>4.4 非线性支持向量机与核函数（可会）</span></h2><p><img src="D:\Typora_CACHE\image-20221022164822640.png" referrerpolicy="no-referrer" alt="image-20221022164822640"></p><p><img src="D:\Typora_CACHE\image-20221022165252110.png" referrerpolicy="no-referrer" alt="image-20221022165252110"></p><p><img src="D:\Typora_CACHE\image-20221022165303659.png" referrerpolicy="no-referrer" alt="image-20221022165303659"></p><h2 id='45-序列最小最优化算法不讲）'><span>4.5 序列最小最优化算法（不讲）</span></h2><h1 id='5-贝叶斯分类'><span>5. 贝叶斯分类</span></h1><h2 id='51-概率知识回顾'><span>5.1 概率知识回顾</span></h2><h2 id='52-贝叶斯决策论'><span>5.2 贝叶斯决策论</span></h2><h3 id='521-推导'><span>5.2.1 推导</span></h3><p><img src="D:\Typora_CACHE\image-20221029145316528.png" alt="image-20221029145316528" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221029145402964.png" alt="image-20221029145402964" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221029151210113.png" alt="image-20221029151210113" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221029152959344.png" alt="image-20221029152959344" style="zoom:50%;" /></p><h3 id='522-判别式模型'><span>5.2.2 判别式模型</span></h3><p><span>给定</span><strong><span>x</span></strong><span>，通过直接建模P(c│x), 来预测c。（决策树，BP神经网络，支持向量机）</span></p><h3 id='523-生成式模型'><span>5.2.3 生成式模型</span></h3><p><span>先对联合概率分布P(</span><strong><span>x</span></strong><span>,c)建模，然后再由此获得P(c│</span><strong><span>x)</span></strong><span>。生成式模型考虑</span></p><p><img src="D:\Typora_CACHE\image-20221029153113194.png" alt="image-20221029153113194" style="zoom:50%;" /></p><h2 id='53-极大似然估计'><span>5.3 极大似然估计</span></h2><p><img src="D:\Typora_CACHE\image-20221029154406311.png" alt="image-20221029154406311" style="zoom:50%;" /></p><h2 id='54-朴素贝叶斯分类器'><span>5.4 朴素贝叶斯分类器</span></h2><p><img src="D:\Typora_CACHE\image-20221029155010948.png" alt="image-20221029155010948" style="zoom:50%;" /></p><p><a href='https://zhuanlan.zhihu.com/p/149774236#:~:text=贝叶斯分类算法是,进行分类的算法。'><span>贝叶斯分类器 - 知乎 (zhihu.com)</span></a></p><h3 id='541-算法'><span>5.4.1 算法</span></h3><p><img src="D:\Typora_CACHE\image-20221029163737623.png" referrerpolicy="no-referrer" alt="image-20221029163737623"></p><p><img src="D:\Typora_CACHE\image-20221029163756504.png" referrerpolicy="no-referrer" alt="image-20221029163756504"></p><p><img src="D:\Typora_CACHE\image-20221029163803307.png" referrerpolicy="no-referrer" alt="image-20221029163803307"></p><h2 id='55-em算法'><span>5.5 EM算法</span></h2><p><img src="D:\Typora_CACHE\image-20221029163955840.png" referrerpolicy="no-referrer" alt="image-20221029163955840"></p><p><img src="D:\Typora_CACHE\image-20221029170207462.png" referrerpolicy="no-referrer" alt="image-20221029170207462"></p><p><img src="D:\Typora_CACHE\image-20221029170216383.png" referrerpolicy="no-referrer" alt="image-20221029170216383"></p><p><span>Jensen不等式</span>
+<strong><span>应该不考推导</span></strong></p><p><img src="D:\Typora_CACHE\image-20221105152203505.png" alt="image-20221105152203505" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221105152218064.png" alt="image-20221105152218064" style="zoom: 50%;" /></p><p><img src="D:\Typora_CACHE\image-20221105152231972.png" alt="image-20221105152231972" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221105155722870.png" alt="image-20221105155722870" style="zoom:50%;" /></p><p><strong><span>收敛、局部最大</span></strong></p><h1 id='6-决策树'><span>6. 决策树</span></h1><h2 id='61-决策树原理'><span>6.1 决策树原理</span></h2><p><img src="D:\Typora_CACHE\image-20221105162726562.png" alt="image-20221105162726562" style="zoom:50%;" /></p><p><strong><span>核心贪心</span></strong></p><p><img src="D:\Typora_CACHE\image-20221105163431304.png" alt="image-20221105163431304" style="zoom:50%;" /></p><h2 id='62-cls算法'><span>6.2 CLS算法</span></h2><p><span>CLS基本思想</span>
+<span>从一棵空决策树开始，选择某一分类属性作为测试属性。该测试属性对应决策树中的决策结点。根据该属性值的不同，可将训练样本分成相应的子集：</span></p><ul><li><span>如果该子集为空，或该子集中样本属于同一个类，则该子集为叶节点；</span></li><li><span>否则该子集对应于决策树的内部节点，即测试节点，需要选择一个新的分类属性对该子集进行划分，直到所有的子集都为空或者</span></li></ul><p><span>属于同一类。</span></p><ol start='' ><li><span>生成一棵空决策树和一张训练样本属性集;</span></li><li><span>若训练样本集T中所有的样本都属于同一类, 则生成结点T , 并终止学习算法;</span></li><li><span>否则, 根据某种策略从训练样本属性表中选择属性A作为测试属性, 生成测试节点A；</span></li><li><span>若A的取值为v_1, v_2,  ..., v_m, 则根据A的取值的不同,将T划分成 m个子集T_1, T_2,  〖...,  T〗_m;</span></li><li><span>从训练样本属性表中删除属性A;</span></li><li><span>转步骤2, 对每个子集递归调用CLS。</span></li></ol><h2 id='63-id3算法'><span>6.3 ID3算法</span></h2><p><span>算法的核心是“</span><strong><span>信息熵</span></strong><span>”, 期望信息越小, 信息熵越大, 样本纯度越低。</span>
+<span>ID3 算法是以信息论为基础, 以</span><strong><span>信息增益</span></strong><span>为衡量标准, 从而实现对数据的归纳分类。</span>
+<span>ID3 算法计算每个属性的信息增益, 并选取具有最高增益的属性作为给定的测试属性。</span></p><p><img src="D:\Typora_CACHE\image-20221119154646847.png" alt="image-20221119154646847" style="zoom:50%;" /></p><h3 id='条件熵'><strong><span>条件熵</span></strong></h3><p><img src="D:\Typora_CACHE\image-20221119155150931.png" alt="image-20221119155150931" style="zoom:67%;" /></p><h3 id='信息增益'><strong><span>信息增益</span></strong></h3><p><img src="D:\Typora_CACHE\image-20221119155241406.png" alt="image-20221119155241406" style="zoom:50%;" /></p><h3 id='信息增益的算法'><strong><span>信息增益的算法</span></strong></h3><p><img src="D:\Typora_CACHE\image-20221119160738743.png" alt="image-20221119160738743" style="zoom: 67%;" /></p><h3 id='id3算法传统信息增益）'><span>ID3算法（传统信息增益）</span></h3><p><span>递归操作，从根节点开始算信息增益</span></p><p><img src="D:\Typora_CACHE\image-20221119160826017.png" alt="image-20221119160826017" style="zoom: 50%;" /></p><p>&nbsp;</p><h2 id='64-c45算法信息增益率'><span>6.4 C4.5算法(信息增益率)</span></h2><p><span>定义：信息增益与训练数据集D关于特征A的值的熵之比，即：</span><img src="D:\Typora_CACHE\image-20221119165258980.png" alt="image-20221119165258980" style="zoom:50%;" /></p><p><span>根据最大增益比准则来进行判断根节点</span></p><h3 id='c45的生成算法'><span>C4.5的生成算法</span></h3><p><img src="D:\Typora_CACHE\image-20221119165533040.png" alt="image-20221119165533040" style="zoom:67%;" /></p><h3 id='c45的剪枝'><span>C4.5的剪枝</span></h3><p><span>剪枝的基本策略有</span><strong><span>“预剪枝”（prepruning）和“后剪枝”（post-pruning）</span></strong></p><h4 id='预剪枝'><span>预剪枝</span></h4><p><span>预剪枝不仅可以降低过拟合的风险而且还可以减少训练时间，但另一方面，它是基于“贪心”策略，会带来欠拟合风险。</span></p><p><strong><span>剪枝策略</span></strong></p><p><span>在节点划分前确定是否继续增长，及早停止增长</span></p><p><strong><span>主要方法有：</span></strong></p><ul><li><span>节点内数据样本低于某一阈值；</span></li><li><span>限定决策树的深度；</span></li><li><span>节点划分前准确率比划分后准确率高。</span></li></ul><h4 id='后剪枝'><span>后剪枝</span></h4><p><span>在已经生成的决策树上进行剪枝，从而得到简化版的剪枝决策树。后剪枝决策树通常比预剪枝决策树保留了更多的分支。一般情况下，后剪枝的欠拟合风险更小，泛化性能往往优于预剪枝决策树。</span></p><p><span>C4.5 采用的</span><strong><span>悲观剪枝</span></strong><span>方法，用递归的方式自底向上针对每一个</span><strong><span>非叶子节点</span></strong><span>，评估用一个最佳叶子节点去代替这课子树是否有益。如果剪枝后与剪枝前相比其错误率是</span><strong><span>保持或者下降</span></strong><span>，则这棵子树就可以被</span><strong><span>替换</span></strong><span>掉。C4.5 通过训练数据集上的错误分类数量来估算未知样本上的错误率。</span>
+<span>后剪枝决策树的欠拟合风险很小，泛化性能往往优于预剪枝决策树。</span></p><h2 id='65-cart算法'><span>6.5 CART算法</span></h2><p><span>用</span><strong><span>基尼指数</span></strong><span>来选择属性（分类），或用</span><strong><span>均方差</span></strong><span>来选择属性（回归）。</span></p><p><img src="D:\Typora_CACHE\image-20221119172444101.png" alt="image-20221119172444101" style="zoom: 50%;" /></p><p><img src="D:\Typora_CACHE\image-20221119183438389.png" alt="image-20221119183438389" style="zoom:50%;" /></p><p><a href='https://www.bilibili.com/video/BV1cL4y1v76m' target='_blank' class='url'>https://www.bilibili.com/video/BV1cL4y1v76m</a></p><h1 id='7-集成学习'><span>7. 集成学习</span></h1><h2 id='71-个体与集成'><span>7.1 个体与集成</span></h2><p><span>集成学习(ensemble learning)：通过构建并结合多个学习器来完成学习任务。</span>
+<span>在二分类问题中，假定三个分类器在三个测试样本上的表现如下图所示，其中√表示分类正确，×表示分类错误，集成的结果通过投票产生。</span>
+<img src="D:\Typora_CACHE\image-20221203051337362.png" alt="image-20221203051337362" style="zoom: 80%;" /></p><h3 id='简单分析'><span>简单分析</span></h3><p><img src="D:\Typora_CACHE\image-20221203051517682.png" alt="image-20221203051517682" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203051533329.png" alt="image-20221203051533329" style="zoom:50%;" /></p><h2 id='72-集成学习方法概述'><span>7.2 集成学习方法概述</span></h2><p><span>两大类：</span></p><ul><li><strong><span>并行：</span></strong><span>Bagging与随机森林</span></li><li><strong><span>串行：</span></strong><span>Adaboost、GDBT、XGBoost</span></li></ul><h3 id='baggingbootstarp-aggregating自举汇聚算法）'><span>Bagging（Bootstarp aggregating，自举汇聚算法）</span></h3><p><span>从训练集中进行子抽样组成每个基模型所需要的子训练集，对所有基模型预测的结果进行综合，产生最终的预测结果：</span></p><p><img src="D:\Typora_CACHE\image-20221203052321045.png" alt="image-20221203052321045" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203052828901.png" alt="image-20221203052828901" style="zoom: 50%;" /></p><p><strong><span>特点：</span></strong>
+<span>Bagging通过降低基学习器的方差，改善了泛化误差；</span>
+<span>其性能依赖于基学习器的稳定性；</span>
+<span>由于每个样本被选中的概率相同，因此Bagging并不侧重于训练数据集中的任何特定实例；</span>
+<span>时间复杂度低：假定基学习器的计算复杂度为O(m)，采样与投票/平均过程的复杂度为O(s)，则Bagging的复杂度大致为T(O(m)+O(s))。</span></p><h3 id='随机森林random-forestrf）'><span>随机森林（Random Forest，RF）</span></h3><p><span>用随机的方式建立一个森林。随机森林算法由很多决策树组成，每一棵决策树之间没有关联。建立完森林后，当有新样本进入时，每棵决策树都会分别进行判断，然后基于投票法给出分类结果。</span></p><p><strong><span>随机森林包括四个部分：</span></strong></p><p><span>1.随机选择样本（放回抽样）；</span></p><p><span>2.随机选择特征；</span></p><p><span>3.构建决策树；</span></p><p><span>4.随机森林投票（平均）。</span></p><p><img src="D:\Typora_CACHE\image-20221203053704884.png" alt="image-20221203053704884" style="zoom:50%;" /></p><p><strong><span>优点：</span></strong></p><p><span>1.在数据集上表现良好，相对于其他算法有较大的优势</span></p><p><span>2.易于并行化，在大数据集上有很大的优势；</span></p><p><span>3.能够处理高维度数据，不用做特征选择。</span></p><h3 id='boosting'><span>Boosting</span></h3><p><span>训练过程为阶梯状；</span>
+<span>基模型按次序一一进行训练（实现上可以做到并行）；</span>
+<span>基模型的训练集按照某种策略每次都进行一定的转化；</span>
+<span>对所有基模型预测的结果进行线性综合产生最终的预测结果。</span></p><p><img src="D:\Typora_CACHE\image-20221203054211919.png" alt="image-20221203054211919" style="zoom:50%;" /></p><h3 id='stacking'><span>Stacking</span></h3><p><span>将训练好的所有基模型对训练基进行预测，第j个基模型对第i个训练样本的预测值将作为新的训练集中第i个样本的第j个特征值，最后基于新的训练集进行训练。同理，预测的过程也要先经过所有基模型的预测形成新的测试集，最后再对测试集进行预测。</span></p><p><img src="D:\Typora_CACHE\image-20221203134856799.png" alt="image-20221203134856799" style="zoom:67%;" /></p><p>&nbsp;</p><h2 id='73-adaboost和gbdt算法-重要）'><span>7.3 AdaBoost和GBDT算法 （重要）</span></h2><h3 id='adaboostadaptive-boosting自适应增强）'><span>AdaBoost（Adaptive Boosting，自适应增强）</span></h3><p><span>其自适应在于：前一个基分类器分错的样本会得到加强，加权后的全体样本再次被用来训练下一个基分类器。同时，在每一轮中加入一个新的弱分类器，直到达到某个预定的足够小的错误率或达到预先指定的最大迭代次数。</span></p><p><img src="D:\Typora_CACHE\image-20221203143249199.png" alt="image-20221203143249199" style="zoom:50%;" /></p><h3 id='adaboost推导'><span>AdaBoost推导</span></h3><p><img src="D:\Typora_CACHE\image-20221203165627476.png" alt="image-20221203165627476" style="zoom: 50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165638790.png" alt="image-20221203165638790" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165648139.png" alt="image-20221203165648139" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165657275.png" alt="image-20221203165657275" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165708789.png" alt="image-20221203165708789" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165717249.png" alt="image-20221203165717249" style="zoom:50%;" /></p><h3 id='前向分步算法'><span>前向分步算法</span></h3><p><img src="D:\Typora_CACHE\image-20221203165746561.png" alt="image-20221203165746561" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165759475.png" alt="image-20221203165759475" style="zoom:50%;" /></p><h3 id='提升树boosting-tree）'><span>提升树（Boosting Tree）</span></h3><p><span>提升树是以分类树或回归树为基本分类器的提升方法；提升树被认为是统计学习中性能最好的方法之一。</span>
+<span>提升方法实际采用：</span><strong><span>加法模型</span></strong><span>(即基函数的线性组合)与</span><strong><span>前向分步算法</span></strong><span>，以</span><strong><span>决策树</span></strong><span>为基函数。</span></p><p><img src="D:\Typora_CACHE\image-20221203165852091.png" alt="image-20221203165852091" style="zoom: 67%;" /></p><p><img src="D:\Typora_CACHE\image-20221203165903623.png" alt="image-20221203165903623" style="zoom:50%;" /></p><p><span>针对不同问题的提升树学习算法，使用的损失函数不同：</span></p><ul><li><span>用平方误差损失函数的回归问题，</span></li><li><span>用指数损失函数的分类问题，</span></li><li><span>用一般损失函数的一般决策问题（自定义）。</span></li></ul><p><span>对二类分类问题：提升树算法只需将AdaBoost算法中的基本分类器限制为二类分类树即可。</span></p><h3 id='gbdtgradient-boosting-decision-tree'><span>GBDT（Gradient Boosting Decision Tree)</span></h3><p><span>GBDT是一种迭代的决策树算法，该算法由多棵决策树组成，GBDT 的核心在于累加所有树的结果作为最终结果，所以 GBDT 中的树都是</span><strong><span>回归树</span></strong><span>，不是分类树，它是属于 Boosting 策略。GBDT 是被公认的泛化能力较强的算法。</span></p><p><img src="D:\Typora_CACHE\image-20221203170038574.png" alt="image-20221203170038574" style="zoom:50%;" /></p><p><span>优点：</span>
+<span>适用范围广。一方面，对于各种类型的数据可以灵活处理（离散连续都可以）。另一方面，分类问题和回归问题都适用。</span>
+<span>鲁棒性强。</span>
+<span>适用于低维数据和非线性数据。</span>
+<span>在相对较少的调参时间下，预测的准确度较好。</span></p><p><span>缺点：</span>
+<span>弱学习器之间的依赖性强，需要一个一个训练，较为耗时。</span></p><h2 id='74-xgboost不会考）'><span>7.4 XGBoost（不会考）</span></h2><p>&nbsp;</p><h2 id='75-lightgbm不会考）'><span>7.5 LightGBM（不会考）</span></h2><p>&nbsp;</p><h1 id='8-聚类'><span>8. 聚类</span></h1><h2 id='81-无极监督学习概述'><span>8.1 无极监督学习概述</span></h2><ul><li><span>聚类</span></li><li><span>降维</span></li><li><span>关联关系</span></li><li><span>推荐系统</span></li></ul><h2 id='82-聚类任务概述'><span>8.2 聚类任务概述</span></h2><p><img src="D:\Typora_CACHE\image-20221204002356506.png" alt="image-20221204002356506" style="zoom:50%;" /></p><h2 id='83-聚类的基本概念'><span>8.3 聚类的基本概念</span></h2><h3 id='相似度或距离'><span>相似度或距离</span></h3><p><img src="D:\Typora_CACHE\image-20221204002429604.png" alt="image-20221204002429604" style="zoom:50%;" /></p><h3 id='闵可夫斯基距离'><span>闵可夫斯基距离</span></h3><p><img src="D:\Typora_CACHE\image-20221204002501315.png" alt="image-20221204002501315" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221204002512771.png" alt="image-20221204002512771" style="zoom:50%;" /></p><h3 id='马哈拉诺比斯距离'><span>马哈拉诺比斯距离</span></h3><p><span>马哈拉诺比斯距离（Mahalanobis distance)，简称马氏距离，也是另一种常用的相似度，考虑各个分量（特征）之间的相关性并与各个分量的尺度无关。</span></p><p><span>马哈拉诺比斯距离越大相似度越小，距离越小相似度越大。</span></p><p><img src="D:\Typora_CACHE\image-20221204084314967.png" alt="image-20221204084314967" style="zoom:50%;" /></p><h3 id='相关系数'><span>相关系数</span></h3><p><span>样本之间的相似度也可以用相关系数（correlation coefficient）来表示。</span>
+<span>相关系数的绝对值越接近于1，表示样本越相似</span>
+<span>越接近于0，表示样本越不相似。</span></p><p><img src="D:\Typora_CACHE\image-20221204084346800.png" alt="image-20221204084346800" style="zoom:50%;" /></p><h3 id='夹角余弦'><span>夹角余弦</span></h3><p><span>样本之间的相似度也可以用夹角余弦（cosine）来表示。</span>
+<span>夹角余弦越接近于1，表示样本越相似</span>
+<span>越接近于0，表示样本越不相似。</span></p><p><img src="D:\Typora_CACHE\image-20221204084428831.png" alt="image-20221204084428831" style="zoom:50%;" /></p><h3 id='相似度'><span>相似度</span></h3><p><img src="D:\Typora_CACHE\image-20221204084507961.png" alt="image-20221204084507961" style="zoom:50%;" /></p><h3 id='类和簇'><span>类和簇</span></h3><p><span>通过聚类得到的类或簇，本质是样本的子集。</span></p><p><span>如果一个聚类方法假定一个样本只能属于一个类，或类的交集为空集，那么该方法称为硬聚类（hard clustering）方法。</span></p><p><span>如果一个样本可以属于多个类，或类的交集不为空集，那么该方法称为软聚类（soft clustering）方法。</span></p><p><img src="D:\Typora_CACHE\image-20221204084552731.png" alt="image-20221204084552731" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221204084645272.png" alt="image-20221204084645272" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221204084652695.png" alt="image-20221204084652695" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221204084710387.png" alt="image-20221204084710387" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20221204084727916.png" alt="image-20221204084727916" style="zoom:50%;" /></p><h4 id='类的均值类的中心）'><span>类的均值（类的中心）</span></h4><p><img src="D:\Typora_CACHE\image-20221204084757234.png" alt="image-20221204084757234" style="zoom:50%;" /></p><h4 id='类的直径'><span>类的直径</span></h4><p><img src="D:\Typora_CACHE\image-20221204084815810.png" alt="image-20221204084815810" style="zoom:50%;" /></p><h4 id='类的样本散布矩阵与样本协方差矩阵'><span>类的样本散布矩阵与样本协方差矩阵</span></h4><p><img src="D:\Typora_CACHE\image-20221204084905134.png" alt="image-20221204084905134" style="zoom:50%;" /></p><h4 id='类与类之间的距离'><span>类与类之间的距离</span></h4><h5 id='最短距离或单连接'><span>最短距离或单连接</span></h5><p><img src="D:\Typora_CACHE\image-20221204085005303.png" alt="image-20221204085005303" style="zoom:50%;" /></p><h5 id='最长距离或完全连接'><span>最长距离或完全连接</span></h5><p><img src="D:\Typora_CACHE\image-20221204085026628.png" alt="image-20221204085026628" style="zoom:50%;" /></p><h5 id='中心距离'><span>中心距离</span></h5><p><img src="D:\Typora_CACHE\image-20221204085044820.png" alt="image-20221204085044820" style="zoom:50%;" /></p><h5 id='平均距离'><span>平均距离</span></h5><p><img src="D:\Typora_CACHE\image-20221204085113725.png" alt="image-20221204085113725" style="zoom:50%;" /></p><h2 id='84-原型聚类'><span>8.4 原型聚类</span></h2><h3 id='k-均值算法k-means）'><span>K-均值算法（K-means）</span></h3><p><span>K-means算法是一种</span><strong><span>无监督学习</span></strong><span>方法，是最普及的聚类算法，算法使用一个</span><strong><span>没有标签</span></strong><span>的数据集，然后将数据聚类成不同的组。</span></p><p><span>K-means算法具有一个迭代过程，在这个过程中，数据集被分组成若干个预定义的不重叠的聚类或子组，使簇的内部点尽可能相似，同时试图保持簇在不同的空间，它将数据点分配给簇，以便</span><strong><span>簇的质心和数据点之间的平方距离之和最小</span></strong><span>，在这个位置，簇的质心是簇中数据点的算术平均值。</span></p><h4 id='算法流程-2'><span>算法流程</span></h4><ol start='' ><li><span>选择K个点作为初始质心。</span></li><li><span>将每个点指派到最近的质心，形成K个簇。 </span></li><li><span>对于上一步聚类的结果，进行平均计算，得出该簇的新的聚类中心。</span></li><li><span>重复上述两步/直到迭代结束：质心不发生变化。</span></li></ol><p><span>K-均值的代价函数（又称</span><strong><span>畸变函数</span></strong><span> </span><strong><span>Distortion</span></strong><span> </span><strong><span>function</span></strong><span>）为：</span>
+<img src="D:\Typora_CACHE\image-20221204093057242.png" alt="image-20221204093057242" style="zoom:50%;" /></p><h3 id='学习向量量化'><span>学习向量量化</span></h3><p><span>与一般聚类算法不同的是，学习向量量化(LVQ)假设数据样本带有类别标记，学习过程中利用样本的这些监督信息来辅助聚类。</span></p><p><img src="D:\Typora_CACHE\image-20221204093940893.png" alt="image-20221204093940893" style="zoom:50%;" /></p><p>&nbsp;</p><h2 id='85-密度聚类'><span>8.5 密度聚类</span></h2><p>&nbsp;</p><h2 id='86-层次聚类'><span>8.6 层次聚类</span></h2></div></div>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>科技论文写作笔记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n550"><a class="md-toc-inner" href="#1课程内容简介">1课程内容简介</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#考核标准">考核标准</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#课堂讨论">课堂讨论</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n7"><a class="md-toc-inner" href="#开题报告">开题报告</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"><a class="md-toc-inner" href="#开题答辩">开题答辩</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" href="#结题展示与答辩">结题展示与答辩</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#结题报告">结题报告</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n19"><a class="md-toc-inner" href="#时间节点">时间节点</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n22"><a class="md-toc-inner" href="#1-论文的定义分类及特点">1. 论文的定义、分类及特点</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n23"><a class="md-toc-inner" href="#11-科技论文的定义">1.1 科技论文的定义</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n30"><a class="md-toc-inner" href="#12-科技论文的分类">1.2 科技论文的分类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n62"><a class="md-toc-inner" href="#13-学术论文的特点">1.3 学术论文的特点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n75"><a class="md-toc-inner" href="#科学性---科技论文的生命">科学性 - 科技论文的生命</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n83"><a class="md-toc-inner" href="#创新性---科技论文的灵魂">创新性 - 科技论文的灵魂</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n95"><a class="md-toc-inner" href="#规范性和可读性---利于交流传播和存储">规范性和可读性 - 利于交流、传播和存储</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n117"><a class="md-toc-inner" href="#准确性可靠性">准确性、可靠性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n119"><a class="md-toc-inner" href="#生动性">生动性</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n125"><a class="md-toc-inner" href="#2-科技文献检索与综述">2. 科技文献检索与综述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n126"><a class="md-toc-inner" href="#21-文献检索">2.1 文献检索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n127"><a class="md-toc-inner" href="#211文献检索的一般步骤">2.1.1文献检索的一般步骤</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n129"><a class="md-toc-inner" href="#212-科技文献检索途径">2.1.2 科技文献检索途径</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n141"><a class="md-toc-inner" href="#213-检索文献时的常见问题">2.1.3 检索文献时的常见问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n149"><a class="md-toc-inner" href="#22-文献管理">2.2 文献管理</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n152"><a class="md-toc-inner" href="#23文献阅读">2.3文献阅读</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n195"><a class="md-toc-inner" href="#24-文献综述概述">2.4 文献综述概述</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n220"><a class="md-toc-inner" href="#4-开题报告的撰写">4. 开题报告的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n221"><a class="md-toc-inner" href="#41-选题">4.1 选题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n248"><a class="md-toc-inner" href="#42-论文题目的命名">4.2 论文题目的命名</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n281"><a class="md-toc-inner" href="#43-开题报告结构应合理的组织结构">4.3 开题报告结构应合理的组织结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n283"><a class="md-toc-inner" href="#431-研究型开题报告的撰写">4.3.1 研究型开题报告的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n284"><a class="md-toc-inner" href="#研究型开题报告的框架">研究型开题报告的框架</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n310"><a class="md-toc-inner" href="#研究型项目开题报告的撰写">研究型项目开题报告的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n347"><a class="md-toc-inner" href="#432-工程型开题报告的撰写">4.3.2 工程型开题报告的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n383"><a class="md-toc-inner" href="#44-开题报告的撰写规范">4.4 开题报告的撰写规范</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n433"><a class="md-toc-inner" href="#45-开题答辩------制作ppt">4.5 开题答辩——制作PPT</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n470"><a class="md-toc-inner" href="#5-毕设论文的撰写">5. 毕设论文的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n471"><a class="md-toc-inner" href="#51-学位论文的意义及写作流程">5.1 学位论文的意义及写作流程</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n473"><a class="md-toc-inner" href="#52-学士学位论文的结构及写作规范">5.2 学士学位论文的结构及写作规范</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n474"><a class="md-toc-inner" href="#521-论文题目的命名">5.2.1 论文题目的命名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n491"><a class="md-toc-inner" href="#522-中英文摘要的撰写">5.2.2 中英文摘要的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n503"><a class="md-toc-inner" href="#523-章节目录的组织">5.2.3 章节目录的组织</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n505"><a class="md-toc-inner" href="#524-正文的撰写">5.2.4 正文的撰写</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n516"><a class="md-toc-inner" href="#正文部分标题的确定">正文部分标题的确定</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n518"><a class="md-toc-inner" href="#段落安排">段落安排</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n528"><a class="md-toc-inner" href="#5241-引言绪论的写作">5.2.4.1 引言/绪论的写作</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n536"><a class="md-toc-inner" href="#小文献综述">小文献综述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n538"><a class="md-toc-inner" href="#创新点">创新点</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n540"><a class="md-toc-inner" href="#5242-第2章的写作">5.2.4.2 第2章的写作</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n542"><a class="md-toc-inner" href="#5243-个人工作内容的阐述">5.2.4.3 个人工作内容的阐述</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n544"><a class="md-toc-inner" href="#5244-正文写作规范">5.2.4.4 正文写作规范</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n546"><a class="md-toc-inner" href="#525-引用参考文档的规范">5.2.5 引用参考文档的规范</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n548"><a class="md-toc-inner" href="#53-毕设答辩要点">5.3 毕设答辩要点</a></span></p></div><p>&nbsp;</p><h1 id='1课程内容简介'><span>1课程内容简介</span></h1><p><img src="D:\Typora_CACHE\image-20220901082841093.png" referrerpolicy="no-referrer" alt="image-20220901082841093"></p><h1 id='考核标准'><span>考核标准</span></h1><p><img src="D:\Typora_CACHE\image-20220901082956052.png" referrerpolicy="no-referrer" alt="image-20220901082956052"></p><h2 id='课堂讨论'><span>课堂讨论</span></h2><p><img src="D:\Typora_CACHE\image-20220901083802117.png" referrerpolicy="no-referrer" alt="image-20220901083802117"></p><h2 id='开题报告'><span>开题报告</span></h2><p><img src="D:\Typora_CACHE\image-20220901084058491.png" referrerpolicy="no-referrer" alt="image-20220901084058491"></p><p><img src="D:\Typora_CACHE\image-20220901084513959.png" referrerpolicy="no-referrer" alt="image-20220901084513959"></p><p><img src="D:\Typora_CACHE\image-20220901084729609.png" referrerpolicy="no-referrer" alt="image-20220901084729609"></p><h2 id='开题答辩'><span>开题答辩</span></h2><p><img src="D:\Typora_CACHE\image-20220901084922826.png" referrerpolicy="no-referrer" alt="image-20220901084922826"></p><h2 id='结题展示与答辩'><span>结题展示与答辩</span></h2><p><img src="D:\Typora_CACHE\image-20220901090049713.png" referrerpolicy="no-referrer" alt="image-20220901090049713"></p><p><img src="D:\Typora_CACHE\image-20220901090303093.png" referrerpolicy="no-referrer" alt="image-20220901090303093"></p><h2 id='结题报告'><span>结题报告</span></h2><p><img src="D:\Typora_CACHE\image-20220901090449811.png" referrerpolicy="no-referrer" alt="image-20220901090449811"></p><p><img src="D:\Typora_CACHE\image-20220901091431313.png" referrerpolicy="no-referrer" alt="image-20220901091431313"></p><h1 id='时间节点'><span>时间节点</span></h1><p><img src="D:\Typora_CACHE\image-20220901091644435.png" referrerpolicy="no-referrer" alt="image-20220901091644435"></p><p><img src="D:\Typora_CACHE\image-20220901091721128.png" referrerpolicy="no-referrer" alt="image-20220901091721128"></p><h1 id='1-论文的定义分类及特点'><span>1. 论文的定义、分类及特点</span></h1><h2 id='11-科技论文的定义'><span>1.1 科技论文的定义</span></h2><p><span>中国国家标准GB7713-87定义：</span></p><ul><li><span>某一学术课题在实验性、理论性或观测性上具有</span><strong><span>新的</span></strong><span>科学研究成果或</span><strong><span>创新</span></strong><span>见解和知识的科学记录，或是某种已知原理应用于实际中取得</span><strong><span>新进展</span></strong><span>的科学总结。</span></li><li><span>用以提供学术会议上宣读、交流或讨论，或在学术刊物上发表，或作其它用途的书面文件。</span></li></ul><h2 id='12-科技论文的分类'><span>1.2 科技论文的分类</span></h2><ul><li><p><strong><span>学位论文</span></strong><span> ：学士 、硕士和博士学位 论文，也分为：工程型、学术型</span></p><ul><li><span>定义：为申请学位而评审用的学术论文（学士/硕士/博士论文）</span></li><li><span>特点：要经过考核和答辩；内容比较详尽</span></li></ul></li><li><p><strong><span>技术/ 工程型论文</span></strong><span> ：</span></p><ul><li><span>定义：为报道 </span><strong><span>工程技术研究成果</span></strong><span>而提交的论文</span></li><li><span>特点：具有 </span><strong><span>技术</span></strong><span>的 </span><strong><span>先进性、实用性和科学性</span></strong><span>；有一定的 </span><strong><span>保密性</span></strong><span>。</span></li></ul></li><li><p><span>学术 学术 / 科研 / 研究型论文</span></p><ul><li><p><span>定义：科学研究成果或创新见解和知识的科学记录、科学总结</span></p></li><li><p><span>特点：提供新的科技信息；推动科技发展；在学术期刊上发表或</span>
+<span>在学术会议上交流。</span></p></li><li><p><span>又分为：</span></p><ol start='' ><li><strong><span>科研论文</span></strong><span> ：用于科学研究领域交流科研 </span><strong><span>新发现的完整报告</span></strong><span>。</span><strong><span>详细</span></strong><span>叙述了该发现是如何获得的，以便他人能够 </span><strong><span>复现</span></strong><span>该结果。</span></li><li><strong><span>综述论文</span></strong><span> （review paper）针对一个研究主题，对相关论文进行归纳，并对各研究成果进行评价和总结。一般以 </span><strong><span>简介</span></strong><span>开头，介绍 </span><strong><span>研究主题</span></strong><span>及其 </span><strong><span>重要性</span></strong><span>，指出本综述论文的 </span><strong><span>意义</span></strong><span>，并声明本综述论文的 </span><strong><span>范围和目标</span></strong><span>，对各类主要工作进行 </span><strong><span>回顾和总结</span></strong><span>，并进行</span><strong><span>比较、分析和提炼</span></strong><span>，得出 </span><strong><span>结论</span></strong><span>，最后提出以及 </span><strong><span>未来的发展方向</span></strong><span>。</span></li><li><strong><span>科研简报和快报</span></strong><span>:包括letter, brief communication和大部分会议论文，并不需要提供足够的信息。其</span><strong><span>组织形式与完整的研究报告是完全一致的</span></strong><span>，只是 </span><strong><span>篇幅较短</span></strong><span>。没有背景综述， 直接讲方法 。</span></li></ol></li></ul></li></ul><h2 id='13-学术论文的特点'><span>1.3 学术论文的特点</span></h2><p><span>学术论文一般以科技 </span><strong><span>新成果</span></strong><span> 为对象，采用 </span><strong><span>科技语言 、 科学逻辑思维</span></strong><span> 方式，并按照一定的 </span><strong><span>写作格式</span></strong><span> 撰写，并 具有以下特点：</span></p><ul><li><strong><span>科学性</span></strong></li><li><strong><span>创新性</span></strong><span>： 标新立异是其发展规律</span></li><li><span>学术性： 科学内涵所决定</span></li><li><span>准确性和 可靠性： 论点正确、结果可靠、实验重复性好 等</span></li><li><span>规范性和 可读性：</span></li></ul><h3 id='科学性---科技论文的生命'><span>科学性 - 科技论文的生命</span></h3><ul><li><span>论文 </span><strong><span>内容</span></strong><span> 的科学性，表现为 论文内容 是 </span><strong><span>真实的</span></strong><span> ，其数据是 可以重复的</span></li><li><span>论文 </span><strong><span>表述</span></strong><span> 的科学性，在文章结构、文体、术语和计量单位使用，以及图表格式、文献引用等方面均须 </span><strong><span>遵从公认的科学 规范</span></strong><span>。</span></li><li><span>科技论文切忌 </span><strong><span>口语化</span></strong><span> ，不宜 过多使用形容词，尽量避免使用文学性的、带感情色彩的 语言。 “我们用。。。做了个。。。结果呢，还不错 ”</span></li></ul><h3 id='创新性---科技论文的灵魂'><span>创新性 - 科技论文的灵魂</span></h3><ul><li><span>论文中揭示的事物现象的本质、规律和特性，应该是 </span><strong><span>前人未见 的或 部分未见的新发现</span></strong><span> ；</span></li><li><span>要分析讨论、推理，提高到 </span><strong><span>学术的高度</span></strong><span> ，而不是象实验报告一样，成为数字和现象的简单 堆砌；</span></li><li><span>创新是指对自然或理论提出 </span><strong><span>新见解</span></strong><span> ，而 不是对已有研究结论的再次论证，内容应富有 启发性；</span></li><li><span>在基础研究和应用研究方面具有 </span><strong><span>创造性</span></strong><span> 的、 </span><strong><span>高水平 的和有 重要意义 的 最新</span></strong><span> 研究 成果；</span></li><li><span>研究规模不一定大，也不一定是针对热点问题，但研究一定要 </span><strong><span>深入</span></strong><span> ，结论一定要 </span><strong><span>深刻</span></strong><span> ，要能反映出作者独到的 </span><strong><span>见解和观点</span></strong><span> ；</span></li></ul><h3 id='规范性和可读性---利于交流传播和存储'><span>规范性和可读性 - 利于交流、传播和存储</span></h3><ul><li><p><span>要求</span></p><ul><li><span>简明、清楚、易懂</span></li><li><span>读者在读过文章之后，能够清楚作者要阐述的是</span><strong><span>什么问题</span></strong><span>，是</span><strong><span>怎样着手解决</span></strong><span>的</span></li><li><span>不需要读者能够全面理解论文的全部内容</span></li></ul></li><li><p><span>决定因素</span></p><ul><li><span>构思完整、逻辑严密</span></li><li><span>表达清楚、简练，专业术语准确，前后一致</span></li><li><span>文字与插图配合恰当</span></li><li><span>论文的体例格式要规范</span></li></ul></li></ul><h3 id='准确性可靠性'><span>准确性、可靠性</span></h3><p><span>作者应尽可能给出</span><strong><span>清楚的、确切的、可靠信息</span></strong><span>，避免模糊的、不确切的、 不可复现的信息。</span></p><h3 id='生动性'><span>生动性</span></h3><ul><li><span>借助合理的</span><strong><span>文章结构、精辟的论述和简洁、通顺流畅的语言</span></strong><span>来吸引读者</span></li><li><strong><span>图文并茂</span></strong><span>，合理使用表格和图形，来增强论文的可读性</span></li></ul><h1 id='2-科技文献检索与综述'><span>2. 科技文献检索与综述</span></h1><h2 id='21-文献检索'><span>2.1 文献检索</span></h2><h3 id='211文献检索的一般步骤'><span>2.1.1文献检索的一般步骤</span></h3><p><img src="D:\Typora_CACHE\image-20220908081402449.png" alt="image-20220908081402449" style="zoom:67%;" /></p><h3 id='212-科技文献检索途径'><span>2.1.2 科技文献检索途径</span></h3><ul><li><span>交大图书馆：</span><a href='http://lib.bjtu.edu.cn/' target='_blank' class='url'>http://lib.bjtu.edu.cn/</a></li><li><span>数据库（万方、知网、SCI等）</span></li><li><span>ELSEVIER</span></li><li><span>arxiv.org</span></li><li><span>google scholar</span></li></ul><h3 id='213-检索文献时的常见问题'><span>2.1.3 检索文献时的常见问题</span></h3><ol start='' ><li><span>信息过载</span></li><li><span>信息不足</span></li><li><span>无法找到权威的文献</span></li></ol><h2 id='22-文献管理'><span>2.2 文献管理</span></h2><p><img src="D:\Typora_CACHE\image-20220908090947455.png" alt="image-20220908090947455" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220908091111667.png" alt="image-20220908091111667" style="zoom:67%;" /></p><h2 id='23文献阅读'><span>2.3文献阅读</span></h2><p><strong><span>综述论文：</span></strong></p><ul><li><span>对一个科学问题进行定义</span></li><li><span>总结以前的研究工作，使读者了解研究现状</span></li><li><span>辨明文献中各种关系、矛盾、差距及不一致之处 </span></li><li><span>给出建议：解决问题的方向、后续步骤</span></li></ul><p><strong><span>科研论文：</span></strong></p><ul><li><span>描述待解决的问题（挖坑</span></li><li><span>解决问题的方法和步骤（填坑）</span></li><li><span>记录参与实验的研究人员的原始数据和结论</span></li><li><span>描述实验是如何完成的</span></li></ul><p><strong><span>第一次阅读</span></strong>
+<span>快速阅读：</span></p><ul><li><span>本领域有哪些问题-&gt;前言</span></li><li><span>本领域解决问题的已有方案-&gt;相关工作</span></li><li><span>本文提出的解决方法-&gt;Method</span></li><li><span>本文所提方法的有效性-&gt;讨论</span></li><li><span>本文画龙点睛的概括-&gt;结论</span></li></ul><p><strong><span>第二、三遍阅读</span></strong>
+<span>精读：</span></p><ul><li><span>关键性步骤的证明</span></li><li><span>寻找异常情况和对它们的解释</span></li><li><span>作者有没有忽略什么</span></li><li><span>是否能改进/延续它们的工作</span></li></ul><h2 id='24-文献综述概述'><span>2.4 文献综述概述</span></h2><p><strong><span>小综述：</span></strong></p><ul><li><span>“小综述”的典型代表：毕业论文和论文开题第一部分“前言”部分的综述。</span></li><li><span>作者并非想向读者全面介绍某学科的前沿，而只是想以此为由，引出自己的学术观点。</span></li><li><span>作者说明目前的研究状况如何，不足之处，我准备解决什么问题，做什么贡献/创新点，以此来推出自己的论述和模型。</span></li><li><span>所以，小综述不强求全面、细致，不要面面俱到，而应该侧重介绍与自己的研究直接相关的文献，即着重于“述”，而非“综”。</span></li></ul><p><strong><span>大综述：</span></strong></p><ul><li><span>“大综述”是就某个领域的文献做出的全面总结，是宏观的，涉及整个领域、专业或某一大的研究方向”；</span></li><li><span>综述主要介绍学科发展的历史沿革、归纳整理主要研究流派和主要学术观点、理清热点研究方向。</span></li><li><span>经常会发在专门的Review（评论）的杂志上，或者是在年鉴里；</span></li><li><span>其目的：通过对文献的阅读和整理，使大家对所关注学科领域的轮廓有一个清晰的了解。</span></li><li><span>撰写文献综述的人通常是权威人物，即使作者的级别较低，他也是在这个题目上做了相当贡献的人。</span></li></ul><p><span>研究性的论文注重研究方法和结果，而文献综述是介绍与主题有关的详细资料、动态、进展、展望以及对以上方面的评述。</span>
+<span>因此文献综述的格式相对多样，但总的来说，一般都包含以下几部分：</span>
+<span>题目、摘要、关键词、</span><strong><span>前言、正文、总结</span></strong><span> 和 参考文献。</span></p><p>&nbsp;</p><h1 id='4-开题报告的撰写'><span>4. 开题报告的撰写</span></h1><h2 id='41-选题'><span>4.1 选题</span></h2><p><span>选题就是确定科学研究的具体方向，确定所要研究和解决的具体科技问题。</span>
+<span>科研选题是整个科研工作中带有方向性的关键决策。能否善于提出问题，决定了研究价值的大小，也直接决定了科技论文的水平。</span>
+<strong><span>好的科研选题的特点</span></strong><span>：</span></p><ol start='' ><li><span>问题本身</span><strong><span>有价值（社会—应用、经济—省钱省力、学术—科技进步）</span></strong><span>；</span></li><li><span>问题必须</span><strong><span>具体、明确</span></strong><span>；</span></li><li><span>问题要有</span><strong><span>创新性（学术型）/ 实用性（工程型）</span></strong><span>；</span></li><li><span>问题要有</span><strong><span>可行性</span></strong><span>。</span></li></ol><p><strong><span>科研选题的方法：</span></strong></p><ol start='' ><li><strong><span>兴趣导向；</span></strong></li><li><strong><span>实践导向；</span></strong></li><li><span>文献导向；</span></li><li><span>数据导向；</span></li><li><span>协同导向；</span></li><li><span>系统导向；</span></li><li><span>工具导向。</span></li></ol><h2 id='42-论文题目的命名'><span>4.2 论文题目的命名</span></h2><ol start='' ><li><p><span>短小精炼，题目不宜过长，不要超过25个汉字</span></p></li><li><p><span>准确、恰当</span></p><ol start='' ><li><span>题目要聚焦，切忌“</span><strong><span>帽子太大</span></strong><span>”，即题名太大，内容很窄。</span>
+<span>如：</span><strong><span>基于人工智能的推荐系统的设计与实现</span></strong><span>，其实只是用了推荐算法的一个mis，</span>
+<span>而且推荐只是AI的一个分支；未说明哪个领域的推荐系统，不同领域的算法都不一样：基于内容（浏览记录）；2.基于用户的协同过滤；3.基于关联规则。</span>
+<span>eg.《</span><strong><span>基于关联规则的广告推送系统的设计与实现</span></strong><span>》</span></li><li><span>不切主题。不能反映文章的特点</span>
+<strong><span>基于知识图谱的推荐系统的设计与实现</span></strong><span>，没反应出是哪个应用领域的</span>
+<span>eg.《</span><strong><span>基于知识图谱的在线问答社区推荐系统的设计与实现</span></strong><span>》</span></li></ol></li><li><p><span>不必将过时的技术名称放入题目，</span><strong><span>如：基于J2EE / MVC的。。。</span></strong></p></li><li><p><span>容易认读:避免使用</span><strong><span>非公知、非公用（不常用）</span></strong><span>的缩略词、字符和代号等</span></p><ul><li><span>避免使用非本学科的缩略词：中国工商银行 ICBC</span></li><li><span>自行编造的缩略词，感觉词语太长，就自己编一个</span>
+<span>例如：基于自监督学习的多尺度融合特征提取模型，简记为MFEM模型</span></li></ul></li><li><p><span>英文标题中去掉“The”，实词的首字母大写，虚词（of， and）不用大写，</span>
+<span>如：</span><strong><span>Design and Implementation of XXXX Client System</span></strong></p></li><li><p><strong><span>结构应合理</span></strong></p><ul><li><span>习惯上不用动宾结构，常用以名词（词组）为中心的偏正结构词组</span>
+<strong><span>如：研究一种求解八数码问题的新方法（X）</span></strong>
+<span>	</span><strong><span>基于空洞卷积神经网络的钢轨质量检测系统的设计与实现（√）</span></strong>
+<span>	</span><strong><span>基于深度学习的钢轨质量检测系统的设计与实现（X）</span></strong>
+<strong><span>如：研究模糊关系数据库的几个基本理论问题（ X 动宾）</span></strong>
+<span>	</span><strong><span>→模糊关系数据库研究中的几个基本理论问题（偏正）</span></strong></li><li><span>选词应准确——每个字、词都应仔细推敲</span></li><li><span>详略应得当——要避免“的”的多用或漏用</span>
+<span>例如：</span><strong><span>专家系统结构(的)分析</span></strong></li><li><span>语序应正确</span>
+<strong><span>“计算机辅助机床几何精度测试” -&gt; “机床几何精度的计算机辅助测试”</span></strong></li></ul></li></ol><h2 id='43-开题报告结构应合理的组织结构'><span>4.3 开题报告结构应合理的组织结构</span></h2><p><img src="D:\Typora_CACHE\image-20220922093610106.png" referrerpolicy="no-referrer" alt="image-20220922093610106"></p><h3 id='431-研究型开题报告的撰写'><span>4.3.1 研究型开题报告的撰写</span></h3><h4 id='研究型开题报告的框架'><span>研究型开题报告的框架</span></h4><ul><li><p><span>毕设题目及选题来源</span></p></li><li><p><span>研究背景及意义：判断研究价值（是否值得研究）</span></p><p><span>1）理论意义 （2）应用场景及意义及国内外的研究现状，即文献综述</span></p><ul><li><span>相关的工作内容已经完成的程度以及未来的发展方向。</span></li><li><span>重点应放在问题的深度上，而对于问题的广度，可以寥寥数语讲清楚即可。比如，人脸识别有多个待解决的问题（光照、视角、遮挡、戴帽子眼镜等），只针对弱光照问题进行深入研究。</span></li><li><span>除了问题本身，还需要关注解决问题的方法，以及这些方法的现状。比如，针对弱光照问题的解决方法有：传统机器学习、特征工程、深度学习等方法，阐述研究现状，指出各自的优缺点。</span></li></ul></li><li><p><span>研究内容</span>
+<span>明确所要研究问题的范围或域，并对问题进行分解（分而治之）。</span></p></li><li><p><span>研究目标</span>
+<span>根据目前的经验，预测研究结果可能的情况。大多数时候，应该是根据已掌握的知识，进行合理推测。</span>
+<span>（1）尽量与研究内容一一对应，即与拟要研究的内容/问题的域相对应；</span>
+<span>（2）对研究内容的创新性进行叙述。</span></p></li><li><p><span>拟解决的关键问题</span>
+<span>针对研究内容，逐条列出其中会遇到的关键问题。</span></p></li><li><p><span>拟采取的解决方法和可行性分析</span>
+<span>针对关键问题，逐项阐述解决某关键问题的方法和步骤。根据不同种类问题，设计合适的研究方法。对研究可行性的探讨：</span>
+<span>（1）对问题的难度进行判断，只有难以解决的问题，才需要考虑问题的可行性；</span>
+<span>（2）提出解决问题的视角、途径、方法；</span>
+<span>（3）列出所需的物质保障条件.</span></p></li><li><p><span>参考文献：</span>
+<span>参考文献为理清问题的发展历史脉络提供了依据。</span>
+<span>（1）重要的、经典的文献不能遗漏。</span>
+<span>（2）对于近阶段的文献，应尽可能全面搜集和详细整理，特别是近五年来的高水平献，</span>
+<span>一定要认真地整理。</span>
+<span>（3）对于参考文献，还需要注意引用和书写格式问题。</span></p></li><li><p><span>进度安排：</span>
+<span>不应简单地平均分配时间，或笼统地分配。</span>
+<span>（1）列出拟研究的问题，采用一定的逻辑顺序进行排列；</span>
+<span>（2）根据难易程度，列出预计在不同问题上花费的时间。</span></p></li></ul><h4 id='研究型项目开题报告的撰写'><span>研究型项目开题报告的撰写</span></h4><p><span>第一部分 研究背景</span></p><ol start='' ><li><span>课题来源</span></li><li><span>研究意义</span></li><li><span>研究现状（</span><strong><span>文献综述重要</span></strong><span>）</span></li></ol><p><span>第二部分 研究内容、研究目标与拟解决的关键问题</span></p><ol start='' ><li><span>研究内容（子标题层层递进）</span></li><li><span>研究目标（针对每一个研究内容都要给一个创新点）</span></li><li><span>拟解决的关键问题（也要针对每个研究内容）</span></li></ol><p><span>第三部分 拟采取的解决方法和可行性分析</span></p><ol start='' ><li><p><span>理论依据（研究方法）</span></p></li><li><p><span>拟采用的技术路线（每个研究内容，若要达到目标，都至少有一个拟解决的关键问题，针对每个关键问题，简单介绍解决它的方法和步骤）</span></p></li><li><p><span>可行性分析</span></p><ul><li><span>前人工作基础</span></li><li><span>理论基础扎实...</span></li><li><span>受...启发</span></li><li><span>已有的积累</span></li></ul></li></ol><p><span>第四部分 主要参考文献（内容要在编号后面）</span></p><p><span>第五部分 毕业设计进度安排（不要写成通用的软件开发流程，聚焦你项目的功能）</span></p><p><span>要环环相扣，</span><strong><span>最重要的</span></strong></p><h3 id='432-工程型开题报告的撰写'><span>4.3.2 工程型开题报告的撰写</span></h3><p><span>第一部分 项目背景</span></p><ol start='' ><li><span>项目来源（可以写在人工智能基础课堂上，参与的...项目）</span></li><li><span>项目意义（完整的中文语句）</span></li><li><span>项目的研发现状（</span><strong><span>文献综述或现实情况下有哪些问题</span></strong><span>）</span></li></ol><p><span>第二部分 项目内容、项目目标与拟解决的关键问题</span></p><ol start='' ><li><span>项目内容（写本项目提供那些功能，给出功能架构针对每个功能，用一个独立的段落介绍主要内容）</span></li><li><span>项目目标（预期交付的成果物）</span></li><li><span>拟解决的关键问题（对应每一个项目内容，至少有一个拟解决的关键问题）</span></li></ol><p><span>第三部分 拟采取的解决方案及可行性分析</span></p><ol start='' ><li><p><span>理论依据（研发方法，可选）</span></p></li><li><p><span>拟采取的技术路线（每个研究内容，都至少有一个拟解决的关键问题</span></p></li><li><p><span>可行性分析</span></p><ul><li><span>前人工作基础</span></li><li><span>理论基础扎实...</span></li><li><span>受...启发</span></li><li><span>已有的积累</span></li></ul></li></ol><p><span>第四部分 主要参考文献（内容要在编号后面）</span></p><p><span>第五部分 毕业设计进度安排（不要写成通用的软件开发流程，聚焦你项目的功能）</span></p><h2 id='44-开题报告的撰写规范'><span>4.4 开题报告的撰写规范</span></h2><ol start='' ><li><span>书面语，不允许中英文混杂</span></li><li><span>避免使用人称代词、设问句</span></li><li><span>逻辑结构紧凑连贯，避免歧义</span></li><li><span>注重what、why、generalhow、预期结果。</span></li><li><span>避免空洞，模块名称聚焦</span></li><li><span>避免所答非所问</span></li><li><span>避免错别字、错误标点符号</span></li><li><span>注重格式，字体、字号、行间距、段间距、段首右缩进两个汉字字符。</span>
+<span>正文：宋体5号，单倍行间距，标题加粗。</span></li><li><span>引用上角标</span></li><li><span>参考文献不少于15片，应按被引用的顺序排列，不得将引用文献标示于各级标题出。</span></li><li><span>文中的标号按 1. 2. 3.( 小数点、非顿号 ) …., (1) (2) (3), 1) 2)排列， 不要出现 PPT 中出现的项目符号。</span></li><li><span>所有图、表及其标题均有“自明性”</span></li><li><span>表标题在表上方，图标题在图下方</span></li><li><span>图表与文字预留位置</span></li><li><span>标题不能是一页的最后一行，图表及公式不能紧跟标题</span></li><li><span>图表、公式文字字号不得大于正文中字号</span></li><li><span>定义每一个理论名和技术术语，给出全称和中文含义</span></li><li><span>全文统一名称</span></li><li><span>句子不要太长，用2-3个简单语句比一个3-7行的长句好</span></li><li><span>段落不要太长</span></li><li><span>每段段首，最好给出一句概括本段中心思想的“段眼”（加粗黑体）</span></li><li><span>慎用晦涩词语</span></li><li><span>直截了当，不要旁敲侧击</span></li><li><span>尽可能缩减报告的篇幅，一般为A4纸的5-7页</span></li></ol><h2 id='45-开题答辩------制作ppt'><span>4.5 开题答辩——制作PPT</span></h2><p><span>PPT逻辑结构</span></p><ol start='' ><li><strong><span>封面</span></strong><span>：题目，学号、姓名、指导老师姓名</span></li><li><strong><span>题目来源</span></strong><span>，实习公司名、岗位、毕设题目来源的项目名称</span></li><li><strong><span>项目背景和意义</span></strong><span>（略讲）</span></li><li><span>项目研发现状/国内外研究现状</span>
+<span>以上 讲述大约2 - 3分钟</span></li><li><strong><span>项目的内容</span></strong><span>：1、2、3…列清楚</span></li><li><strong><span>项目目标</span></strong><span>（即预期交付物）</span></li><li><span>拟解决的</span><strong><span>关键问题</span></strong></li><li><span>拟采取的</span><strong><span>解决方案</span></strong><span>及可行性分析</span></li><li><strong><span>进度安排</span></strong></li></ol><p><span>提示：</span></p><ol start='' ><li><span>答辩PPT</span><strong><span>中字号，最小24号字</span></strong><span>，图表中的</span><strong><span>文字</span></strong><span>一定要</span><strong><span>清晰可辨</span></strong><span>；</span></li><li><span>不要写大段大段的文字，照着念，写关键词，用自己的话串起来；</span></li><li><span>一页中内容的布局不要很拥挤；</span></li><li><span>自述10分钟，提问5分钟，</span><strong><span>千万不要超时，正文大约10-15页slides就够了</span></strong><span>；</span></li><li><strong><span>切忌“所答非所问”、“左顾而言它”！视频</span></strong></li><li><span>答辩前，自己给</span><strong><span>非同一项目的同学</span></strong><span>预演，直到在规定时间（10分钟）内同学听懂</span>
+<span>了为止；</span></li><li><span>开题答辩的目的：让3名老师帮你把关“此题目将来是否有匿名评审、答辩通不过的风险”，所以，现在一针见血地指出题目的问题，是在帮你，而不是在难为你！</span>
+<strong><span>切记！！</span></strong></li></ol><h1 id='5-毕设论文的撰写'><span>5. 毕设论文的撰写</span></h1><h2 id='51-学位论文的意义及写作流程'><span>5.1 学位论文的意义及写作流程</span></h2><p><span>教学目标和要求...质量检验</span></p><h2 id='52-学士学位论文的结构及写作规范'><span>5.2 学士学位论文的结构及写作规范</span></h2><h3 id='521-论文题目的命名'><span>5.2.1 论文题目的命名</span></h3><ul><li><span>准确</span></li><li><span>简洁</span></li><li><span>清楚</span></li></ul><p><span>题目的三要素：</span></p><ul><li><span>科学发现或结论</span></li><li><span>研究对象</span></li><li><span>研究方法</span></li></ul><p><strong><span>题文相扣、概念准确、简短精炼、结构合理、语序正确</span></strong></p><h3 id='522-中英文摘要的撰写'><span>5.2.2 中英文摘要的撰写</span></h3><p><span>独立性、自明性，不适用简写或英文缩写。</span>
+<span>按层次、逐段撰写，慎用长句。</span>
+<span>避免对常识性内容叙述过多。</span>
+<span>不要描述软件开发流程、重点介绍作者本人的工作内容。</span>
+<span>一般使用第三人称。</span>
+<span>不出现言过其实、不严谨的磁矩。</span>
+<span>不宜简单地重复题名信息。</span>
+<span>不标注引用文献编号。</span></p><p><span>内容：作者所完成工作的</span></p><ul><li><span>研究/项目背景</span></li><li><span>研究/项目的意义和目的</span></li><li><span>研究内容/项目功能</span></li><li><span>项目完成的效果/研究成果与结论</span></li></ul><h3 id='523-章节目录的组织'><span>5.2.3 章节目录的组织</span></h3><p><span>目录是 论文中各章节的顺序列表，包括论文中全部 章（1） 、节（1.1） 、条（1.1.1）三级标题及其起始页码。</span>
+<strong><span>工程型论文应避免缺乏个性化的论文目录章节</span></strong></p><h3 id='524-正文的撰写'><span>5.2.4 正文的撰写</span></h3><p><strong><span>正文结构层次的安排</span></strong></p><ul><li><strong><span>时空</span></strong><span> 顺序— 按时间顺序或在空间位置为序排列</span></li><li><strong><span>推理</span></strong><span> 顺序— 按逻辑推理或理论推导步骤为序排列</span></li><li><strong><span>并列</span></strong><span> 顺序— 根据写作对象的类别，分别列举叙述</span></li><li><strong><span>总分</span></strong><span> 顺序— 按总体和分解的几个问题逐一 叙述</span></li></ul><h4 id='正文部分标题的确定'><span>正文部分标题的确定</span></h4><p><span>章、节、条、 款【(1)】、项 【①】 、 段在构思时要注意 层次性、相关性和递进性。</span></p><h4 id='段落安排'><span>段落安排</span></h4><ul><li><span>完整性</span></li><li><span>单义性</span></li><li><span>逻辑性</span></li><li><span>匀称性</span></li></ul><h4 id='5241-引言绪论的写作'><span>5.2.4.1 引言/绪论的写作</span></h4><ul><li><span>项目背景</span></li><li><span>相关产品的国内外发展现状</span></li><li><span>课题的主要内容和论文组织架构</span></li></ul><h5 id='小文献综述'><span>小文献综述</span></h5><p><span>依次阐述每个的核心方法、思路、效果、有何不足</span>
+<span>总结并提出新问题</span></p><h5 id='创新点'><span>创新点</span></h5><p><span>理论、方法、角度、过程、观点</span></p><h4 id='5242-第2章的写作'><span>5.2.4.2 第2章的写作</span></h4><p>&nbsp;</p><h4 id='5243-个人工作内容的阐述'><span>5.2.4.3 个人工作内容的阐述</span></h4><p>&nbsp;</p><h4 id='5244-正文写作规范'><span>5.2.4.4 正文写作规范</span></h4><p>&nbsp;</p><h3 id='525-引用参考文档的规范'><span>5.2.5 引用参考文档的规范</span></h3><p>&nbsp;</p><h2 id='53-毕设答辩要点'><span>5.3 毕设答辩要点</span></h2><p>&nbsp;</p></div></div>
+</body>
+</html>

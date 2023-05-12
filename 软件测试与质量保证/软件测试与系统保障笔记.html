@@ -1,0 +1,616 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>软件测试与系统保障笔记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n352"><a class="md-toc-inner" href="#成绩构成">成绩构成</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n10"><a class="md-toc-inner" href="#课程大纲">课程大纲</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n13"><a class="md-toc-inner" href="#参考文献">参考文献</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n17"><a class="md-toc-inner" href="#1-the-basic-concepts-and-theories-of-testing">1. The basic concepts and theories of testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n18"><a class="md-toc-inner" href="#software-testing">Software testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n20"><a class="md-toc-inner" href="#test-cycle">Test Cycle</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n23"><a class="md-toc-inner" href="#测试分三个维度">测试分三个维度</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n27"><a class="md-toc-inner" href="#fault-error--failure">Fault, Error &amp; Failure</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n32"><a class="md-toc-inner" href="#2-principle-of-testing">2. Principle of Testing</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n88"><a class="md-toc-inner" href="#3-white-box">3. White Box</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n105"><a class="md-toc-inner" href="#控制流">控制流</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n107"><a class="md-toc-inner" href="#basic-path-testing"><strong>Basic Path Testing</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n135"><a class="md-toc-inner" href="#condition-testing">Condition testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n188"><a class="md-toc-inner" href="#数据流考试无关">数据流(考试无关)</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n201"><a class="md-toc-inner" href="#4-black-box">4. Black Box</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n210"><a class="md-toc-inner" href="#41-random-testing">4.1 Random Testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n212"><a class="md-toc-inner" href="#42-equivalence-partitioning">4.2 Equivalence Partitioning</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n219"><a class="md-toc-inner" href="#43-boundary-value-analysis">4.3 Boundary Value Analysis</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n228"><a class="md-toc-inner" href="#44-cause-effect-analysis">4.4 Cause Effect Analysis</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n232"><a class="md-toc-inner" href="#5-integration-test">5. Integration Test</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n234"><a class="md-toc-inner" href="#important-traits-of-a-good-ui">Important traits of a good UI</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n251"><a class="md-toc-inner" href="#6-mutation-testing">6. Mutation Testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n253"><a class="md-toc-inner" href="#how-good-are-my-tests">How good are my tests</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n255"><a class="md-toc-inner" href="#mutation-testing">Mutation testing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n266"><a class="md-toc-inner" href="#finite-automata">Finite automata</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n268"><a class="md-toc-inner" href="#7-mid-review">7. Mid-Review</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n272"><a class="md-toc-inner" href="#71-测的部分分类">7.1 测的部分分类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n273"><a class="md-toc-inner" href="#711-input-domain-testing-techniques">7.1.1 Input Domain Testing Techniques</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n285"><a class="md-toc-inner" href="#712-code-base-testing-techniques">7.1.2 Code-Base Testing Techniques</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n291"><a class="md-toc-inner" href="#713-fault-based-testing-techniques">7.1.3 Fault-Based Testing Techniques</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n297"><a class="md-toc-inner" href="#714-model-based-testing-techniques">7.1.4 Model-Based Testing Techniques</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n305"><a class="md-toc-inner" href="#72-测的区域分类">7.2 测的区域分类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n306"><a class="md-toc-inner" href="#721-unit-testing">7.2.1 Unit Testing</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n314"><a class="md-toc-inner" href="#722-integration-testing">7.2.2 Integration Testing</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n335"><a class="md-toc-inner" href="#723-system-testing">7.2.3 System Testing</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n347"><a class="md-toc-inner" href="#8-maintain">8. Maintain</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n349"><a class="md-toc-inner" href="#考试相关">考试相关</a></span></p></div><p>&nbsp;</p><h1 id='成绩构成'><span>成绩构成</span></h1><p><img src="D:\Typora_CACHE\image-20220829141950031.png" alt="image-20220829141950031" style="zoom:67%;" /></p><ul><li><span>项目 20%</span></li><li><span>作业 40%</span></li><li><span>期末 40%</span></li></ul><h1 id='课程大纲'><span>课程大纲</span></h1><p><img src="D:\Typora_CACHE\image-20220829142148079.png" alt="image-20220829142148079" style="zoom:67%;" /></p><p><strong><span>第4-5周，6-7,重要，8非常重要</span></strong></p><h1 id='参考文献'><span>参考文献</span></h1><p><img src="D:\Typora_CACHE\image-20220829142242059.png" alt="image-20220829142242059" style="zoom:67%;" /></p><p><span>软件测试Ron Patton, Software Testing(2th Edition)</span></p><p><img src="D:\Typora_CACHE\image-20220829142525769.png" alt="image-20220829142525769" style="zoom:67%;" /></p><h1 id='1-the-basic-concepts-and-theories-of-testing'><span>1. The basic concepts and theories of testing</span></h1><h2 id='software-testing'><span>Software testing</span></h2><p><img src="D:\Typora_CACHE\image-20220829142804297.png" alt="image-20220829142804297" style="zoom:67%;" /></p><h2 id='test-cycle'><span>Test Cycle</span></h2><p><img src="D:\Typora_CACHE\image-20220829143127177.png" alt="image-20220829143127177" style="zoom:67%;" /></p><p><strong><span>测试用例不断更新</span></strong></p><h2 id='测试分三个维度'><span>测试分三个维度</span></h2><p><img src="D:\Typora_CACHE\image-20220829143613011.png" alt="image-20220829143613011" style="zoom:67%;" /></p><p><strong><span>grey box</span></strong><span> between black and white box</span></p><p><span>unit - white box</span>
+<span>system - black box</span></p><h2 id='fault-error--failure'><span>Fault, Error &amp; Failure</span></h2><p><img src="D:\Typora_CACHE\image-20220829152127218.png" alt="image-20220829152127218" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220905143942298.png" alt="image-20220905143942298" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220905143954757.png" alt="image-20220905143954757" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220905144007087.png" alt="image-20220905144007087" style="zoom:67%;" /></p><h1 id='2-principle-of-testing'><span>2. Principle of Testing</span></h1><p><strong><span>Source of Problems:</span></strong></p><ul><li><strong><span>Requirements Definition:</span></strong><span> Erroneous, incomplete, inconsistent requirements.</span></li><li><strong><span>Design:</span></strong><span> Fundamental design flaws in the software.</span></li><li><strong><span>Implementation:</span></strong><span> Mistakes in chip fabrication, wiring, programming faults, malicious code.</span></li><li><strong><span>Support System:</span></strong><span> Poor programming languages, faulty compilers and debuggers ,misleading development tools.</span></li><li><strong><span>Inadequate Testing of Software</span></strong><span>: Incomplete testing, poor verification, mistakes in debugging.</span></li><li><strong><span>Evolution:</span></strong><span> Sloppy redevelopment or maintenance, introduction of new flaws in attempts to fix old flaws, incremental escalation to inordinate complexity.</span></li><li><strong><span>Communications:</span></strong><span> Loss or corruption of communication media, non delivery of data.</span></li><li><strong><span>Space Applications:</span></strong><span> Lost lives, launch delays.</span></li><li><strong><span>Defense and Warfare:</span></strong><span> Misidentification of friend or foe.</span></li></ul><p><strong><span>测试流程</span></strong></p><p><img src="D:\Typora_CACHE\image-20220907103241190.png" alt="image-20220907103241190" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220907104843604.png" alt="image-20220907104843604" style="zoom:67%;" /></p><p><strong><span>Goal of a software tester：</span></strong></p><ul><li><span>... to find bugs</span></li><li><span>... as early in the software development processes as possible</span></li><li><span>... and make sure they get fixed</span></li></ul><p><strong><span>BRD</span></strong><span> - Business requirement document</span>
+<strong><span>MRD</span></strong><span> - Market requirement document</span>
+<strong><span>PRD</span></strong><span> - Program requirement document</span></p><ul><li><p><span>Customer requirements</span>
+<span>The software development team must determine what the customer wants.</span></p></li><li><p><span>Specification</span></p><ul><li><p><span>The specification takes the data from the customer requirements and other sources and defines:</span></p><ul><li><strong><span>The features of the software</span></strong><span> (functional requirements).</span></li><li><strong><span>The constraints on these features</span></strong><span> (non-functional requirements).</span></li></ul></li><li><p><span>Specifications can be:</span></p><ul><li><strong><span>formal</span></strong><span>, rigid</span></li><li><strong><span>informal</span></strong><span>, on a cocktail napkin or a whiteboard</span></li></ul></li></ul></li></ul><p><span>Testing - 找</span>
+<span>Debugging - 修</span>
+<span>Verification - 文档</span>
+<span>Validation - 是不是用户想要的</span></p><p><strong><span>axiom公理</span></strong></p><p><img src="D:\Typora_CACHE\image-20221205150219388.png" alt="image-20221205150219388" style="zoom:50%;" /></p><h1 id='3-white-box'><span>3. White Box</span></h1><p><span>Examine the Design Document &amp; Code </span><strong><span>static</span></strong></p><p><strong><span>Control Flow</span></strong></p><p><span>控制流:</span></p><ul><li><span>Statement testing</span></li><li><span>Branch testing</span></li><li><span>Path testing</span></li></ul><p><span>数据流:</span></p><ul><li><span>Definition-use path testing</span></li><li><span>All uses testing</span></li></ul><h2 id='控制流'><span>控制流</span></h2><p><span>Example</span><img src="D:\Typora_CACHE\image-20220919144503779.png" alt="image-20220919144503779" style="zoom:50%;" /></p><h3 id='basic-path-testing'><strong><span>Basic Path Testing</span></strong></h3><p><span>cyclomatic complexity 圈复杂度-&gt;图越复杂-&gt;程序越复杂</span></p><p><img src="D:\Typora_CACHE\image-20220919145050840.png" alt="image-20220919145050840" style="zoom:50%;" /></p><ul><li><span>Decision</span></li><li><span>Junction</span></li><li><span>End</span></li></ul><p><img src="D:\Typora_CACHE\image-20220919145853454.png" alt="image-20220919145853454" style="zoom:67%;" /></p><p><strong><span>圈复杂度计算</span></strong></p><p><img src="D:\Typora_CACHE\image-20220919151321035.png" alt="image-20220919151321035" style="zoom:50%;" /></p><ul><li><span>区域</span></li><li><span>边-节点+2</span></li></ul><p><img src="D:\Typora_CACHE\image-20220919151810288.png" alt="image-20220919151810288" style="zoom: 50%;" /></p><p><span>V(G)= the number of Independent path </span></p><p><strong><span>Not complete Testing:</span></strong></p><ul><li><span>Spec</span></li><li><span>Testcases</span></li><li><span>Not all bugs can be fixed</span></li></ul><h3 id='condition-testing'><span>Condition testing</span></h3><p><strong><span>Logical conditions</span></strong></p><ul><li><span>Simple condition: (a rel-op b) where rel-op={&lt;, ≤, =, ≠, ≥, &gt;} (may be negated with NOT), e.g., a≤b; NOT(a≤b)</span></li><li><span>Compound condition: two or more simple conditions connected with AND, OR, e.g., (a&gt;b) AND (c&lt;d)</span></li><li><span>Relational expression: (E1 rel-op E2) where E1 and E2 are arithmetic expressions, e.g., ((a*b+c)&gt;(a+b+c))</span></li></ul><p><strong><span>Branch testing</span></strong></p><p><span>for a compound condition C, test true and false branches of C and every simple condition of C</span></p><p><span>	</span><span>e.g., for </span><strong><span>C</span></strong><span> = (</span><strong><span>a&gt;b</span></strong><span>) AND (</span><strong><span>c&lt;d</span></strong><span>)  test:  </span></p><p><img src="D:\Typora_CACHE\image-20220921111739543.png" alt="image-20220921111739543" style="zoom:33%;" /></p><p><strong><span>Domain testing</span></strong></p><p><span>for an expression </span><strong><span>E1 rel-op E2</span></strong><span>, test for E1 </span><strong><span>≧ ≦ = &lt; &gt; ≠</span></strong><span> E2</span></p><ul><li><span>guarantees detection of rel-op error if E1 and E2 are correct</span></li><li><span>to detect errors in E1 / E2, the difference between E1 and E2 for the tests E1 </span><strong><span>&lt;</span></strong><span> or </span><strong><span>&gt;</span></strong><span> than E2 should be as small as possible</span></li><li><span>for an expression with n variables, 2n tests are required</span></li></ul><p>&nbsp;</p><p><strong><span>Coverage</span></strong></p><ul><li><span>condition coverage</span></li><li><span>preserves desicion coverage:</span>
+<span>decision/condition coverage</span></li></ul><p><span>path coverage 最大</span></p><ul><li><p><span>Path Testing Pu</span></p><ul><li><span>100% path coverage.</span></li><li><span>Execute all possible control flow paths through the program. </span></li></ul></li><li><p><span>Statement Testing P1</span></p><ul><li><span>100% statement coverage.</span></li><li><span>Execute all statements in a program at least once under some test.</span></li></ul></li><li><p><span>Branch Testing P2</span></p><ul><li><span>100% branch coverage.</span></li><li><span>Execute enough tests to assure that every branch alternative has been exercised at least once under some test.</span></li></ul></li></ul><p><span>P1 ≤ P2 ≤ Pu</span></p><h2 id='数据流考试无关'><span>数据流(考试无关)</span></h2><p><strong><span>Definition</span></strong></p><p><span>A location where a value for a variable is stored into memory</span></p><p><strong><span>def and use</span></strong></p><p><img src="D:\Typora_CACHE\image-20220921120211567.png" alt="image-20220921120211567" style="zoom: 33%;" /></p><p><img src="D:\Typora_CACHE\image-20220921120238133.png" alt="image-20220921120238133" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220921120255897.png" alt="image-20220921120255897" style="zoom:50%;" /></p><p><img src="D:\Typora_CACHE\image-20220921120431612.png" alt="image-20220921120431612" style="zoom:33%;" /></p><p><img src="D:\Typora_CACHE\image-20220926142226990.png" alt="image-20220926142226990" style="zoom: 67%;" /></p><p><img src="D:\Typora_CACHE\image-20220926143250503.png" alt="image-20220926143250503" style="zoom: 20%;" /></p><p><img src="D:\Typora_CACHE\image-20220926144846685.png" alt="image-20220926144846685" style="zoom: 67%;" /></p><p><img src="D:\Typora_CACHE\image-20220926150000546.png" alt="image-20220926150000546" style="zoom:20%;" /></p><p><strong><span>数据流必须全拆，控制流有些可不拆（并行判断要拆）</span></strong></p><h1 id='4-black-box'><span>4. Black Box</span></h1><p><span>Test case:</span></p><ol start='' ><li><span>Reduce Testcase</span></li><li><span>Maintain Test Performance</span></li><li><span>Test Coverage</span></li></ol><h2 id='41-random-testing'><span>4.1 Random Testing</span></h2><p><span>Adaptive Random Testing 选点有规则且与前几个用例越来越远</span></p><h2 id='42-equivalence-partitioning'><span>4.2 Equivalence Partitioning</span></h2><p><span>Identify input equivalence classes注意边界值:</span></p><ul><li><span>Based on conditions on inputs/outputs in specification/description: Both valid and invalid input equivalence classes</span></li><li><span>Based on heuristics and experience</span>
+<img src="D:\Typora_CACHE\image-20221005121740360.png" alt="image-20221005121740360" style="zoom:67%;" />
+<img src="D:\Typora_CACHE\image-20221005121817509.png" referrerpolicy="no-referrer" alt="image-20221005121817509"></li></ul><h2 id='43-boundary-value-analysis'><span>4.3 Boundary Value Analysis</span></h2><p><strong><span>Example strategy as extension of equivalence partitioning:</span></strong></p><ul><li><span>choose one (n) </span><strong><span>arbitrary</span></strong><span> value(s) in each eq. class </span><strong><span>每个class选个任意值</span></strong></li><li><span>choose values </span><strong><span>exactly</span></strong><span> on </span><strong><span>lower /upper boundaries</span></strong><span> of eq. class </span><strong><span>准确值</span></strong></li><li><span>choose values </span><strong><span>immediately</span></strong><span> below /above each boundary ( if applicable ) </span><strong><span>临界值</span></strong><span> min和max也都要测 （min - 1可放在class中）</span></li></ul><h2 id='44-cause-effect-analysis'><span>4.4 Cause Effect Analysis</span></h2><p><span>因果分析</span></p><p><img src="D:\Typora_CACHE\image-20221010155456390.png" alt="image-20221010155456390" style="zoom:67%;" /></p><p><span>RT</span>
+<span>ART - Reduce test case</span>
+<span>EP - Reduce test case &amp; maintain test performance</span>
+<span>BVA - Maintain test performance &amp; Coverage</span>
+<span>Cause Effect - Reduce Test case</span></p><h1 id='5-integration-test'><span>5. Integration Test</span></h1><p><strong><span>driver - 用于集成测试</span></strong></p><h2 id='important-traits-of-a-good-ui'><span>Important traits of a good UI</span></h2><ul><li><span>Follows standards and guidelines</span></li><li><span>Intuitive 直观</span></li><li><span>Consistent 一致性</span></li><li><span>Flexible</span></li><li><span>Comfortable</span></li><li><span>Correct</span></li><li><span>Useful</span></li></ul><p><strong><span>Accessibility Testing</span></strong><span> for disabled</span></p><h1 id='6-mutation-testing'><span>6. Mutation Testing</span></h1><p><strong><span>变异测试</span></strong></p><h2 id='how-good-are-my-tests'><span>How good are my tests</span></h2><p><strong><span>Coverage</span></strong><span> = 有多少代码能够测到的</span>
+<strong><span>Key idea</span></strong><span> = 从早期和常见的错误中学习，防止它们再次发生，（如拼写错误）</span></p><h2 id='mutation-testing'><span>Mutation testing</span></h2><p><strong><span>Mutation testing terms</span></strong></p><ul><li><span>Mutant</span></li><li><span>Mutation operator</span></li><li><span>Mutant killed</span></li><li><span>Mutant score</span>
+<span>= killed mutants / (N - number of equivalent mutants)</span></li></ul><h2 id='finite-automata'><span>Finite automata</span></h2><p><img src="D:\Typora_CACHE\image-20221024152346113.png" alt="image-20221024152346113" style="zoom:40%;" /></p><h1 id='7-mid-review'><span>7. Mid-Review</span></h1><p><span>Bug</span></p><blockquote><p><span>Requirement——black box</span>
+<span>Design</span>
+<span>Code——white box</span></p></blockquote><h2 id='71-测的部分分类'><span>7.1 测的部分分类</span></h2><h3 id='711-input-domain-testing-techniques'><span>7.1.1 Input Domain Testing Techniques</span></h3><ul><li><span>Random Testing</span></li><li><span>ART</span></li><li><span>EP</span></li><li><span>BVA</span></li><li><span>CE</span></li></ul><h3 id='712-code-base-testing-techniques'><span>7.1.2 Code-Base Testing Techniques</span></h3><ul><li><span>Control-flow</span></li><li><span>Data-flow</span></li></ul><h3 id='713-fault-based-testing-techniques'><span>7.1.3 Fault-Based Testing Techniques</span></h3><ul><li><span>Error Guesting</span></li><li><span>Mutation</span></li></ul><h3 id='714-model-based-testing-techniques'><span>7.1.4 Model-Based Testing Techniques</span></h3><ul><li><span>FSM</span></li><li><span>Logic</span></li><li><span>UML</span></li></ul><h2 id='72-测的区域分类'><span>7.2 测的区域分类</span></h2><h3 id='721-unit-testing'><span>7.2.1 Unit Testing</span></h3><p><span>White&amp;Black box</span></p><p><span>Unit</span></p><ul><li><span>driver</span></li><li><span>stub</span></li></ul><h3 id='722-integration-testing'><span>7.2.2 Integration Testing</span></h3><p><span>测interface</span></p><ul><li><span>API</span></li><li><span>SDK</span></li></ul><p><span>Approaches</span></p><ul><li><span>Big bang</span></li><li><span>Incremental</span></li></ul><p><span>Test Function</span></p><ul><li><span>Top-down</span></li><li><span>Mixed</span></li><li><span>Bottom-up</span></li></ul><h3 id='723-system-testing'><span>7.2.3 System Testing</span></h3><p><span>Functional</span></p><p><span>Non-Functional</span></p><ul><li><span>Usability</span></li><li><span>Performance</span></li><li><span>Security</span></li><li><span>Load</span></li></ul><h1 id='8-maintain'><span>8. Maintain</span></h1><p><img src="D:\Typora_CACHE\image-20221102105819178.png" alt="image-20221102105819178" style="zoom:50%;" /></p><h1 id='考试相关'><span>考试相关</span></h1><p><span> </span></p><p>&nbsp;</p></div></div>
+</body>
+</html>

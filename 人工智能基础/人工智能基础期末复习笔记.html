@@ -1,0 +1,1060 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>人工智能基础期末复习笔记</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#1人工智能概述">1.人工智能概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#1人工智能的萌芽与诞生">1.人工智能的萌芽与诞生</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#1人工智能的萌芽">1.人工智能的萌芽</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#2人工智能的诞生">2.人工智能的诞生</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" href="#2人工智能的定义">2.人工智能的定义</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#3人工智能的发展简史">3.人工智能的发展简史</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n19"><a class="md-toc-inner" href="#4人工智能的流派">4.人工智能的流派</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n21"><a class="md-toc-inner" href="#1符号主义">1.符号主义</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#2连接主义">2.连接主义</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#3行为主义">3.行为主义</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n28"><a class="md-toc-inner" href="#5人工智能研究的基本内容">5.人工智能研究的基本内容</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" href="#1知识表示">1.知识表示</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n31"><a class="md-toc-inner" href="#2机器感知">2.机器感知</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" href="#3机器思维">3.机器思维</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n35"><a class="md-toc-inner" href="#4机器学习-1">4.机器学习</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner" href="#5机器行为">5.机器行为</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n39"><a class="md-toc-inner" href="#6人工智能的主要研究领域">6.人工智能的主要研究领域</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n53"><a class="md-toc-inner" href="#2知识表示与知识图谱">2.知识表示与知识图谱</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n54"><a class="md-toc-inner" href="#1知识的概述">1.知识的概述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n56"><a class="md-toc-inner" href="#1知识的定义">1.知识的定义</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n58"><a class="md-toc-inner" href="#2知识的特性">2.知识的特性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n60"><a class="md-toc-inner" href="#3知识的分类">3.知识的分类</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n62"><a class="md-toc-inner" href="#2知识表示的方法">2.知识表示的方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n65"><a class="md-toc-inner" href="#1陈述式知识表示">1.陈述式知识表示</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n79"><a class="md-toc-inner" href="#2过程式知识表示">2.过程式知识表示</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n95"><a class="md-toc-inner" href="#3产生式表示法">3.产生式表示法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n98"><a class="md-toc-inner" href="#1产生式">1.产生式</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n99"><a class="md-toc-inner" href="#1确定性事实的产生式表示">1.确定性事实的产生式表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n101"><a class="md-toc-inner" href="#2不确定事实的产生式表示">2.不确定事实的产生式表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n104"><a class="md-toc-inner" href="#3确定性规则的产生式表示">3.确定性规则的产生式表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n111"><a class="md-toc-inner" href="#4不确定性规则的产生式表示">4.不确定性规则的产生式表示</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n113"><a class="md-toc-inner" href="#2产生式系统">2.产生式系统</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n123"><a class="md-toc-inner" href="#3产生式表示法的特点">3.产生式表示法的特点</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n126"><a class="md-toc-inner" href="#4状态空间表示法">4.状态空间表示法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n142"><a class="md-toc-inner" href="#例21-八数码问题-1">例2.1 八数码问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n145"><a class="md-toc-inner" href="#例22-旅行商问题">例2.2 旅行商问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n149"><a class="md-toc-inner" href="#5知识图谱">5.知识图谱</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n151"><a class="md-toc-inner" href="#1知识图谱的定义">1.知识图谱的定义</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n162"><a class="md-toc-inner" href="#1概念">1.概念</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n164"><a class="md-toc-inner" href="#2实体">2.实体</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n166"><a class="md-toc-inner" href="#3属性">3.属性</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n168"><a class="md-toc-inner" href="#4关系">4.关系</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n171"><a class="md-toc-inner" href="#2知识图谱的表示">2.知识图谱的表示</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n175"><a class="md-toc-inner" href="#3知识图谱的发展历史">3.知识图谱的发展历史</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n177"><a class="md-toc-inner" href="#1语义网络表示">1.语义网络表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n180"><a class="md-toc-inner" href="#2本体知识表示">2.本体知识表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n183"><a class="md-toc-inner" href="#3语义万维网知识表示">3.语义万维网知识表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n192"><a class="md-toc-inner" href="#4链接数据">4.链接数据</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n196"><a class="md-toc-inner" href="#5知识图谱的正式提出">5.知识图谱的正式提出</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n199"><a class="md-toc-inner" href="#4典型的知识图谱">4.典型的知识图谱</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n202"><a class="md-toc-inner" href="#5知识图谱的应用">5.知识图谱的应用</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n207"><a class="md-toc-inner" href="#3搜索策略">3.搜索策略</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n208"><a class="md-toc-inner" href="#1图搜索策略">1.图搜索策略</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n215"><a class="md-toc-inner" href="#2盲目搜索">2.盲目搜索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n218"><a class="md-toc-inner" href="#1深度优先搜索">1.深度优先搜索</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n227"><a class="md-toc-inner" href="#例21-八数码问题-2">例2.1 八数码问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n231"><a class="md-toc-inner" href="#2宽度优先搜索">2.宽度优先搜索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n243"><a class="md-toc-inner" href="#3盲目搜索的特点">3.盲目搜索的特点</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n246"><a class="md-toc-inner" href="#3启发式搜索">3.启发式搜索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n248"><a class="md-toc-inner" href="#评价函数">评价函数</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n252"><a class="md-toc-inner" href="#例-八数码问题-1">例 八数码问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n258"><a class="md-toc-inner" href="#1a-search最佳优先搜索">1.A Search，最佳优先搜索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n267"><a class="md-toc-inner" href="#2a-search">2.A* Search</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n271"><a class="md-toc-inner" href="#例-八数码问题-2">例 八数码问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n276"><a class="md-toc-inner" href="#例-修道士与野人">例 修道士与野人</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n286"><a class="md-toc-inner" href="#4超越经典搜索">4.超越经典搜索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n287"><a class="md-toc-inner" href="#1爬山搜索">1.爬山搜索</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n288"><a class="md-toc-inner" href="#1爬山法">1.爬山法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n294"><a class="md-toc-inner" href="#2爬山法的弱点">2.爬山法的弱点</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n298"><a class="md-toc-inner" href="#例-解决n皇后问题">例 解决n皇后问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n303"><a class="md-toc-inner" href="#3爬山法变型">3.爬山法变型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n306"><a class="md-toc-inner" href="#2模拟退火搜索">2.模拟退火搜索</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n310"><a class="md-toc-inner" href="#3遗传算法">3.遗传算法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n315"><a class="md-toc-inner" href="#例8皇后">例8皇后</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n319"><a class="md-toc-inner" href="#4机器学习-2">4.机器学习 </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n320"><a class="md-toc-inner" href="#1机器学习的三个视角">1.机器学习的三个视角</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n321"><a class="md-toc-inner" href="#1机器学习的概念">1.机器学习的概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n323"><a class="md-toc-inner" href="#2机器学习的发展历史">2.机器学习的发展历史</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n326"><a class="md-toc-inner" href="#3机器学习的三个不同视角">3.机器学习的三个不同视角</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n334"><a class="md-toc-inner" href="#4机器学习的应用术语">4.机器学习的应用术语</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n345"><a class="md-toc-inner" href="#2机器学习的任务">2.机器学习的任务</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n346"><a class="md-toc-inner" href="#1分类-1">1.分类</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n347"><a class="md-toc-inner" href="#1分类-2">1.分类</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n349"><a class="md-toc-inner" href="#2线性和非线性分类">2.线性和非线性分类</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n355"><a class="md-toc-inner" href="#3维度与类别">3.维度与类别</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n359"><a class="md-toc-inner" href="#4应用于算法">4.应用于算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n361"><a class="md-toc-inner" href="#2回归">2.回归</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n362"><a class="md-toc-inner" href="#1回归的定义">1.回归的定义</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n366"><a class="md-toc-inner" href="#2线性与非线性回归">2.线性与非线性回归</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n373"><a class="md-toc-inner" href="#3逻辑回归">3.逻辑回归</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n382"><a class="md-toc-inner" href="#4应用与算法">4.应用与算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n385"><a class="md-toc-inner" href="#3聚类">3.聚类</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n386"><a class="md-toc-inner" href="#1聚类定义">1.聚类定义</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n389"><a class="md-toc-inner" href="#2聚类的主要方法">2.聚类的主要方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n398"><a class="md-toc-inner" href="#3应用于算法">3.应用于算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n401"><a class="md-toc-inner" href="#4排名">4.排名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n402"><a class="md-toc-inner" href="#5降维">5.降维</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n403"><a class="md-toc-inner" href="#3机器学习的范式类型）">3.机器学习的范式（类型）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n405"><a class="md-toc-inner" href="#1监督学习">1.监督学习</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n407"><a class="md-toc-inner" href="#1监督学习的步骤">1.监督学习的步骤</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n419"><a class="md-toc-inner" href="#2有监督学习的相关任务">2.有监督学习的相关任务</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n421"><a class="md-toc-inner" href="#3有监督学习的应用">3.有监督学习的应用</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n424"><a class="md-toc-inner" href="#4knn">4.KNN</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n438"><a class="md-toc-inner" href="#5svm">5.SVM</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n444"><a class="md-toc-inner" href="#2无监督学习">2.无监督学习</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n447"><a class="md-toc-inner" href="#1聚类分析">1.聚类分析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n450"><a class="md-toc-inner" href="#2k-means">2.K-means</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n457"><a class="md-toc-inner" href="#3强化学习">3.强化学习</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n458"><a class="md-toc-inner" href="#1强化学习定义">1.强化学习定义</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n460"><a class="md-toc-inner" href="#2强化学习的类型">2.强化学习的类型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n466"><a class="md-toc-inner" href="#3q-learning">3.Q-learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n469"><a class="md-toc-inner" href="#4强化学习的应用">4.强化学习的应用</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n471"><a class="md-toc-inner" href="#4机器学习模型">4.机器学习模型</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n473"><a class="md-toc-inner" href="#5神经网络">5.神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n474"><a class="md-toc-inner" href="#1人工神经网络的发展历史">1.人工神经网络的发展历史</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n476"><a class="md-toc-inner" href="#2人工神经网络">2.人工神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n478"><a class="md-toc-inner" href="#1artificial-neuron-人工神经元">1.Artificial Neuron 人工神经元</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n483"><a class="md-toc-inner" href="#2感知机">2.感知机</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n487"><a class="md-toc-inner" href="#3多层神经网络">3.多层神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n493"><a class="md-toc-inner" href="#4激活函数">4.激活函数</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n501"><a class="md-toc-inner" href="#5神经网络的结构">5.神经网络的结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n509"><a class="md-toc-inner" href="#6bp算法">6.BP算法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n524"><a class="md-toc-inner" href="#3卷积神经网络">3.卷积神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n528"><a class="md-toc-inner" href="#1cnn优点">1.CNN优点</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n530"><a class="md-toc-inner" href="#2cnn基础结构">2.CNN基础结构</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n532"><a class="md-toc-inner" href="#1卷积层">1.卷积层</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n536"><a class="md-toc-inner" href="#灰度图上的单个卷积核">灰度图上的单个卷积核</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n539"><a class="md-toc-inner" href="#rgb图上的单个过滤器">RGB图上的单个过滤器</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n543"><a class="md-toc-inner" href="#rgb图上的多个过滤器">RGB图上的多个过滤器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n554"><a class="md-toc-inner" href="#2池化层">2.池化层</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n560"><a class="md-toc-inner" href="#3激励层">3.激励层</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n566"><a class="md-toc-inner" href="#4全连接层">4.全连接层</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n570"><a class="md-toc-inner" href="#5cnn总结">5.CNN总结</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n575"><a class="md-toc-inner" href="#4深度神经网络">4.深度神经网络</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n577"><a class="md-toc-inner" href="#6图像识别">6.图像识别</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n578"><a class="md-toc-inner" href="#1图像识别面临挑战">1.图像识别面临挑战</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n581"><a class="md-toc-inner" href="#2深度学习与图像识别">2.深度学习与图像识别</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n582"><a class="md-toc-inner" href="#1深度学习起源与发展">1.深度学习起源与发展</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n586"><a class="md-toc-inner" href="#2深度学习在图像处理领域的应用">2.深度学习在图像处理领域的应用</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n589"><a class="md-toc-inner" href="#3如何使用深度学习识别图像">3.如何使用深度学习识别图像</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n593"><a class="md-toc-inner" href="#1建立模型">1.建立模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n603"><a class="md-toc-inner" href="#2损失函数">2.损失函数</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n608"><a class="md-toc-inner" href="#3参数学习方法">3.参数学习方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n615"><a class="md-toc-inner" href="#4评价指标">4.评价指标</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n618"><a class="md-toc-inner" href="#3lenet-5的网络结构">3.LeNet-5的网络结构</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n623"><a class="md-toc-inner" href="#1c1卷积层">1.C1卷积层</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n626"><a class="md-toc-inner" href="#2s2池化层">2.S2池化层</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n628"><a class="md-toc-inner" href="#3c3卷积层">3.C3卷积层</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n632"><a class="md-toc-inner" href="#4s4池化层">4.S4池化层</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n634"><a class="md-toc-inner" href="#5c5全连接层">5.C5全连接层</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n636"><a class="md-toc-inner" href="#6f6全连接层">6.F6全连接层</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n638"><a class="md-toc-inner" href="#7output全连接层">7.Output全连接层</a></span></p></div><p><img src="D:\Typora_CACHE\image-20220602110441612.png" alt="image-20220602110441612" style="zoom:67%;" /></p><h1 id='1人工智能概述'><span>1.人工智能概述</span></h1><h2 id='1人工智能的萌芽与诞生'><span>1.人工智能的萌芽与诞生</span></h2><h3 id='1人工智能的萌芽'><span>1.人工智能的萌芽</span></h3><p><strong><span>1936</span></strong><span> 图灵提出</span><strong><span>图灵机</span></strong><span> 奠定理论基础</span>
+<strong><span>1940-1942</span></strong><span> 爱荷华州立大学J.V.Atanasoff和C.Berry装配</span><strong><span>第一台电子计算机</span></strong><span> 命名为ABC</span>
+<strong><span>1943</span></strong><span> 美国神经生理学家沃伦·麦卡洛奇(W.McCulloch)与数理逻辑学家沃尔特·皮茨 (W.Pitts) 提出了 </span><strong><span>人工神经元</span></strong><span>的概念。建立了第一个 </span><strong><span>神经网络模型</span></strong><span>(M-P模型)</span>
+<strong><span>1950</span></strong><span> 图灵提出“图灵测试” </span><strong><span>2000</span></strong><span> 图灵预言能够蒙骗30%的人 </span><strong><span>2014</span></strong><span> 尤金欺骗30%的测试者</span>
+<strong><span>1966</span></strong><span> ACM设立图灵奖</span></p><h3 id='2人工智能的诞生'><span>2.人工智能的诞生</span></h3><p><strong><span>1956</span></strong><span> “达特茅斯夏季人工智能研究计划”会议，是被广泛公认的 </span><strong><span>人工智能诞生地</span></strong><span>。 麦卡锡被称为</span><strong><span>人工智能之父</span></strong></p><p><span>马文 文• 明斯基（Marvin Lee Minsky）1927-2016</span>
+<strong><span>人工智能之父</span></strong>
+<strong><span>1975</span></strong><span> 首创</span><strong><span>框架理论</span></strong><span> （知识表示的一种方法）</span>
+<strong><span>1969</span></strong><span> 首位获得 </span><strong><span>图灵奖</span></strong><span> 的人工智能学者</span></p><p><span>约翰 翰• 麦卡锡（John McCarthy）</span>
+<span>1927-2011</span>
+<span>• 人工智能之父</span>
+<span>• </span><strong><span>首次提出 “人工智能”的概念</span></strong>
+<span>• LISP 语言的发明者</span>
+<span>• Won </span><strong><span>Turing Award</span></strong><span> in </span><strong><span>1971</span></strong></p><p><span>赫伯特• 西蒙（Herbert A. Simon ，1916-2001）</span>
+<span> 符号主义学派的创始人</span>
+<span> 爱好广泛的全能科学家</span>
+<span> </span><strong><span>1975</span></strong><span>年,与他的博士Newell共同获得图灵奖Ph.D student.</span>
+<span> </span><strong><span>1978</span></strong><span>年，获得诺贝尔经济学奖</span>
+<span> 中国科学院外籍院士</span></p><p><span>艾伦 伦• 纽厄尔（Allen Newell）（1927 — 1992 ）</span>
+<span> 符号主义学派的创始人之一</span>
+<span> 西蒙的学生与同事</span>
+<span> 1975年与西蒙同获图灵奖</span></p><p><span>2019年3月27日，ACM宣布，深度学习的三位创造者Yoshua Bengio（深度学习鼻祖）, Yann LeCun（卷积神经网络之父）, 以及Geoffrey Hinton 获得了2018 年的图灵奖。</span></p><h2 id='2人工智能的定义'><span>2.人工智能的定义</span></h2><p><span>人工智能 是研究开发能够模拟、延伸和扩展人类智能的理论、方法 、技术及应用系统的一门新的技术科学 。</span></p><p><span> </span><strong><span>弱人工智能</span></strong><span> ( weak artificial intelligence)是能够完成某一特定领域中某种特定具体任务的人工智能。</span>
+<span> </span><strong><span>强人工智能</span></strong><span> ( strong artificial intelligence)也称为 通用人工智能 ，是具备与人类同等智慧，或超越人类的人工智能，能表现正常人类所具有的所有智能行为。</span></p><h2 id='3人工智能的发展简史'><span>3.人工智能的发展简史</span></h2><p><span>（1） 1930s-1956：AI的孕育期</span>
+<span>（2） 1956年：人工智能诞生</span>
+<span>（3 ）1956- 1960s中期： 通用方法 时代 （黄金期）</span>
+<span>（4） 1960 年代中期-1970 年代初 ： 第一个 寒冬 期</span>
+<span>（5） 1970 年代初-1980 年代末 ： 专家系统与知识工程时代 （繁荣期）</span>
+<span>（6） 1980 年代末-1997 ： 第二个寒冬期</span>
+<span>（7） 1997-2011：AI的复苏期</span>
+<span>（8） 2012至今：AI的蓬勃发展期</span></p><p><img src="D:\Typora_CACHE\image-20220602142116413.png" alt="image-20220602142116413" style="zoom:67%;" /></p><h2 id='4人工智能的流派'><span>4.人工智能的流派</span></h2><p><span>符号主义和连接主义研究流派，在 人工智能发展的 的60-70 年中，此消彼长，轮流占上风 。目前， </span><strong><span>连接主义是业界关注的焦点</span></strong><span>。</span></p><h3 id='1符号主义'><span>1.符号主义</span></h3><p><span>符号 主义是一种基于逻辑推理的智能模拟方法，源于数学逻辑。它认为：人工智能本质是 知识符号化，只要将世界知识转换为某种符号系统，智能机器就可以根据该符号体系，解决真实世界的问题。其 成果有 ：机器定理证明、专家系统、启发式搜索算法</span></p><h3 id='2连接主义'><span>2.连接主义</span></h3><p><span>连接主义源于仿生学，特别是人脑模型的研究。它认为，大脑是智能产生的根源，因此实现人工智能应该研究大脑的结构、信息处理机制、运行方式，然后在机器上 模拟人类大脑，实现人工智能。这就是现在阶段主流的人工神经网络方法。</span></p><h3 id='3行为主义'><span>3.行为主义</span></h3><p><span>行为主义(actionism),又称为进化主义(evolutionism)或控制论学派(cyberneticsism) 。该学派的理论基础是控制论，其核心思想是基于控制论构建感知-动作型控制系统。</span></p><p><span> 行为主义学派认为：智能行为是在现实世界中与</span><strong><span>周围环境交互</span></strong><span>而获得并表现出来的，人工智能可以像人类的智能一样逐步进化，所以称为进化主义。</span>
+<span> 行为主义还认为智能取决于感知和动作，无需知识、表示和推理，只需要表现出智能行为即可， </span><strong><span>强化学习</span></strong><span>就属于这一流派。</span></p><h2 id='5人工智能研究的基本内容'><span>5.人工智能研究的基本内容</span></h2><h3 id='1知识表示'><span>1.知识表示</span></h3><p><span> 符号 表示法：用各种包含具体含义的符号，以各种不同的方式和顺序组合起来表示知识的一类方法。例如，一阶逻辑、 产生式等。</span>
+<span> 连接机制 表示法：把各种物理对象以不同的方式及顺序连接起来，并在其间互相传递及加工各种包含具体意义的信息，以此来表示相关的概念及知识。例如，神经网络等。</span></p><h3 id='2机器感知'><span>2.机器感知</span></h3><p><span>是使计算机系统模拟人类通过其感官与周围世界联系的方式具有解释和理解外部信息的能力。以机器 视觉与机器 听觉为主。</span></p><h3 id='3机器思维'><span>3.机器思维</span></h3><p><span>又称为计算机思维（Computer Thinking），就是研究如何使机器或计算机能像人类一样进行思维活动，自主处理通过感知获得的外部信息和机器内部的各种工作信息，更通俗地说，就是要研制会自主思考的机器 。</span></p><h3 id='4机器学习-1'><span>4.机器学习</span></h3><p><span> 人类是通过学习具有智能的，计算机若要具有真正的智能，也必须像人类那样学习。</span>
+<span> 机器学习：研究如何使计算机具有类似于人的学习能力，使它能通过学习自动地获取知识。</span></p><h3 id='5机器行为'><span>5.机器行为</span></h3><p><span> 指机器具有人工智能的行为，或者说，机器能模拟、延伸与扩展人的行为。</span></p><h2 id='6人工智能的主要研究领域'><span>6.人工智能的主要研究领域</span></h2><ol start='' ><li><span>深度 学习</span></li><li><span>自然语言理解</span></li><li><span>计算机视觉</span></li><li><span>智能机器人</span></li><li><span>自动程序设计</span></li><li><span>数据挖掘与知识发现</span></li></ol><h1 id='2知识表示与知识图谱'><span>2.知识表示与知识图谱</span></h1><h2 id='1知识的概述'><span>1.知识的概述</span></h2><p><span>知识是智能的基础。</span></p><h3 id='1知识的定义'><span>1.知识的定义</span></h3><p><span>至今，对于知识还没有一个统一而明确的界定。比较有代表性的定义如下：</span>
+<span>（1） 费根鲍姆（Feigenbaum）说：知识是经过裁剪塑造、解释、选择和转换了的信息。</span>
+<span>（2） 伯恩斯坦（Bernstein）说：知识由特定领域的描述、关系和过程组成。</span>
+<span>（3） 海叶斯—罗斯（Heyes-Roth）说：知识=事实+信念+启发式。</span>
+<span>总之， </span><strong><span>知识</span></strong><span>是人类在长期的生活、社会实践及科学实验中经过总结、提升与凝练的对客观世界（包括人类自身）的认识和经验，也包括对事实和信息的描述或在教育和实践中获得的技能。</span></p><h3 id='2知识的特性'><span>2.知识的特性</span></h3><p><span>相对正确性 与 不确定性</span></p><h3 id='3知识的分类'><span>3.知识的分类</span></h3><p><span>（1） </span><strong><span>陈述性知识</span></strong><span>（descriptive knowledge，或描述性知识），是表示对象及概念的特征及其相互关系的知识，以及问题求解状况的知识，它描述的是“做什么”的知识，即一般性事实，故也称为 事实性 知识 ，是 显式表示的。如：“煤是黑色的”，“北京是中国的首都”。事实性知识是用符号代表概念、命题与原理，是相对 静态的。</span>
+<span>（2） </span><strong><span>过程性知识</span></strong><span> （procedural knowledge，或程序性知识） 表示的是问题求解控制策略，描述的是“如何做”的知识，即做某件事的过程。过程式知识一般利用算法进行描述， 用一段计算机程序来实现。这种知识是 隐含在程序中的，是相对 动态的。</span></p><h2 id='2知识表示的方法'><span>2.知识表示的方法</span></h2><p><span>知识表示 （knowledge representation） 就是将人类知识符号化并输入给计算机的过程和方法。</span></p><p><span>知识表示可以是一种 符号描述 、是 某种约定，也可以是某种 数据结构。</span>
+<span>知识表示方法的分类与知识的分类是紧密相关的。知识分为两类：陈述性知识和过程性知识。</span>
+<span>从知识的运用角度，可将知识表示方法粗略地分为以下两大类：</span></p><h3 id='1陈述式知识表示'><span>1.陈述式知识表示</span></h3><p><span>用于描述陈述性知识，即描述“是什么”，而不用描述“怎么做”。 静态描述 显式表达</span></p><p><span>知识的表示和知识的运用一般是分开的</span></p><p><strong><span>优点</span></strong><span>：</span></p><ul><li><strong><span>可理解性好</span></strong><span>，表示形式简洁、清晰、易懂；</span></li><li><strong><span>易于修改</span></strong><span>，一个小的改变不会影响全局，不会引起大的改变；</span></li><li><strong><span>可独立使用</span></strong><span>，这种知识表示出来后，可用于不同目的；</span></li><li><strong><span>易于扩充</span></strong><span>，这种知识模块性好，扩充后对原有模块没有影响。</span></li></ul><p><strong><span>缺点</span></strong><span>：将知识与控制分开，求解问题的执行效率低。</span></p><h3 id='2过程式知识表示'><span>2.过程式知识表示</span></h3><p><span>过程就是事实的一些客观规律。过程式知识表示方法表达的是如何求解问题， </span><strong><span>知识的表示形式就是程序</span></strong><span>。</span></p><p><span>动态过程 隐式表达 在采用过程式知识表示方法描述知识的系统中， 知识的表示和知识的运用一般是不分开的，表示就寓于运用之中，它适合于知识表示与求解结合非常紧密的这一类问题。</span></p><p><span>优点：</span></p><ul><li><strong><span>执行效率高。</span></strong>
+<span>知识是用程序表示的，知识库与推理机完全合为一体，即知识与控制融合在一起。</span></li></ul><p><span>缺点：</span></p><ul><li><strong><span>可理解性较差</span></strong><span>，采用隐式表达形式，形式复杂、不直观，不易理解；</span></li><li><strong><span>不易于扩充</span></strong><span>，这种知识模块性差，难以添加新知识和扩充新的功能；</span></li><li><strong><span>不易于修改</span></strong><span>，想要修改现有知识而不影响其他知识的完整性，比较困难，容易出错。</span></li></ul><p><span>连接主义只有神经网络</span></p><h2 id='3产生式表示法'><span>3.产生式表示法</span></h2><p><span>“ 产生式（production）” 意思是能够根据已知条件产生新知识的式子。</span>
+<span>这些式子往往以规则的形式描述知识，因此 产生式也称作“ 产生式规则”；</span>
+<span>产生式表示法也称为 产生式规则表示 法。</span>
+<span>它属于 </span><strong><span>符号主义流派</span></strong><span>的知识表示方法。</span></p><p><span>产生式表示方法通常用于表示 事实、 规则以及它们的 不确定性度量。</span>
+<span>有许多知识本身就是事实描述性的， 事实可看成是一个对象的某属性的值或是多个对象之间关系的陈述句。</span>
+<span>事实又分为</span><strong><span>确定性事实</span></strong><span>和 </span><strong><span>不确定性事实</span></strong><span>。</span></p><h3 id='1产生式'><span>1.产生式</span></h3><h4 id='1确定性事实的产生式表示'><span>1.确定性事实的产生式表示</span></h4><p><span>确定性事实一般采用三元组表示，有两种形式：</span>
+<span> 属性型事实知识：描述一个对象的某种属性，形式为 (对象，属性，值)</span>
+<span>	</span><span>如，“李丽的年龄是30岁”表示为 （李丽，年龄，30）</span>
+<span> 关系型事实知识：描述两个对象之间的关系，形式为（对象1，对象2，关系）</span>
+<span>	</span><span>如，“李丽和王军是朋友”表示为（李丽，王军，朋友），此处，关系就是一个词，而不是数字。</span></p><h4 id='2不确定事实的产生式表示'><span>2.不确定事实的产生式表示</span></h4><p><span>不确定性事实可以用一个不确定度量值（∈（0，1））表示其不确定程度，即置信度或可信度，一般采用四元组表示，也有两种形式：</span>
+<span> 属性 型事实知识：描述一个对象的某种属性，形式为（对象，属性，值，置信度）</span>
+<span>	</span><span>如，“李丽的年龄很可能是30岁”表示为 （李丽，年龄，30，0.85），此处，置信度0.85表示“很可能”。</span>
+<span> 关系型 事实知识：描述两个对象之间的关系，形式为（对象1，对象2，关系，置信度）</span>
+<span>	</span><span>例如，“李丽和王军不太可能是朋友”表示为（李丽，王军，朋友，0.15），此处，置信度0.15表示“不太可能”。</span></p><p><span>除了描述事实，产生式还可以描述规则，规则用于表示有关问题领域中事物之间的因果关系，在产生式表示法中</span><strong><span>将规则作为知识的单位</span></strong><span>。</span>
+<span>规则可分为 </span><strong><span>确定性规则</span></strong><span>和 </span><strong><span>不确定性规则</span></strong></p><h4 id='3确定性规则的产生式表示'><span>3.确定性规则的产生式表示</span></h4><p><span>确定性规则的产生式表示的基本形式是</span>
+<span>IF condition THEN action 或者 condition → action</span>
+<span>其中condition称为 条件或 前件或 前提，action 称为 动作或 后件或 结论。</span>
+<span>语义含义是：如果condition所表示的条件被满足，则可得到action所表示的结论或者执行action所表示的动作，即action是由condition来触发的。例如，有如下规则：</span></p><ul><li><span>如果下雨，则出门带伞；</span></li><li><span>小刚很聪明∧小刚学习很勤奋→小刚的学习成绩很好；</span></li></ul><h4 id='4不确定性规则的产生式表示'><span>4.不确定性规则的产生式表示</span></h4><p><span>若规则是不确定的，则需增加置信度的度量值。不确定性规则的产生式表示的基本形式是</span>
+<span>IF condition THEN action （置信度）或者 condition → action (置信度)</span>
+<span>例如，有一条产生式为： 发烧呕吐∧出现黄疸→肝炎（0.7）</span></p><h3 id='2产生式系统'><span>2.产生式系统</span></h3><p><span>一个产生式系统的基本结构由 </span><strong><span>规则库</span></strong><span>（production rules base）、 </span><strong><span>综合数据库</span></strong><span>（global</span>
+<span>database）和 </span><strong><span>控制系统</span></strong><span> （control system）三部分组成.</span>
+<strong><span>综合数据库</span></strong><span>和</span><strong><span>规则库</span></strong><span>共同组成了 </span><strong><span>知识库</span></strong><span>；</span>
+<strong><span>控制系统</span></strong><span>又称为 </span><strong><span>推理机</span></strong><span>，包括 </span><strong><span>控制程序</span></strong><span>和 </span><strong><span>推理程序</span></strong><span>两部分。</span></p><p><img src="D:\Typora_CACHE\image-20220602192930818.png" alt="image-20220602192930818" style="zoom:67%;" /></p><ol start='' ><li><strong><span>综合数据库</span></strong>
+<span>综合数据库又称为 </span><strong><span>事实库</span></strong><span>，是产生式系统所使用的主要数据结构，其中存放问题的初始状态、输入的已知事实、推理过程中得到的中间结果及最终结论等信息。</span></li><li><strong><span>规则库</span></strong>
+<span>在产生式系统中，用产生式规则描述与所求解问题相关的领域知识，规则库就是所有这些 </span><strong><span>产生式规则的集合</span></strong><span>，其中包含了将问题从初始状态转换成目标状态所需的所有规则。</span></li><li><strong><span>推理机</span></strong>
+<span>推理机是一组 </span><strong><span>规则解释程序</span></strong><span>，包括控制策略和推理方式。推理机协同规则库与综合数据库，控制问题求解过程的推理路线，负责整个产生式系统的运行，实现对问题的求解。</span></li></ol><h3 id='3产生式表示法的特点'><span>3.产生式表示法的特点</span></h3><p><span>产生式表示法的 </span><strong><span>主要优点</span></strong>
+<span>(1)格式单一，计算简单。</span>
+<span>(2)模块性，便于知识的操作和管理。</span>
+<span>(3)形式自然，便于理解、推理和解释。</span>
+<span>(4)表达较全面，应用广泛。</span></p><p><span>产生式表示法的 </span><strong><span>主要缺点</span></strong>
+<span>(1)求解效率不高。</span>
+<span>(2)无法表示具有结构关系的知识。</span></p><h2 id='4状态空间表示法'><span>4.状态空间表示法</span></h2><p><strong><span>状态空间</span></strong><span> （state space）表示法是人工智能中最基本的形式化方法，是其他形式化方法和问题求解技术的出发点。</span>
+<strong><span>状态</span></strong><span>（state）就是用来描述在问题求解过程中某一个时刻进展情况等</span><strong><span>陈述性知识</span></strong><span>的一组变量或数组，是某种结构的符号或数据。</span></p><p><span>状态（state）是一组变量q0，q1，q2，…，qn的有序集合，其形式如下： Q={ q0，q1，q2，…，qn }其中，每个元素qi 称为一个状态变量。</span>
+<span>状态的表示还可以根据具体应用，采取合适的数据结构，如符号、字符串、多维数组、树和图等。</span></p><p><strong><span>操作</span></strong><span>也称为 </span><strong><span>运算</span></strong><span>，用来表示引起状态变化的 </span><strong><span>过程性知识</span></strong><span>的一组关系或函数，它会引起状态中的某些分量发生改变，从而使问题由一个具体状态转换到另一个具体状态。</span>
+<span>操作可以是一个动作（如棋子的移动）、过程、规则、数学算子等，表示状态之间存在的关系。</span>
+<span>用于表示操作的符号，称为 </span><strong><span>操作符</span></strong><span>（operator）或 </span><strong><span>操作算子</span></strong><span>、 </span><strong><span>运算符</span></strong><span>。</span>
+<strong><span>状态空间</span></strong><span>是采用状态变量和操作符号表示系统或问题的有关知识的符号体系。</span></p><p><span>问题的状态空间是一个表示该问题全部可能状态及其相互关系的集合，</span>
+<span>常用一个 </span><strong><span>四元组</span></strong><span>（S,O,S0 ,G）来表示，其中:</span></p><ul><li><span>S 为问题的状态集合；</span></li><li><span>O 为操作符的集合；</span></li><li><span>S0 是问题的初始状态，是S的一个非空真子集，即S 0 ⊂ S；</span></li><li><span>G 为问题的目标状态，它既可以是若干具体状态，也可以是满足某些性质的路径信息描述，G ⊂ S。</span></li></ul><p><span>状态空间通常用 </span><strong><span>有向图</span></strong><span>来表示，其中， </span><strong><span>结点</span></strong><span>表示问题的</span><strong><span>状态</span></strong><span>，结点之间的 </span><strong><span>有向边</span></strong><span>表示引起状态变换的</span><strong><span>操作</span></strong><span>，有时边上还赋有</span><strong><span>权值</span></strong><span>，表示变换所需的</span><strong><span>代价</span></strong><span>。</span>
+<span>在状态空间中，求解一个问题就是从初始状态出发，不断运用可使用的操作，在满足约束的条件下达到目标状态。</span>
+<strong><span>问题的解</span></strong><span>可能是图中的一个状态，也可能是从初始状态到某个目标状态的一条路径，还可能是达到目标所花费的代价。</span>
+<span>下图中， </span><strong><span>问题的解</span></strong><span>便是一条从结点 S 0 到结点 G 的路径，它是一个从初始状态到目标状态的有限的操作算子序列{O 1 ，O 2 ，…O k }，称为</span><strong><span>求解路径</span></strong><span>。</span><strong><span>问题的解往往并不唯一</span></strong><span>。</span></p><p><img src="D:\Typora_CACHE\image-20220602194732236.png" alt="image-20220602194732236" style="zoom:67%;" /></p><h4 id='例21-八数码问题-1'><span>例2.1 八数码问题</span></h4><p><img src="D:\Typora_CACHE\image-20220602195457822.png" alt="image-20220602195457822" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220602195512403.png" alt="image-20220602195512403" style="zoom:67%;" /></p><h4 id='例22-旅行商问题'><span>例2.2 旅行商问题</span></h4><p><img src="D:\Typora_CACHE\image-20220602200211355.png" alt="image-20220602200211355" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220602200221492.png" alt="image-20220602200221492" style="zoom:67%;" /></p><p><span>对于大规模的问题，例如旅行商问题中有100个城市，要在有限时间内画出其全部状态空间图，是不可能的。</span>
+<span>对于 </span><strong><span>简单问题</span></strong><span>，可以采用有向图 </span><strong><span>直接画出状态空间</span></strong><span>。</span>
+<span>对于大多数 </span><strong><span>复杂的问题</span></strong><span>，是根本 </span><strong><span>无法完全画出其状态空间</span></strong><span>的，此时只需清晰定义状态变换的方式即可，也可以建模。</span></p><h2 id='5知识图谱'><span>5.知识图谱</span></h2><p><strong><span>符号主义知识表示方法</span></strong><span>经过历代人工智能科研人员的不断完善， </span><strong><span>演变为知识图谱</span></strong><span>这一符合互联网时代新需求的知识表示方法。</span>
+<span>知识图谱是一种用图结构来描述知识及其之间关联关系的技术方法，旨在利用知识工程理论建立大规模知识资源，</span><strong><span>是语义Web技术在互联网大数据时代的成功应用</span></strong><span>。</span>
+<strong><span>知识图谱</span></strong><span>（Knowledge Graph）又称为 </span><strong><span>科学知识图谱</span></strong><span>，知识图谱这一名词是谷歌公司于2012年5月17日首先提出的，其 </span><strong><span>初衷</span></strong><span>是为了提高搜索引擎的能力，改善用户的搜索质量以及搜索体验， </span><strong><span>目标</span></strong><span>是构建一个可提供智能搜索服务的大型知识库。</span></p><h3 id='1知识图谱的定义'><span>1.知识图谱的定义</span></h3><p><span>至今，知识图谱尚未有一个统一的定义。本质上，知识图谱是一种揭示客观世界中存在的</span><strong><span>实体</span></strong><span>（Entity）、 </span><strong><span>概念</span></strong><span>（concept）及其之间</span><strong><span>各种关系</span></strong><span>的大规模语义网络，它以图结构表示知识，可理解为是一种描述语义知识的形式化框架， 知识图谱就是这样一类知识表示和应用技术的总称。</span>
+<span>知识图谱是一种</span><strong><span>图结构的语义知识库</span></strong><span>，组成单位是</span><strong><span>实体</span></strong><span>、</span><strong><span>属性</span></strong><span>和 </span><strong><span>关系</span></strong><span>。</span></p><ul><li><strong><span>结点</span></strong><span>表示实体（entity）或概念（concept）或属性值(attribute value)</span></li><li><span>结点之间的 </span><strong><span>边</span></strong><span>（edge）表示属性（attribute）或关系（relationship）</span></li><li><strong><span>边的方向</span></strong><span>表示关系的方向</span></li><li><strong><span>边上的标记</span></strong><span>表示属性名称或关系类型。</span></li></ul><h4 id='1概念'><span>1.概念</span></h4><p><span>也称为 </span><strong><span>类别</span></strong><span>（Type）、 </span><strong><span>类</span></strong><span>（Category或Class）， 是某一领域内具有相同性质的对象构成的集合，如在描述大学领域的知识图谱中，教师、学生和课程是必要的概念，而体育比赛领域中的概念则可能包括运动员、裁判员、教练、奖项等。概念主要用于表示集合、类别、对象类型、事物的种类。</span></p><h4 id='2实体'><span>2.实体</span></h4><p><span>有时也称为 </span><strong><span>实例</span></strong><span>(instance)或 </span><strong><span>对象</span></strong><span>（Object），实体是知识图谱中的最基本元素，是概念中的具体元素，它是 </span><strong><span>独立存在且可相互区别的客观事物</span></strong><span>。例如，“C罗”是“足球运动员”这一概念的一个实例，“金球奖”是“奖项”这一概念的一个实例。</span></p><h4 id='3属性'><span>3.属性</span></h4><p><strong><span>描述实体或概念的特性或 性质</span></strong><span>。 </span><strong><span>属性值</span></strong><span> 可能是一个 </span><strong><span>实体</span></strong><span> 、一个 </span><strong><span>字符串</span></strong><span> 或一个 </span><strong><span>数值</span></strong><span>。例如运动员的属性“国籍”的值是一个具体的国家（实例），属性“性别”的值是一个具体的字符串（male / female），而属性“身高”的值则是一个具体的数值</span></p><h4 id='4关系'><span>4.关系</span></h4><p><strong><span>是指概念之间或实体之间或概念与实例之间的联系</span></strong><span>，如“运动员”与“足球运动员”两个 概念之间存在的 </span><strong><span>父类与子类</span></strong><span>（subclassOf）的层次关系；“车轮”和“汽车”两个 </span><strong><span>概念之间</span></strong><span>存在的 </span><strong><span>部分与整体</span></strong><span>（partOf）关系；“中国”与“北京”两个 </span><strong><span>实体之间</span></strong><span>是“首都”关系；“国家”（概念）与“中国”（实体）间是 </span><strong><span>实例化</span></strong><span>（instanceOf）关系。</span></p><p><img src="D:\Typora_CACHE\image-20220602202046765.png" alt="image-20220602202046765" style="zoom:67%;" /></p><h3 id='2知识图谱的表示'><span>2.知识图谱的表示</span></h3><p><span>在典型的知识图谱中，每个实体或每个概念用一个全局唯一确定的ID 来标识，称为标识符(identifier)。</span>
+<strong><span>概念</span></strong><span>和 </span><strong><span>实体</span></strong><span>都是通过若干 </span><strong><span>属性</span></strong><span>来刻画其内在特性。</span>
+<strong><span>概念之间</span></strong><span>常见的关系有 </span><strong><span>父类与子类</span></strong><span>（subclassOf）关系、 </span><strong><span>部分与整体</span></strong><span>（partOf）关系</span>
+<span>实体之间的关系多种多样，不同实体之间存在不同的关系。例如，</span>
+<span>“山东省”和“济南市” </span><strong><span>两个实体</span></strong><span>分别有各自的属性，两者之间存在“provincial_capital”的关系；</span>
+<span>“中国”和“北京” </span><strong><span>两个实体</span></strong><span>之间存在“capital”的关系。所有实体和概念相互关联，形成复杂的“图”。</span><img src="D:\Typora_CACHE\image-20220602203039075.png" alt="image-20220602203039075" style="zoom:33%;" /></p><p><span>知识图谱的一种通用表示方式是 三元组，与事实性知识的产生式表示方法类</span>
+<span>似，也有两种形式：</span></p><p><strong><span>属性型联系</span></strong><span>：用“属性-值”对(Attribute-Value Pair，AVP)来描述一个</span>
+<span>实体具有某种内在属性，形式为 （实体，属性，属性值）</span>
+<span>例如，“山东省的面积是15.58平方公里”表示为（山东，面积，15，58平方公里）</span>
+<strong><span>关系型联系</span></strong><span>：描述两个实例之间的关系，形式为（实体1，关系，实体2）</span>
+<span>例如，“中国的首都是北京”表示为（中国，首都，北京）</span></p><h3 id='3知识图谱的发展历史'><span>3.知识图谱的发展历史</span></h3><p><img src="D:\Typora_CACHE\image-20220602203922571.png" alt="image-20220602203922571" style="zoom:67%;" /></p><h4 id='1语义网络表示'><span>1.语义网络表示</span></h4><p><strong><span>1968</span></strong><span>年，认知科学家Allan M. Collins和M. Ross Quillian等人提出了语 语义网络（semantic network， 不是语义网）的心理学模型。</span></p><p><strong><span>优点</span></strong><span> ：表达形式简单、直观、自然，因此容易理解和展示、相关概念容易聚类。</span>
+<strong><span>缺点</span></strong><span>：</span>
+<span>（1）没有定义结点与边的值的标准，完全由用户自己定义；</span>
+<span>（2）无法区分 </span><strong><span>概念结点</span></strong><span>和 </span><strong><span>实体结点</span></strong><span>，如哺乳动物是个 抽象概念，世界上</span>
+<span>并没有一种动物名字就叫哺乳动物；；</span>
+<span>（3）无法定义节点和边的标签；</span>
+<span>（4）难以融合多源数据，不便于知识的共享。</span>
+<span>上述缺点导致 </span><strong><span>语义网络难以应用于实践</span></strong><span>。</span></p><h4 id='2本体知识表示'><span>2.本体知识表示</span></h4><p><strong><span>1980</span></strong><span> 年，“本体”这一哲学概念被引入人工智能领域中用于刻画知识，便产生了基于本体的知识表示方法，这种知识表示是一种“ </span><strong><span>形式化的、对于共享概念体系的明确且详细的说明</span></strong><span>”。</span></p><p><span>本体 显式地定义了领域中的 概念、关系和公理（总是为真的陈述）及其之间的 联系。</span></p><h4 id='3语义万维网知识表示'><span>3.语义万维网知识表示</span></h4><p><span>语义万维网（Semantic Web）也称为 </span><strong><span>语义Web</span></strong><span>或语义 </span><strong><span>语义网</span></strong><span>，与 语义网络（semantic network）的技术理念</span><strong><span>完全不同</span></strong><span>。</span></p><p><span>最主要的</span><strong><span>区别</span></strong><span>在于： 语义网络知识表示与互联网无关，但 语义万维网知识表示却是构建在万维网（world wide web）上的。</span></p><p><strong><span>1963</span></strong><span>年，泰德·尼尔森（Ted Nelson）创造了“超文本（HyperText）”一词，其含义是用超链接的方法将各种不同空间的文字信息组织在一起的 网状文本。</span>
+<strong><span>1969</span></strong><span> 年， 因特网诞生于美国，它的前身“阿帕网”( ARPAnet)是一个军用研究系统，后来才发展成为覆盖五大洲 150 多个国家的开放型全球计算机网络系统，也称为</span><strong><span>互联网</span></strong><span>。</span>
+<strong><span>1989</span></strong><span> 年，英国计算机科学家蒂姆·伯纳斯·李（Lee）创新性地提出了 将</span><strong><span>超文本用于因特网</span></strong><span>上的构想，并于1990年与同事 Robert Cailliau合作发明了</span><strong><span>万维网</span></strong><span>（world wide web）技术。</span>
+<span>蒂姆·伯纳斯·李又于</span><strong><span>1998</span></strong><span>年 年提出了“ 语义万维网（语义 Web）”的概念。</span></p><p><strong><span>语义web</span></strong><span>旨在对互联网内容进行 </span><strong><span>语义化表示</span></strong><span>，通过对网页进行语义描述，得到网页的语义信息，从而使计算机能够 </span><strong><span>理解、推理</span></strong><span>互联网信息。</span>
+<strong><span>语义web</span></strong><span>是个庞大的构想，仅靠采用可扩展标记语言(extensible markup language，</span><strong><span>XML</span></strong><span>)标注web页面的数据内容是远远不够的，而是需要新的知识表示手段和方法。</span>
+<span>在这样的背景下，科研工作者相继提出了“ </span><strong><span>资源描述框架</span></strong><span>（ResourceDescription Framework，</span><strong><span>RDF</span></strong><span>）”和“ </span><strong><span>网络本体语言</span></strong><span>（Web ontology language，</span><strong><span>OWL</span></strong><span>）”等面向 Web 的知识表示框架。</span></p><p><strong><span>RDF</span></strong><span> 包含 主语、谓词和宾语，简称SPO三元组，其中主语和宾语分别表示两个资源，谓词表示两个资源间的关系。</span>
+<span>	</span><Bob><span> </span><is a><span> </span><person><span>，</span>
+<span>	</span><Bob><span> </span><is a friend of><span> </span><Alice><span>，</span>
+<span>	</span><Bob><span> </span><is born on><span> &lt;the 4th of July 1990&gt;</span>
+<span>RDF的 的 局限性： 无法描述类别和属性的 </span><strong><span>层级结构、包含关系</span></strong><span>。</span></p><p><strong><span>OWL</span></strong><span> 2001 年，W3C又开发了OWL</span>
+<span>OWL 主要在 RDFs 基础上 </span><strong><span>扩展了表示类和属性约束的表示能力</span></strong><span>，如：复杂类表达（intersection, union 和 complement 等）和属性约束（existential quantification, universal quantification, hasValue 等）， 使得能构建更为复杂且完备的本体。</span>
+<span>OWL </span><strong><span>复杂度非常高</span></strong><span>，在逻辑接近完美，但 工程上实现却</span><strong><span>太过复杂</span></strong><span>。</span></p><p><strong><span>语义网络语语义Web对比</span></strong>
+<span>相较于语义网络，语义Web更加注重于描述万维网中资源、数据之间的语义关系。</span>
+<span>W3C针对 </span><strong><span>语义Web</span></strong><span>制定的标准</span><strong><span>解决了语义网络存在的不足</span></strong><span>：</span>
+<span>	</span><span>RDF为结点和边的取值提供了 </span><strong><span>统一标准</span></strong><span>，为多源数据的融合提供了便利；</span>
+<span>	</span><span>RDFs/OWL解决了 </span><strong><span>概念和对象的区分问题</span></strong><span>，即定义了Class 和 Object(也称作 Instance, Entity)。</span>
+<strong><span>这些标准</span></strong><span>从三个方面完善了语义 </span><strong><span>完善了语义Web</span></strong><span>：</span>
+<span>	</span><span>一是保证了语义Web的内容有准确的含义；</span>
+<span>	</span><span>二是保证了语义Web的内容可以被计算机理解并处理；</span>
+<span>	</span><span>三是计算机可从 Web 上整合各种网页中的内容信息。</span></p><p><span>此阶段为从“弱语义”到“强语义”的探索</span></p><h4 id='4链接数据'><span>4.链接数据</span></h4><p><strong><span>2006</span></strong><span>年，Lee逐渐意识到 </span><strong><span>语义web 的发展遇到了瓶颈</span></strong></p><p><span>Lee提出了 </span><strong><span>链接数据</span></strong><span>（Linked Data）的设想，号召各家单位分享自己的知识库，合并起来形成开放的语义网。</span>
+<span>该设想最大的项目是</span><strong><span>2007</span></strong><span>年5月提出的LOD</span></p><p><span>自从实践数据链接开始， 在</span><strong><span>技术层面</span></strong><span>，语义web开始 </span><strong><span>弱化“语义推理”</span></strong><span>的功能，而更调“Web”的作用，即 </span><strong><span>侧重数据的互联互通</span></strong><span>，因此linked data可以看作是语义Web的一个简化集合。</span>
+<span>在 </span><strong><span>实现层面</span></strong><span>，linked data提倡使用RDF三元组形式描述知识，很少使用理论更完备的OWL系列方法，降低了实现数据链接的技术难度。</span>
+<span>自此，语义Web开始进入 </span><strong><span>“弱语义”</span></strong><span>的阶段，语义Web的体系结构开始</span><strong><span>向知识 图谱过渡</span></strong><span>发展。</span></p><h4 id='5知识图谱的正式提出'><span>5.知识图谱的正式提出</span></h4><p><span> </span><strong><span>2012</span></strong><span> 年 5 月 17 日，Google 正式提出了知识图谱的概念，发布了称之为“知识图谱”的项目</span></p><p><strong><span>谷歌知识图谱进一步弱化了语义，仅保留了 了语义，仅保留了RDF三元组的基本形式</span></strong></p><h3 id='4典型的知识图谱'><span>4.典型的知识图谱</span></h3><p><span>“强语义”阶段的典型知识库</span>
+<span>是从二十世纪六十年代到2006年，期间，重点研究如何建立语义表示体系，知识库的构建往往依赖于 </span><strong><span>专家制定、人工添加、合作编辑</span></strong><span>的模式。</span>
+<span>此阶段典型知识库应用有：Cyc、WordNet、HowNet和ConceptNet。</span></p><p><span>“弱语义”阶段的典型知识图谱</span>
+<span>自2006年起进入互联网时代后，随着知识库规模的不断增大，搜索引擎成为获取信息的主要手段，人们更多关注的是“是否存在某种知识，且能否找到某种知识”，而不是“是否可以理解、推理某种知识”。显然，这种需求使得知识库越来越 </span><strong><span>倾向于“弱语义、大规模 ” ， 不再 强调逻辑复杂的语义及其推理</span></strong><span>，而是 </span><strong><span>强调</span></strong><span>如何利用互联网知识 </span><strong><span>自动构建大规模知识图谱</span></strong><span>。</span></p><h3 id='5知识图谱的应用'><span>5.知识图谱的应用</span></h3><p><strong><span>语义搜索</span></strong><span>：</span></p><p><span>知识图谱引入搜索引擎之后，利用其推理技术，可以发现用户检索词的深层含义，从而以更精确的方式给出搜索结果。</span></p><p><strong><span>知识问答</span></strong><span>：</span></p><p><span>问答系统（Question Answering, QA）是指让计算机自动回答用户所提出的问题，是信息服务的一种高级形式。不同于现有的搜索引擎，问答系统返回用户的不再是若干相关文档，而是精准的、单一的语言形式的答案。</span></p><h1 id='3搜索策略'><span>3.搜索策略</span></h1><h2 id='1图搜索策略'><span>1.图搜索策略</span></h2><p><span>图搜索策略就是一种在图中寻找解路径的方法</span></p><p><span>为了提高搜索效率，图搜索并不是先生成所有状态的连接图、再进行搜索，而是</span><strong><span>边搜索边生成图</span></strong><span>，直到找到一个符合条件的解，即路径为止。</span>
+<span>在搜索的过程中， </span><strong><span>生成的无用状态越少</span></strong><span>--即非路径上的状态越少，搜索的效率就越高，所对应的 </span><strong><span>搜索策略就越好</span></strong><span>。</span></p><p><img src="D:\Typora_CACHE\image-20220602230830545.png" alt="image-20220602230830545" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220602230840534.png" alt="image-20220602230840534" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220602230851672.png" alt="image-20220602230851672" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220602230900364.png" alt="image-20220602230900364" style="zoom:67%;" /></p><h2 id='2盲目搜索'><span>2.盲目搜索</span></h2><p><span>盲目搜索也被称为 </span><strong><span>无信息搜索 、 通用搜索</span></strong><span>。即该搜索策略不使用 </span><strong><span>超出问题定义</span></strong><span>提供的状态之外的附加信息，只使用问题定义中可用的信息。</span></p><p><span>完备性：</span>
+<span>	</span><span>当问题有解 时， 保证能找到一个解 。</span>
+<span>	</span><span>当问题 有解，却找不到，就不具有完备性。</span>
+<span>最优性 ：</span>
+<span>	</span><span>当问题 有最优解时，保证 能找到最优解（最小损耗路径） 。</span>
+<span>	</span><span>当问题 有最优解，但 找不到， 找到 的 只 是 次优解 ，则不具有最优性。</span></p><h3 id='1深度优先搜索'><span>1.深度优先搜索</span></h3><p><span>深度优先搜索的 </span><strong><span>基本思想</span></strong><span>是</span><strong><span>优先扩展深度最深的结点</span></strong><span>。</span>
+<span>在一个图中，初始 结点 的 深度定义为0，其他结点的深度定义为其父结点的深度加1。</span></p><p><span>DFS是将OPEN表中的结点按搜索树中结点 </span><strong><span>深度</span></strong><span> 的 </span><strong><span>降序</span></strong><span> 排序，深度最大的结点排在最前面，深度相同的结点可以任意排列 。</span>
+<span>DFS每次选择一个</span><strong><span>深度最深的结点</span></strong><span>进行扩展；</span>
+<span>如果有相同深度的</span><strong><span>多个</span></strong><span>结点，则按照事先的约定从中选择一个。</span>
+<span>如果该结点 </span><strong><span>没有子结点</span></strong><span>，即是叶子结点，则选择一个除了该结点以外的深度最深的结点进行扩展。</span>
+<span>依次进行下去，直到</span><strong><span>找到问题的解</span></strong><span>，则结束;</span>
+<span>若</span><strong><span>再也没有结点可扩展</span></strong><span>，则结束，这种情况下表示没有找到问题的解。</span></p><p><strong><span>DFS的实现方法</span></strong></p><p><span>使用 LIFO (Last-In First-Out)的 </span><strong><span>栈</span></strong><span>存储OPEN表，把后继结点放在</span><strong><span>栈顶</span></strong><span>。</span></p><p><img src="D:\Typora_CACHE\image-20220602232032010.png" alt="image-20220602232032010" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220602232044056.png" alt="image-20220602232044056" style="zoom:67%;" /></p><p><strong><span>深度优先的性质</span></strong></p><p><span>DFS 是</span><strong><span>不完备的</span></strong><span>、也</span><strong><span>不是最优的</span></strong><span>。</span>
+<span>当深度限制 过深时，会陷入“ 深渊”， </span><strong><span>求解效率低</span></strong><span>；</span>
+<span>若深度限制 过浅，可能找不到解，</span><strong><span>即不完备</span></strong>
+<span>最坏情况时，搜索空间等同于穷举</span></p><h4 id='例21-八数码问题-2'><span>例2.1 八数码问题</span></h4><p><img src="D:\Typora_CACHE\image-20220603152622693.png" alt="image-20220603152622693" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603152636631.png" alt="image-20220603152636631" style="zoom:67%;" /></p><p><span>第一个不算，应为30步</span></p><h3 id='2宽度优先搜索'><span>2.宽度优先搜索</span></h3><p><span>宽度优先的</span><strong><span>搜索策略</span></strong><span>：</span>
+<span>先扩展根结点，接着扩展根结点的所有后继，然后再扩展它们的后继，依此类推。</span>
+<span>BFS每次总是 </span><strong><span>优先</span></strong><span>扩展 </span><strong><span>深度最浅</span></strong><span>的结点。</span>
+<span>如果有多个结点深度是相同的，则按照事先约定的规则从深度最浅的几个结点中选择一个。</span>
+<span>一般地，在下一层的任何结点扩展之前，搜索树上本层深度的所有结点都应该已经扩展过。</span></p><p><img src="D:\Typora_CACHE\image-20220603153012906.png" alt="image-20220603153012906" style="zoom:67%;" /></p><p><strong><span>实现方法</span></strong><span> 使用</span><strong><span>FIFO</span></strong><span> (First-In First-Out) </span><strong><span>队列</span></strong><span>存储OPEN表。</span></p><p><span>BFS是将OPEN表中的结点按搜索树中结点</span><strong><span>深度的增序</span></strong><span>排序，</span><strong><span>深度最浅</span></strong><span>的结点排在最前面（ </span><strong><span>队头</span></strong><span>），深度相同的结点可以任意排列。</span>
+<span>新结点（结点比其父结点深）总是加入到 </span><strong><span>队尾</span></strong><span>，这意味着浅层的老结点会在深层的新结点之前被扩展。</span></p><p><img src="D:\Typora_CACHE\image-20220603153120782.png" alt="image-20220603153120782" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603153130942.png" alt="image-20220603153130942" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603153221342.png" alt="image-20220603153221342" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603153456073.png" alt="image-20220603153456073" style="zoom:67%;" /></p><p><span>当问题有解时，一定能找到解. 即BFS 是</span><strong><span>完备的</span></strong><span>（ （complete） ）。</span>
+<span>当问题为单位代价，且问题有解时，一定能找到最优解，即BFS 具有</span><strong><span>最优性</span></strong><span>。</span>
+<span>BFS是一个通用的、与问题无关的方法.</span>
+<strong><span>缺点</span></strong><span>：求解问题的</span><strong><span>效率较低</span></strong><span>。</span></p><p><span>与BFS相比， </span><strong><span>DFS优势</span></strong><span>在于：空间复杂度低，因为只存储一条从根到叶子的路径。</span></p><p><span>在</span><strong><span>不要求求解速度</span></strong><span>且目标结点的层次 </span><strong><span>较深</span></strong><span>的情况下, </span><strong><span>BFS优于DFS</span></strong><span>, 因为BFS一定能够求得问题的解，而DFS在一个扩展得很深但又没有解的分支上进行搜索，是一种无效搜索, 降低了求解的效率,有时甚至不一定能找到问题的解；</span>
+<span>在</span><strong><span>要求求解速度</span></strong><span>且目标结点的层次 </span><strong><span>较浅</span></strong><span>的情况下, </span><strong><span>DFS优于BFS</span></strong><span>。因为DFS可快速深入较浅的分支，找到解。</span></p><h3 id='3盲目搜索的特点'><span>3.盲目搜索的特点</span></h3><p><span>盲目搜索策略采用 “</span><strong><span>固定</span></strong><span>”的搜索模式，不针对具体问题。</span>
+<strong><span>优点</span></strong><span>是：适用性强，几乎所有问题都能通过 </span><strong><span>深度优先</span></strong><span>或者</span><strong><span>宽度优先</span></strong><span>搜索来求得</span><strong><span>全局最优解</span></strong><span>。</span>
+<strong><span>缺点</span></strong><span>是： 搜索范围比较大，效率比较低</span></p><p><span>在许多不太复杂的情况下，使用盲目搜索策略也能够取得很好的效果。</span></p><h2 id='3启发式搜索'><span>3.启发式搜索</span></h2><p><strong><span>启发式搜索策略</span></strong><span>采用 </span><strong><span>超出问题本身定义</span></strong><span>的、问题特有的知识，因此能够找到比无信息搜索更有效的解。</span></p><h3 id='评价函数'><span>评价函数</span></h3><p><span>f(n) = g(n) + h(n). 其中，n为当前结点，即待评价结点。</span></p><p><span>f(n) 是从初始结点出发、经过结点 n 、到达目标结点的 最佳路径代价值的估计值.</span>
+<span>(1) </span><strong><span>g(n)</span></strong><span> 为从初始结点到结点n 的 最佳路径代价值的 估计值；</span>
+<span>(2) </span><strong><span>h(n)</span></strong><span> 为从结点 n 到目标结点的 最佳路径代价值的估计值，称为</span><strong><span>启发式函数</span></strong></p><p><img src="D:\Typora_CACHE\image-20220603154424455.png" alt="image-20220603154424455" style="zoom:67%;" /></p><h4 id='例-八数码问题-1'><span>例 八数码问题</span></h4><p><img src="D:\Typora_CACHE\image-20220603154534482.png" alt="image-20220603154534482" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603154544869.png" alt="image-20220603154544869" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603154553291.png" alt="image-20220603154553291" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603154604035.png" alt="image-20220603154604035" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603154809595.png" alt="image-20220603154809595" style="zoom:67%;" /></p><h3 id='1a-search最佳优先搜索'><span>1.A Search，最佳优先搜索</span></h3><p><span>A 搜索又称为 </span><strong><span>最佳优先搜索</span></strong><span>（Best-First Search）。</span>
+<span>搜索策略：选择数</span><strong><span>评价函数 f(n)值最低</span></strong><span>的结点作为下一个将要被扩展的结点。</span>
+<strong><span>实现方法</span></strong>
+<span>A 搜索采用 队列存放OPEN表，其中所有结点按照 评价函数值进行 升序排列，最佳结点排在最前面，因此称为“ 最佳优先搜索”。</span></p><p><img src="D:\Typora_CACHE\image-20220603160308775.png" alt="image-20220603160308775" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603160325353.png" alt="image-20220603160325353" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603160403382.png" alt="image-20220603160403382" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603160412828.png" alt="image-20220603160412828" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603160833463.png" alt="image-20220603160833463" style="zoom:67%;" /></p><p><span>贪婪搜索是最佳优先搜索的特例, 即 f(n) = h(n)，相当于 g(n)=0</span></p><p><span>贪婪搜索策略不考虑整体最优，仅求取 </span><strong><span>局部最优</span></strong><span>。</span>
+<span>贪婪搜索 不能保证得到最优解，所以，它 </span><strong><span>不是最优的</span></strong><span>. 但其搜索 </span><strong><span>速度非常快</span></strong><span>。</span>
+<span>贪婪搜索 是</span><strong><span>不完备的</span></strong><span>。</span></p><h3 id='2a-search'><span>2.A* Search</span></h3><p><span>如果启发函数h(n)满足如下条件：</span><strong><span>h(n) ≤ h* (n)</span></strong>
+<span>则可以证明当问题有解时，A算法一定可以找到一个代价值最小的结果，即 </span><strong><span>最优解</span></strong><span>。满足该条件的A算法称作</span><strong><span>A* 算法</span></strong><span>。</span>
+<span>A*搜索是</span><strong><span>最佳优先搜索</span></strong><span>的最广为人知的形式，也称为 </span><strong><span>最佳图搜索算法</span></strong><span>。</span></p><p><span>A* 算法与A 算法没有 本质区别，只是规定了启发函数的上限，即 h(n) ≤ h* (n)。</span></p><p><strong><span>A 搜索既不是完备，也不是最优的 。</span></strong>
+<strong><span>A* 搜索既是完备的，也是最优的。</span></strong></p><h4 id='例-八数码问题-2'><span>例 八数码问题</span></h4><p><img src="D:\Typora_CACHE\image-20220603165023687.png" alt="image-20220603165023687" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603165640874.png" alt="image-20220603165640874" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603165737077.png" alt="image-20220603165737077" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603165756793.png" alt="image-20220603165756793" style="zoom:67%;" /></p><h4 id='例-修道士与野人'><span>例 修道士与野人</span></h4><p><img src="D:\Typora_CACHE\image-20220603170349190.png" alt="image-20220603170349190" style="zoom: 67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603170401131.png" alt="image-20220603170401131" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603170412481.png" alt="image-20220603170412481" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603170543757.png" alt="image-20220603170543757" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603173353248.png" alt="image-20220603173353248" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603173509639.png" alt="image-20220603173509639" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603173718714.png" alt="image-20220603173718714" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603173739019.png" alt="image-20220603173739019" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603173945814.png" alt="image-20220603173945814" style="zoom:67%;" /></p><h2 id='4超越经典搜索'><span>4.超越经典搜索</span></h2><h3 id='1爬山搜索'><span>1.爬山搜索</span></h3><h4 id='1爬山法'><span>1.爬山法</span></h4><p><span>爬山法是最基本的局部搜索技术。爬山法(最陡上升版本)搜索，是简单的循环过程，不断向值增加的方向持续移动—— 即，登高</span></p><p><span>这里，最佳邻接结点就是 启发式 代价评估 函数h值 值最低的邻接结点。</span></p><p><img src="D:\Typora_CACHE\image-20220603181907242.png" alt="image-20220603181907242" style="zoom:67%;" /></p><p><span>爬山法是一种 </span><strong><span>迭代算法</span></strong><span>：开始时选择问题的一个任意解，然后递增地修改该解的一个元素，若得到一个更好的解，则将该修改作为新的解；重复上述步骤直到无法找到进一步的改善。</span></p><p><span>爬山法有时被称为 </span><strong><span>贪婪局部搜索</span></strong></p><h4 id='2爬山法的弱点'><span>2.爬山法的弱点</span></h4><p><span>1.局部最大值 爬山法到达局部极大值附近，就会被拉向峰顶，然后就卡在局部极大值处无处可走。</span></p><p><span>2.高原 是一块平原区域，是平的局部极大值，不存在上山的出口。</span></p><p><span>3.山脊 结果是一系列局部最大值，非常难爬行</span></p><h4 id='例-解决n皇后问题'><span>例 解决n皇后问题</span></h4><p><img src="D:\Typora_CACHE\image-20220603182148373.png" alt="image-20220603182148373" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603182246285.png" alt="image-20220603182246285" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603183800079.png" alt="image-20220603183800079" style="zoom:67%;" /></p><p><span>贪婪算法 </span><strong><span>很难处理陷入局部极大值</span></strong><span>的情况。</span>
+<span>在这种情况下，爬山法均无法再取得进展。</span>
+<span>从随机生成的八皇后问题开始，采用最陡上升的爬山法，其中</span><strong><span>86% 的情况下会被卡住</span></strong><span>， </span><strong><span>只有14% 的问题实例能求得解</span></strong><span>。</span>
+<span>到现在为止，我们描述的爬山法是</span><strong><span>不完备的</span></strong><span>—— 它们经常会在存在目标的情况下，因为被局部极大值卡住而</span><strong><span>找不到目标</span></strong><span>。</span></p><h4 id='3爬山法变型'><span>3.爬山法变型</span></h4><p><span>Stochastic hill-climbing </span><strong><span>随机爬山法</span></strong>
+<span>在向上移动的过程中， </span><strong><span>随机地选择下一步，即不一定选择最陡的路径走</span></strong><span>, 被选中的概率可能随向上移动的陡峭程度的不同而变化。</span>
+<span>与最陡上升算法相比， 收敛速度通常较慢。</span>
+<strong><span>随机爬山法仍然不完备</span></strong><span>，还会被局部极大值卡住。</span></p><p><span>Random-restart hill-climbing </span><strong><span>随机重启爬山法</span></strong>
+<strong><span>随机生成一个初始状态</span></strong><span>，开始搜索，执行一系列这样的爬山搜索，直到找到目标为止。</span>
+<span>随机重启 爬山法</span><strong><span>依然不完备</span></strong><span>，</span><strong><span>但以逼近1 的概率接近完备</span></strong><span>，因为最终它将生成一个目标状态作为初始状态。</span>
+<span>如果每次爬山搜索成功的概率为p，则重启需要的期望值是1/p。</span>
+<span>对于八皇后问题，随机重启爬山法实际上是有效的。即使</span><strong><span>有300 万个皇后，这个方法找到解的时间不超过1分钟</span></strong><span>。</span>
+<span>爬山法成功与否</span><strong><span>严重依赖于状态空间地形图的形状</span></strong><span>：如果在图中几乎没有局部极大值和高原， 随机重启爬山法会很快找到一个好的解。</span></p><h3 id='2模拟退火搜索'><span>2.模拟退火搜索</span></h3><p><span>将 爬山法 和随机行走以某种方式 结合，同时得到 效率 和 完备性的想法是合理的。模拟退火就是这样的算法。</span></p><p><span>模拟退火算法的内层循环与爬山法类似，只是它 没有选择最佳移动，选择的是 随机移动。</span>
+<span>如果该移动能改善情况，该移动则被接受；否则，算法以某个小于1 的概率接受该（变坏的）移动。</span>
+<span>随着移动导致状态“变坏”， </span><strong><span>接受概率会呈指数级下降</span></strong><span>——根据</span><strong><span>能量差值</span></strong><span>ΔE 判断。</span>
+<span>这个</span><strong><span>概率也随“温度”T的降低而下降</span></strong><span>：开始T高的时候，可能允许“坏的”移动；当T降低时，则不可能允许“坏的”移动。</span>
+<span>如果调度让温度T下降得足够慢，算法找到全局最优解的概率接近于1。</span>
+<span>模拟退火在20 世纪80 年代早期，被广泛用于求解VLSI (大规模集成电路)布局问题。现在它已经广泛地应用于工厂调度和其他大型最优化任务。</span></p><p><img src="D:\Typora_CACHE\image-20220603184905286.png" alt="image-20220603184905286" style="zoom:67%;" /></p><h3 id='3遗传算法'><span>3.遗传算法</span></h3><p><span>遗传算法是一种模仿自然选择过程的</span><strong><span>启发式搜索</span></strong><span>算法。</span></p><p><span>遗传算法属于</span><strong><span>进化算法</span></strong><span>这个大分类。</span></p><p><strong><span>种群</span></strong><span>（Population）：是初始时给定的</span><strong><span>多个解的集合</span></strong><span>，其中有一组k个随机生成的状态，称其为 </span><strong><span>种群</span></strong><span>。</span>
+<strong><span>个体</span></strong><span>（Individual）：指种群中的单个状态，用于描述其基本遗传结构的</span><strong><span>数据结构</span></strong><span>，表示为有限字母表上的一个字符串，通常是0和1的字符串。</span>
+<strong><span>染色体</span></strong><span>（Chromosome）：指对个体进行编码后所得到的</span><strong><span>编码串</span></strong><span>。染色体中的每一位称为基因，染色体上由若干个基因构成的一个有效信息段称为</span><strong><span>基因组</span></strong><span>。例如：11011为一个染色体，每一位上的0或1表示基因。</span></p><p><strong><span>适应度</span></strong><span>（Fitness） </span><strong><span>函数</span></strong><span>：一种用来对种群中各个个体的</span><strong><span>环境适应性</span></strong><span>进行度量的</span><strong><span>函数</span></strong><span>。其函数值是遗传算法实现 </span><strong><span>优胜劣汰</span></strong><span>的主要依据。</span>
+<span>对于好的状态，适应度函数应返回较高的值，即： </span><strong><span>适应度越高，越好</span></strong><span>。</span>
+<strong><span>遗传操作</span></strong><span>（Genetic Operator）：指作用于种群而产生新的种群的操作。</span>
+<span>标准的遗传操作包括以下三种基本形式：</span>
+<span>	</span><span>选择（Selection）</span>
+<span>	</span><span>交叉（Crossover）</span>
+<span>	</span><span>变异（Mutation）</span></p><h4 id='例8皇后'><span>例8皇后</span></h4><p><img src="D:\Typora_CACHE\image-20220603191351730.png" alt="image-20220603191351730" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603191430356.png" alt="image-20220603191430356" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603191506645.png" alt="image-20220603191506645" style="zoom:67%;" /></p><h1 id='4机器学习-2'><span>4.机器学习 </span></h1><h2 id='1机器学习的三个视角'><span>1.机器学习的三个视角</span></h2><h3 id='1机器学习的概念'><span>1.机器学习的概念</span></h3><p><strong><span>机器学习</span></strong><span>是</span><strong><span>人工智能</span></strong><span>的一个分支，是实现智能的关键。其目标是要构建可以从数据中</span><strong><span>学习</span></strong><span>、并对数据进行</span><strong><span>预测</span></strong><span>的系统。</span></p><h3 id='2机器学习的发展历史'><span>2.机器学习的发展历史</span></h3><p><img src="D:\Typora_CACHE\image-20220603222235600.png" alt="image-20220603222235600" style="zoom:67%;" /></p><p><span>三个学派：连接主义，符号主义，行为主义</span></p><h3 id='3机器学习的三个不同视角'><span>3.机器学习的三个不同视角</span></h3><p><img src="D:\Typora_CACHE\image-20220603222428007.png" alt="image-20220603222428007" style="zoom:67%;" /></p><p><strong><span>学习任务</span></strong></p><p><img src="D:\Typora_CACHE\image-20220603222452223.png" alt="image-20220603222452223" style="zoom:67%;" /></p><p><strong><span>学习范式</span></strong></p><p><img src="D:\Typora_CACHE\image-20220603222630902.png" alt="image-20220603222630902" style="zoom:67%;" /></p><p><strong><span>学习模型</span></strong></p><p><img src="D:\Typora_CACHE\image-20220603222721068.png" alt="image-20220603222721068" style="zoom:67%;" /></p><h3 id='4机器学习的应用术语'><span>4.机器学习的应用术语</span></h3><p><strong><span>Samples 样本</span></strong>
+<span>用于学习或评估的数据项或实例。</span></p><p><strong><span>Features 特征</span></strong>
+<span>属性集，通常表示为与样本相关的向量：</span>
+<span>	</span><strong><span>Handcrafted features: 手工式特征</span></strong>
+<span>	</span><span>e.g., SIFT, HOG, SURF, LBP, GLOH, LESH, CENTRIST.</span>
+<span>	</span><strong><span>Learned features: 学习式特征</span></strong>
+<span>	</span><span>例如：通过卷积神经网络获得的特征。</span></p><p><strong><span>Labels 标记</span></strong><span>: 在样本上指定的值或类别。</span>
+<span>	</span><span>分类问题中，标记就是样本被指定的特定类别。</span>
+<span>	</span><span>回归问题中，标记就是项被指定的实值。</span></p><p><strong><span>Training sample 训练样本</span></strong><span>: 用于训练学习算法的样本。</span>
+<span>	</span><span>对于垃圾邮件问题，训练样本由一组邮件样本以及相关标签组成。</span></p><p><strong><span>Validation sample 验证样本</span></strong>
+<span>	</span><span>验证 样本是用于调整学习算法 </span><strong><span>超参数</span></strong><span>的、已标注的数据。</span>
+<span>	</span><span>学习算法通常具有一个或多个 </span><strong><span>自由参数</span></strong><span>，因而</span><strong><span>验证样本</span></strong><span>用于为这些模型的 </span><strong><span>超参数</span></strong><span>（如网络层数、网络节点数、迭代次数、学习率 或 KNN中的k）选择适当的值。</span></p><p><strong><span>Test sample 测试样本</span></strong><span>：</span>
+<span>	</span><span>测试集既不参与参数的学习过程，也不参与参数的选择过程，仅用于模型评价.</span>
+<span>	</span><span>用于 </span><strong><span>评估学习算法性能</span></strong><span>的样本。</span>
+<span>	</span><span>然后将这些预测与测试样本的标签进行比较，以衡量算法的性能。</span></p><p><strong><span>Loss function 损失函数</span></strong>
+<span>	</span><span>用于度量预测标签和真实标签之间差异或损失。</span>
+<span>	</span><span>将所有真实的标签集表示为Y， 将可能的预测集表示为Y’，则损失函数L为映射：</span>
+<span>L: Y×Y’→ℝ+</span></p><p><strong><span>Hypothesis set 假设集</span></strong><span>（即函数集）</span>
+<span>	</span><span>假设集是将 特征映射到 标签集Y上的函数集。</span>
+<span>	</span><span>例如，将电子邮件特征映射到Y上的函数集：Y={spam, non−spam}.</span></p><p><strong><span>Abstraction 抽象</span></strong>
+<span>其含义是将数据转化为更广泛的表示。</span></p><p><strong><span>Generalization 泛化</span></strong>
+<span>它形容将</span><strong><span>抽象知识</span></strong><span>转化为可用于</span><strong><span>动作形式</span></strong><span>的过程。它也是学习算法具有学习数据集的经验后，可以 </span><strong><span>对未知样本正确地进行处理的能力</span></strong><span>。</span></p><h2 id='2机器学习的任务'><span>2.机器学习的任务</span></h2><h3 id='1分类-1'><span>1.分类</span></h3><h4 id='1分类-2'><span>1.分类</span></h4><p><img src="D:\Typora_CACHE\image-20220603223652488.png" alt="image-20220603223652488" style="zoom:67%;" /></p><h4 id='2线性和非线性分类'><span>2.线性和非线性分类</span></h4><p><span> </span><strong><span>Linear Classification</span></strong>
+<span>	</span><strong><span>线性分类</span></strong><span>是通过线性分类器来进行分类。</span>
+<span>	</span><span>一个线线性分类器就是一个线性判别函数。</span></p><p><img src="D:\Typora_CACHE\image-20220603223732682.png" alt="image-20220603223732682" style="zoom:67%;" /></p><p><strong><span>Nonlinear Classification 非线性分类</span></strong>
+<span>	</span><span>非线性分类是通过一个非线性分类器来进行分类。</span>
+<span>	</span><span>一个非线性分类器就是一个非线性函数。</span></p><p>&nbsp;</p><p>&nbsp;</p><h4 id='3维度与类别'><span>3.维度与类别</span></h4><p><strong><span>Dimensions 维度</span></strong>
+<span>如果问题空间是n维的，则它的分类器是维度为 n-1的超平面。</span></p><p><strong><span>Classes 类别</span></strong>
+<span>	</span><span>分成几类</span></p><p><strong><span>Softmax 分类器</span></strong><span>是一个 </span><strong><span>多元分类器</span></strong><span>，由 Softmax 函数来实现。</span>
+<span>Softmax 函数，记为σ(x)，它将一个任意实数值的K 维向量x 映射到一个实数值的K维向量 (范围0到1，和为1)。</span><img src="D:\Typora_CACHE\image-20220603223900816.png" alt="image-20220603223900816" style="zoom:33%;" /></p><h4 id='4应用于算法'><span>4.应用于算法</span></h4><p><strong><span> K-nearest neighbors （KNN）K-近邻</span></strong>
+<strong><span> Support vector machine (SVM) 支撑向量机</span></strong>
+<span> AdaBoost</span>
+<span> Decision tree 决策树</span>
+<span> Artificial neural networks 人工神经网络</span>
+<span> Bayesian networks 贝叶斯网络</span>
+<span> Hidden Markov models 隐马可夫模型</span>
+<span> Kernel method 核方法</span>
+<span> Linear discriminant analysis 线性判别分析</span>
+<span> Naive Bayes classifier 朴素贝叶斯分类器</span>
+<span> Softmax</span></p><h3 id='2回归'><span>2.回归</span></h3><h4 id='1回归的定义'><span>1.回归的定义</span></h4><p><span>预测每个项的实数（连续）值。</span></p><p><img src="D:\Typora_CACHE\image-20220603224148951.png" alt="image-20220603224148951" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603224214810.png" referrerpolicy="no-referrer" alt="image-20220603224214810"></p><h4 id='2线性与非线性回归'><span>2.线性与非线性回归</span></h4><p><strong><span>Linear Regression 线性回归</span></strong></p><p><span>线性回归中，采用具有如下特征的函数对观测数据进行建模：</span>
+<span>	</span><span>该函数是模型参数的线性组合；</span>
+<span>	</span><span>该函数取决于一个或多个独立变量。</span></p><p><img src="D:\Typora_CACHE\image-20220603224331863.png" alt="image-20220603224331863" style="zoom:67%;" /></p><p><strong><span>Nonlinear Regression 非线性回归</span></strong></p><p><span>非线性回归中，采用具有如下特征的函数对观测数据进行建模：</span>
+<span>	</span><span>该函数是模型参数的非线性组合；</span>
+<span>	</span><span>该函数取决于一个或多个独立变量。</span></p><p><img src="D:\Typora_CACHE\image-20220603224356135.png" alt="image-20220603224356135" style="zoom:67%;" /></p><h4 id='3逻辑回归'><span>3.逻辑回归</span></h4><p><span>逻辑回归又称为逻辑回归分析，是通过历史数据的表现对未来结果发生的概率进行预测。</span></p><p><strong><span>线性回归</span></strong><span>用于</span><strong><span>预测</span></strong><span>连续值， </span><strong><span>逻辑回归</span></strong><span>主要用于解决</span><strong><span>分类</span></strong><span>问题。</span></p><p><span>逻辑回归的 </span><strong><span>自变量</span></strong><span>可以有一个，也可以有多个。一个自变量的叫做</span><strong><span>一元回归分析</span></strong><span>，超过一个自变量的叫做</span><strong><span>多元回归分析</span></strong><span>。</span>
+<span>logistic回归的 </span><strong><span>因变量</span></strong><span>可以是 </span><strong><span>二分类</span></strong><span>（binary classification），也可以是 </span><strong><span>多分类</span></strong><span>。</span><strong><span>二分类更为 用</span></strong><span>，也更容易解释。</span>
+<strong><span>使用sigmoid 函数，就是二分类</span></strong><span>，若阈值取到0.5，也就是说大于0.5的是一类；小于0.5的是另一类。</span>
+<strong><span>使用softmax 就是多分类。</span></strong></p><p><img src="D:\Typora_CACHE\image-20220603224610061.png" alt="image-20220603224610061" style="zoom:67%;" /></p><p><span>Sigmoid函数特性</span></p><p><span>（1）定义域为R R</span>
+<span>（2）值域为（ 0,1 ）</span>
+<span>（3）函数在定义域内为 连续 和 光滑 的函数</span>
+<span>（4） 处处可导 ，且导函数足 满足g &#39; (x) = g(x)(1- g(x))</span>
+<span>（5）S S 形函数，中间梯度大，越趋近于两端梯度越小，容易梯度消失。</span>
+<span>（6）导数值域为(0,0.25]</span></p><p><strong><span>优点</span></strong><span>：平滑、易于求导。</span>
+<strong><span>缺点</span></strong><span>：激活函数 </span><strong><span>计算量大</span></strong><span>，反向传播求误差梯度时，求导涉及除法；反向传播时，很容易就会出现 </span><strong><span>梯度消失</span></strong><span>的情况，从而无法完成深层网络的训练。</span></p><p><img src="D:\Typora_CACHE\image-20220603230320478.png" alt="image-20220603230320478" style="zoom:67%;" /></p><h4 id='4应用与算法'><span>4.应用与算法</span></h4><p><span>回归 被广泛地用于 预测和 预报。</span>
+<span> Trend estimation 趋势估计</span>
+<span> Epidemiology 传染病学</span>
+<span> Finance 金融：分析与量化投资的系统性风险。</span>
+<span> Economics 经济</span>
+<span>	</span><span>预测消费支出、固定资产投资支出、持有流动资产需求、等等。</span>
+<span> Environmental science 环境科学</span></p><p><strong><span>Typical Algorithms of Regression 回归的典型算法</span></strong>
+<span> Bayesian linear regression 贝叶斯线性回归</span>
+<span> Percentage regression 百分比回归</span>
+<span> Kernel ridge regression, 核岭回归</span>
+<span> Support-vector regression, 支撑向量回归</span>
+<span> Quantile regression, 分位数回归</span>
+<span> Regression Trees, 回归树</span>
+<span> Cascade Correlation, 级联相关</span>
+<span> Group Method Data Handling (GMDH), 分组方法数据处理</span>
+<span> Multivariate Adaptive Regression Splines (MARS), 多元自适应回归样条</span>
+<span> Multilinear Interpolation 多线性插值</span></p><h3 id='3聚类'><span>3.聚类</span></h3><h4 id='1聚类定义'><span>1.聚类定义</span></h4><p><strong><span>聚类</span></strong><span>是 将 </span><strong><span>对象进行分组</span></strong><span>的任务，使得同一组中的对象彼此之间比其他组中的对象更相似。即，聚类是 将 相似的输入数据分在同一类别。</span></p><p><img src="D:\Typora_CACHE\image-20220603230459436.png" alt="image-20220603230459436" style="zoom:67%;" /></p><h4 id='2聚类的主要方法'><span>2.聚类的主要方法</span></h4><ol start='' ><li><strong><span>层次聚类</span></strong>
+<span>基于 对象间距离的层次聚类。</span><img src="D:\Typora_CACHE\image-20220603230549639.png" alt="image-20220603230549639" style="zoom:67%;" /></li><li><strong><span>基于中心点聚类</span></strong>
+<span>找到 k个类别中心，并将对象分配到最近的类别中心点，也称为 划分聚类。</span><img src="D:\Typora_CACHE\image-20220603230603489.png" alt="image-20220603230603489" style="zoom:67%;" /></li><li><strong><span>基于密度聚类</span></strong>
+<span>将稠密区域连接的对象组成一个类别。</span><img src="D:\Typora_CACHE\image-20220603230613528.png" alt="image-20220603230613528" style="zoom:67%;" /></li></ol><p>&nbsp;</p><h4 id='3应用于算法'><span>3.应用于算法</span></h4><p><img src="D:\Typora_CACHE\image-20220603230654114.png" alt="image-20220603230654114" style="zoom:67%;" /></p><p><span>典型 的聚类算法</span>
+<span> k-means （k 均值）</span>
+<span> k-modes（k众数）</span>
+<span> PAM</span>
+<span> CLARA</span>
+<span> FCM</span>
+<span> BIRCH</span>
+<span> CURE</span>
+<span> ROCK</span>
+<span> Chameleon</span>
+<span> Echidna</span>
+<span> DBSCAN</span>
+<span> DBCLASD</span>
+<span> OPTICS</span>
+<span> DENCLUE</span>
+<span> Wave-Cluster</span>
+<span> CLIQUE</span>
+<span> STING</span>
+<span> OptiGrid</span>
+<span> EM</span>
+<span> CLASSIT</span>
+<span> COBWEB</span>
+<span> SOMs</span></p><h3 id='4排名'><span>4.排名</span></h3><h3 id='5降维'><span>5.降维</span></h3><h2 id='3机器学习的范式类型）'><span>3.机器学习的范式（类型）</span></h2><p><img src="D:\Typora_CACHE\image-20220603230959309.png" alt="image-20220603230959309" style="zoom:67%;" /></p><h3 id='1监督学习'><span>1.监督学习</span></h3><p><span>智能体接收一组 </span><strong><span>标注</span></strong><span>的对象作为训练数据，然后对所有的未知点进行推测。</span>
+<span>这种方式试图 </span><strong><span>生成</span></strong><span>从输入到输出的 函数或映射，然后可以将其用于对预先未知的数据生成输出。</span></p><h4 id='1监督学习的步骤'><span>1.监督学习的步骤</span></h4><ol start='' ><li><span>收集 </span><strong><span>训练集</span></strong><span>和 </span><strong><span>测试集</span></strong>
+<span>训练集和 测试 集是两个不相交的数据集。</span>
+<span>  例如，对于手写体识别，可以是手写字符、手写单词等。</span></li><li><span>确定特征提取方法</span>
+<span>通常，有两种从输入数据提取特征的方法：</span>
+<strong><span>手工特征提取</span></strong><span>：通过某种特征描述子。</span>
+<span>  SIFT (Scale-invariant feature transform, 尺度不变特征变换)</span>
+<span>  HOG (Histogram of Oriented Gradient, 方向梯度直方图)</span>
+<strong><span>自动特征提取</span></strong><span>：通过某种深度神经网络。</span></li><li><span>选择完成该任务的学习算法，这取决于你的任务是什么。</span>
+<span>例如，对于</span><strong><span>分类</span></strong><span>来说，你可以选择使用SVM、决策树、KNN、等等。</span><strong><span>聚类</span></strong><span>：k-means</span></li><li><span>采用该学习算法训练模型</span>
+<span>在收集的训练数据集上运行该学习算法。</span>
+<span>某些算法需要用户来确定某些 </span><strong><span>控制参数（超参）</span></strong><span>。</span>
+<span>这些 </span><strong><span>参数</span></strong><span>可以通过在训练子集上优化性能来调整。</span></li><li><span>评估模型的精确性</span>
+<span>在 </span><strong><span>参数</span></strong><span>调整和学习之后，应当在（独立于训练集的） </span><strong><span>测试集</span></strong><span>上对模型（函数）的性能进行度量。</span></li></ol><h4 id='2有监督学习的相关任务'><span>2.有监督学习的相关任务</span></h4><p><strong><span>分类</span></strong>
+<span>输出空间Y是一组 </span><strong><span>类别</span></strong><span>。离散的类别，如：二分类（垃圾、非垃圾）、多分类（0---9）</span>
+<strong><span>回归</span></strong>
+<span>输出空间Y是一组 </span><strong><span>连续的实数值</span></strong><span>。如房屋价格预测：建筑年代、面积大小、地理位置、学区房 School District ）</span>
+<strong><span>排名</span></strong>
+<span>输出空间Y是一组 </span><strong><span>相对的顺序</span></strong><span>。例如：对搜索输出结果的排名</span></p><h4 id='3有监督学习的应用'><span>3.有监督学习的应用</span></h4><p><span>垃圾 邮件检 测（二分类问题）</span>
+<span>	</span><span>将电子邮件分为{Spam, Not Spam}</span>
+<span>数字 识别 （多分类问题）</span>
+<span>	</span><span>将手写体数字映射为{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</span>
+<span>二手车/ 房屋价 格预测 （线性回归）</span>
+<span>	</span><span>根据二手车市场收集到的历史数据，估算一台二手车的实际价格。</span></p><p><img src="D:\Typora_CACHE\image-20220603231614925.png" alt="image-20220603231614925" style="zoom:67%;" /></p><h4 id='4knn'><span>4.KNN</span></h4><p><span>KNN算法是典型的监督学习算法，可以用于 </span><strong><span>分类</span></strong><span>，还可以用于 </span><strong><span>回归</span></strong><span>。</span>
+<span>KNN算法的思路：</span>
+<span>	</span><strong><span>分类</span></strong><span>： 给定待测样本A，在特征空间中找出与样本A最相似（即在特征空间中最邻近）的k个样本，然后统计这k个样本属于各类别的样本数，找到样本数最多的类别，则样本A也归于该类，属于分类问题。</span>
+<span>	</span><strong><span>回归</span></strong><span>：找出一个样本A在特征空间中的k个最相似样本，将这k 个样本属性的 平均值赋给样本A，就可以得到样本A的属性，属于回归问题。</span></p><p><span>KNN algorithm process:</span></p><ol start='' ><li><span>计算待测样本A到训练集中每个样本的距离</span></li><li><span>将所有样本按照与A的距离的 </span><strong><span>增序</span></strong><span>排列</span></li><li><span>选取与A最近的k个训练样本，即k个最近的邻居</span></li><li><span>统计这k个邻居的类别频率</span></li><li><span>找到k个邻居中频率最高的类别，作为测试样本的类别。</span></li></ol><h4 id='5svm'><span>5.SVM</span></h4><p><strong><span>间隔（Margins）</span></strong></p><p><span>线性分类器的</span><strong><span>间隔</span></strong><span>定义为：在碰到数据点之前边界的宽度。</span>
+<span>直观上， </span><strong><span>间隔越大大越好</span></strong>
+<span>超平面只由几个数据点确定：</span>
+<span>– Support Vectors（这几个数据点称为 </span><strong><span>支持向量</span></strong><span>）</span>
+<span>– 其余的数据可被忽略</span></p><p><img src="D:\Typora_CACHE\image-20220603231955133.png" alt="image-20220603231955133" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603232130288.png" alt="image-20220603232130288" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603232149437.png" alt="image-20220603232149437" style="zoom:67%;" /></p><h3 id='2无监督学习'><span>2.无监督学习</span></h3><p><span>接收</span><strong><span>未标注数据</span></strong><span>，并对所有的未知点做出预测。</span></p><p><span>Supervised learning 有监督学习</span>
+<span>	</span><span>给予学习器的对象是 </span><strong><span>已标注的</span></strong>
+<span>	</span><span>对象用于 </span><strong><span>训练该算法</span></strong><span>。</span>
+<span>Unsupervised learning 无监督学习</span>
+<span>	</span><span>给予学习器的对象是 </span><strong><span>未标注的</span></strong>
+<span>	</span><strong><span>没有训练过程</span></strong><span>。</span></p><h4 id='1聚类分析'><span>1.聚类分析</span></h4><p><strong><span>找到对象的分组</span></strong>
+<span>– 相似的对象被分在同一组。</span>
+<span>– 不同的对象被分在不同的组。</span>
+<strong><span>Unsupervised Learning</span></strong>
+<span>– 数据没有标签</span>
+<span>– 数据驱动的</span></p><p><img src="D:\Typora_CACHE\image-20220603232444865.png" alt="image-20220603232444865" style="zoom:67%;" /></p><h4 id='2k-means'><span>2.K-means</span></h4><p><span>给定参数</span><strong><span>k（类别的个数）</span></strong><span>，把 m个对象分为k个组，使组内对象具有较高的相似度，而组间对象具有较低的相似度。</span></p><p><img src="D:\Typora_CACHE\image-20220603232743149.png" alt="image-20220603232743149" style="zoom:67%;" /></p><p><span>k-means算法的处理过程如下：</span>
+<span>(1) 从数据集D中随机选择k个对象作为初始簇的中心;</span>
+<span>(2) 计算每个对象与k个簇中心的距离，并将它划分到距离其最近的簇;</span>
+<span>(3) 重新计算k个新簇的中心（即该簇内所有数据点的平均值）。</span>
+<span>(4) 重复执行第(2)-(3)步，直到簇中的对象不再变化。</span></p><p><span>通常，采用平方误差准则，即最小化每个对象到最近质心的欧几里得距离的平方和。</span></p><p><img src="D:\Typora_CACHE\image-20220603232852480.png" alt="image-20220603232852480" style="zoom:67%;" /></p><p><span>目标：最后到达“</span><strong><span>类内的点都足够近，类间的点都足够远</span></strong><span>”的目标效果。</span></p><h3 id='3强化学习'><span>3.强化学习</span></h3><h4 id='1强化学习定义'><span>1.强化学习定义</span></h4><p><span>在强化学习中，其学习器是一个进行决策的智能体，在环境下采取行动并获得这些动作的回报。</span>
+<span>经过一系列试错运行之后，该智能体能够学到最优策略。</span>
+<span>该策略是经过一个阶段的动作以及与环境的交互之后，使其回报最大化。</span></p><h4 id='2强化学习的类型'><span>2.强化学习的类型</span></h4><ol start='' ><li><strong><span>Model-based 基于 模型学习</span></strong>
+<span>构建环境的模型。</span>
+<span>首先以 </span><strong><span>马可夫决策过程</span></strong><span>方式动作，并学习 T 和 R；</span>
+<span>然后用学习的 T 和 R 进行数值迭代或策略迭代。</span></li><li><strong><span>Model-free 无 模型 学习</span></strong>
+<span>学习策略而没有任何模型。</span>
+<span>  避开学习 T 和 R 的过程，采用直接评估策略。</span>
+<span>  基于预测的时间差分(TD) 法 。</span></li></ol><h4 id='3q-learning'><span>3.Q-learning</span></h4><p><span>Q-learning is a Model-free Method. Q 表示（状态，动作）对的值。</span>
+<span>	</span><span>Q-Learning是通过Q估计来进行决策，更新学习。</span>
+<span>	</span><span>Q 估计表示为Q(s,a)，是在某状态 s 下(s∈S)，采取 动作a (a∈A)能获得收益的期望;</span>
+<span>	</span><span>环境会根据agent采取的动作，反馈相应的回报 r;</span>
+<span>	</span><span>算法的主要思想就是将State与Action构建成一张Q-table来存储Q值，然后根据Q值来选取能够获得最大收益的动作。</span></p><p><strong><span>2015</span></strong><span>年2月，谷歌DeepMind发表了 深度Q- 网络</span></p><h4 id='4强化学习的应用'><span>4.强化学习的应用</span></h4><p><span>Robots 机器人</span>
+<span> Robotic arms 机器人手臂</span>
+<span>	</span><span>控制得到最有效的电机组合。</span>
+<span> Robot navigation 机器人导航</span>
+<span>	</span><span>可通过负反馈来学会碰撞躲避行为。</span>
+<span>Computer games 计算机游戏</span>
+<span> Backgammom, 西洋双陆棋</span>
+<span> Chess, 国际象棋</span>
+<span> Go. 围棋</span></p><h2 id='4机器学习模型'><span>4.机器学习模型</span></h2><p><span>概率模型</span>
+<span>几何模型</span>
+<span>逻辑模型</span>
+<span>网络模型</span>
+<span>	</span><span>Artificial Neural Networks (ANN)</span>
+<span>	</span><span>Convolutional Neural Networks (CNN)</span>
+<span>	</span><span>Deep Neural Networks (DNN)</span></p><h1 id='5神经网络'><span>5.神经网络</span></h1><h2 id='1人工神经网络的发展历史'><span>1.人工神经网络的发展历史</span></h2><p><img src="D:\Typora_CACHE\image-20220603233642518.png" alt="image-20220603233642518" style="zoom:67%;" /></p><h2 id='2人工神经网络'><span>2.人工神经网络</span></h2><p><strong><span>人工神经网络（ANN）</span></strong><span>是受构成动物大脑的生物神经网络的启发而建立的计算系统。</span></p><h3 id='1artificial-neuron-人工神经元'><span>1.Artificial Neuron 人工神经元</span></h3><p><span>人工神经元是对生物大脑中神经元的松散模拟。</span></p><p><img src="D:\Typora_CACHE\image-20220603234719019.png" alt="image-20220603234719019" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603234753843.png" alt="image-20220603234753843" style="zoom:67%;" /></p><p><span>在常见的ANN实现中，人工神经元间连接处的信号是实数，并且每个人工神经元的输出都是通过对其输入求和（</span><strong><span>线性组合</span></strong><span>）、再进行 </span><strong><span>非线性函数</span></strong><span>计算而得到的。</span>
+<span>人工神经元之间的连接称为“</span><strong><span>边</span></strong><span>”，边具有</span><strong><span>权重</span></strong><span>，可在学习过程中进行调整。权重可增强或减弱在</span><strong><span>连接处信号</span></strong><span>的强度。(用于模拟： </span><strong><span>突触</span></strong><span>的传递作用可增强和减弱)</span>
+<span>人工神经元也可设置 </span><strong><span>阈值</span></strong><span>，仅当聚合信号超过该阈值时才发送信号（模拟：兴奋、抑制状态）。</span></p><h3 id='2感知机'><span>2.感知机</span></h3><p><strong><span>1957年</span></strong><span>神经学家罗森布拉特提出的感知机，是一种 </span><strong><span>二元线性分类器</span></strong><span>。</span>
+<span>所有输入直接连接到输出的网络称为 </span><strong><span>单层神经网络</span></strong><span>，也称为 </span><strong><span>感知机</span></strong><span>.</span>
+<span>感知机只有 </span><strong><span>一组输入单元</span></strong><span>(输入层) 和 </span><strong><span>一个输出单元</span></strong><span>（输出层）。</span></p><p><strong><span>缺点</span></strong><span>：感知机只能解决线性可分的分类问题。</span>
+<strong><span>解决方法</span></strong><span>：增加感知机的层数，使其能解决复杂问题。</span></p><p><img src="D:\Typora_CACHE\image-20220603235253712.png" alt="image-20220603235253712" style="zoom:67%;" /></p><h3 id='3多层神经网络'><span>3.多层神经网络</span></h3><p><strong><span>1985</span></strong><span> ：Multilayer Neural Network (MNN) 多层神经网络</span></p><p><span>除了输入层和输出层外，引入了中间层，称为 </span><strong><span>隐藏层</span></strong><span>，可以有多层隐藏层。</span>
+<span>每层单元的输出作为下一层单元的输入。</span>
+<strong><span>隐含层</span></strong><span>：如同其名，不直接与外部环境打交道，隐含层的层数可从零到若干层。网络</span></p><p><span>在统计神经网络层数（即深度）时，</span><strong><span>不算输入层，只算隐含层和输出层的数量</span></strong><span>。</span>
+<span>当神经网络层数达到一定数量时，称之为 </span><strong><span>深度神经网络（ DNN ）</span></strong><span>。</span></p><p><img src="D:\Typora_CACHE\image-20220603235418337.png" alt="image-20220603235418337" style="zoom:67%;" /></p><p><span>就划分浅层神经网络与深层神经网络的深度而言，尚未有公认的观点。</span>
+<span>但大多数研究人员认为， </span><strong><span>深度神经网络的隐藏层超过2 （即3层隐层）</span></strong><span>，而隐藏层</span><strong><span>大于10的为超深度神经网络</span></strong><span>。</span></p><h3 id='4激活函数'><span>4.激活函数</span></h3><p><span>早期人工神经元的激活函数用于模拟生物学上的 </span><strong><span>动作电位（阈值）</span></strong><span>，若膜电位超过它，则细胞处于兴奋状态，输出信号，否则细胞处于抑制状态，不输出信号。因此，</span><strong><span>采用阶跃函数</span></strong><span>。</span>
+<span>后来，当将单层NN扩展为多层NN时，发现：每一层的输出都是上层输入的线性函数，无论神经网络有多少层，输出都是输入的线性组合， </span><strong><span>线性模型无法解决非线性问题</span></strong><span>。</span>
+<span>于是，给神经元引入非线性激活函数，目的是将线性转化为非线性。使得</span><strong><span>神经网络可以逼近任何非线性函数，这样神经网络就可用于解决非线性问题</span></strong><span>。</span></p><p><strong><span>有5种常用的激活函数</span></strong>
+<span>(1) Linear：阈值函数, 即阶跃函数</span>
+<span>(2) Non-linear Function：ReLU ，Logistic-Sigmoid，Tanh-Sigmoid，Softmax</span>
+<span>S形函数包括：逻辑S形函数、双曲正切(tanh)（也称为双极S形函数）</span></p><p><img src="D:\Typora_CACHE\image-20220603235859658.png" alt="image-20220603235859658" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220603235924712.png" alt="image-20220603235924712" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604000348577.png" alt="image-20220604000348577" style="zoom:67%;" /></p><p><span>Sigmoid 是 softmax的特例。当类别数为2时, softmax就是Sigmoid 。</span>
+<span>Sigmoid 用于解决 </span><strong><span>二分类</span></strong><span>问题，而 softmax 用于解决 </span><strong><span>多分类</span></strong><span>问题。</span>
+<span>当分类数为2时，全连接且不含隐藏层的神经网络，就变为</span><strong><span>logistic 回归</span></strong></p><p><span>Softmax 的多类别间是</span><strong><span>互斥的</span></strong><span>，即一个输入只能被归为</span><strong><span>一类</span></strong>
+<strong><span>多个logistic回归</span></strong><span>也可实现多分类，但输出的</span><strong><span>类别并不互斥</span></strong></p><h3 id='5神经网络的结构'><span>5.神经网络的结构</span></h3><p><img src="D:\Typora_CACHE\image-20220604091635091.png" alt="image-20220604091635091" style="zoom:67%;" /></p><p><span>根据单元之间的连接范围，可以把神经网络分为 </span><strong><span>全连接神经网络</span></strong><span>和 </span><strong><span>部分连接神经网络</span></strong>
+<span>在全连接神经网络中，每个单元和相邻层的所有单元都相连。</span></p><p><span>据层次之间的连接方式，可以把神经网络分为</span><strong><span>前馈型神经网络</span></strong><span>和</span><strong><span>反馈型神经网络</span></strong><span>。</span></p><p><span>在</span><strong><span>前馈型</span></strong><span>神经网络中，连接是单向的，上层神经元的输出是下层神经元的输入。BP神经网络是一种前馈型 神经 网络 。</span>
+<span>在</span><strong><span>反馈型</span></strong><span>神经网络中，除了单向连接之外，最后一层神经元的输出返回去作为第一层神经元的输入。 如：Hopfield神经网络</span></p><p><img src="D:\Typora_CACHE\image-20220604091913600.png" alt="image-20220604091913600" style="zoom:67%;" /></p><p><strong><span>多层前馈神经网络</span></strong></p><p><span>多层前馈神经网络又称为 多 层前馈 全连接网。</span>
+<strong><span>多层</span></strong><span>是指：除了输入层和输出层以外，还存在一个或者多个隐含层。</span>
+<strong><span>前馈</span></strong><span>是指：外界信号从输入层，经由隐含层到达输出层，不存在信号的逆向传播。</span>
+<strong><span>全连接</span></strong><span>是指：每层神经元与下一层神经元全部互相连接，同层神经元之间不存在连接， 也不存在跨层连接。</span>
+<span>多层前馈神经网络的表达能力比单层感知机要强得多。</span>
+<span>要学习多层前馈神经网络，单层感知机的学习规则是远远不够的，需要更强大的学习算法。</span></p><h3 id='6bp算法'><span>6.BP算法</span></h3><p><strong><span>1974</span></strong><span>年Werbos提出了BP算法.</span></p><p><span>由于前馈型神经网络多采用 </span><strong><span>反向传播</span></strong><span>学习算法进行训练，故被称为</span><strong><span>BP网络</span></strong><span>。</span>
+<span>BP算法是训练人工神经网络的常用方法，与 </span><strong><span>梯度下降</span></strong><span>优化方法结合使用。</span>
+<span>需要指出的是，BP算法不仅可用于多层前馈神经网络，还可用于其他类型的神经网络，比如 </span><strong><span>循环神经网络（RNN）</span></strong><span>。</span></p><p><img src="D:\Typora_CACHE\image-20220604093520942.png" alt="image-20220604093520942" style="zoom:67%;" /></p><p><span>BP算法的学习过程由</span><strong><span>正向传播</span></strong><span>和</span><strong><span>反向传播</span></strong><span>两个阶段组成。</span>
+<span>(1) 在 </span><strong><span>正向传播</span></strong><span>阶段中，输入信号（即训练样本）从输入层经隐藏层 逐层处理，并传向输出层，每一层神经元的状态只影响下一层神经元的状态。</span></p><p><span>(2)若输出层的</span><strong><span>实际输出</span></strong><span>与</span><strong><span>期望输出</span></strong><span>不同，则转入 </span><strong><span>反向传播阶段</span></strong><span>，将误差信号沿原来的连接通路返回，采用</span><strong><span>梯度下降法修改</span></strong><span>各层神经元的</span><strong><span>连接权值</span></strong><span>，使得误差信号递减到最小。更新权值的过程是“</span><strong><span>反向</span></strong><span>”进行的，即，由输出层，依次经由每个隐藏层，到达输入层。</span>
+<span>重复阶段 (1) 和 (2) 的操作，直到网络的性能得到满足。</span></p><p><span>在反向传播过程中， </span><strong><span>更新每个权值</span></strong>
+<span>将其输出差值与输入激活相乘，以便得到该权值梯度。</span>
+<span>从权值中减去 </span><strong><span>梯度的比值</span></strong><span>（百分比）。该比值称为 </span><strong><span>学习率</span></strong><span>。</span>
+<span>	</span><span>比值越大，神经元训练越快（但越不准确）；</span>
+<span>	</span><span>比值越低，训练精度越高（训练所需的时间越长、越慢）。</span>
+<span>就像用折线逼近一个圆，线长越小，越逼近圆；线长越大，完成逼近的过程越快，但越不精确。</span></p><p><img src="D:\Typora_CACHE\image-20220604094141016.png" alt="image-20220604094141016" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604094212754.png" alt="image-20220604094212754" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604094257348.png" alt="image-20220604094257348" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604094311457.png" alt="image-20220604094311457" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604094337095.png" alt="image-20220604094337095" style="zoom:67%;" /></p><p><strong><span>BP算法的缺陷</span></strong>
+<strong><span>（1）过拟合问题</span></strong><span>（Overfitting Problem）</span>
+<span>一般情况下，随着训练能力地提高，预测能力会得到提高。</span>
+<span>但随着训练能力的提高，预测能力反而会下降，称为“</span><strong><span>过拟合</span></strong><span>”现象，即训练误差小，然而测试误差减小到某个值之后却反而开始增大。</span>
+<span>在训练数据不够多，或模型过于复杂时，常会导致模型对训练数据集 </span><strong><span>过拟合</span></strong><span>。</span>
+<strong><span>预测能力</span></strong><span>也称 </span><strong><span>泛化能力</span></strong><span>或 </span><strong><span>推广能力</span></strong><span>，而 </span><strong><span>训练能力</span></strong><span>也称</span><strong><span>逼近能力</span></strong><span>或 </span><strong><span>学习能力</span></strong><span>。</span>
+<span>Solution strategy:</span>
+<span> Early-stopping（ 早停法 ）</span>
+<span> </span><strong><span>Dropout ( 随机失活/ 抛弃 )</span></strong>
+<span> Data enhancement ( 数据增强 )</span>
+<span> Weight regularization ( 权重正则化 )</span></p><p><strong><span>（2）局部极小值问题</span></strong><span>（Local minimum problem）</span>
+<span>BP算法是一种局部搜索的优化方法，在训练多层神经网络时，可能会陷入 局部极小值，而非全局最小值。</span>
+<strong><span>（3）“梯度消失”问题</span></strong><span>（Gradient vanishing problem ）</span>
+<span>由于BP算法使用 </span><strong><span>梯度下降法</span></strong><span>更新权重，它所要优化的目标函数非常复杂，则会在神经元输出接近0或1的情况下，出现一些平坦区，使得梯度消失；</span>
+<span>这会导致后面层的权重基本不更新，训练过程几乎停顿，导致了BP神经网络算法收敛速度慢的现象。 解决：Relu激活函数</span></p><p><span>BP–NN采用全连接，</span><strong><span>权值数量多</span></strong><span>，</span>
+<span>BP–NN</span><strong><span>需要大量训练样本，计算量大</span></strong><span>。</span>
+<strong><span>应对之道</span></strong><span>：采用</span><strong><span>局部连接</span></strong><span>和</span><strong><span>权值共享</span></strong><span>方法，用以减少权值个数</span></p><h2 id='3卷积神经网络'><span>3.卷积神经网络</span></h2><p><span>卷积神经网络是一种</span><strong><span>特殊的多层神经网络</span></strong><span>.</span>
+<span>像几乎所有其他的神经网络一样，它们也是</span><strong><span>用反向传播算法训练模型</span></strong><span>，它们的不同之处只是在于网络结构。</span>
+<span>CNN是可直接从图像中识别视觉模式的神经网络，其</span><strong><span>预处理量最小</span></strong><span>（不用提取手工特征） 。</span>
+<span>CNN可识别具有极端可变性的模式(如手写字符)，并且</span><strong><span>对扭曲和简单的几何转换（平移、旋转、缩放）具有鲁棒性</span></strong><span>。</span></p><p><span>CNN是一种前馈式人工神经网络，使用至少一个卷积层来代替一般的矩阵乘法。</span></p><p><strong><span>四个关键思想</span></strong><span>：</span>
+<span>	</span><span>局部连接（卷积）</span>
+<span>	</span><span>共享权值</span>
+<span>	</span><span>池化（采样）</span>
+<span>	</span><span>多层卷积</span></p><h3 id='1cnn优点'><span>1.CNN优点</span></h3><p><span>卷积神经网络采用以下 两种方法减少参数个数：</span>
+<strong><span>局部连接（local connections）</span></strong>
+<span>	</span><span>卷积即局部感知野，用于局部连接。</span>
+<span>	</span><span>因为在图像空间中，邻近像素的关联较紧密，而相距较远的像素相关性较弱。</span>
+<span>	</span><span>因此，每个神经元没必要感知全局图像，只需感知其邻近的局部像素，然后在更高层网络将局部信息综合起来可得到全局信息。</span>
+<strong><span>权值共享 (weight sharing)</span></strong></p><h3 id='2cnn基础结构'><span>2.CNN基础结构</span></h3><p><img src="D:\Typora_CACHE\image-20220604100132187.png" alt="image-20220604100132187" style="zoom:67%;" /></p><h4 id='1卷积层'><span>1.卷积层</span></h4><p><span>卷积层包含一组可学习的滤波器，每个滤波器对输入的数据进行卷积，计算滤波器和输入数据之间的</span><strong><span>点积</span></strong><span>，生成该滤波器的一个2维特征映射图。</span></p><p><span>每个滤波器就是一个神经元，滤波器覆盖的范围称为</span><strong><span>感受野</span></strong><span>（receptive field，窗口）。</span></p><p><span>与卷积层相关的术语：</span>
+<strong><span>Depth（深度）</span></strong><span>：RGB image，depth=3</span>
+<strong><span>Stride（步长）</span></strong><span>：(窗口一次滑动的长度) 水平与垂直方向的步长相同</span>
+<strong><span>zero-padding</span></strong><span>（以0填充）</span></p><h5 id='灰度图上的单个卷积核'><span>灰度图上的单个卷积核</span></h5><p><span>在灰度图像上使用单卷积核：抽取单个特征。</span>
+<span>卷积运算</span>
+<span>	</span><span>用同一个卷积核从左到右Z字形滑动遍历每一个可能的局部位置.</span>
+<span>	</span><span>在每个位置计算卷积核和局部数据的点积值</span>
+<span>Terms （术语）</span>
+<span>𝑥：input，image（输入）</span>
+<span>𝑤：</span><strong><span>filter=kernel</span></strong><span>, 只有在单通道/灰度图像上：</span><strong><span>卷积核=滤波器</span></strong><span>，</span><strong><span>等价</span></strong>
+<span>𝑠：feature map，activation map，convolved feature（特征映射）</span></p><p><img src="D:\Typora_CACHE\image-20220604100605608.png" alt="image-20220604100605608" style="zoom:67%;" /></p><h5 id='rgb图上的单个过滤器'><span>RGB图上的单个过滤器</span></h5><p><span>大多数输入图像都是 3 通道的。</span>
+<span>RGB图像上使用单个滤波器，其作用是：抽取单个特征。</span>
+<span>RGB输入通道的每个图层都有一个唯一的卷积核. 如3 × 3 的卷积核，共3个卷积核。</span>
+<span>滤波器就是各图层上卷积核的集合。</span></p><p><strong><span>每个卷积核的大小</span></strong><span>: 3 × × 3,Height ×Width</span>
+<strong><span>滤波器的深度</span></strong><span> = 卷积核的个数= 前一层输出数据的深度即Depth=3</span></p><p><span>滤波器的每个卷积核在各自的输入通道上「滑动」，产生各自的计算结果</span>
+<span>然后将滤波器的每个卷积核各自产生的结果汇在一起，形成一个总的输出通道。</span>
+<span>即一个滤波器（不管其中包含几个卷积核）只产生一个输出结果。</span>
+<strong><span>偏置</span></strong><span>的作用是对每个滤波器的输出增加偏置项，以便产生最终输出通道。</span></p><h5 id='rgb图上的多个过滤器'><span>RGB图上的多个过滤器</span></h5><p><span>RGB图像上使用多个滤波器：用于提取多个不同特征。</span>
+<span>一个滤波器提取图像的一种局部特征。</span></p><p><strong><span>上一层滤波器的个数</span></strong><span>= </span><strong><span>下一层输入数据的深度</span></strong><span>= </span><strong><span>下一卷积层波器的深度</span></strong>
+<span>滤波器的个数= 提取特征的数量，每层滤波器的个数都是超参数，程序员可以自己调节。</span></p><p><img src="D:\Typora_CACHE\image-20220604102921250.png" alt="image-20220604102921250" style="zoom:67%;" /></p><p><strong><span>卷积的步长</span></strong></p><p><span>若将步长的值设置大于1，就相当于在stride=1的卷积结果中作了</span><strong><span>下采样</span></strong>
+<span>实际上，是跳过去、不计算某些像素，能够成倍减少计算量。</span></p><p><strong><span>卷积的填充</span></strong></p><p><span>卷积核的大小不再限制CNN的深度, CNN能够发展得越来越深.</span></p><p><strong><span>Padding = valid（不补0）</span></strong>
+<span>若不进行补零操作，每卷积一次，宽和高方向的数据维度下降(F – 1)，其中</span><strong><span>F为卷积核大小</span></strong><span>.</span></p><p><strong><span>Padding = same （补0）</span></strong>
+<span>	</span><span>在输入的边界周围进行0或复制填充</span>
+<span>	</span><span>卷积前、后特征图的高与宽不变</span></p><p><img src="D:\Typora_CACHE\image-20220604103143250.png" alt="image-20220604103143250" style="zoom:67%;" /></p><h4 id='2池化层'><span>2.池化层</span></h4><p><span>池化是一种非线性下采样。它将输入图像分割成一组不重叠的矩形，对每个这样的子区域，输出其最大值或平均值。相当于卷积核的stride （步长）=F（尺寸）</span>
+<span>池化层夹在连续的卷积层中间， 用于压缩数据和参数的量，减小过拟合。</span></p><p><span>池化方法：</span><strong><span>Max pooling</span></strong><span> 和 </span><strong><span>average pooling</span></strong><span>，</span>
+<span>实际用的较多的是Max pooling .</span></p><p><img src="D:\Typora_CACHE\image-20220604103544408.png" alt="image-20220604103544408" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604103557096.png" alt="image-20220604103557096" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604103609129.png" alt="image-20220604103609129" style="zoom:67%;" /></p><h4 id='3激励层'><span>3.激励层</span></h4><p><strong><span>激励（激活）函数</span></strong><span>就是将卷积层输出的结果做非线性映射。</span>
+<strong><span>CNN</span></strong><span>采用的激励函数一般为</span><strong><span>ReLU</span></strong><span> (Rectified Linear Unit/修正线性单元)，它的特点是收敛快，求梯度简单，但较脆弱，落入硬饱和区（&lt;0），导致对应权重无法更新。这种现象被称为“神经元死亡” 。</span></p><p><img src="D:\Typora_CACHE\image-20220604103741327.png" alt="image-20220604103741327" style="zoom:67%;" /></p><p><strong><span>共享权值</span></strong></p><p><span>在卷积层中, 每个神经元连接数据窗的权重是固定的，每个神经元只关注一个特性。</span></p><p><span>所有这些神经元加起来, 就是整张图像的特征提取器的集合。</span>
+<strong><span>权值共享就是用一组固定的卷积（权重）与不同窗口内数据做内积（卷积 ）。</span></strong>
+<span>采用共享权值的 好处：减少需要学习的权重个数.</span>
+<span>例如：AlexNet 的参数有1亿 ，采用共享权值后，减至 6000万。</span></p><h4 id='4全连接层'><span>4.全连接层</span></h4><p><strong><span>全连接</span></strong><span>是指相邻两层上所有神经元之间都相互连接。</span>
+<span>通常全连接层在CNN尾部，与传统神经网络的神经元连接方式是一样的。</span></p><p><img src="D:\Typora_CACHE\image-20220604104024160.png" alt="image-20220604104024160" style="zoom:67%;" /></p><p><span>全连接层在整个卷积神经网络中起到“分类器”的作用，即通过</span><strong><span>卷积、激活函数、池化</span></strong><span>等网络层后，再经过全连接层对结果进行识别、分类。</span>
+<span>首先，将经过卷积、激活函数、池化的</span><strong><span>多层特征向量</span></strong><span>抻直成一个 </span><strong><span>一维的向量</span></strong><span>；</span>
+<span>然后，采用 </span><strong><span>全连接</span></strong><span>的方式将上述 </span><strong><span>一维向量</span></strong><span>与 </span><strong><span>输出层</span></strong><span>连接。</span></p><h4 id='5cnn总结'><span>5.CNN总结</span></h4><p><strong><span>卷积神经网络之训练算法</span></strong></p><p><span>1.与一般机器学习算法相同：先定义Loss function，衡量 </span><strong><span>输出</span></strong><span>和 </span><strong><span>真实结果</span></strong><span>之间差距。</span></p><p><span>2.找到最小化损失函数的W和b， CNN中用的算法是SGD（</span><strong><span>随机梯度下降</span></strong><span>）。</span></p><p><strong><span>卷积神经网络之优缺点</span></strong>
+<span>优点</span>
+<span>(1) 共享卷积核，对高维数据处理无压力</span>
+<span>(2) 无需手动选取特征，训练好权重，即得特征，分类效果好</span>
+<span>缺点</span>
+<span>(1) 需要调参，需要大样本量，训练时需要GPU</span>
+<span>(2) 物理含义不明确（也就说，我们并不知道每个卷积层到底提取到的是什么特征，而且神经网络本身就是一种 </span><strong><span>难以解释的“ 黑箱模型”</span></strong><span>）</span></p><h2 id='4深度神经网络'><span>4.深度神经网络</span></h2><p><span>深度神经网络通常指包含2个以上隐含层的神经网络，用于深度神经网络的学习方法称为深度学习。</span></p><h1 id='6图像识别'><span>6.图像识别</span></h1><h2 id='1图像识别面临挑战'><span>1.图像识别面临挑战</span></h2><p><strong><span>语义鸿沟现象 Semantic Gap</span></strong></p><p><span>图像的 底层视觉特性和 高层语义概念之间的鸿沟.</span></p><h2 id='2深度学习与图像识别'><span>2.深度学习与图像识别</span></h2><h3 id='1深度学习起源与发展'><span>1.深度学习起源与发展</span></h3><p><strong><span>1989</span></strong><span>年提出cnn</span></p><p><strong><span>1998</span></strong><span>年应用于手写体数字识别</span></p><p><img src="D:\Typora_CACHE\image-20220604161134504.png" alt="image-20220604161134504" style="zoom:67%;" /></p><h3 id='2深度学习在图像处理领域的应用'><span>2.深度学习在图像处理领域的应用</span></h3><p><img src="D:\Typora_CACHE\image-20220604161159102.png" alt="image-20220604161159102" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604161332368.png" alt="image-20220604161332368" style="zoom:67%;" /></p><h3 id='3如何使用深度学习识别图像'><span>3.如何使用深度学习识别图像</span></h3><p><span>使用机器学习（深度学习）的</span><strong><span>目的</span></strong><span>：寻找一个合适的</span><strong><span>函数/模型</span></strong></p><p><strong><span>学习过程</span></strong></p><p><img src="D:\Typora_CACHE\image-20220604161523869.png" alt="image-20220604161523869" style="zoom:67%;" /></p><h4 id='1建立模型'><span>1.建立模型</span></h4><p><img src="D:\Typora_CACHE\image-20220604161618909.png" alt="image-20220604161618909" style="zoom:67%;" /></p><p><strong><span>激活函数</span></strong></p><p><img src="D:\Typora_CACHE\image-20220604161737908.png" alt="image-20220604161737908" style="zoom:67%;" /></p><p><strong><span>前馈神经网络</span></strong></p><p><img src="D:\Typora_CACHE\image-20220604161943215.png" alt="image-20220604161943215" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604162043581.png" alt="image-20220604162043581" style="zoom:67%;" /></p><p><strong><span>输出层</span></strong></p><p><span>常用</span><strong><span>softmax函数</span></strong><span>作为输出层的激活函数，因为它容易理解、便于计算。</span></p><p><img src="D:\Typora_CACHE\image-20220604162137487.png" alt="image-20220604162137487" style="zoom:67%;" /></p><h4 id='2损失函数'><span>2.损失函数</span></h4><p><span>常用损失函数：平方误差，交叉熵</span></p><p><span>好的参数使得所有训练数据的损失越小越好</span></p><p><span>计算的值与实际值的差为损失l</span></p><p><img src="D:\Typora_CACHE\image-20220604170637542.png" alt="image-20220604170637542" style="zoom:67%;" /></p><h4 id='3参数学习方法'><span>3.参数学习方法</span></h4><p><span>梯度下降法</span></p><p><img src="D:\Typora_CACHE\image-20220604170755779.png" alt="image-20220604170755779" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604170833998.png" alt="image-20220604170833998" style="zoom:67%;" /></p><p><img src="D:\Typora_CACHE\image-20220604170905989.png" alt="image-20220604170905989" style="zoom:67%;" /></p><p><strong><span>BP算法</span></strong></p><p><span>求偏导</span></p><h4 id='4评价指标'><span>4.评价指标</span></h4><p><img src="D:\Typora_CACHE\image-20220604172242854.png" alt="image-20220604172242854" style="zoom:67%;" /></p><p><strong><span>正确率（accuracy）</span></strong>
+<span>accuracy = （TP+TN）/(P+N)，即被分对的样本数除以所有的样本数，正确率越高，分类器越好；</span>
+<strong><span>错误率（error rate)</span></strong>
+<span>error rate = (FP+FN)/(P+N)，对某一个实例来说，分对与分错是互斥事件，所以accuracy =1 - error rate；</span>
+<strong><span>精度（precision）</span></strong>
+<span>表示被分为正例的样例且实际为正例的比例，precision=TP/（TP+FP）；</span>
+<strong><span>召回率（recall）</span></strong>
+<span>召回率是覆盖面的度量，度量有多个正例被分为正例，recall=TP/(TP+FN)=TP/P。</span></p><h2 id='3lenet-5的网络结构'><span>3.LeNet-5的网络结构</span></h2><p><strong><span>1989 yann lecun 1998 手写体数字识别</span></strong></p><p><span>其学习目标是从一系列由32×32×1灰度图像表示的手写数字中，识别和区分0-9。LeNet-5的隐含层由</span><strong><span>2个卷积层、2个池化层、2个全连接层、1个输出层</span></strong><span>组成</span></p><p><img src="D:\Typora_CACHE\image-20220604173614897.png" alt="image-20220604173614897" style="zoom:67%;" /></p><p><span>LenNet-5的输入层图像大小是32 * 32（Caffe中Mnist数据库为28*28）</span>
+<span>LenNet-5</span><strong><span>共有7层</span></strong><span>（不包括输入层），分别是C1,S2,C3,S4,F5,F6,output，C是Convolutions，S 是SubSampling，F是Fullconnection; 每层都包含不同数量的训练参数 。</span></p><h3 id='1c1卷积层'><span>1.C1卷积层</span></h3><p><span>都是6个 </span><strong><span>5 * 5大小的卷积核</span></strong><span>/过滤器 </span><strong><span>步长为1</span></strong><span> </span><strong><span>6个特征图谱</span></strong></p><p><span>卷积 核有5x5 个连接 参数，加上1个偏置，共</span><strong><span>26 个参数。</span></strong>
+<span>卷积区域每次滑动一个像素，这样卷积层形成的每个特征图谱大小是(32-5)/1+1=28x28。</span>
+<span>C1层共有26x6=156个训练参数，有(5x5+1)x28x28x6=122304个连接。</span></p><h3 id='2s2池化层'><span>2.S2池化层</span></h3><p><span>C1层输出的是6个28x28的特征图谱，再分别进行用</span><strong><span>2x2池化</span></strong><span>，得到S2层的结果为6个14x14【(28-2)/2+1】的图。</span>
+<span>每个特征图谱使用一个池化核，有(2x2+1个偏置)x14x14x6=5880个连接。</span></p><h3 id='3c3卷积层'><span>3.C3卷积层</span></h3><p><span>C3层有</span><strong><span>16 个5*5 的滤波器</span></strong><span>，C3的每个滤波器与S2中的多个（不是所有）特征图相连，即S2 （ 6个14x14 的图层 ）与C3 不是全连接</span></p><p><span>C3层输出</span><strong><span>16个10x10（14-5+1）的特征图</span></strong><span>。</span></p><p><span>该层有(5x5x3+1)x6 + (5x5x4 + 1) x 6 + (5x5x4 +1)x3 + (5x5x6+1)x1 = 1516个训练参数，共有1516x10x10=151600个连接。</span></p><h3 id='4s4池化层'><span>4.S4池化层</span></h3><p><span>C3层的输出是16 个10x10的图，再分别进行做</span><strong><span>2x2的池化</span></strong><span>，得到</span><strong><span>16 个5x5的图</span></strong><span>。</span>
+<span>(2x2+1个偏置)x5x5x16=2000个连接。连接的方式与S2层类似</span></p><h3 id='5c5全连接层'><span>5.C5全连接层</span></h3><p><span>C5层是一个全连接层（卷积层），采用</span><strong><span>120个16x5x5</span></strong><span>的滤波器。</span>
+<span>由于</span><strong><span>S4层的输出为16个5x5</span></strong><span>的特征图，与C5的卷积核大小相同，所以卷积后形成的图的大小为1x1。</span>
+<span>C5的输出为120位的1维向量。</span><strong><span>每个都与上一层的16个图层相连（所以是全连接）</span></strong><span>。所以共有(5x5x16+1)x120 = 48120个参数，同样有48120个连接。</span></p><h3 id='6f6全连接层'><span>6.F6全连接层</span></h3><p><span>F6层是全连接层。其输入为</span><strong><span>C5层的120维向量</span></strong><span>。</span><strong><span>F6层有84个节点</span></strong><span>，对应于一个</span><strong><span>7x12的比特图</span></strong><span>，该层的训练参数和连接数都是(120 + 1)x84=10164.</span></p><h3 id='7output全连接层'><span>7.Output全连接层</span></h3><p><span>Output层也是全连接层，共有</span><strong><span>10个节点</span></strong><span>，分别代表数字0到9</span></p><p><img src="D:\Typora_CACHE\image-20220604175054988.png" alt="image-20220604175054988" style="zoom:67%;" /></p><p><span>该层有</span><strong><span>84x10=840个设定的参数和连接</span></strong><span>。连接的方式如上图.</span>
+<span>以上是LeNet-5的卷积神经网络的完整结构，共约有60,840个训练参数，340,908个连接。</span></p></div></div>
+</body>
+</html>
