@@ -1,5 +1,5 @@
 # 北京交通大学软件工程学习课程笔记
-## 已收录本人笔记：
+## 已收录本人笔记以及项目：
 
 ## 大一
 
@@ -27,6 +27,16 @@
 
 [概率论与数理统计](https://github.com/Routhleck/myNotes/tree/main/概率论与数理统计)
 
+[项目:人工智能基础-十二生肖识别系统](https://github.com/Routhleck/animal_detect_paddle)
+
+[项目:大数据概论-天气预测系统](https://github.com/Routhleck/Weather-Predict)
+
+[项目:实训-简易DBMS](https://github.com/Routhleck/MINI_DBMS)
+
+[项目:实训-线上商城](https://github.com/Routhleck/Online-Shopping-Mall)
+
+[项目:实训-航班延误预测系统](https://github.com/Routhleck/flight-delay-predict)
+
 ## 大三
 
 [科技论文写作](https://github.com/Routhleck/myNotes/tree/main/科技论文写作)
@@ -49,8 +59,20 @@
 
 [轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发(updating))
 
+[项目:c++程序设计-列车购票系统](https://github.com/Routhleck/train-ticket-book-system)
+
+[项目:操作系统-自制OS](https://github.com/Routhleck/myOS)
+
+[项目:软件测试与质量保障-代码查重系统](https://github.com/Routhleck/code_difference_comparision)
+
+[项目:实训-代码缺陷预测系统](https://github.com/Routhleck/bug-detect-system)
+
+[项目:大规模计算-热传导计算](https://github.com/Routhleck/heat_conduction)
+
+[项目:轻量化平台开发-新闻讯息小程序](https://github.com/Routhleck/miniprogram-News)
+
+[项目:计算机图形学-OpenGL实验](https://github.com/Routhleck/Computer-Graphics-projects)
+
 ## 其他
 
 [Leetcode](https://github.com/Routhleck/myNotes/tree/main/LeetCode(updating))
-
-[CUDA入门](https://github.com/Routhleck/myNotes/tree/main/CUDA入门(updating))
