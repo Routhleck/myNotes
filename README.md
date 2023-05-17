@@ -27,6 +27,8 @@
 
 [概率论与数理统计](https://github.com/Routhleck/myNotes/tree/main/概率论与数理统计)
 
+---
+
 [项目:人工智能基础-十二生肖识别系统](https://github.com/Routhleck/animal_detect_paddle)
 
 [项目:大数据概论-天气预测系统](https://github.com/Routhleck/Weather-Predict)
@@ -58,6 +60,8 @@
 [API设计与实现](https://github.com/Routhleck/myNotes/tree/main/API设计与实现(updating))
 
 [轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发(updating))
+
+---
 
 [项目:c++程序设计-列车购票系统](https://github.com/Routhleck/train-ticket-book-system)
 
