@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 bm.set_platform('cpu')
 
 # include_self: 是否有自环
-conn = bp.connect.FixedProb(prob=0.5, include_self=False, seed=134)
+conn = bp.connect.FixedProb(prob=0.2, include_self=False)
 
 print(conn)
 

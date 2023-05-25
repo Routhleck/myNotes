@@ -1239,3 +1239,108 @@ API安全接入
 数据生命周期各阶段安全
 
 # API技术实现
+
+## 基于RPC
+
+### RPC基础
+
+**IPC进程间通信**
+
+> Inter-Process Communication
+> 多CPU之间的数据交换
+> 管道，匿名管道，信号
+> 消息队列，信号量，共享内存区
+> Socket套接字，不同主机上的进程通信
+
+**RPC远程过程调用**
+
+> Remote Procedure Call
+> 调用远程方法像调用本地方法一样简单
+> 不同主机上的进程通信
+> 基于Socket套接字
+
+**I/O模型**
+
+- 阻塞&非阻塞
+- 同步&异步
+- 用户态&内核态
+- 用户线程&内核线程
+- 用户空间&内核空间
+- 阻塞I/O&非阻塞I/O
+- 同步I/O&异步I/O
+
+**Linux I/O模型**
+
+- 阻塞IO，BIO，Blocking IO
+- 非阻塞IO，NIO，None Blocking IO
+- 多路复用IO，IO Multiplexing
+- 信号驱动IO，Signal-driven IO
+- 异步IO，AIO，Asynchronous IO
+
+**Java I/O模型**
+
+- BIO，阻塞IO
+- NIO，New IO (面向缓冲)
+- AIO，异步IO
+
+**Reactor模式**
+
+非阻塞同步网络模式
+基于I/O多路复用机制监听事件，收到事件后，根据事件类型分配给某个进程/线程
+由Reactor和处理资源池两个核心部分构成
+
+> Reactor负责监听和分发事件，事件类型包括连接事件、读写事件
+> 处理资源池负责处理事件，如read -> 业务逻辑 -> send
+
+**Proactor模式**
+
+异步网络模式
+采用异步I/O技术，感知已完成的读写事件
+
+**RPC构成**
+
+RPC由四个部分构成
+
+- 客户端：服务的调用方
+- 客户端存根：client stub，存放服务端的地址信息，再将客户端的请求参数打包成网络消息，然后通过网络远程发送给服务方
+- 服务端：服务的提供者
+- 服务端存根：server stub，接收客户端发送过来的消息，将消息解包，并调用本地的方法
+
+<img src="API设计与实现.assets/image-20230525204221793.png" alt="image-20230525204221793" style="zoom: 80%;" />
+
+两个概念
+
+- Marshalling：对请求参数进行封包
+- UnMarshalling：对封包消息进行解包
+
+**RPC与RMI**
+
+RPC
+
+> 远程过程调用
+> Remote Procedure Call
+> 面向过程
+
+RMI
+
+> 远程方法调用
+> Remote Method Invocation
+> 面向对象
+
+stub，存根，客户端代理
+skeleton，骨架，服务端代理
+
+### RPC框架
+
+解决网络通信的某一类问题
+框架与类库的区别，框架内部的类有相互协作的功能 
+不用感知RPC调用实现的细节
+
+
+
+## 基于REST
+
+
+
+## 基于GraphQL
+

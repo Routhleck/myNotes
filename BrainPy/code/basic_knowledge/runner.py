@@ -18,7 +18,7 @@ class EINet(bp.Network):
         self.I = bp.neurons.LIF(num_inh, **pars, method=method)
         self.E.V[:] = bm.random.random(num_exc) * 2 - 55.
         self.I.V[:] = bm.random.random(num_inh) * 2 - 55.
-0
+
         prob = 0.1
         we = 0.6 / scale / (prob / 0.02)**2
         wi = 6.7 / scale / (prob / 0.02)**2
