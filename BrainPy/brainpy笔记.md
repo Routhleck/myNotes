@@ -54,6 +54,8 @@ w(i, j) = w_{max} \cdot \exp(-\frac{\sum_{k=1}^n |v_k^i - v_k^j|^2 }{2\sigma^2})
 $$
 权重随着神经元之间的距离增加而减小
 
+math:`v_k^i` is the i-th neuron's encoded value at dimension k.
+
 ### DOGDecay
 
 继承自`_IntraLayerInitializer`，与`GaussianDecay`类似，用于同一层的网络内权重的生成，构建的是差分高斯（Difference-Of-Gaussian，DOG）连接模式
