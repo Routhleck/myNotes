@@ -1,0 +1,35 @@
+[
+ {
+
+    "imgUrls": [{
+      "id": 1,
+      "src": "../../images/banner_1.png"
+    },
+    {
+      "id": 2,
+      "src": "../../images/banner_2.png"
+
+    },
+    {
+      "id": 3,
+      "src": "../../images/banner_3.png"
+    }],
+    "image_ad":"../../images/image_ad.png",
+    "image_bottom":[{
+      "id": 1,
+      "src":"../../images/bottom_1.png"
+      },
+      {
+        "id": 2,
+      "src":"../../images/bottom_2.png"
+      },
+      {
+        "id": 3,
+       "src": "../../images/bottom_3.png"
+      },
+      {
+        "id": 4,
+        "src":"../../images/bottom_1.png"
+      }]
+  }
+]

@@ -1,0 +1,27 @@
+<!--pages/home/home.wxml-->
+<block wx:for="{{listData}}" wx:key="itemlist">
+  <!-- 菜单轮播图 -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{item.imgUrls}}" wx:for-item="imgItem" wx:key="{{item.id}}">
+      <swiper-item>
+        <image class="slide-image" src="{{imgItem.src}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--开启点餐之旅 -->
+  <view class="menu-bar">
+    <view class="menu-block" bindtap="gostart">
+      <view class="menu-start">开启点餐之旅→</view>
+    </view>
+  </view>
+  <!-- 中间部分 -->
+  <view class="ad-box">
+    <image src="{{item.image_ad}}" class="image-ad"></image>
+  </view>
+  <!-- 底部商品图 -->
+  <view class="bottom-box">
+    <view class="bottom-pic" wx:for="{{item.image_bottom}}" wx:for-item="bottomItem" wx:key="{{item.id}}">
+      <image src="{{bottomItem.src}}" class="btm-image" data-id="{{bottomItem.id}}"></image>
+    </view>
+  </view>
+</block>

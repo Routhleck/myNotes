@@ -1,0 +1,59 @@
+/* 订单详情部分 */
+.order-info{
+  background: white;
+  margin-top:10px;
+}
+.order-info-title{
+  font-size:12px;
+  color: #D1D1D1;
+  padding: 12px;
+  border-bottom: 1px #E3E3E3 solid
+}
+/* 清单数量 */
+.cart-list-box{
+  background:#FFFFFF;
+  display:flex;
+  font-size:15px;
+  border-bottom:1px #E3E3E3 solid;
+}
+.list-info{
+  width:50%;
+  padding:5px 15px;
+}
+.list-info-size{
+  font-size:12px;
+  color:#B1B1B1;
+}
+/* 总金额超过20，出现满减 */
+.order-cut{
+  height:30px;
+  padding:5px 15px;
+  border-bottom: 1px #E3E3E3 solid;
+}
+.order-cut-dec{
+  background:#F07474;
+  font-size:13px;
+  color:white;
+  padding:2px
+}
+.order-cut-note{
+  margin-left:3px;
+  font-size:14px
+}
+.order-cut-number{
+  font-size:14px;
+  float:right;
+}
+/* 总计 */
+.order-sum{
+  height:30px;
+  padding:5px 15px;
+  font-size:14px;
+}
+.order-sum-number{
+  font-size:14px;
+  float:right;
+}
+.activity-color{
+  color:#FF9C35;
+}

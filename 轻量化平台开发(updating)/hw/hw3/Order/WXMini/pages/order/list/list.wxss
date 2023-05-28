@@ -1,0 +1,80 @@
+page {
+  background: #f8f8f8;
+}
+.orderList {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.order-content {
+  padding: 40rpx 0;
+  align-items: center;
+  border-bottom: 1rpx solid #ececec;
+}
+.order-info {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 30rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+}
+.order-detail {
+  text-align: center;
+  color: #ff9000;
+  font-size: 24rpx;
+  padding: 5rpx 10rpx;
+  background: #fff;
+  border: 1px solid #ff9000;
+}
+/* 是否取餐样式 */
+.taken {
+  font-size: 30rpx;
+  background: #d2d2d2;
+  color: #999;
+  padding: 10rpx;
+  margin-left:20rpx;
+}
+.notaken {
+  font-size: 30rpx;
+  background: #ffd161;
+  color: #fff;
+  padding: 10rpx;
+  margin-left:20rpx;
+}
+.content-time {
+  font-size: 26rpx;
+  color: #999;
+}
+.content-info {
+  color: #666;
+  font-size: 28rpx;
+}
+.food-name {
+  font-weight: 600;
+  font-size: 30rpx;
+}
+.content-btm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.food-describe{
+  color: #999;
+  padding-left: 10rpx;
+}
+.food-price{
+  font-size: 22rpx;
+  padding-left: 20rpx;
+}
+.content-infoR{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center
+}
+.bottom{
+  text-align: center;
+  color:#999
+}

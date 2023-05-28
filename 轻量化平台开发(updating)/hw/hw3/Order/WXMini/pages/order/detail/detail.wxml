@@ -1,0 +1,68 @@
+<view class="go-center go-top-10">
+  <view class="card-box">
+    <view class="card-fetch">
+      <view class="card-left-bar">
+        <label>取</label>
+        <label>餐</label>
+        <label>号</label>
+      </view>
+    </view>
+    <view>
+      <view class="go-top-10">
+        <label class="number-card">{{order.meunnumber}}</label>
+        <block wx:if="{{order.taken}}">
+          <label class="statu-card" style="color:#999">已取餐</label>
+        </block>
+        <block wx:else>
+          <label class="statu-card">正在精心制作中···</label>
+        </block>
+      </view>
+      <view wx:if="{{note==''}}">
+      </view>
+      <view wx:else>
+        <view class="remark">备注：{{note}}</view>
+      </view>
+      <view class="note-card">
+        饮品制作中,尽快为你服务☺
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 订单详情 -->
+<view class="order-info">
+  <view class="order-info-title">订单详情</view>
+  <block wx:for="{{order.foods}}" wx:key="item">
+    <view class="cart-list-box">
+      <view class="list-info">
+        <view>{{item.name}}</view>
+      </view>
+      <view style="width:50%;padding:10px;">
+        <view style="float:right">
+          <view style="color:#A3A3A3">x {{item.num}}</view>
+          <view>¥ {{item.price * item.num}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="order-sum">
+    <label>总计 </label>
+    <label class="order-sum-number activity-color">¥ {{sumMonney}}</label>
+  </view>
+</view>
+<view class="order-info">
+  <view class="order-info-title flex-display">订单信息
+    <view class="order-info-li">{{order.orderinfo}}</view>
+  </view>
+  <view class="order-info-title flex-display">订单号码
+    <view class="order-info-li">{{order.ordernum}}</view>
+  </view>
+  <view class="order-info-title flex-display">订单时间
+    <view class="order-info-li">{{order.ordertime}}</view>
+  </view>
+</view>
+<view wx:if="{{order.taken==false}}">
+  <view style="margin-top:15px" class="go-center">
+    <label class="note-exchange">请凭此画面至取餐柜台领取饮料</label>
+  </view>
+</view>
+

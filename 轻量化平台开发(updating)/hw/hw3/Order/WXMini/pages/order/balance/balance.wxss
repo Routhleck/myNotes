@@ -1,0 +1,57 @@
+@import "../../../utils/common.wxss";
+page {
+  background: #f8f8f8;
+}
+/* 备注 */
+.note{
+  padding:5px 15px;
+  background:white;
+  margin-top:10px
+}
+.note-text{
+  width:95%;
+  font-size:12px;
+  background:#F2F2F2;
+  padding:10px;
+  height:80px;
+}
+/* 取餐时间区域 */
+.top-bar {
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  background: white;
+  padding:0 5px;
+}
+.top-left-label {
+  float: left;
+}
+/* 底部操作菜单样式 */
+.bottom-operate-menu {
+  z-index: 1001;
+  position: fixed;
+  bottom: 0px;
+  height: 55px;
+  width: 100%;
+  display: flex;
+}
+.shopping-cart {
+  width: 75%;
+  background: #353535;
+  height: 100%;
+}
+.submit-btn-label {
+  color: white;
+  font-size: 15px;
+  margin: auto;
+}
+.submit-btn {
+  height: 100%;
+  background: #f7f7f7;
+  width: 25%;
+  display: flex;
+}
+.activity-color-bg {
+  background: #ff9c35;
+}
+

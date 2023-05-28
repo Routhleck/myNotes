@@ -1,21 +1,16 @@
 {
     "description": "项目配置文件",
     "packOptions": {
-        "ignore": [
-            {
-                "type": "file",
-                "value": ".eslintrc.js"
-            }
-        ]
+        "ignore": []
     },
     "setting": {
-        "urlCheck": true,
+        "urlCheck": false,
         "es6": true,
         "enhance": true,
         "postcss": true,
         "preloadBackgroundData": false,
         "minified": true,
-        "newFeature": false,
+        "newFeature": true,
         "coverView": true,
         "nodeModules": false,
         "autoAudits": false,
@@ -41,22 +36,16 @@
         "packNpmRelationList": [],
         "minifyWXSS": true,
         "disableUseStrict": false,
-        "minifyWXML": true,
         "showES6CompileOption": false,
         "useCompilerPlugins": false,
         "ignoreUploadUnusedFiles": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.19.4",
-    "appid": "wx9f01a749f8b9c2c6",
-    "projectname": "miniprogram_hw2",
+    "libVersion": "2.4.0",
+    "appid": "touristappid",
+    "projectname": "WXMini",
     "debugOptions": {
         "hidedInDevtools": []
-    },
-    "scripts": {},
-    "staticServerOptions": {
-        "baseURL": "",
-        "servePath": ""
     },
     "isGameTourist": false,
     "condition": {
@@ -67,12 +56,7 @@
             "list": []
         },
         "game": {
-            "list": []
-        },
-        "plugin": {
-            "list": []
-        },
-        "gamePlugin": {
+            "currentL": -1,
             "list": []
         },
         "miniprogram": {

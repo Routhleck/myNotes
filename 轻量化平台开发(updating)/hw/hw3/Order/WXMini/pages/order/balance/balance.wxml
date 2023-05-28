@@ -1,0 +1,46 @@
+<view>
+  <!-- 取餐时间 -->
+  <view class="top-bar">
+    <label class="top-left-label">请确认您的订单</label>
+  </view>
+  <!-- 订单详情 -->
+  <view class="order-info">
+    <view class="order-info-title">订单详情</view>
+    <view class="cart-list-box" wx:for="{{order.foods}}" wx:for-item="item" wx:key="list">
+      <view class="list-info">
+        <view>{{item.name}}</view>
+      </view>
+      <view style="width:50%;padding:10px;">
+        <view style="float:right">
+          <view style="color:#A3A3A3">x {{item.num}}</view>
+          <view>¥ {{item.price}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="order-cut" wx:if="{{order.promotion.length > 0}}">
+      <label class="order-cut-dec">减</label>
+      <label class="order-cut-note">{{order.promotion.name}}</label>
+      <label class="order-cut-number activity-color">-¥ {{order.promotion.discount}}</label>
+    </view>
+    <view class="order-sum">
+      <label>总计 </label>
+      <label class="order-sum-number activity-color">¥ {{sumMonney-cutMonney}}</label>
+    </view>
+  </view>
+  <!-- 备注 -->
+  <view class="note">
+    <label style="font-size:13px;color:#A3A3A3">备注</label>
+    <textarea maxlength="{{max}}" placeholder="如有其他要求，请输入备注" bindinput="listenerTextarea" class="note-text">{{note}}</textarea>
+  </view>
+  <!-- 去支付 -->
+  <view class="bottom-operate-menu">
+    <view class="shopping-cart">
+      <view style="padding:15px;display:flex;font-size:28rpx;">
+        <view class="shopping-cart-price" style="color:white;font-size:18px">合计：¥ {{sumMonney}}.00</view>
+      </view>
+    </view>
+    <view class="submit-btn activity-color-bg" bindtap="gotopay">
+      <view class="submit-btn-label color-white">去支付</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+@import "style/iconfont.wxss"
+
+.icon-icon:before { content: "\e610"; }
+
+.icon-youhuiquan:before { content: "\e61e"; }
+
+.icon-lajitong:before { content: "\e61b"; }
+
+.icon-jiahao2fill:before { content: "\e728"; }
+
+.icon-gouwuchefill:before { content: "\e73c"; }
+
+.icon-xiangshangjiantou:before { content: "\e601"; }
+
+.icon-jian:before { content: "\e61a"; }
+
+.icon-xiangxiajiantou:before { content: "\e74b"; }
+
+.icon-dingdan:before { content: "\e609"; }
+
+.icon-shouye:before { content: "\e620"; }
+
+.icon-wode:before { content: "\e61f"; }
+
+.icon-dingwei:before { content: "\e7cd"; }
+
+.icon-shouji:before { content: "\e666"; }

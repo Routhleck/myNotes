@@ -1,0 +1,68 @@
+@import "../../../utils/common.wxss";
+page {
+  background: #f8f8f8;
+}
+/* 取餐号 */
+.go-top-10 {
+  margin-top: 10px;
+}
+.card-box {
+  display: flex;
+  width: 85%;
+  height: 100px;
+  background: #fef9f4;
+}
+.card-fetch {
+  width: 40px;
+  background: #de5f4b;
+  height: 100px;
+  font-size: 14px;
+  color: white;
+}
+.card-left-bar {
+  width: 14px;
+  padding: 20px 14px;
+}
+.remark{
+  font-size: 12px;
+  color:#de5f4b;
+  font-weight: 600;
+  margin-left:20px;
+
+}
+.note-card {
+  margin-left: 20px;
+  color: #a2a1a0;
+  font-size: 12px;
+  margin-top: 15px;
+}
+.number-card {
+  font-size: 28px;
+  padding: 0px 20px;
+}
+.statu-card {
+  font-size: 12px;
+  color: #ff9c35;
+}
+.order-info-li{
+  color:black;
+  margin-left:10px
+}
+/* 凭此画面取餐 */
+.note-exchange {
+  padding: 6px 10px;
+  background: #ff9c35;
+  color: #fff;
+  font-size: 16px;
+}
+.go-center{
+   display:flex;
+  justify-content:center;
+}
+.down-center{
+   display:flex;
+  align-items:center;
+}
+.flex-display{
+  display:flex
+}

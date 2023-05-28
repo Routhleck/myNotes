@@ -1,0 +1,15 @@
+<view class="avatar">
+  <image src="{{listData.avatar}}" mode="aspectFill"></image>
+</view>
+<view class="content">
+  <view class="con">消费记录</view>
+</view>
+<view class="record-content" wx:for="{{listData.record}}" wx:for-item="items" wx:key="{{items.record_id}}">
+  <view class="content-infoL" style='display:flex'>
+    <view>消费</view>
+    <view class="content-time">{{items.date}} {{items.time}}</view>
+  </view>
+  <view class="content-infoR" style='display:flex'>
+    <text>￥{{items.summoney}}</text>
+  </view>
+</view>
