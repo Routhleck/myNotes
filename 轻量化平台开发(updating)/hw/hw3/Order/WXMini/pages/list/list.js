@@ -118,9 +118,17 @@ Page({
     // 请求接口返回参数{error: 0（错误代码）, order_id: 1}}
     var order_id = this.data.order_id
     var order_num = this.data.cupNumber
+    var cartList = this.data.cartList
+    // 将cartList转为json字符串
+    cartList = JSON.stringify(cartList)
     var method = "POST"
-    console.log(order_id, order_num)
-    fetch("food/order", {id: order_id, num: order_num}, method).then(function(res) {
+    var sendData = JSON.stringify({
+      id: order_id,
+      num: order_num,
+      cartList: cartList
+    })
+    console.log(sendData)
+    fetch("food/order", sendData, method).then(function(res) {
       if (res.data.error !== 0) {
         wx.showModal({
           title: '下单失败',

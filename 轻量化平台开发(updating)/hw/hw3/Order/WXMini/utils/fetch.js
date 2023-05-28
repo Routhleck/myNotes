@@ -6,7 +6,7 @@ module.exports = function(path, data, method) {
       method: method, // 请求方法
       data: data, // 参数
       header: {
-        'Content-Type': 'json'
+        'Content-Type': 'application/json;charset=utf-8'
       }, // 请求头，默认
       success: resolve,
       fail: function() {

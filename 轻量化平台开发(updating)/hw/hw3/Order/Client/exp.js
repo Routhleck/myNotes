@@ -7,6 +7,7 @@ var fs = require('fs');
 var express = require("express");
 var bodyParser = require('body-parser');
 var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //get请求首页信息
@@ -67,10 +68,91 @@ app.get('/api/food/orderlist',function (req,res) {
 
 //订单请求post
 app.post("/api/food/order",function(req,res){
-	// 前端传过来的是{id: order_id, num: order_num}, 进行处理
-	var order = req.body;
+	// console.log(req.body);
+	// 前端传过来的是{id: order_id, num: order_num, cartList: cartList}, 将数据写入到order.json\
+	/*
+		存储的结构类似
+		{
+		"order_id": "1",
+		"foods": [
+			{
+				"name": "鲜枣馍",
+				"price": 12,
+				"num": 2
+			},
+			{
+				"name": "小炒菜",
+				"price": 16,
+				"num": 3
+			}
+		],
+		"promotion": {
+			"name": "满50减10元",
+			"discount": "10"
+		},
+		"taken": false,
+		"orderinfo": "WD100321342354351356",
+		"ordertime": "2017-10-10 14:51:25",
+		"ordernum": "WD100321342354351356",
+		"meunnumber": "A66",
+		"status": 1
+	}
+	*/
+	// 传入的cartList有name, price, num, 现在promotion与上面的相同, taken为false
+	// orderinfo 为订单号, ordertime为下单时间, ordernum为订单号, meunnumber为餐牌号, status为订单状态
+	// 随机生成orderinfo, ordertime为当前时间, 随机生成ordernum, 随机生成meunnumber, status为1
 	
-	console.log(order);
+	var order = req.body;
+	console.log(order.num);
+	cartList = JSON.parse(order.cartList);
+	var orderinfo = "WD" + Math.floor(Math.random() * 1000000000000000000);
+	var ordertime = new Date().toLocaleString();
+	var ordernum = orderinfo;
+	var meunnumber = "A" + Math.floor(Math.random() * 100);
+	var status = 1;
+	var foods = [];
+	var promotion = {
+		"name": "满50减10元",
+		"discount": "10"
+	};
+	var taken = false;
+	for (var i = 0; i < order.num; i++) {
+		var food = {
+			"name": cartList[i].name,
+			"price": cartList[i].price,
+			"num": cartList[i].number,
+		};
+		foods.push(food);
+	}
+	console.log(foods);
+	var write_order = {
+		"order_id": order.id,
+		"foods": foods,
+		"promotion": promotion,
+		"taken": taken,
+		"orderinfo": orderinfo,
+		"ordertime": ordertime,
+		"ordernum": ordernum,
+		"meunnumber": meunnumber,
+		"status": status
+	};
+	fs.readFile('order.json', 'utf-8', function (err, data) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			var orderlist = JSON.parse(data);
+			orderlist.push(write_order);
+			fs.writeFile('order.json', JSON.stringify(orderlist), function (err) {
+				if (err) {
+					console.log(err);
+				}
+				else {
+					res.json({error:0,order_id:write_order.order_id});
+				}
+			});
+		}
+	});
 });
 
 
