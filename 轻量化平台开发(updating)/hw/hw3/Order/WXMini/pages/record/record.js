@@ -14,6 +14,7 @@ Page({
     // 请求消费记录接口 
     fetch('food/record').then((res)=>{
       // 关闭加载信息
+      console.log(res.data)
       wx.hideLoading();
       this.setData({
         listData:res.data
