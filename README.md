@@ -27,18 +27,6 @@
 
 [概率论与数理统计](https://github.com/Routhleck/myNotes/tree/main/概率论与数理统计)
 
----
-
-[项目:人工智能基础-十二生肖识别系统](https://github.com/Routhleck/animal_detect_paddle)
-
-[项目:大数据概论-天气预测系统](https://github.com/Routhleck/Weather-Predict)
-
-[项目:实训-简易DBMS](https://github.com/Routhleck/MINI_DBMS)
-
-[项目:实训-线上商城](https://github.com/Routhleck/Online-Shopping-Mall)
-
-[项目:实训-航班延误预测系统](https://github.com/Routhleck/flight-delay-predict)
-
 ## 大三
 
 [科技论文写作](https://github.com/Routhleck/myNotes/tree/main/科技论文写作)
@@ -61,7 +49,8 @@
 
 [轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发(updating))
 
----
+
+## 课设&实训项目
 
 [项目:暑期实训-航班延误预测系统](https://github.com/Routhleck/flight-delay-predict) ![](https://img.shields.io/github/stars/Routhleck/flight-delay-predict)
 
