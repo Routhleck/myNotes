@@ -90,7 +90,10 @@
 2. 添加或更新笔记后执行：
    - `uv run scripts/validate_courses.py`
    - `uv run scripts/report_large_assets.py --min-mb 20`
-3. 使用 Git LFS 管理 PDF / PPT / DOCX（`git lfs install`，再提交）。
+3. 使用 Git LFS 管理 PDF / PPT / DOCX：
+   - 首次 clone 后先运行 `git lfs install`。
+   - 按需获取大文件：`git lfs pull`（或 `git lfs pull --include="课程/**"` 分批拉取）。
+   - 提交前确认大文件未被意外压缩进普通 Git 历史。
 4. 提交前阅读 [`AGENTS.md`](AGENTS.md) 以确保命名、格式与 PR 模板一致。
 
 欢迎提出 Issue / PR，一起把 myNotes 打造成更好用的学习资料库。✨
