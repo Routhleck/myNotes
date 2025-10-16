@@ -409,24 +409,24 @@
       "html",
       "ppt"
     ],
-    "status": "updating",
+    "status": "normal",
     "resources": [
       {
         "id": "hpc-html",
         "label": "打开 HTML 笔记",
-        "href": "大规模计算(updating)/大规模计算笔记.html",
+        "href": "大规模计算/大规模计算笔记.html",
         "kind": "html"
       },
       {
         "id": "hpc-ppt",
         "label": "查看 01 Introduction PPT",
-        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大规模计算(updating)/ppt/01 Introduction-Resources.pdf",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大规模计算/ppt/01 Introduction-Resources.pdf",
         "kind": "pdf"
       },
       {
         "id": "hpc-ppt3",
         "label": "查看 03 Evolution PPT",
-        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大规模计算(updating)/ppt/03 Evolution of HPComputers=1.pdf",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大规模计算/ppt/03 Evolution of HPComputers=1.pdf",
         "kind": "pdf"
       }
     ]
@@ -444,18 +444,18 @@
       "html",
       "pdf"
     ],
-    "status": "updating",
+    "status": "normal",
     "resources": [
       {
         "id": "platform-html",
         "label": "打开 HTML 笔记",
-        "href": "大型平台软件分析与设计(updating)/大型平台软件分析与设计笔记.html",
+        "href": "大型平台软件分析与设计/大型平台软件分析与设计笔记.html",
         "kind": "html"
       },
       {
         "id": "platform-pdf",
         "label": "下载 PDF 版本",
-        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大型平台软件分析与设计(updating)/大型平台软件分析与设计笔记.pdf",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大型平台软件分析与设计/大型平台软件分析与设计笔记.pdf",
         "kind": "pdf"
       }
     ]
@@ -471,12 +471,12 @@
       "设计",
       "html"
     ],
-    "status": "updating",
+    "status": "normal",
     "resources": [
       {
         "id": "api-html",
         "label": "打开 HTML 笔记",
-        "href": "API设计与实现(updating)/API设计与实现.html",
+        "href": "API设计与实现/API设计与实现.html",
         "kind": "html"
       }
     ]
@@ -492,12 +492,12 @@
       "小程序",
       "html"
     ],
-    "status": "updating",
+    "status": "normal",
     "resources": [
       {
         "id": "miniapp-html",
         "label": "打开 HTML 笔记",
-        "href": "轻量化平台开发(updating)/轻量化平台开发笔记.html",
+        "href": "轻量化平台开发/轻量化平台开发笔记.html",
         "kind": "html"
       }
     ]
@@ -513,12 +513,12 @@
       "算法",
       "html"
     ],
-    "status": "updating",
+    "status": "normal",
     "resources": [
       {
         "id": "leetcode-html",
         "label": "打开 HTML 笔记",
-        "href": "LeetCode(updating)/LeetCode_note.html",
+        "href": "LeetCode/LeetCode_note.html",
         "kind": "html"
       }
     ]

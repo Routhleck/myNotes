@@ -33,7 +33,7 @@
 
 [软件项目管理与产品运维](https://github.com/Routhleck/myNotes/tree/main/软件项目管理与产品运维)
 
-[操作系统](https://github.com/Routhleck/myNotes/tree/main/操作系统(updating))
+[操作系统](https://github.com/Routhleck/myNotes/tree/main/操作系统)
 
 [软件测试与质量保证](https://github.com/Routhleck/myNotes/tree/main/软件测试与质量保证)
 
@@ -41,13 +41,13 @@
 
 [c++程序设计](https://github.com/Routhleck/myNotes/tree/main/c%2B%2B程序设计)
 
-[大规模计算](https://github.com/Routhleck/myNotes/tree/main/大规模计算(updating))
+[大规模计算](https://github.com/Routhleck/myNotes/tree/main/大规模计算)
 
-[大型平台软件分析与设计](https://github.com/Routhleck/myNotes/tree/main/大型平台软件分析与设计(updating))
+[大型平台软件分析与设计](https://github.com/Routhleck/myNotes/tree/main/大型平台软件分析与设计)
 
-[API设计与实现](https://github.com/Routhleck/myNotes/tree/main/API设计与实现(updating))
+[API设计与实现](https://github.com/Routhleck/myNotes/tree/main/API设计与实现)
 
-[轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发(updating))
+[轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发)
 
 
 ## 课设&实训项目
