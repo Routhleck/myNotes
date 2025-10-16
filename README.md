@@ -1,7 +1,7 @@
 # myNotes · 北京交通大学软件工程课程知识库
 
 <p align="center">
-  <a href="docs/index.html"><img src="https://img.shields.io/badge/Preview-Docs%20Portal-0071e3" alt="Docs Portal"></a>
+  <a href="https://routhleck.github.io/myNotes/"><img src="https://img.shields.io/badge/Preview-Docs%20Portal-0071e3" alt="Docs Portal"></a>
   <a href="AGENTS.md"><img src="https://img.shields.io/badge/For%20Contributors-Guidelines-34c759" alt="Contributor Guide"></a>
   <a href="https://github.com/Routhleck/myNotes/stargazers"><img src="https://img.shields.io/github/stars/Routhleck/myNotes?style=flat" alt="GitHub Repo stars"></a>
 </p>
