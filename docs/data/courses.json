@@ -1,0 +1,526 @@
+[
+  {
+    "id": "phy-1",
+    "title": "大学物理 I",
+    "grade": "freshman",
+    "description": "涵盖力学、电磁学等基础知识点梳理，适合期末复习速览。",
+    "keywords": [
+      "大一",
+      "大学物理",
+      "physics",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "phy-1-pdf",
+        "label": "打开 PDF 笔记",
+        "href": "大学物理I/大学物理知识点梳理.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "java",
+    "title": "JAVA",
+    "grade": "freshman",
+    "description": "面向对象基础、常见 API 以及复习题整理，适合实验与考试快速查阅。",
+    "keywords": [
+      "大一",
+      "java",
+      "oop",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "java-html",
+        "label": "打开 HTML 笔记",
+        "href": "JAVA/Java期末笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "arch",
+    "title": "计算机组成原理",
+    "grade": "freshman",
+    "description": "指令系统、存储结构与流水线等考点总结，配合典型例题。",
+    "keywords": [
+      "大一",
+      "组成原理",
+      "cpu",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "arch-pdf",
+        "label": "打开 PDF 笔记",
+        "href": "计算机组成原理/review-机组.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "phy-2",
+    "title": "大学物理 II",
+    "grade": "sophomore",
+    "description": "涵盖光学与近代物理，配有典型公式与例题。",
+    "keywords": [
+      "大二",
+      "大学物理II",
+      "physics",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "phy-2-pdf",
+        "label": "打开 PDF 笔记",
+        "href": "大学物理II/大学物理II笔记.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "discrete",
+    "title": "离散数学",
+    "grade": "sophomore",
+    "description": "集合、逻辑、图论等核心知识点与经典题型解析。",
+    "keywords": [
+      "大二",
+      "离散",
+      "数学",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "discrete-pdf",
+        "label": "打开 PDF 笔记",
+        "href": "离散数学/离散数学笔记.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "ds",
+    "title": "数据结构",
+    "grade": "sophomore",
+    "description": "线性表、树、图与排序算法练习题整理，配套解题思路。",
+    "keywords": [
+      "大二",
+      "数据结构",
+      "algorithms",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "ds-pdf",
+        "label": "打开 PDF 题集",
+        "href": "数据结构/数据结构习题整理.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "bigdata",
+    "title": "大数据概论",
+    "grade": "sophomore",
+    "description": "大数据平台概念、生态组件与案例分析，含重点问答。",
+    "keywords": [
+      "大二",
+      "大数据",
+      "概论",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "bigdata-html",
+        "label": "打开 HTML 笔记",
+        "href": "大数据概论/大数据概论期末复习笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "database",
+    "title": "数据库概论",
+    "grade": "sophomore",
+    "description": "关系模型、SQL 与设计范式总结，附常见考点提醒。",
+    "keywords": [
+      "大二",
+      "数据库",
+      "sql",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "database-html",
+        "label": "打开 HTML 笔记",
+        "href": "数据库概论/数据库期末总结.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "analysis",
+    "title": "软件系统设计与分析",
+    "grade": "sophomore",
+    "description": "需求建模、架构风格与案例分析，帮助构建系统化思路。",
+    "keywords": [
+      "大二",
+      "软件系统",
+      "分析",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "analysis-html",
+        "label": "打开 HTML 笔记",
+        "href": "软件系统设计与分析/软件系统设计与分析期末笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "ai",
+    "title": "人工智能基础",
+    "grade": "sophomore",
+    "description": "搜索、推理与机器学习初步，附典型题与图示。",
+    "keywords": [
+      "大二",
+      "人工智能",
+      "ai",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "ai-html",
+        "label": "打开 HTML 笔记",
+        "href": "人工智能基础/人工智能基础期末复习笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "prob",
+    "title": "概率论与数理统计",
+    "grade": "sophomore",
+    "description": "概率分布、参数估计与假设检验的要点与题型整理。",
+    "keywords": [
+      "大二",
+      "概率论",
+      "统计",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "prob-html",
+        "label": "打开 HTML 笔记",
+        "href": "概率论与数理统计/概率论与数理统计笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "writing",
+    "title": "科技论文写作",
+    "grade": "junior",
+    "description": "科研写作流程、结构与排版细节，附参考模板链接。",
+    "keywords": [
+      "大三",
+      "写作",
+      "论文",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "writing-html",
+        "label": "打开 HTML 笔记",
+        "href": "科技论文写作/科技论文写作笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "pm",
+    "title": "软件项目管理与产品运维",
+    "grade": "junior",
+    "description": "项目规划、进度管理与运维实践经验，配套案例。",
+    "keywords": [
+      "大三",
+      "项目管理",
+      "运维",
+      "html",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "pm-html",
+        "label": "打开 HTML 笔记",
+        "href": "软件项目管理与产品运维/软件项目管理与产品运维笔记.html",
+        "kind": "html"
+      },
+      {
+        "id": "pm-pdf",
+        "label": "下载 PDF 版本",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/软件项目管理与产品运维/软件项目管理与产品运维笔记.pdf",
+        "kind": "pdf"
+      },
+      {
+        "id": "pm-exam",
+        "label": "复习提纲 PDF",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/软件项目管理与产品运维/exam/软件管理期末复习.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "os",
+    "title": "操作系统",
+    "grade": "junior",
+    "description": "进程管理、内存管理与文件系统要点，适合期中期末复盘。",
+    "keywords": [
+      "大三",
+      "操作系统",
+      "os",
+      "html"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "os-html",
+        "label": "打开 HTML 笔记",
+        "href": "操作系统/操作系统笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "testing",
+    "title": "软件测试与质量保证",
+    "grade": "junior",
+    "description": "测试流程、测试设计方法与质量度量，辅以课堂 PPT。",
+    "keywords": [
+      "大三",
+      "软件测试",
+      "质量保证",
+      "html",
+      "pdf",
+      "ppt"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "testing-html",
+        "label": "打开 HTML 笔记",
+        "href": "软件测试与质量保证/软件测试与系统保障笔记.html",
+        "kind": "html"
+      },
+      {
+        "id": "testing-pdf",
+        "label": "下载 PDF 版本",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/软件测试与质量保证/软件测试与系统保障笔记.pdf",
+        "kind": "pdf"
+      },
+      {
+        "id": "testing-ppt",
+        "label": "查看 Week 1 PPT",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/软件测试与质量保证/ppt/Software Testing-2022-8-29-Week-1.pptx",
+        "kind": "ppt"
+      }
+    ]
+  },
+  {
+    "id": "ml",
+    "title": "机器学习",
+    "grade": "junior",
+    "description": "监督/无监督学习、经典算法与调参心得，含图示注解。",
+    "keywords": [
+      "大三",
+      "机器学习",
+      "ml",
+      "html",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "ml-html",
+        "label": "打开 HTML 笔记",
+        "href": "机器学习/机器学习笔记.html",
+        "kind": "html"
+      },
+      {
+        "id": "ml-pdf",
+        "label": "下载 PDF 版本",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/机器学习/机器学习笔记.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "cpp",
+    "title": "c++ 程序设计",
+    "grade": "junior",
+    "description": "语法要点、STL 使用与项目案例解析，适合课程设计复盘。",
+    "keywords": [
+      "大三",
+      "c++",
+      "程序设计",
+      "html",
+      "pdf"
+    ],
+    "status": "normal",
+    "resources": [
+      {
+        "id": "cpp-html",
+        "label": "打开 HTML 笔记",
+        "href": "c++程序设计/c++程序设计笔记.html",
+        "kind": "html"
+      },
+      {
+        "id": "cpp-pdf",
+        "label": "下载 PDF 版本",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/c++程序设计/c++程序设计笔记.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "hpc",
+    "title": "大规模计算",
+    "grade": "junior",
+    "description": "高性能计算概念、并行模式与示例程序，持续补充实验记录。",
+    "keywords": [
+      "大三",
+      "大规模计算",
+      "hpc",
+      "html",
+      "ppt"
+    ],
+    "status": "updating",
+    "resources": [
+      {
+        "id": "hpc-html",
+        "label": "打开 HTML 笔记",
+        "href": "大规模计算(updating)/大规模计算笔记.html",
+        "kind": "html"
+      },
+      {
+        "id": "hpc-ppt",
+        "label": "查看 01 Introduction PPT",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大规模计算(updating)/ppt/01 Introduction-Resources.pdf",
+        "kind": "pdf"
+      },
+      {
+        "id": "hpc-ppt3",
+        "label": "查看 03 Evolution PPT",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大规模计算(updating)/ppt/03 Evolution of HPComputers=1.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "platform",
+    "title": "大型平台软件分析与设计",
+    "grade": "junior",
+    "description": "平台架构拆解、设计模式笔记与课堂案例复盘。",
+    "keywords": [
+      "大三",
+      "平台软件",
+      "分析",
+      "设计",
+      "html",
+      "pdf"
+    ],
+    "status": "updating",
+    "resources": [
+      {
+        "id": "platform-html",
+        "label": "打开 HTML 笔记",
+        "href": "大型平台软件分析与设计(updating)/大型平台软件分析与设计笔记.html",
+        "kind": "html"
+      },
+      {
+        "id": "platform-pdf",
+        "label": "下载 PDF 版本",
+        "href": "https://raw.githubusercontent.com/Routhleck/myNotes/main/大型平台软件分析与设计(updating)/大型平台软件分析与设计笔记.pdf",
+        "kind": "pdf"
+      }
+    ]
+  },
+  {
+    "id": "api",
+    "title": "API 设计与实现",
+    "grade": "junior",
+    "description": "REST 设计、接口文档与后端实现要点，结合课程项目实战。",
+    "keywords": [
+      "大三",
+      "API",
+      "设计",
+      "html"
+    ],
+    "status": "updating",
+    "resources": [
+      {
+        "id": "api-html",
+        "label": "打开 HTML 笔记",
+        "href": "API设计与实现(updating)/API设计与实现.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "miniapp",
+    "title": "轻量化平台开发",
+    "grade": "junior",
+    "description": "小程序架构、云开发案例与组件封装实践笔记。",
+    "keywords": [
+      "大三",
+      "轻量化",
+      "小程序",
+      "html"
+    ],
+    "status": "updating",
+    "resources": [
+      {
+        "id": "miniapp-html",
+        "label": "打开 HTML 笔记",
+        "href": "轻量化平台开发(updating)/轻量化平台开发笔记.html",
+        "kind": "html"
+      }
+    ]
+  },
+  {
+    "id": "leetcode",
+    "title": "LeetCode 题解",
+    "grade": "extra",
+    "description": "常见题型、思路分析与代码记录，持续补充刷题心得。",
+    "keywords": [
+      "拓展",
+      "leetcode",
+      "算法",
+      "html"
+    ],
+    "status": "updating",
+    "resources": [
+      {
+        "id": "leetcode-html",
+        "label": "打开 HTML 笔记",
+        "href": "LeetCode(updating)/LeetCode_note.html",
+        "kind": "html"
+      }
+    ]
+  }
+]

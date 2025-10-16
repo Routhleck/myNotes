@@ -1,1500 +1,873 @@
-    <!doctype html>
-<html>
-
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width initial-scale=1'>
-
-    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
-        rel='stylesheet' type='text/css' />
-    <style type='text/css'>
-        html {
-            overflow-x: initial !important;
-        }
-
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --select-text-bg-color: #B5D6FC;
-            --select-text-font-color: auto;
-            --monospace: "Lucida Console", Consolas, "Courier", monospace;
-            --title-bar-height: 20px;
-        }
-
-        .mac-os-11 {
-            --title-bar-height: 28px;
-        }
-
-        html {
-            font-size: 14px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            margin: 0px;
-            padding: 0px;
-            height: auto;
-            inset: 0px;
-            font-size: 1rem;
-            line-height: 1.42857;
-            overflow-x: hidden;
-            background: inherit;
-            tab-size: 4;
-        }
-
-        iframe {
-            margin: auto;
-        }
-
-        a.url {
-            word-break: break-all;
-        }
-
-        a:active,
-        a:hover {
-            outline: 0px;
-        }
-
-        .in-text-selection,
-        ::selection {
-            text-shadow: none;
-            background: var(--select-text-bg-color);
-            color: var(--select-text-font-color);
-        }
-
-        #write {
-            margin: 0px auto;
-            height: auto;
-            width: inherit;
-            word-break: normal;
-            overflow-wrap: break-word;
-            position: relative;
-            white-space: normal;
-            overflow-x: visible;
-            padding-top: 36px;
-        }
-
-        #write.first-line-indent p {
-            text-indent: 2em;
-        }
-
-        #write.first-line-indent li p,
-        #write.first-line-indent p * {
-            text-indent: 0px;
-        }
-
-        #write.first-line-indent li {
-            margin-left: 2em;
-        }
-
-        .for-image #write {
-            padding-left: 8px;
-            padding-right: 8px;
-        }
-
-        body.typora-export {
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .typora-export .footnote-line,
-        .typora-export li,
-        .typora-export p {
-            white-space: pre-wrap;
-        }
-
-        .typora-export .task-list-item input {
-            pointer-events: none;
-        }
-
-        @media screen and (max-width: 500px) {
-            body.typora-export {
-                padding-left: 0px;
-                padding-right: 0px;
-            }
-
-            #write {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .CodeMirror-sizer {
-                margin-left: 0px !important;
-            }
-
-            .CodeMirror-gutters {
-                display: none !important;
-            }
-        }
-
-        #write li>figure:last-child {
-            margin-bottom: 0.5rem;
-        }
-
-        #write ol,
-        #write ul {
-            position: relative;
-        }
-
-        img {
-            max-width: 100%;
-            vertical-align: middle;
-            image-orientation: from-image;
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            color: inherit;
-            font: inherit;
-        }
-
-        input[type="checkbox"],
-        input[type="radio"] {
-            line-height: normal;
-            padding: 0px;
-        }
-
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box;
-        }
-
-        #write h1,
-        #write h2,
-        #write h3,
-        #write h4,
-        #write h5,
-        #write h6,
-        #write p,
-        #write pre {
-            width: inherit;
-        }
-
-        #write h1,
-        #write h2,
-        #write h3,
-        #write h4,
-        #write h5,
-        #write h6,
-        #write p {
-            position: relative;
-        }
-
-        p {
-            line-height: inherit;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            break-after: avoid-page;
-            break-inside: avoid;
-            orphans: 4;
-        }
-
-        p {
-            orphans: 4;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-        }
-
-        h3 {
-            font-size: 1.6rem;
-        }
-
-        h4 {
-            font-size: 1.4rem;
-        }
-
-        h5 {
-            font-size: 1.2rem;
-        }
-
-        h6 {
-            font-size: 1rem;
-        }
-
-        .md-math-block,
-        .md-rawblock,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .md-blockmeta {
-            color: rgb(204, 204, 204);
-            font-weight: 700;
-            font-style: italic;
-        }
-
-        a {
-            cursor: pointer;
-        }
-
-        sup.md-footnote {
-            padding: 2px 4px;
-            background-color: rgba(238, 238, 238, 0.7);
-            color: rgb(85, 85, 85);
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        sup.md-footnote a,
-        sup.md-footnote a:hover {
-            color: inherit;
-            text-transform: inherit;
-            text-decoration: inherit;
-        }
-
-        #write input[type="checkbox"] {
-            cursor: pointer;
-            width: inherit;
-            height: inherit;
-        }
-
-        figure {
-            overflow-x: auto;
-            margin: 1.2em 0px;
-            max-width: calc(100% + 16px);
-            padding: 0px;
-        }
-
-        figure>table {
-            margin: 0px;
-        }
-
-        tr {
-            break-inside: avoid;
-            break-after: auto;
-        }
-
-        thead {
-            display: table-header-group;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0px;
-            width: 100%;
-            overflow: auto;
-            break-inside: auto;
-            text-align: left;
-        }
-
-        table.md-table td {
-            min-width: 32px;
-        }
-
-        .CodeMirror-gutters {
-            border-right: 0px;
-            background-color: inherit;
-        }
-
-        .CodeMirror-linenumber {
-            user-select: none;
-        }
-
-        .CodeMirror {
-            text-align: left;
-        }
-
-        .CodeMirror-placeholder {
-            opacity: 0.3;
-        }
-
-        .CodeMirror pre {
-            padding: 0px 4px;
-        }
-
-        .CodeMirror-lines {
-            padding: 0px;
-        }
-
-        div.hr:focus {
-            cursor: none;
-        }
-
-        #write pre {
-            white-space: pre-wrap;
-        }
-
-        #write.fences-no-line-wrapping pre {
-            white-space: pre;
-        }
-
-        #write pre.ty-contain-cm {
-            white-space: normal;
-        }
-
-        .CodeMirror-gutters {
-            margin-right: 4px;
-        }
-
-        .md-fences {
-            font-size: 0.9rem;
-            display: block;
-            break-inside: avoid;
-            text-align: left;
-            overflow: visible;
-            white-space: pre;
-            background: inherit;
-            position: relative !important;
-        }
-
-        .md-fences-adv-panel {
-            width: 100%;
-            margin-top: 10px;
-            text-align: center;
-            padding-top: 0px;
-            padding-bottom: 8px;
-            overflow-x: auto;
-        }
-
-        #write .md-fences.mock-cm {
-            white-space: pre-wrap;
-        }
-
-        .md-fences.md-fences-with-lineno {
-            padding-left: 0px;
-        }
-
-        #write.fences-no-line-wrapping .md-fences.mock-cm {
-            white-space: pre;
-            overflow-x: auto;
-        }
-
-        .md-fences.mock-cm.md-fences-with-lineno {
-            padding-left: 8px;
-        }
-
-        .CodeMirror-line,
-        twitterwidget {
-            break-inside: avoid;
-        }
-
-        .footnotes {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-top: 1em;
-            margin-bottom: 1em;
-        }
-
-        .footnotes+.footnotes {
-            margin-top: 0px;
-        }
-
-        .md-reset {
-            margin: 0px;
-            padding: 0px;
-            border: 0px;
-            outline: 0px;
-            vertical-align: top;
-            background: 0px 0px;
-            text-decoration: none;
-            text-shadow: none;
-            float: none;
-            position: static;
-            width: auto;
-            height: auto;
-            white-space: nowrap;
-            cursor: inherit;
-            -webkit-tap-highlight-color: transparent;
-            line-height: normal;
-            font-weight: 400;
-            text-align: left;
-            box-sizing: content-box;
-            direction: ltr;
-        }
-
-        li div {
-            padding-top: 0px;
-        }
-
-        blockquote {
-            margin: 1rem 0px;
-        }
-
-        li .mathjax-block,
-        li p {
-            margin: 0.5rem 0px;
-        }
-
-        li blockquote {
-            margin: 1rem 0px;
-        }
-
-        li {
-            margin: 0px;
-            position: relative;
-        }
-
-        blockquote> :last-child {
-            margin-bottom: 0px;
-        }
-
-        blockquote> :first-child,
-        li> :first-child {
-            margin-top: 0px;
-        }
-
-        .footnotes-area {
-            color: rgb(136, 136, 136);
-            margin-top: 0.714rem;
-            padding-bottom: 0.143rem;
-            white-space: normal;
-        }
-
-        #write .footnote-line {
-            white-space: pre-wrap;
-        }
-
-        @media print {
-
-            body,
-            html {
-                border: 1px solid transparent;
-                height: 99%;
-                break-after: avoid;
-                break-before: avoid;
-                font-variant-ligatures: no-common-ligatures;
-            }
-
-            #write {
-                margin-top: 0px;
-                padding-top: 0px;
-                border-color: transparent !important;
-            }
-
-            .typora-export * {
-                -webkit-print-color-adjust: exact;
-            }
-
-            .typora-export #write {
-                break-after: avoid;
-            }
-
-            .typora-export #write::after {
-                height: 0px;
-            }
-
-            .is-mac table {
-                break-inside: avoid;
-            }
-
-            .typora-export-show-outline .typora-export-sidebar {
-                display: none;
-            }
-        }
-
-        .footnote-line {
-            margin-top: 0.714em;
-            font-size: 0.7em;
-        }
-
-        a img,
-        img a {
-            cursor: pointer;
-        }
-
-        pre.md-meta-block {
-            font-size: 0.8rem;
-            min-height: 0.8rem;
-            white-space: pre-wrap;
-            background: rgb(204, 204, 204);
-            display: block;
-            overflow-x: hidden;
-        }
-
-        p>.md-image:only-child:not(.md-img-error) img,
-        p>img:only-child {
-            display: block;
-            margin: auto;
-        }
-
-        #write.first-line-indent p>.md-image:only-child:not(.md-img-error) img {
-            left: -2em;
-            position: relative;
-        }
-
-        p>.md-image:only-child {
-            display: inline-block;
-            width: 100%;
-        }
-
-        #write .MathJax_Display {
-            margin: 0.8em 0px 0px;
-        }
-
-        .md-math-block {
-            width: 100%;
-        }
-
-        .md-math-block:not(:empty)::after {
-            display: none;
-        }
-
-        .MathJax_ref {
-            fill: currentcolor;
-        }
-
-        [contenteditable="true"]:active,
-        [contenteditable="true"]:focus,
-        [contenteditable="false"]:active,
-        [contenteditable="false"]:focus {
-            outline: 0px;
-            box-shadow: none;
-        }
-
-        .md-task-list-item {
-            position: relative;
-            list-style-type: none;
-        }
-
-        .task-list-item.md-task-list-item {
-            padding-left: 0px;
-        }
-
-        .md-task-list-item>input {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            margin-left: -1.2em;
-            margin-top: calc(1em - 10px);
-            border: none;
-        }
-
-        .math {
-            font-size: 1rem;
-        }
-
-        .md-toc {
-            min-height: 3.58rem;
-            position: relative;
-            font-size: 0.9rem;
-            border-radius: 10px;
-        }
-
-        .md-toc-content {
-            position: relative;
-            margin-left: 0px;
-        }
-
-        .md-toc-content::after,
-        .md-toc::after {
-            display: none;
-        }
-
-        .md-toc-item {
-            display: block;
-            color: rgb(65, 131, 196);
-        }
-
-        .md-toc-item a {
-            text-decoration: none;
-        }
-
-        .md-toc-inner:hover {
-            text-decoration: underline;
-        }
-
-        .md-toc-inner {
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .md-toc-h1 .md-toc-inner {
-            margin-left: 0px;
-            font-weight: 700;
-        }
-
-        .md-toc-h2 .md-toc-inner {
-            margin-left: 2em;
-        }
-
-        .md-toc-h3 .md-toc-inner {
-            margin-left: 4em;
-        }
-
-        .md-toc-h4 .md-toc-inner {
-            margin-left: 6em;
-        }
-
-        .md-toc-h5 .md-toc-inner {
-            margin-left: 8em;
-        }
-
-        .md-toc-h6 .md-toc-inner {
-            margin-left: 10em;
-        }
-
-        @media screen and (max-width: 48em) {
-            .md-toc-h3 .md-toc-inner {
-                margin-left: 3.5em;
-            }
-
-            .md-toc-h4 .md-toc-inner {
-                margin-left: 5em;
-            }
-
-            .md-toc-h5 .md-toc-inner {
-                margin-left: 6.5em;
-            }
-
-            .md-toc-h6 .md-toc-inner {
-                margin-left: 8em;
-            }
-        }
-
-        a.md-toc-inner {
-            font-size: inherit;
-            font-style: inherit;
-            font-weight: inherit;
-            line-height: inherit;
-        }
-
-        .footnote-line a:not(.reversefootnote) {
-            color: inherit;
-        }
-
-        .md-attr {
-            display: none;
-        }
-
-        .md-fn-count::after {
-            content: ".";
-        }
-
-        code,
-        pre,
-        samp,
-        tt {
-            font-family: var(--monospace);
-        }
-
-        kbd {
-            margin: 0px 0.1em;
-            padding: 0.1em 0.6em;
-            font-size: 0.8em;
-            color: rgb(36, 39, 41);
-            background: rgb(255, 255, 255);
-            border: 1px solid rgb(173, 179, 185);
-            border-radius: 3px;
-            box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
-            white-space: nowrap;
-            vertical-align: middle;
-        }
-
-        .md-comment {
-            color: rgb(162, 127, 3);
-            opacity: 0.6;
-            font-family: var(--monospace);
-        }
-
-        code {
-            text-align: left;
-            vertical-align: initial;
-        }
-
-        a.md-print-anchor {
-            white-space: pre !important;
-            border-width: initial !important;
-            border-style: none !important;
-            border-color: initial !important;
-            display: inline-block !important;
-            position: absolute !important;
-            width: 1px !important;
-            right: 0px !important;
-            outline: 0px !important;
-            background: 0px 0px !important;
-            text-decoration: initial !important;
-            text-shadow: initial !important;
-        }
-
-        .os-windows.monocolor-emoji .md-emoji {
-            font-family: "Segoe UI Symbol", sans-serif;
-        }
-
-        .md-diagram-panel>svg {
-            max-width: 100%;
-        }
-
-        [lang="flow"] svg,
-        [lang="mermaid"] svg {
-            max-width: 100%;
-            height: auto;
-        }
-
-        [lang="mermaid"] .node text {
-            font-size: 1rem;
-        }
-
-        table tr th {
-            border-bottom: 0px;
-        }
-
-        video {
-            max-width: 100%;
-            display: block;
-            margin: 0px auto;
-        }
-
-        iframe {
-            max-width: 100%;
-            width: 100%;
-            border: none;
-        }
-
-        .highlight td,
-        .highlight tr {
-            border: 0px;
-        }
-
-        mark {
-            background: rgb(255, 255, 0);
-            color: rgb(0, 0, 0);
-        }
-
-        .md-html-inline .md-plain,
-        .md-html-inline strong,
-        mark .md-inline-math,
-        mark strong {
-            color: inherit;
-        }
-
-        .md-expand mark .md-meta {
-            opacity: 0.3 !important;
-        }
-
-        mark .md-meta {
-            color: rgb(0, 0, 0);
-        }
-
-        @media print {
-
-            .typora-export h1,
-            .typora-export h2,
-            .typora-export h3,
-            .typora-export h4,
-            .typora-export h5,
-            .typora-export h6 {
-                break-inside: avoid;
-            }
-        }
-
-        .md-diagram-panel .messageText {
-            stroke: none !important;
-        }
-
-        .md-diagram-panel .start-state {
-            fill: var(--node-fill);
-        }
-
-        .md-diagram-panel .edgeLabel rect {
-            opacity: 1 !important;
-        }
-
-        .md-fences.md-fences-math {
-            font-size: 1em;
-        }
-
-        .md-fences-advanced:not(.md-focus) {
-            padding: 0px;
-            white-space: nowrap;
-            border: 0px;
-        }
-
-        .md-fences-advanced:not(.md-focus) {
-            background: inherit;
-        }
-
-        .typora-export-show-outline .typora-export-content {
-            max-width: 1440px;
-            margin: auto;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .typora-export-sidebar {
-            width: 300px;
-            font-size: 0.8rem;
-            margin-top: 80px;
-            margin-right: 18px;
-        }
-
-        .typora-export-show-outline #write {
-            --webkit-flex: 2;
-            flex: 2 1 0%;
-        }
-
-        .typora-export-sidebar .outline-content {
-            position: fixed;
-            top: 0px;
-            max-height: 100%;
-            overflow: hidden auto;
-            padding-bottom: 30px;
-            padding-top: 60px;
-            width: 300px;
-        }
-
-        @media screen and (max-width: 1024px) {
-
-            .typora-export-sidebar,
-            .typora-export-sidebar .outline-content {
-                width: 240px;
-            }
-        }
-
-        @media screen and (max-width: 800px) {
-            .typora-export-sidebar {
-                display: none;
-            }
-        }
-
-        .outline-content li,
-        .outline-content ul {
-            margin-left: 0px;
-            margin-right: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            list-style: none;
-        }
-
-        .outline-content ul {
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        .outline-content strong {
-            font-weight: 400;
-        }
-
-        .outline-expander {
-            width: 1rem;
-            height: 1.42857rem;
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            cursor: pointer;
-            padding-left: 4px;
-        }
-
-        .outline-expander::before {
-            content: "";
-            position: relative;
-            font-family: Ionicons;
-            display: inline-block;
-            font-size: 8px;
-            vertical-align: middle;
-        }
-
-        .outline-item {
-            padding-top: 3px;
-            padding-bottom: 3px;
-            cursor: pointer;
-        }
-
-        .outline-expander:hover::before {
-            content: "";
-        }
-
-        .outline-h1>.outline-item {
-            padding-left: 0px;
-        }
-
-        .outline-h2>.outline-item {
-            padding-left: 1em;
-        }
-
-        .outline-h3>.outline-item {
-            padding-left: 2em;
-        }
-
-        .outline-h4>.outline-item {
-            padding-left: 3em;
-        }
-
-        .outline-h5>.outline-item {
-            padding-left: 4em;
-        }
-
-        .outline-h6>.outline-item {
-            padding-left: 5em;
-        }
-
-        .outline-label {
-            cursor: pointer;
-            display: table-cell;
-            vertical-align: middle;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .outline-label:hover {
-            text-decoration: underline;
-        }
-
-        .outline-item:hover {
-            border-color: rgb(245, 245, 245);
-            background-color: var(--item-hover-bg-color);
-        }
-
-        .outline-item:hover {
-            margin-left: -28px;
-            margin-right: -28px;
-            border-left: 28px solid transparent;
-            border-right: 28px solid transparent;
-        }
-
-        .outline-item-single .outline-expander::before,
-        .outline-item-single .outline-expander:hover::before {
-            display: none;
-        }
-
-        .outline-item-open>.outline-item>.outline-expander::before {
-            content: "";
-        }
-
-        .outline-children {
-            display: none;
-        }
-
-        .info-panel-tab-wrapper {
-            display: none;
-        }
-
-        .outline-item-open>.outline-children {
-            display: block;
-        }
-
-        .typora-export .outline-item {
-            padding-top: 1px;
-            padding-bottom: 1px;
-        }
-
-        .typora-export .outline-item:hover {
-            margin-right: -8px;
-            border-right: 8px solid transparent;
-        }
-
-        .typora-export .outline-expander::before {
-            content: "+";
-            font-family: inherit;
-            top: -1px;
-        }
-
-        .typora-export .outline-expander:hover::before,
-        .typora-export .outline-item-open>.outline-item>.outline-expander::before {
-            content: "−";
-        }
-
-        .typora-export-collapse-outline .outline-children {
-            display: none;
-        }
-
-        .typora-export-collapse-outline .outline-item-open>.outline-children,
-        .typora-export-no-collapse-outline .outline-children {
-            display: block;
-        }
-
-        .typora-export-no-collapse-outline .outline-expander::before {
-            content: "" !important;
-        }
-
-        .typora-export-show-outline .outline-item-active>.outline-item .outline-label {
-            font-weight: 700;
-        }
-
-        .md-inline-math-container mjx-container {
-            zoom: 0.95;
-        }
-
-
-        :root {
-            --side-bar-bg-color: #fafafa;
-            --control-text-color: #777;
-        }
-
-        @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
-
-        /* open-sans-regular - latin-ext_latin */
-        /* open-sans-italic - latin-ext_latin */
-        /* open-sans-700 - latin-ext_latin */
-        /* open-sans-700italic - latin-ext_latin */
-        html {
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
-            color: rgb(51, 51, 51);
-            line-height: 1.6;
-        }
-
-        #write {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 30px;
-            padding-bottom: 100px;
-        }
-
-        @media only screen and (min-width: 1400px) {
-            #write {
-                max-width: 1024px;
-            }
-        }
-
-        @media only screen and (min-width: 1800px) {
-            #write {
-                max-width: 1200px;
-            }
-        }
-
-        #write>ul:first-child,
-        #write>ol:first-child {
-            margin-top: 30px;
-        }
-
-        a {
-            color: #4183C4;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            position: relative;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            line-height: 1.4;
-            cursor: text;
-        }
-
-        h1:hover a.anchor,
-        h2:hover a.anchor,
-        h3:hover a.anchor,
-        h4:hover a.anchor,
-        h5:hover a.anchor,
-        h6:hover a.anchor {
-            text-decoration: none;
-        }
-
-        h1 tt,
-        h1 code {
-            font-size: inherit;
-        }
-
-        h2 tt,
-        h2 code {
-            font-size: inherit;
-        }
-
-        h3 tt,
-        h3 code {
-            font-size: inherit;
-        }
-
-        h4 tt,
-        h4 code {
-            font-size: inherit;
-        }
-
-        h5 tt,
-        h5 code {
-            font-size: inherit;
-        }
-
-        h6 tt,
-        h6 code {
-            font-size: inherit;
-        }
-
-        h1 {
-            font-size: 2.25em;
-            line-height: 1.2;
-            border-bottom: 1px solid #eee;
-        }
-
-        h2 {
-            font-size: 1.75em;
-            line-height: 1.225;
-            border-bottom: 1px solid #eee;
-        }
-
-        /*@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>myNotes · 课程笔记中心</title>
+    <meta
+      name="description"
+      content="北京交通大学软件工程课程笔记、课件与项目资料的一站式浏览体验。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --page-width: 1080px;
+        --bg-light-1: #f5f6f8;
+        --bg-light-2: #ffffff;
+        --bg-light-3: #e8eaed;
+        --bg-dark-1: #000000;
+        --bg-dark-2: #1c1c1e;
+        --surface-light: rgba(255, 255, 255, 0.75);
+        --surface-dark: rgba(28, 28, 30, 0.78);
+        --accent: #0071e3;
+        --accent-dark: #2997ff;
+        --warning: #ff9500;
+        --text-primary-light: #1d1d1f;
+        --text-secondary-light: #515154;
+        --text-primary-dark: #f5f5f7;
+        --text-secondary-dark: #a1a1a6;
+        --border-light: rgba(15, 18, 25, 0.06);
+        --border-dark: rgba(255, 255, 255, 0.08);
+        --shadow-light: 0 30px 60px rgba(9, 18, 31, 0.08);
+        --shadow-light-hover: 0 40px 80px rgba(9, 18, 31, 0.12);
+        --shadow-dark: 0 30px 60px rgba(0, 0, 0, 0.45);
+        --shadow-dark-hover: 0 40px 90px rgba(0, 0, 0, 0.6);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(140deg, var(--bg-light-1) 0%, var(--bg-light-2) 40%, var(--bg-light-3) 100%);
+        color: var(--text-primary-light);
+      }
+
+      header {
+        padding: 64px 24px 48px;
+      }
+
+      .hero {
+        max-width: var(--page-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .hero__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 24px;
+        background: rgba(0, 113, 227, 0.12);
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+
+      .hero__eyebrow::before {
         content: "";
-        display: block;
-        height: 100px;
-        margin-top: -96px;
-        border-top: 1px solid #eee;
-    }
-}*/
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
 
-        h3 {
-            font-size: 1.5em;
-            line-height: 1.43;
+      .hero__headline {
+        margin: 0;
+        font-size: clamp(2.5rem, 6vw, 3.3rem);
+        letter-spacing: -0.02em;
+        font-weight: 600;
+      }
+
+      .hero__copy {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--text-secondary-light);
+        max-width: 680px;
+        line-height: 1.6;
+      }
+
+      .hero__panel {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .filter-group {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid var(--border-light);
+        backdrop-filter: blur(22px);
+      }
+
+      .filter-btn {
+        border: none;
+        background: transparent;
+        color: var(--text-secondary-light);
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+      }
+
+      .filter-btn.active {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(0, 113, 227, 0.25);
+      }
+
+      .filter-btn:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .search-field {
+        position: relative;
+        flex: 1;
+        min-width: 220px;
+        max-width: 320px;
+      }
+
+      .search-field input {
+        width: 100%;
+        padding: 12px 44px 12px 16px;
+        border-radius: 14px;
+        border: 1px solid var(--border-light);
+        background: rgba(255, 255, 255, 0.85);
+        font-size: 0.95rem;
+        transition: border 180ms ease, box-shadow 180ms ease;
+      }
+
+      .search-field input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+      }
+
+      .search-field svg {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        stroke: var(--text-secondary-light);
+        opacity: 0.72;
+        pointer-events: none;
+      }
+
+      main {
+        flex: 1;
+        width: 100%;
+        padding: 0 24px 80px;
+      }
+
+      .section {
+        max-width: var(--page-width);
+        margin: 0 auto;
+      }
+
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 1.4rem;
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
+
+      .result-meta {
+        font-size: 0.9rem;
+        color: var(--text-secondary-light);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      }
+
+      .course-card {
+        position: relative;
+        padding: 28px;
+        background: var(--surface-light);
+        border-radius: 28px;
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow-light);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .course-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-light-hover);
+      }
+
+      .course-card h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        letter-spacing: -0.01em;
+      }
+
+      .course-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--text-secondary-light);
+        line-height: 1.6;
+      }
+
+      .badge {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        border-radius: 24px;
+        padding: 6px 12px;
+        background: rgba(0, 113, 227, 0.12);
+        color: var(--accent);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        width: fit-content;
+      }
+
+      .status::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .status--updating {
+        background: rgba(255, 149, 0, 0.14);
+        color: var(--warning);
+      }
+
+      .status--updating::before {
+        background: var(--warning);
+      }
+
+      .link-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .link-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.95rem;
+      }
+
+      .link-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: inherit;
+        text-decoration: none;
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        font: inherit;
+        transition: color 160ms ease;
+      }
+
+      .link-action:hover {
+        color: var(--accent);
+      }
+
+      .tag {
+        flex-shrink: 0;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: rgba(0, 113, 227, 0.12);
+        color: var(--accent);
+      }
+
+      .tag--pdf {
+        background: rgba(109, 200, 84, 0.18);
+        color: #2ba44f;
+      }
+
+      .tag--ppt {
+        background: rgba(255, 214, 10, 0.2);
+        color: #b77900;
+      }
+
+      .tag--html {
+        background: rgba(175, 82, 222, 0.16);
+        color: #af52de;
+      }
+
+      .empty-state {
+        margin-top: 48px;
+        padding: 36px;
+        text-align: center;
+        border: 1px dashed var(--border-light);
+        border-radius: 24px;
+        color: var(--text-secondary-light);
+        font-size: 0.95rem;
+      }
+
+      footer {
+        margin-top: auto;
+        padding: 40px 24px 48px;
+        color: var(--text-secondary-light);
+      }
+
+      .footer-content {
+        max-width: var(--page-width);
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: space-between;
+        font-size: 0.85rem;
+      }
+
+      .viewer-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        z-index: 1000;
+      }
+
+      .viewer-dialog {
+        position: relative;
+        width: min(1200px, 100%);
+        height: min(90vh, 760px);
+        background: rgba(18, 18, 18, 0.92);
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+      }
+
+      .viewer-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: #000;
+      }
+
+      .viewer-header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #f5f5f7;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+        pointer-events: none;
+      }
+
+      .viewer-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+
+      .viewer-close {
+        position: relative;
+        pointer-events: auto;
+        border: none;
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        border-radius: 999px;
+        padding: 8px 18px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 160ms ease;
+      }
+
+      .viewer-close:hover {
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @supports (backdrop-filter: blur(20px)) {
+        .course-card {
+          backdrop-filter: blur(24px);
+        }
+        .filter-group {
+          backdrop-filter: blur(16px);
+        }
+        .search-field input {
+          backdrop-filter: blur(12px);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: radial-gradient(circle at 20% 20%, var(--bg-dark-2), var(--bg-dark-1) 60%);
+          color: var(--text-primary-dark);
         }
 
-        h4 {
-            font-size: 1.25em;
+        header {
+          background: linear-gradient(160deg, rgba(37, 37, 41, 0.85), rgba(14, 14, 16, 0.95));
         }
 
-        h5 {
-            font-size: 1em;
+        .hero__copy,
+        .result-meta,
+        .course-card p,
+        .footer-content {
+          color: var(--text-secondary-dark);
         }
 
-        h6 {
-            font-size: 1em;
-            color: #777;
+        .filter-group {
+          background: rgba(28, 28, 30, 0.85);
+          border-color: var(--border-dark);
         }
 
-        p,
-        blockquote,
-        ul,
-        ol,
-        dl,
-        table {
-            margin: 0.8em 0;
+        .filter-btn {
+          color: var(--text-secondary-dark);
         }
 
-        li>ol,
-        li>ul {
-            margin: 0 0;
+        .filter-btn.active {
+          background: var(--accent-dark);
         }
 
-        hr {
-            height: 2px;
-            padding: 0;
-            margin: 16px 0;
-            background-color: #e7e7e7;
-            border: 0 none;
-            overflow: hidden;
-            box-sizing: content-box;
+        .search-field input {
+          background: rgba(28, 28, 30, 0.85);
+          border-color: var(--border-dark);
+          color: var(--text-primary-dark);
         }
 
-        li p.first {
-            display: inline-block;
+        .search-field svg {
+          stroke: var(--text-secondary-dark);
         }
 
-        ul,
-        ol {
-            padding-left: 30px;
+        .section-title {
+          border-color: var(--border-dark);
         }
 
-        ul:first-child,
-        ol:first-child {
-            margin-top: 0;
+        .course-card {
+          background: var(--surface-dark);
+          border-color: var(--border-dark);
+          box-shadow: var(--shadow-dark);
         }
 
-        ul:last-child,
-        ol:last-child {
-            margin-bottom: 0;
+        .course-card:hover {
+          box-shadow: var(--shadow-dark-hover);
         }
 
-        blockquote {
-            border-left: 4px solid #dfe2e5;
-            padding: 0 15px;
-            color: #777777;
+        .tag--pdf {
+          background: rgba(52, 199, 89, 0.28);
+          color: #3ce270;
         }
 
-        blockquote blockquote {
-            padding-right: 0;
+        .tag--ppt {
+          background: rgba(255, 214, 10, 0.28);
+          color: #ffd60a;
         }
 
-        table {
-            padding: 0;
-            word-break: initial;
+        .tag--html {
+          background: rgba(175, 82, 222, 0.26);
+          color: #d5b5ff;
         }
 
-        table tr {
-            border: 1px solid #dfe2e5;
-            margin: 0;
-            padding: 0;
+        .empty-state {
+          border-color: var(--border-dark);
+          color: var(--text-secondary-dark);
+        }
+      }
+
+      @media (max-width: 720px) {
+        header {
+          padding: 48px 20px 32px;
         }
 
-        table tr:nth-child(2n),
-        thead {
-            background-color: #f8f8f8;
+        main {
+          padding: 0 20px 56px;
         }
 
-        table th {
-            font-weight: bold;
-            border: 1px solid #dfe2e5;
-            border-bottom: 0;
-            margin: 0;
-            padding: 6px 13px;
+        .hero__panel {
+          flex-direction: column;
+          align-items: stretch;
         }
 
-        table td {
-            border: 1px solid #dfe2e5;
-            margin: 0;
-            padding: 6px 13px;
+        .filter-group {
+          width: 100%;
+          justify-content: space-between;
         }
 
-        table th:first-child,
-        table td:first-child {
-            margin-top: 0;
+        .filter-btn {
+          flex: 1;
+          text-align: center;
         }
 
-        table th:last-child,
-        table td:last-child {
-            margin-bottom: 0;
+        .badge {
+          position: static;
         }
+      }
 
-        .CodeMirror-lines {
-            padding-left: 4px;
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
         }
-
-        .code-tooltip {
-            box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
-            border-top: 1px solid #eef2f2;
-        }
-
-        .md-fences,
-        code,
-        tt {
-            border: 1px solid #e7eaed;
-            background-color: #f8f8f8;
-            border-radius: 3px;
-            padding: 0;
-            padding: 2px 4px 0px 4px;
-            font-size: 0.9em;
-        }
-
-        code {
-            background-color: #f3f4f4;
-            padding: 0 2px 0 2px;
-        }
-
-        .md-fences {
-            margin-bottom: 15px;
-            margin-top: 15px;
-            padding-top: 8px;
-            padding-bottom: 6px;
-        }
-
-
-        .md-task-list-item>input {
-            margin-left: -1.3em;
-        }
-
-        @media print {
-            html {
-                font-size: 13px;
-            }
-
-            table,
-            pre {
-                page-break-inside: avoid;
-            }
-
-            pre {
-                word-wrap: break-word;
-            }
-        }
-
-        .md-fences {
-            background-color: #f8f8f8;
-        }
-
-        #write pre.md-meta-block {
-            padding: 1rem;
-            font-size: 85%;
-            line-height: 1.45;
-            background-color: #f7f7f7;
-            border: 0;
-            border-radius: 3px;
-            color: #777777;
-            margin-top: 0 !important;
-        }
-
-        .mathjax-block>.code-tooltip {
-            bottom: .375rem;
-        }
-
-        .md-mathjax-midline {
-            background: #fafafa;
-        }
-
-        #write>h3.md-focus:before {
-            left: -1.5625rem;
-            top: .375rem;
-        }
-
-        #write>h4.md-focus:before {
-            left: -1.5625rem;
-            top: .285714286rem;
-        }
-
-        #write>h5.md-focus:before {
-            left: -1.5625rem;
-            top: .285714286rem;
-        }
-
-        #write>h6.md-focus:before {
-            left: -1.5625rem;
-            top: .285714286rem;
-        }
-
-        .md-image>.md-meta {
-            /*border: 1px solid #ddd;*/
-            border-radius: 3px;
-            padding: 2px 0px 0px 4px;
-            font-size: 0.9em;
-            color: inherit;
-        }
-
-        .md-tag {
-            color: #a7a7a7;
-            opacity: 1;
-        }
-
-        .md-toc {
-            margin-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        .sidebar-tabs {
-            border-bottom: none;
-        }
-
-        #typora-quick-open {
-            border: 1px solid #ddd;
-            background-color: #f8f8f8;
-        }
-
-        #typora-quick-open-item {
-            background-color: #FAFAFA;
-            border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-            border-style: solid;
-            border-width: 1px;
-        }
-
-        /** focus mode */
-        .on-focus-mode blockquote {
-            border-left-color: rgba(85, 85, 85, 0.12);
-        }
-
-        header,
-        .context-menu,
-        .megamenu-content,
-        footer {
-            font-family: "Segoe UI", "Arial", sans-serif;
-        }
-
-        .file-node-content:hover .file-node-icon,
-        .file-node-content:hover .file-node-open-state {
-            visibility: visible;
-        }
-
-        .mac-seamless-mode #typora-sidebar {
-            background-color: #fafafa;
-            background-color: var(--side-bar-bg-color);
-        }
-
-        .md-lang {
-            color: #b4654d;
-        }
-
-        /*.html-for-mac {
-    --item-hover-bg-color: #E6F0FE;
-}*/
-
-        #md-notification .btn {
-            border: 0;
-        }
-
-        .dropdown-menu .divider {
-            border-color: #e5e5e5;
-            opacity: 0.4;
-        }
-
-        .ty-preferences .window-content {
-            background-color: #fafafa;
-        }
-
-        .ty-preferences .nav-group-item.active {
-            color: white;
-            background: #999;
-        }
-
-        .menu-item-container a.menu-style-btn {
-            background-color: #f5f8fa;
-            background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
-        }
+      }
     </style>
-    <title>README</title>
-</head>
+  </head>
+  <body>
+    <noscript>需要开启 JavaScript 才能浏览课程资源。</noscript>
+    <div id="root"></div>
 
-<body class='typora-export os-windows'>
-    <div class='typora-export-content'>
-        <div id='write' class=''>
-            <h1 id='北京交通大学软件工程学习课程笔记'><span>北京交通大学软件工程学习课程笔记</span></h1>
-            <h2 id='已收录本人笔记'><span>已收录本人笔记：</span></h2>
-            <h2 id='大一'><span>大一</span></h2>
-            <p><a href='大学物理I/大学物理知识点梳理.pdf'><span>大学物理I(PDF)</span></a></p>
-            <p><a href='JAVA/Java期末笔记.html' target="_self"><span>JAVA</span></a></p>
-            <p><a href='计算机组成原理/review-机组.pdf'><span>计算机组成原理(PDF)</span></a></p>
-            <h2 id='大二'><span>大二</span></h2>
-            <p><a href='大学物理II/大学物理II笔记.pdf'><span>大学物理II(PDF)</span></a></p>
-            <p><a href='离散数学/离散数学笔记.pdf'><span>离散数学(PDF)</span></a></p>
-            <p><a href='数据结构/数据结构习题整理.pdf'><span>数据结构(PDF)</span></a></p>
-            <p><a href='大数据概论/大数据概论期末复习笔记.html'><span>大数据概论</span></a></p>
-            <p><a href='数据库概论/数据库期末总结.html'><span>数据库概论</span></a></p>
-            <p><a href='软件系统设计与分析/软件系统设计与分析期末笔记.html'><span>软件系统设计与分析</span></a></p>
-            <p><a href='人工智能基础/人工智能基础期末复习笔记.html'><span>人工智能基础</span></a></p>
-            <p><a href='概率论与数理统计/概率论与数理统计笔记.html'><span>概率论与数理统计</span></a></p>
-            <h2 id='大三'><span>大三</span></h2>
-            <p><a href='科技论文写作/科技论文写作笔记.html'><span>科技论文写作</span></a></p>
-            <p><a href='软件项目管理与产品运维/软件项目管理与产品运维笔记.html'><span>软件项目管理与产品运维</span></a></p>
-            <p><a href='操作系统/操作系统笔记.html'><span>操作系统</span></a></p>
-            <p><a href='软件测试与质量保证/软件测试与系统保障笔记.html'><span>软件测试与质量保证</span></a></p>
-            <p><a href='机器学习/机器学习笔记.html'><span>机器学习</span></a></p>
-            <p><a href='c++程序设计/c++程序设计笔记.html'><span>c++程序设计</span></a></p>
-            <p><a href='大规模计算(updating)/大规模计算笔记.html'><span>大规模计算</span></a></p>
-            <p><a href='大型平台软件分析与设计(updating)/大型平台软件分析与设计笔记.html'><span>大型平台软件分析与设计</span></a></p>
-            <p><a href='API设计与实现(updating)/API设计与实现.html'><span>API设计与实现</span></a></p>
-            <p><a href='轻量化平台开发(updating)/轻量化平台开发笔记.html'><span>轻量化平台开发</span></a></p>
-            <h2 id='其他'><span>其他</span></h2>
-            <p><a href='LeetCode(updating)/LeetCode_note.html'><span>Leetcode</span></a></p>
-        </div>
-    </div>
-</body>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+    <script type="module">
+      import React from 'https://esm.sh/react@18.3.1';
+      import ReactDOM from 'https://esm.sh/react-dom@18.3.1/client';
+      window.React = React;
+      window.ReactDOM = ReactDOM;
+    </script>
+    <script defer type="text/babel" data-presets="react,env">
+      const FILTERS = [
+        { key: 'all', label: '全部' },
+        { key: 'freshman', label: '大一' },
+        { key: 'sophomore', label: '大二' },
+        { key: 'junior', label: '大三' },
+        { key: 'extra', label: '拓展' },
+      ];
 
+      function createAbsoluteURL(path) {
+        try {
+          return new URL(path, window.location.href).href;
+        } catch (error) {
+          return path;
+        }
+      }
+
+      function buildViewerURL(resource) {
+        if (!resource) return null;
+        const absolute = createAbsoluteURL(resource.href);
+        if (resource.kind === 'pdf') {
+          return `${absolute}#toolbar=0&view=fitH`;
+        }
+        if (resource.kind === 'ppt') {
+          const encoded = encodeURIComponent(absolute);
+          return `https://view.officeapps.live.com/op/embed.aspx?src=${encoded}`;
+        }
+        return null;
+      }
+
+      function getTagClass(kind) {
+        if (kind === 'pdf') return 'tag tag--pdf';
+        if (kind === 'ppt') return 'tag tag--ppt';
+        return 'tag tag--html';
+      }
+
+      function getStatusClass(status) {
+        return status === 'updating' ? 'status status--updating' : 'status';
+      }
+
+      function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      const { useEffect, useMemo, useState } = React;
+
+      function App() {
+        const [courses, setCourses] = useState([]);
+        const [loading, setLoading] = useState(true);
+        const [loadError, setLoadError] = useState(null);
+        const [activeFilter, setActiveFilter] = useState('all');
+        const [query, setQuery] = useState('');
+        const [viewerResource, setViewerResource] = useState(null);
+
+        useEffect(() => {
+          let cancelled = false;
+          async function loadCourses() {
+            try {
+              const response = await fetch('data/courses.json', { cache: 'no-store' });
+              if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+              }
+              const payload = await response.json();
+              if (!cancelled) {
+                setCourses(Array.isArray(payload) ? payload : []);
+                setLoadError(null);
+              }
+            } catch (error) {
+              if (!cancelled) {
+                console.error('读取课程数据失败', error);
+                setLoadError('无法读取课程数据');
+                setCourses([]);
+              }
+            } finally {
+              if (!cancelled) {
+                setLoading(false);
+              }
+            }
+          }
+          loadCourses();
+          return () => {
+            cancelled = true;
+          };
+        }, []);
+
+        const filteredCourses = useMemo(() => {
+          if (loading || loadError) {
+            return [];
+          }
+          const lower = query.trim().toLowerCase();
+          return courses.filter((course) => {
+            const matchesFilter = activeFilter === 'all' || course.grade === activeFilter;
+            if (!matchesFilter) {
+              return false;
+            }
+            if (!lower) {
+              return true;
+            }
+            const pool = [
+              course.title,
+              course.description,
+              ...(course.keywords || []),
+              ...(course.resources || []).map((res) => res.label),
+            ]
+              .join(' ')
+              .toLowerCase();
+            return pool.includes(lower);
+          });
+        }, [activeFilter, query, courses, loading, loadError]);
+
+        const totalCourses = courses.length;
+        const resultSummary = loading
+          ? '正在加载课程…'
+          : loadError
+          ? '课程数据加载失败'
+          : `显示 ${filteredCourses.length} / ${totalCourses} 门课程`;
+
+        function handleResourceClick(resource) {
+          if (!resource) return;
+          if (resource.kind === 'pdf' || resource.kind === 'ppt') {
+            setViewerResource(resource);
+          } else {
+            window.open(resource.href, '_blank', 'noopener');
+          }
+        }
+
+        function closeViewer() {
+          setViewerResource(null);
+        }
+
+        useEffect(() => {
+          const onKeydown = (event) => {
+            if (event.key === '/' && document.activeElement !== document.querySelector('[data-search]')) {
+              event.preventDefault();
+              const input = document.querySelector('[data-search]');
+              input?.focus();
+            }
+            if (event.key === 'Escape' && viewerResource) {
+              closeViewer();
+            }
+          };
+          document.addEventListener('keydown', onKeydown);
+          return () => document.removeEventListener('keydown', onKeydown);
+        }, [viewerResource]);
+
+        const viewerUrl = buildViewerURL(viewerResource);
+
+        return (
+          <>
+            <header>
+              <div className="hero">
+                <span className="hero__eyebrow">笔记中心</span>
+                <h1 className="hero__headline">北京交通大学软件工程课程笔记</h1>
+                <p className="hero__copy">
+                  从大一到大三的课程资料、复习提纲与实训项目，在这里一站式浏览。使用下方的筛选与搜索快速定位所需内容，或直接打开对应的 PDF / HTML / PPT 笔记开始学习。
+                </p>
+                <div className="hero__panel">
+                  <div className="filter-group" role="tablist" aria-label="年级筛选">
+                    {FILTERS.map((filter) => (
+                      <button
+                        key={filter.key}
+                        type="button"
+                        className={`filter-btn ${activeFilter === filter.key ? 'active' : ''}`}
+                        onClick={() => setActiveFilter(filter.key)}
+                      >
+                        {filter.label}
+                      </button>
+                    ))}
+                  </div>
+                  <label className="search-field">
+                    <span className="sr-only">搜索课程</span>
+                    <input
+                      type="search"
+                      placeholder="搜索课程或关键词"
+                      autoComplete="off"
+                      data-search
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                    />
+                    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
+                      <circle cx="11" cy="11" r="7"></circle>
+                      <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                    </svg>
+                  </label>
+                </div>
+              </div>
+            </header>
+
+            <main>
+              <section className="section" aria-labelledby="courses">
+                <div className="section-title">
+                  <h2 id="courses">课程总览</h2>
+                  <span className="result-meta">{resultSummary}</span>
+                </div>
+                {loading ? (
+                  <div className="empty-state">课程数据加载中…</div>
+                ) : loadError ? (
+                  <div className="empty-state">课程数据加载失败，请刷新后重试。</div>
+                ) : filteredCourses.length === 0 ? (
+                  <div className="empty-state">未找到匹配的内容，请尝试更换筛选条件或关键词。</div>
+                ) : (
+                  <div className="grid" id="course-grid">
+                    {filteredCourses.map((course) => (
+                      <article
+                        key={course.id}
+                        className="course-card"
+                        data-grade={course.grade}
+                        data-keywords={course.keywords?.join(' ') || ''}
+                      >
+                        <span className="badge">{FILTERS.find((f) => f.key === course.grade)?.label || capitalize(course.grade)}</span>
+                        <h3>{course.title}</h3>
+                        {course.status === 'updating' && (
+                          <span className="status status--updating">更新中</span>
+                        )}
+                        <p>{course.description}</p>
+                        <ul className="link-list">
+                          {(course.resources || []).map((resource) => (
+                            <li key={resource.id} className="link-item">
+                              <button
+                                type="button"
+                                className="link-action"
+                                onClick={() => handleResourceClick(resource)}
+                                aria-label={`${resource.label}${resource.kind !== 'html' ? '（内嵌预览）' : '（新窗口打开）'}`}
+                              >
+                                {resource.label}
+                              </button>
+                              <span className={getTagClass(resource.kind)}>{resource.kind.toUpperCase()}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </article>
+                    ))}
+                  </div>
+                )}
+              </section>
+            </main>
+
+            <footer>
+              <div className="footer-content">
+                <span>© {new Date().getFullYear()} myNotes · 持续更新，欢迎关注。</span>
+                <span>建议使用桌面浏览器或 iPad 横屏体验最佳效果。</span>
+              </div>
+            </footer>
+
+            {viewerResource && viewerUrl && (
+              <div className="viewer-backdrop" role="dialog" aria-modal="true">
+                <div className="viewer-dialog">
+                  <div className="viewer-header">
+                    <h3 className="viewer-title">{viewerResource.label}</h3>
+                    <button type="button" className="viewer-close" onClick={closeViewer}>
+                      关闭
+                    </button>
+                  </div>
+                  <iframe
+                    title={viewerResource.label}
+                    src={viewerUrl}
+                    className="viewer-frame"
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+            )}
+          </>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+  </body>
 </html>
