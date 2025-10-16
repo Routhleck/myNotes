@@ -1,105 +1,96 @@
-# 北京交通大学软件工程学习课程笔记
-## 已收录本人笔记以及项目：
+# myNotes · 北京交通大学软件工程课程知识库
 
-## 大一
+<p align="center">
+  <a href="docs/index.html"><img src="https://img.shields.io/badge/Preview-Docs%20Portal-0071e3" alt="Docs Portal"></a>
+  <a href="AGENTS.md"><img src="https://img.shields.io/badge/For%20Contributors-Guidelines-34c759" alt="Contributor Guide"></a>
+  <a href="https://github.com/Routhleck/myNotes/stargazers"><img src="https://img.shields.io/github/stars/Routhleck/myNotes?style=flat" alt="GitHub Repo stars"></a>
+</p>
 
-[大学物理I](https://github.com/Routhleck/myNotes/tree/main/大学物理I)
+> 从大一到大三的核心课程、实验项目与实训资料，全部集中在一个仓库中。每份笔记都配有 PDF / HTML 版本，方便在线浏览或离线下载。
 
-[JAVA](https://github.com/Routhleck/myNotes/tree/main/JAVA)
+---
 
-[计算机组成原理](https://github.com/Routhleck/myNotes/tree/main/计算机组成原理)
+## 🚀 快速导航
+- 🎨 **在线浏览入口**：使用全新的 React 导航页，快速按年级与关键词筛选资料。<br>
+  - GitHub Pages（推荐）：即将启用 `https://routhleck.github.io/myNotes/`
+  - 本地预览：`uv run python -m http.server --directory docs 8000`
+- 🗂️ **课程数据源**：`docs/data/courses.json`（课程卡片元数据）。
+- 🤝 **贡献指南**：详见 [`AGENTS.md`](AGENTS.md)，包含 LFS、校验脚本与命名规范。
 
-## 大二
+---
 
-[大学物理II](https://github.com/Routhleck/myNotes/tree/main/大学物理II)
+## 📚 课程地图
 
-[离散数学](https://github.com/Routhleck/myNotes/tree/main/离散数学)
+### 🧩 大一基础
+- [大学物理 I](https://github.com/Routhleck/myNotes/tree/main/大学物理I) · PDF · 力学、电磁学知识点梳理
+- [JAVA](https://github.com/Routhleck/myNotes/tree/main/JAVA) · HTML · 面向对象与常用 API 速览
+- [计算机组成原理](https://github.com/Routhleck/myNotes/tree/main/计算机组成原理) · PDF · 指令系统、存储结构、流水线
 
-[数据结构](https://github.com/Routhleck/myNotes/tree/main/数据结构)
+### 🛠️ 大二进阶
+- [大学物理 II](https://github.com/Routhleck/myNotes/tree/main/大学物理II) · PDF · 光学与近代物理公式整理
+- [离散数学](https://github.com/Routhleck/myNotes/tree/main/离散数学) · PDF · 集合、图论与常考题型
+- [数据结构](https://github.com/Routhleck/myNotes/tree/main/数据结构) · PDF · 练习题与解析
+- [大数据概论](https://github.com/Routhleck/myNotes/tree/main/大数据概论) · HTML · 平台生态与案例
+- [数据库概论](https://github.com/Routhleck/myNotes/tree/main/数据库概论) · HTML · SQL、范式与设计
+- [软件系统设计与分析](https://github.com/Routhleck/myNotes/tree/main/软件系统设计与分析) · HTML · 需求建模与架构风格
+- [人工智能基础](https://github.com/Routhleck/myNotes/tree/main/人工智能基础) · HTML · 搜索、推理、机器学习初识
+- [概率论与数理统计](https://github.com/Routhleck/myNotes/tree/main/概率论与数理统计) · HTML · 分布、估计与检验速记
 
-[大数据概论](https://github.com/Routhleck/myNotes/tree/main/大数据概论)
+### 🚀 大三深化
+- [科技论文写作](https://github.com/Routhleck/myNotes/tree/main/科技论文写作) · HTML · 科研写作流程与排版技巧
+- [软件项目管理与产品运维](https://github.com/Routhleck/myNotes/tree/main/软件项目管理与产品运维) · HTML / PDF · 项目规划与运维案例
+- [操作系统](https://github.com/Routhleck/myNotes/tree/main/操作系统) · HTML · 进程、内存、文件系统
+- [软件测试与质量保证](https://github.com/Routhleck/myNotes/tree/main/软件测试与质量保证) · HTML / PDF / PPT · 测试设计方法
+- [机器学习](https://github.com/Routhleck/myNotes/tree/main/机器学习) · HTML / PDF · 经典算法与调参心得
+- [c++ 程序设计](https://github.com/Routhleck/myNotes/tree/main/c%2B%2B程序设计) · HTML / PDF · STL 与项目案例
+- [大规模计算](https://github.com/Routhleck/myNotes/tree/main/大规模计算) · HTML / PDF · HPC 基础与实验记录
+- [大型平台软件分析与设计](https://github.com/Routhleck/myNotes/tree/main/大型平台软件分析与设计) · HTML / PDF · 平台架构与设计模式
+- [API 设计与实现](https://github.com/Routhleck/myNotes/tree/main/API设计与实现) · HTML · REST / GraphQL 实践
+- [轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发) · HTML · 小程序架构与云开发
+- [LeetCode 题解](https://github.com/Routhleck/myNotes/tree/main/LeetCode) · HTML · 高频题型与思路记录
 
-[数据库概论](https://github.com/Routhleck/myNotes/tree/main/数据库概论)
+---
 
-[软件系统设计与分析](https://github.com/Routhleck/myNotes/tree/main/软件系统设计与分析)
+## 🧪 课设 & 实训精选
+| 项目 | 方向 | Stars |
+| --- | --- | --- |
+| [航班延误预测系统](https://github.com/Routhleck/flight-delay-predict) | 大数据 / 预测 | ![](https://img.shields.io/github/stars/Routhleck/flight-delay-predict) |
+| [MINI_DBMS](https://github.com/Routhleck/MINI_DBMS) | 数据库课程设计 | ![](https://img.shields.io/github/stars/Routhleck/MINI_DBMS) |
+| [十二生肖识别](https://github.com/Routhleck/animal_detect_paddle) | CV / PaddlePaddle | ![](https://img.shields.io/github/stars/Routhleck/animal_detect_paddle) |
+| [云体测平台](https://github.com/Routhleck/Cloud-body-measurement) | Web / 实训 | ![](https://img.shields.io/github/stars/Routhleck/Cloud-body-measurement) |
+| [线上商城](https://github.com/Routhleck/Online-Shopping-Mall) | 数据库实训 | ![](https://img.shields.io/github/stars/Routhleck/Online-Shopping-Mall) |
+| [列车购票系统](https://github.com/Routhleck/train-ticket-book-system) | C++ 课程设计 | ![](https://img.shields.io/github/stars/Routhleck/train-ticket-book-system) |
+| [代码查重系统](https://github.com/Routhleck/code_difference_comparision) | 测试 / 质量 | ![](https://img.shields.io/github/stars/Routhleck/code_difference_comparision) |
+| [自制 OS](https://github.com/Routhleck/myOS) | 操作系统 | ![](https://img.shields.io/github/stars/Routhleck/myOS) |
+| [代码缺陷预测系统](https://github.com/Routhleck/bug-detect-system) | 质量预测 | ![](https://img.shields.io/github/stars/Routhleck/bug-detect-system) |
+| [热传导计算](https://github.com/Routhleck/heat_conduction) | 数值计算 | ![](https://img.shields.io/github/stars/Routhleck/heat_conduction) |
+| [OpenGL 实验合集](https://github.com/Routhleck/Computer-Graphics-projects) | 计算机图形学 | ![](https://img.shields.io/github/stars/Routhleck/Computer-Graphics-projects) |
+| [天气预测系统](https://github.com/Routhleck/Weather-Predict) | 大数据导论 | ![](https://img.shields.io/github/stars/Routhleck/Weather-Predict) |
+| [电影推荐系统](https://github.com/A0hdhyz9Z/MovieRecommendSys) | 推荐系统 | ![](https://img.shields.io/github/stars/A0hdhyz9Z/MovieRecommendSys) |
+| [新闻小程序](https://github.com/Routhleck/miniprogram-News) | 小程序 | ![](https://img.shields.io/github/stars/Routhleck/miniprogram-News) |
+| [线上商城 API](https://github.com/Routhleck/online-store-API-design) | API 设计 | ![](https://img.shields.io/github/stars/Routhleck/online-store-API-design) |
 
-[人工智能基础](https://github.com/Routhleck/myNotes/tree/main/人工智能基础)
+---
 
-[概率论与数理统计](https://github.com/Routhleck/myNotes/tree/main/概率论与数理统计)
+## 🔗 延伸资源
+- [雅思备考](https://github.com/Routhleck/IELTS-preparation)
+- [BJTU 校园网自动登录](https://github.com/Routhleck/BJTU-Network-autologin)
+- [视频自动剪辑](https://github.com/Routhleck/video-auto-cut)
+- 课题组项目：
+  - [BrainPy](https://github.com/brainpy/BrainPy) ![](https://img.shields.io/github/stars/brainpy/BrainPy)
+  - [BrainState](https://github.com/chaobrain/brainstate) ![](https://img.shields.io/github/stars/chaobrain/brainstate)
+  - [BrainUnit](https://github.com/chaobrain/brainunit) ![](https://img.shields.io/github/stars/chaobrain/brainunit)
+  - [BrainTaichi](https://github.com/chaobrain/braintaichi) ![](https://img.shields.io/github/stars/chaobrain/braintaichi)
+  - [Dendritex](https://github.com/chaobrain/dendritex) ![](https://img.shields.io/github/stars/chaobrain/dendritex)
 
-## 大三
+---
 
-[科技论文写作](https://github.com/Routhleck/myNotes/tree/main/科技论文写作)
+## 🧑‍💻 如何参与
+1. Fork 或拉取最新 `main` 分支，运行 `uv run python -m http.server --directory docs 8000` 验证页面。
+2. 添加或更新笔记后执行：
+   - `uv run scripts/validate_courses.py`
+   - `uv run scripts/report_large_assets.py --min-mb 20`
+3. 使用 Git LFS 管理 PDF / PPT / DOCX（`git lfs install`，再提交）。
+4. 提交前阅读 [`AGENTS.md`](AGENTS.md) 以确保命名、格式与 PR 模板一致。
 
-[软件项目管理与产品运维](https://github.com/Routhleck/myNotes/tree/main/软件项目管理与产品运维)
-
-[操作系统](https://github.com/Routhleck/myNotes/tree/main/操作系统)
-
-[软件测试与质量保证](https://github.com/Routhleck/myNotes/tree/main/软件测试与质量保证)
-
-[机器学习](https://github.com/Routhleck/myNotes/tree/main/机器学习)
-
-[c++程序设计](https://github.com/Routhleck/myNotes/tree/main/c%2B%2B程序设计)
-
-[大规模计算](https://github.com/Routhleck/myNotes/tree/main/大规模计算)
-
-[大型平台软件分析与设计](https://github.com/Routhleck/myNotes/tree/main/大型平台软件分析与设计)
-
-[API设计与实现](https://github.com/Routhleck/myNotes/tree/main/API设计与实现)
-
-[轻量化平台开发](https://github.com/Routhleck/myNotes/tree/main/轻量化平台开发)
-
-
-## 课设&实训项目
-
-[项目:暑期实训-航班延误预测系统](https://github.com/Routhleck/flight-delay-predict) ![](https://img.shields.io/github/stars/Routhleck/flight-delay-predict)
-
-[项目:数据库课程设计-MINI_DBMS](https://github.com/Routhleck/MINI_DBMS) ![](https://img.shields.io/github/stars/Routhleck/MINI_DBMS)
-
-[项目:人工智能基础-十二生肖识别](https://github.com/Routhleck/animal_detect_paddle) ![](https://img.shields.io/github/stars/Routhleck/animal_detect_paddle)
-
-[项目:暑期实训-云体测](https://github.com/Routhleck/Cloud-body-measurement) ![](https://img.shields.io/github/stars/Routhleck/Cloud-body-measurement)
-
-[项目:数据库实训-线上商城](https://github.com/Routhleck/Online-Shopping-Mall) ![](https://img.shields.io/github/stars/Routhleck/Online-Shopping-Mall)
-
-[项目:c++程序设计-列车购票系统](https://github.com/Routhleck/train-ticket-book-system) ![](https://img.shields.io/github/stars/Routhleck/train-ticket-book-system)
-
-[项目:软件测试与质量保障-代码查重系统](https://github.com/Routhleck/code_difference_comparision) ![](https://img.shields.io/github/stars/Routhleck/code_difference_comparision)
-
-[项目:操作系统-自制OS](https://github.com/Routhleck/myOS) ![](https://img.shields.io/github/stars/Routhleck/myOS)
-
-[项目:软件管理与测试实训-代码缺陷预测系统](https://github.com/Routhleck/bug-detect-system) ![](https://img.shields.io/github/stars/Routhleck/bug-detect-system)
-
-[项目:大规模计算-热传导计算](https://github.com/Routhleck/heat_conduction) ![](https://img.shields.io/github/stars/Routhleck/heat_conduction)
-
-[项目:计算机图形学-OpenGL实验](https://github.com/Routhleck/Computer-Graphics-projects) ![](https://img.shields.io/github/stars/Routhleck/Computer-Graphics-projects)
-
-[项目:大数据导论-天气预测系统](https://github.com/Routhleck/Weather-Predict) ![](https://img.shields.io/github/stars/Routhleck/Weather-Predict)
-
-[项目:软件工程学期实训-电影推荐系统](https://github.com/A0hdhyz9Z/MovieRecommendSys) ![](https://img.shields.io/github/stars/A0hdhyz9Z/MovieRecommendSys)
-
-[项目:轻量化平台开发-新闻讯息小程序](https://github.com/Routhleck/miniprogram-News) ![](https://img.shields.io/github/stars/Routhleck/miniprogram-News)
-
-[项目:API设计与实现-线上商城](https://github.com/Routhleck/online-store-API-design) ![](https://img.shields.io/github/stars/Routhleck/online-store-API-design)
-
-
-
-## 其他可能对你有帮助的东西
-
-[雅思备考](https://github.com/Routhleck/IELTS-preparation) ![](https://img.shields.io/github/stars/Routhleck/IELTS-preparation)
-
-[北京交通大学校园网自动登录脚本](https://github.com/Routhleck/BJTU-Network-autologin) ![](https://img.shields.io/github/stars/Routhleck/BJTU-Network-autologin)
-
-[视频自动剪辑](https://github.com/Routhleck/video-auto-cut) ![](https://img.shields.io/github/stars/Routhleck/video-auto-cut)
-
-## 如果有兴趣，欢迎大家关注我们课题组正在开发的项目，多多点点star 😙
-
-[BrainPy](https://github.com/brainpy/BrainPy) ![](https://img.shields.io/github/stars/brainpy/BrainPy)
-
-[BrainState](https://github.com/chaobrain/brainstate) ![](https://img.shields.io/github/stars/chaobrain/brainstate)
-
-[BrainUnit](https://github.com/chaobrain/brainunit) ![](https://img.shields.io/github/stars/chaobrain/brainunit)
-
-[BrainTaichi](https://github.com/chaobrain/braintaichi) ![](https://img.shields.io/github/stars/chaobrain/braintaichi)
-
-[Dendritex](https://github.com/chaobrain/dendritex) ![](https://img.shields.io/github/stars/chaobrain/dendritex)
+欢迎提出 Issue / PR，一起把 myNotes 打造成更好用的学习资料库。✨
