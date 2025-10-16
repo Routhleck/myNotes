@@ -12,10 +12,17 @@
 
 ## 🚀 快速导航
 - 🎨 **在线浏览入口**：使用全新的 React 导航页，快速按年级与关键词筛选资料。<br>
-  - GitHub Pages（推荐）：即将启用 `https://routhleck.github.io/myNotes/`
+  - GitHub Pages（推荐）：`https://routhleck.github.io/myNotes/`
   - 本地预览：`uv run python -m http.server --directory docs 8000`
 - 🗂️ **课程数据源**：`docs/data/courses.json`（课程卡片元数据）。
 - 🤝 **贡献指南**：详见 [`AGENTS.md`](AGENTS.md)，包含 LFS、校验脚本与命名规范。
+- 🛠️ **克隆 & 预览速查**：见下方“⚙️ 克隆与本地预览”。
+
+## ⚙️ 克隆与本地预览
+1. 首次 clone 后运行 `git lfs install`，确保大文件走 LFS 管道。
+2. 按需获取大文件：`git lfs pull --include="docs/**"` 拉取门户所需；若需全部资料，执行 `git lfs pull`。
+3. 本地浏览 React 门户：`uv run python -m http.server --directory docs 8000` 并访问 `http://localhost:8000`。
+4. 更新课程目录时同步维护 `docs/data/courses.json`，提交前运行 `uv run scripts/validate_courses.py` 与 `uv run scripts/report_large_assets.py --min-mb 20`。
 
 ---
 
@@ -86,14 +93,8 @@
 ---
 
 ## 🧑‍💻 如何参与
-1. Fork 或拉取最新 `main` 分支，运行 `uv run python -m http.server --directory docs 8000` 验证页面。
-2. 添加或更新笔记后执行：
-   - `uv run scripts/validate_courses.py`
-   - `uv run scripts/report_large_assets.py --min-mb 20`
-3. 使用 Git LFS 管理 PDF / PPT / DOCX：
-   - 首次 clone 后先运行 `git lfs install`。
-   - 按需获取大文件：`git lfs pull`（或 `git lfs pull --include="课程/**"` 分批拉取）。
-   - 提交前确认大文件未被意外压缩进普通 Git 历史。
-4. 提交前阅读 [`AGENTS.md`](AGENTS.md) 以确保命名、格式与 PR 模板一致。
+1. Fork 或同步 `main`，按“⚙️ 克隆与本地预览”准备环境。
+2. 更新笔记后再次执行 `uv run scripts/validate_courses.py` 与 `uv run scripts/report_large_assets.py --min-mb 20`，确保数据完整。
+3. 遵循 [`AGENTS.md`](AGENTS.md) 的命名、资产管理与 PR 说明，提交前附上预览步骤与重点变更。
 
 欢迎提出 Issue / PR，一起把 myNotes 打造成更好用的学习资料库。✨
